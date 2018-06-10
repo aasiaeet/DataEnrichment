@@ -1,0 +1,26 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{The Data Enrichment Estimator}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Error Set and Deterministic Error Bound}{section.2}% 3
+\BOOKMARK [1][-]{section.3}{Restricted Eigenvalue Condition}{}% 4
+\BOOKMARK [1][-]{section.4}{General Error Bound}{}% 5
+\BOOKMARK [1][-]{section.5}{Estimation Algorithm}{}% 6
+\BOOKMARK [2][-]{subsection.5.1}{Convergence Rate Analysis}{section.5}% 7
+\BOOKMARK [1][-]{section.6}{Synthetic Experiments}{}% 8
+\BOOKMARK [1][-]{section.7}{Drug Sensitivity Analysis for Cancer Cell Lines}{}% 9
+\BOOKMARK [1][-]{appendix.A}{Proofs}{}% 10
+\BOOKMARK [2][-]{subsection.A.1}{Proof of Theorem 2.1}{appendix.A}% 11
+\BOOKMARK [2][-]{subsection.A.2}{Proof of Proposition 3.3}{appendix.A}% 12
+\BOOKMARK [2][-]{subsection.A.3}{Proof of Theorem 3.4}{appendix.A}% 13
+\BOOKMARK [3][-]{subsubsection.A.3.1}{Lower Bounding the First Term}{subsection.A.3}% 14
+\BOOKMARK [3][-]{subsubsection.A.3.2}{Upper Bounding the Second Term}{subsection.A.3}% 15
+\BOOKMARK [3][-]{subsubsection.A.3.3}{Continuing the Proof of Theorem 3.4}{subsection.A.3}% 16
+\BOOKMARK [2][-]{subsection.A.4}{Proof of Lemma 4.1}{appendix.A}% 17
+\BOOKMARK [2][-]{subsection.A.5}{Proof of Theorem 4.2}{appendix.A}% 18
+\BOOKMARK [2][-]{subsection.A.6}{Proof of Lemma A.5}{appendix.A}% 19
+\BOOKMARK [2][-]{subsection.A.7}{Proof of Theorem 5.2}{appendix.A}% 20
+\BOOKMARK [2][-]{subsection.A.8}{Proof of Theorem 5.3}{appendix.A}% 21
+\BOOKMARK [2][-]{subsection.A.9}{Proof of Lemma A.2}{appendix.A}% 22
+\BOOKMARK [2][-]{subsection.A.10}{Proof of Lemma A.3}{appendix.A}% 23
+\BOOKMARK [2][-]{subsection.A.11}{Proof of Lemma A.4}{appendix.A}% 24
+\BOOKMARK [2][-]{subsection.A.12}{Proof of Lemma A.6}{appendix.A}% 25
+\BOOKMARK [2][-]{subsection.A.13}{Proof of Lemma A.7}{appendix.A}% 26

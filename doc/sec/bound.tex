@@ -1,0 +1,119 @@
+\section{General Error Bound}
+\label{sec:error}
+In this section, we provide a high probability upper bound for the estimation error of the common and individual components under general convex function $f(\cdot)$.
+From now on, to avoid cluttering the notation assume $\oomega = \oomega_0$:
+We massage the upper bound of Theorem \ref{theo:deter} as follows:
+	\be
+	\nr
+	\oomega ^T \X\ddelta &=& \sum_{g=0}^{G} \langle \X_g^T \oomega _g,  \ddelta_g \rangle
+	= \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}} \rangle \sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2} \\ \nr
+	%(\forall g: \u_g \in \cC_g \cap \sphere) &=& \norm{\ddelta_0}{2} \langle \X_0^T \frac{\oomega }{\norm{\oomega }{2}}, \u_0 \rangle \norm{\oomega }{2} + \sum_{g=1}^{G} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \u_g \rangle \norm{\oomega _g}{2} \\ \nr
+	\ee
+Assume $b_g = \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}}  \rangle \sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2}$ and $a_g = \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}$.
+Then the above term is the inner product of two vectors $\a = (a_0, \dots, a_G)$ and $\b = (b_0, \dots, b_G)$ for which we have:
+%\be
+%\nr
+%%\sup_{\a \in \cH_l} \a^T \b  &\leq& \sup_{\a \in \cH_0} \a^T \b
+%%\\ \nr
+%\sup_{\a \in \cH} \a^T \b
+%&=&\sup_{\norm{\a}{1} = 1} \a^T \b \\ \nr
+%\text{(definition of the dual norm)} &\leq& \norm{\b}{\infty} \\ \nr
+%&=& \max_{g \in [G]} b_g \nr
+%\ee
+\be
+\nr
+%\sup_{\a \in \cH_l} \a^T \b  &\leq& \sup_{\a \in \cH_0} \a^T \b
+%\\ \nr
+\sup_{\a \in \cH} \a^T \b
+=\sup_{\norm{\a}{1} = 1} \a^T \b
+&\leq& \norm{\b}{\infty}
+= \max_{g \in [G]} b_g,
+\ee
+where the inequality holds because of the definition of the dual norm.
+Following lemma upper bounds $b_g$ with high probability.
+
+
+%Following lemma provides us with the results necessary to prove Theorem \ref{theo:ub}.
+%\begin{lemma}[Theorem 1, Case 1 of \cite{banerjee14}]
+%	\label{lem:psi}
+%	For all $\v_g \in \mathbb B^{n_g}$, the vector $\X_g^T \v_g$ is sub-Gaussian with $\normth{\X_g^T \v_g}{\psi_2} \leq c k$ where $\normth{\x_{gi}}{\psi_2} \leq k$. 	
+%\end{lemma}
+
+\begin{lemma}
+	\label{lemm:mainlem}
+	For $\x_{gi}$ and $\omega_{gi}$ defined in Definition \ref{def:obs}, with probability at least $1 - \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu_g n_g - \log (G+1), \frac{\tau^2}{\eta_g^2 k^2}\right]\right)$ we have:
+	\be
+	\sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \u_g \rangle
+	&\leq&
+	\sqrt{(2K^2 + 1)n} \left(\zeta_g k \omega(\cA_g) + \epsilon_g \sqrt{\log (G+1)} +  \tau \right), \nr
+	\ee
+	where $\sigma_g, \eta_g, \zeta_g$ and $\epsilon_g$ are group dependent constants and $\tau > 0$.
+\end{lemma}
+
+Using Lemma \ref{lemm:mainlem} below theorem establishes a high probability upper bound for the deterministic bound of Theorem \ref{theo:deter}, i.e., $\frac{2}{n}\oomega ^T \X \u$. %, in terms of the Gaussian width of the spherical caps corresponding to each error cone, i.e., $\omega(\cC_g \cap \sphere)$.
+
+\begin{theorem}
+	\label{theo:ub}
+	Assume $\x_{gi}$ to be a sub-Gaussian random variable with $\ex [\x_{gi}^T \x_{gi}] = \I_{p \times p}$ and $\vertiii{\x_{gi}}_{\psi_2} \leq k$ and $\oomega $ consists of i.i.d. centered unit-variance sub-Gaussian elements with $\normth{\omega_{gi}}{\psi_2} \leq K$, with probability at least  $1 - \sigma \exp\left(-\min_{g \in [G]}\left[\nu_g  n_g - \log (G+1), \frac{\tau^2}{\eta_g^2 k^2}\right]\right) $  we have:
+	{\small
+	\be
+	\nr
+	\frac{2}{n} \oomega ^T \X\ddelta
+	&\leq& \sqrt{\frac{8 K^2 + 4}{n}} \max_{g \in [G]} \left(\zeta_g k \omega(\cA_g) + \epsilon_g \sqrt{\log (G+1)}+ \tau \right) \nr
+	\ee
+	}
+	where $\sigma = \max_{g \in [G]} \sigma_g$ and $\tau > 0$.
+\end{theorem}
+
+The following corollary characterizes the general error bound and results from the direct combination of Theorem \ref{theo:deter}, Theorem \ref{theo:re}, and Theorem \ref{theo:ub}.
+\begin{corollary}
+	\label{corr:calcub}
+	For $\x_{gi}$ and $\omega_{gi}$ described in Theorem \ref{theo:deter} and Theorem \ref{theo:ub} when we have $\forall g \in [G]: n_g > m_g$ which lead to $\kappa > 0$, the following general error bound holds with high probability for estimator \eqref{eq:compact}:
+%	at least{\small  $1 - \sigma \exp\left(-\min_{g \in [G]} \left[\nu_g  n_g - \log (G+1), \frac{\tau^2}{\eta_g^2 k^2}\right]\right)$}
+	\be
+	\label{eq:general}
+	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}
+	\leq C {\gamma} \frac{k\zeta \max_{g \in [G]}  \omega(\cA_g) + \epsilon \sqrt{\log (G+1)}+ \tau }{\kappa_{\min}^2 \sqrt{n}}
+	\ee	
+	where $C = 8\sqrt{2 K^2 + 1}$, $\zeta = \max_{g \in [G]} \zeta_g$, $\epsilon = \max_{g \in [G]} \epsilon_g$, $\gamma = \max_{g \in [G]_{\setminus}} n/n_g$  and $\tau > 0$.
+\end{corollary}
+
+%\begin{corollary}
+%	\label{corr:single}
+%	Note that from \eqref{eq:general} one can immediately entail the error bound for estimation of the common and individual parameters as follows:
+%	\be
+%	\nr
+%	%\forall g \in [G]:
+%%	\forall g \in [G]: \quad \norm{\ddelta_g}{2} \leq \sqrt{\gamma} \sqrt{\frac{n}{n_g}} O\left(\frac{\max_{g \in [G]}  \omega(\cA_g) + \sqrt{\log (G+1)} }{\sqrt{n_g}}\right)
+%	\forall g \in [G]: \quad \norm{\ddelta_g}{2} \leq {\gamma} O\left(\frac{\max_{g \in [G]}  \omega(\cA_g) + \sqrt{\log (G+1)} }{\sqrt{n_g}}\right)
+%	\ee
+%\end{corollary}
+
+%	{\color{red} Do we need these remarks anymore? We have the extra factor
+%		
+%	Comparing the result of Corollary \ref{corr:single} with the case of regression with the single structured parameter $\bbeta_g^*$ is instructive.
+%	Following are some remarks comparing our results with the state-of-the-art.
+%\begin{remark}
+%	Corollary \ref{corr:single} states $\forall \in [G]_\setminus: \norm{\ddelta_g}{2} \leq O((\max_{g \in [G]} \omega(\cA_g) + \sqrt{\log (G+1)})/\sqrt{n_g})$ while sharp error bound for the single regression with $\bbeta_g^*$ is $\norm{\ddelta_g}{2} \leq O(\omega(\cA_g)/\sqrt{n_g})$.
+%	So by solving a more complicated data enriched model we only pay a price of $\big(\max_{g \in [G]} \omega(\cA_g) - \omega(\cA_g) + \sqrt{\log (G+1)}\big)/ \sqrt{n_g}$ in estimation error while the order of the sample complexity $m_g$ stays the same.
+%\end{remark}
+%
+%\begin{remark}
+%	On the other hand, without any direct observation regarding the parameter $\bbeta _0^*$ we exploit all of the groups data and get the decay rate of $1/\sqrt{n}$ for $\norm{\ddelta_0}{2}$ by only paying a price of $\big(\max_{g \in [G]} \omega(\cA_g) - \omega(\cA_0)+ \sqrt{\log (G+1)}\big)/ \sqrt{n}$ in estimation error.
+%\end{remark}
+%}
+%\begin{remark}
+%	\label{rem:sperror}
+%	For sparse parameters, assume that each $\bbeta _g^*$ is $s_g$-sparse and $s = \max_{g \in [G]} s_g$, i.e., the densest parameter is $s$-sparse.
+%	Then we have the following error bounds with high probability when number of per group samples $n_g = O(s_g \log p)$ and total number of samples $n = O(s_0 \log p)$ :
+%	\be
+%	\nr
+%%	\forall g \in [G]: \norm{\ddelta_g}{2} \leq c \sqrt{\gamma} \sqrt{\frac{n}{n_g}} \frac{\sqrt{s  \log p} + \sqrt{\log (G+1)}}{\sqrt{n_g}}
+%	\forall g \in [G]: \norm{\ddelta_g}{2} \leq c {\gamma} \frac{\sqrt{s  \log p} + \sqrt{\log (G+1)}}{\sqrt{n_g}}
+%	\ee
+%%	Note that here the recovery of the common parameter is at most $c\sqrt{\frac{\sqrt{\log G}}{n}}$ worse than the case of single regression with $\bbeta _0$ as the parameter.
+%%	Also for the individual parameters, the bound is only $c \frac{(\sqrt{s_0} - \sqrt{s_g}) \sqrt{\log p} + \sqrt{\sqrt{\log G}}}{\sqrt{n_g}}$ weaker than the case of single regression.
+%\end{remark}
+
+%\section{Minimax Lower Bound}
+

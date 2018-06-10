@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage{amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+%\usepackage[draft]{hyperref}
+\usepackage{makecell}
+\usepackage{url}
+\usepackage{caption,subcaption}
+\usepackage{array}
+\usepackage[rflt]{floatflt}
+\usepackage{epsfig,times,graphicx,color}
+\usepackage{amsmath,amssymb,amsopn,algorithm,algorithmic,float,bbm,bm,enumerate,color,multirow}
+\usepackage{rotating}
+\usepackage{array}
+%\usepackage{slashbox}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{xspace}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs} % for professional tables
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{enumitem}
+
+%\usepackage{nips_2018}
+
+% to compile a preprint version, e.g., for submission to arXiv, add
+% add the [preprint] option:
+\usepackage[preprint]{nips_2018}
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+% \usepackage[final]{nips_2018}
+
+% to avoid loading the natbib package, add option nonatbib:
+% \usepackage[nonatbib]{nips_2018}
+
+
+
+\title{High Dimensional Data Enrichment: \\ Interpretable, Fast, and Data-Efficient}
+
+
+
+\author{
+	Amir Asiaee T.\\
+	Ohio State University\\
+	\texttt{asiaeetaheri.1@osu.edu} \\
+	\And
+	Samet Oymak \\
+	UC Riverside \\
+	\texttt{oymak@ece.ucr.edu} \\
+	\AND
+	Kevin R. Coombes\\
+	Ohio State University\\
+	\texttt{coombes.3@osu.edu} \\
+	\And
+	Arindam Banerjee\\
+	University of Minnesota\\
+	\texttt{banerjee@cs.umn.edu} \\
+	%% \And
+	%% Coauthor \\
+	%% Affiliation \\
+	%% Address \\
+	%% \texttt{email} \\
+}
+
+\setlength{\belowcaptionskip}{-2.5mm}
+
+\input{sec/notation}
+
+\begin{document}
+\maketitle
+
+
+\input{sec/abstract}
+
+\input{sec/intro}
+
+\input{sec/rel}
+
+\input{sec/prob}
+
+\input{sec/re}
+
+\input{sec/bound}
+
+\input{sec/opt}
+
+\input{sec/exp}
+
+%\input{sec/conc}
+\pagebreak
+\bibliographystyle{plain}
+\bibliography{nips18}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DELETE THIS PART. DO NOT PLACE CONTENT AFTER THE REFERENCES!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\input{sec/proofs}
+
+
+\end{document}
