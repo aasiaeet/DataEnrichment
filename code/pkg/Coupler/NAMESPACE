@@ -1,0 +1,16 @@
+###
+### NAMESPACE
+###
+
+# Things we use
+#import(methods)
+importFrom("stats", "sd")
+importFrom("glmnet", "glmnet", "cv.glmnet")
+
+# Things we provide
+export(dataSharing, cv.dataSharing, predict.dataSharing, coef, myElasticNetRegression)
+
+#exportClasses()
+
+#exportMethods()
+

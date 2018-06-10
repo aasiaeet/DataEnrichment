@@ -1,0 +1,118 @@
+---
+title: "Data Sharing for CCLE"
+author: "Amir Asiaee T."
+date: "May 10, 2018"
+output: html_document
+---
+
+```{r mycss, results="asis", echo=FALSE}
+cat('
+<style type="text/css">
+b, strong {color: red; }
+i, em {color: blue; }
+.defn {color: purple; }
+.para {color: purple;
+      font-weight: bold;
+}
+.figure { text-align: center; }
+.caption { font-weight: bold; }
+</style>
+')
+```
+
+# Introduction 
+In this project, want to apply use the Data Sharing estimator to predict response of the celllines in Cancer Cell Line Encyclopedia to 24 anticancer drugs. 
+
+# Raw Data 
+We have downloaded the raw data of predictors from the following URL: [CLLE Data](https://portals.broadinstitute.org/ccle/data). We have used the original data which has been published in 2012. So, at the bottom of the page under *Legacy Data* you can download the followings:
+
+* *Oncomap Mutation:* CCLE_Oncomap3_2012-04-09.maf
+* *Hybrid capture sequencing:* CCLE_hybrid_capture1650_hg19_NoCommonSNPs_NoNeutralVariants_CDS_2012.05.07.maf
+* *mRNA expression:* CCLE_Expression_Entrez_2012-09-29.gct
+* *DNA Copy Number:* CCLE_copynumber_byGene_2013-12-03.txt
+
+The response data is accessible from [Nature](https://www.nature.com/articles/nature11003) website in the *Supplementary information* section under *Supplementary Tables* as nature11003-s3.xls file. Table S11 of this file contains different dose-response value. We us `ActArea` column as our response. 
+
+We open all of the above files in Excel and save them as CSV files in the correct `raw` folder, explained below. 
+
+# Path Prepration
+We arrange things so that individuals can store their data and scratch space wherever they want. (On their local hard drive, a network drive, somehwere in the cloud; dropbox, etc.) But, we want the code to run without editing on everybnody's individual machine. So, we adopt the following convention. 
+
+Each user must create a file called $HOME/Paths/datasharing.json Here, as usual, $HOME refers to the user's home directory on the local machine. (For example in Windos it is the `Document` folder.) The subfolder Paths is hard-coded and cannot be changes. The file name datasharing.json is specific to this project; other projects will use different JSON files stored inthe same directory.
+
+Following is a sample datasharing.json file which lets the program know the place of raw (storing raw data), clean (storing cleaned data), and scratch (storing intermediate results).
+```
+{
+  "paths" : {
+    "raw"     : "C:/Users/username/database/datasharing/raw/",
+	  "clean"     : "C:/Users/username/database/datasharing/clean/",
+	  "scratch"     : "C:/Users/username/database/datasharing/scratch/"
+  }
+}
+```
+With the following command, you can load the above addresses into `path`:
+```{r}
+source("00-paths.R")
+paths
+```
+# Data Clean-up
+First we need to perform pre-processing which opens the CSV files and keeps the required columns and discard the others. It also transposes the expressions and copy number inputs to make them sample-by-gene and generate the z-socre of the data:
+```{r}
+source("01-preprocess.R")
+```
+In the next step we run the main data cleanup routine where it goes over all drugs and for each of them forms the input matrix X and output vector y for the specified cancer (in the current code it is only lung and blood). 
+```{r}
+source("02-dataCleanUp.R")
+```
+
+# Prediction
+
+The baseline for comparison is elastic net which has been implemented in `glmnet` library. The following code performs the prediction and save the results in your `scratch` folder. 
+```{r}
+source("03-glmnetPrediction.R")
+```
+
+The core of our algorithm has been implemented in `dataSharing.R`. The code that apply data sharing on the CLLE data should be called as follows:
+```{r}
+source("04-dataSharingPrediction.R")
+```
+
+These two generate what we need to draw the comparison chart:
+```{r}
+load(file.path(paths$scratch, "perDrugBestPerformance-Mean-ElasticNet.RData"))
+load(file.path(paths$scratch, "perDrugBestPerformance-DS-Sparse.RData"))
+library(MASS)
+tibMeans <- perDrugBestPerformanceMean
+tibMeans <- tibMeans[-25] 
+tibSds <- perDrugBestPerformanceSds
+ourMeans <- perDrugBestPerformanceDSSparse
+
+toPlot <- as.data.frame(matrix(NA,24,2))
+toPlot$dsMeans <- ourMeans
+toPlot$enMeans <- tibMeans
+
+ggplot(toPlot, aes(x=dsMeans, y=enMeans)) +
+  theme_bw() +
+  geom_point(size = 2) +
+  theme(axis.text.x = element_text(size=15), axis.text.y = element_text(size=15), text = element_text(size=20))+
+  xlab("MSE Data Sharing") +
+  ylab("MSE Elastic Net") +
+  geom_abline(slope=1, intercept=0)+
+  coord_cartesian(xlim = c(.5, 1.75), ylim = c(0.5, 1.75), expand = TRUE)
+```
+
+# Interpretation
+Now we want to interpret the selected features (genes) by the data sharing. For that we focus on drugs that we know work for lung or blood or both of them. We have this knowledge from looking at the drugs' profiles and also the histogram of the active area for different drugs drawn and saved as the part of data cleanup in the `scratch` folder. 
+
+The three drugs that we picked are **Erlotinib** which we know it works on EGFR mutated lung cancer, 
+
+First we load the the list of results for all drugs which was saved during the cross-validation in the prediction phase. 
+```{r}
+load(file.path(paths$scratch, "listOfRefinedCV-DS-Sparse.RData"))
+```
+
+
+
+
+
+
