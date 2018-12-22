@@ -136,7 +136,7 @@ Also, we perform a standard preprocessing \cite{barretina2012cancer} where we re
 %\subsection{Results}
 {\bf Prediction:} Here we run, 24 different experiments, each for one drug.  %= \{f_g(\bbeta) < b_g\}$
 Since the values of $d_g$  in constraint sets $\Omega_{f_g}(d_g)$  are unknown, we tune them by 10-fold cross-validation and report the mean squared error (MSE) of the Elastic Net \cite{zoha05} (method used in the original CCLE paper\cite{barretina2012cancer}) and the data enrichment in Figure \ref{fig:prediction}. Both methods have very close prediction performance.
-	\begin{figure}[t]
+	\begin{figure*}
 	\begin{subfigure}[b]{0.32\textwidth}
 		\includegraphics[width=\textwidth]{./img/dr4.pdf}
 		\caption{}\label{fig:dr}
@@ -151,7 +151,7 @@ Since the values of $d_g$  in constraint sets $\Omega_{f_g}(d_g)$  are unknown, 
 	\end{subfigure}
 	\caption{a) A sample fitted dose-response curve where Activity Area $y_{gi}$ is shaded. b) Comparison of Mean Square Error of elastic net and data enrichment in predicting the response to 24 drugs for lung and blood cancer cell lines. Each dot represents an experiment for a drug. Prediction accuracy of both algorithms are very close. c) Distribution of responses to Saracatinib.}
 	\label{fig syn2}
-	\end{figure}
+	\end{figure*}
 
 {\bf Interpretation}
 %Next we focus on the interpretation of the selected genes. 
@@ -173,7 +173,7 @@ Table \ref{table:1} summarizes a highlight of our findings which shows lung and 
 %	\hline
 %\end{tabular}
 %}
-\begin{table}
+\begin{table*}
 	\centering
 	\begin{tabular}{ |c|c|c|c|  }
 		\hline 	
@@ -188,7 +188,7 @@ Table \ref{table:1} summarizes a highlight of our findings which shows lung and 
 	\end{tabular}
 \caption{Each column is (Cancer Type, Number of significant genes) and highlights show where the set of genes have been observed together. p-Values are computed by  Fisher's exact test \cite{chen09toppgene}.}
 \label{table:1}
-\end{table}
+\end{table*}
 
 %{ (Type, $|\text{supp}(\cdot)|$)} 	&   , ; 2.907E-5  & asd;flkajsdf ;as  &  asdf'alsdkfad' \\
 %&   , stage IV;   & asd;flkajsdf ;as  &  asdf'alsdkfad' \\

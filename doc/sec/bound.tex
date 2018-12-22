@@ -5,8 +5,9 @@ From now on, to avoid cluttering the notation assume $\oomega = \oomega_0$:
 We massage the upper bound of Theorem \ref{theo:deter} as follows:
 	\be
 	\nr
-	\oomega ^T \X\ddelta &=& \sum_{g=0}^{G} \langle \X_g^T \oomega _g,  \ddelta_g \rangle
-	= \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}} \rangle \sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2} \\ \nr
+	\oomega ^T \X\ddelta &=& \sum_{g=0}^{G} \langle \X_g^T \oomega _g,  \ddelta_g \rangle 
+	\\ \nr 
+	&=& \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}} \rangle \sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2} \\ \nr
 	%(\forall g: \u_g \in \cC_g \cap \sphere) &=& \norm{\ddelta_0}{2} \langle \X_0^T \frac{\oomega }{\norm{\oomega }{2}}, \u_0 \rangle \norm{\oomega }{2} + \sum_{g=1}^{G} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \u_g \rangle \norm{\oomega _g}{2} \\ \nr
 	\ee
 Assume $b_g = \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}}  \rangle \sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2}$ and $a_g = \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}$.
@@ -42,11 +43,11 @@ Following lemma upper bounds $b_g$ with high probability.
 \begin{lemma}
 	\label{lemm:mainlem}
 	For $\x_{gi}$ and $\omega_{gi}$ defined in Definition \ref{def:obs}, with probability at least $1 - \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu_g n_g - \log (G+1), \frac{\tau^2}{\eta_g^2 k^2}\right]\right)$ we have:
-	\be
-	\sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \u_g \rangle
+	{\small\be
+	&&\sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \u_g \rangle \\ \nr 
 	&\leq&
 	\sqrt{(2K^2 + 1)n} \left(\zeta_g k \omega(\cA_g) + \epsilon_g \sqrt{\log (G+1)} +  \tau \right), \nr
-	\ee
+	\ee}
 	where $\sigma_g, \eta_g, \zeta_g$ and $\epsilon_g$ are group dependent constants and $\tau > 0$.
 \end{lemma}
 
@@ -70,11 +71,11 @@ The following corollary characterizes the general error bound and results from t
 	\label{corr:calcub}
 	For $\x_{gi}$ and $\omega_{gi}$ described in Theorem \ref{theo:deter} and Theorem \ref{theo:ub} when we have $\forall g \in [G]: n_g > m_g$ which lead to $\kappa > 0$, the following general error bound holds with high probability for estimator \eqref{eq:compact}:
 %	at least{\small  $1 - \sigma \exp\left(-\min_{g \in [G]} \left[\nu_g  n_g - \log (G+1), \frac{\tau^2}{\eta_g^2 k^2}\right]\right)$}
-	\be
+	{\small\be
 	\label{eq:general}
 	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}
 	\leq C {\gamma} \frac{k\zeta \max_{g \in [G]}  \omega(\cA_g) + \epsilon \sqrt{\log (G+1)}+ \tau }{\kappa_{\min}^2 \sqrt{n}}
-	\ee	
+	\ee	}
 	where $C = 8\sqrt{2 K^2 + 1}$, $\zeta = \max_{g \in [G]} \zeta_g$, $\epsilon = \max_{g \in [G]} \epsilon_g$, $\gamma = \max_{g \in [G]_{\setminus}} n/n_g$  and $\tau > 0$.
 \end{corollary}
 

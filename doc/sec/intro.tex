@@ -72,8 +72,8 @@ We propose the following estimator $\hbbe$ for recovering the structured common 
 \be
 	\nr \label{eq:super}
 	\hbbe = (\hbbe_0^T, \dots, \hbbe_G^T) &\in& \argmin_{\bbeta _0, \dots, \bbeta _G} \frac{1}{n} \sum_{g=1}^{G} \norm{\y_g - \X_g (\bbeta _0 + \bbeta _g)}{2}^2,
-%	\\ \nr
-%	&&
+	\\ \nr
+	&&
 	\text{s.t.} \quad \forall g \in [G]:f_g(\bbeta _g) \leq f_g(\bbeta _g^*).
 \ee
 
@@ -84,10 +84,10 @@ We present several new statistical and computational results for the data enrich
 \begin{itemize}[leftmargin = .4cm]
 	\item The data enrichment estimator \eqref{eq:super} succeeds if a geometric condition that we call \emph{Data Enrichment Incoherence Condition} (DEIC) is satisfied. Compared to other known geometric conditions in the literature such as structural coherence \cite{guba16} and stable recovery conditions \cite{mctr13}, DEIC is a considerably weaker condition.
 	\item Assuming DEIC holds, we establish a high probability non-asymptotic bound on the weighted sum of component-wise estimation error, $\ddelta_g = \hbbe_g - \bbeta_g^*$ as:
-	\be
+	{\small \be
 	\label{eq:errorsum}
 	\sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq  C \gamma \frac{\max_{g \in [G]} \omega(\cC_g \cap \sphere) + \sqrt{\log (G+1)}}{\sqrt{n}}~,
-	\ee
+	\ee}
 	where $n_g$ is number of samples per group, $n = n_0$ is the total number of samples, $\gamma = \max_{g \in [G] } \frac{n}{n_g}$ is the \emph{balance condition number}, and $\cC_g$ is the error cone corresponding to $\bbeta_g^*$ exactly defined in Section \ref{sec:deter}.
 	To the best of our knowledge, this is the first statistical estimation guarantee for data enriched models.
 	%Gaussian width of a set $\cS$ is $\omega(\cS) = \ex_\g \left[ \sup_{\u \in \cS} \langle \g, \u \rangle \right]$. Gaussian width has been a standard tool for capturing the complexity of high-dimensional problems \cite{venkat12}.

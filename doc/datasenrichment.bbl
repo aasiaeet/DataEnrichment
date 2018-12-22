@@ -1,122 +1,137 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{21}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem{banerjee14}
-A.~Banerjee, S.~Chen, F.~Fazayeli, and V.~Sivakumar.
+\bibitem[Banerjee et~al.(2014)Banerjee, Chen, Fazayeli, and
+  Sivakumar]{banerjee14}
+Banerjee, A., Chen, S., Fazayeli, F., and Sivakumar, V.
 \newblock Estimation with {Norm} {Regularization}.
-\newblock In {\em Advances in {Neural} {Information} {Processing} {Systems}},
-  pages 1556--1564, 2014.
+\newblock In \emph{Advances in {Neural} {Information} {Processing} {Systems}},
+  pp.\  1556--1564, 2014.
 
-\bibitem{barretina2012cancer}
-Jordi Barretina, Giordano Caponigro, Nicolas Stransky, Kavitha Venkatesan,
-  Adam~A Margolin, Sungjoon Kim, Christopher~J Wilson, Joseph Leh{\'a}r,
-  Gregory~V Kryukov, Dmitriy Sonkin, et~al.
+\bibitem[Barretina et~al.(2012)Barretina, Caponigro, Stransky, Venkatesan,
+  Margolin, Kim, Wilson, Leh{\'a}r, Kryukov, Sonkin,
+  et~al.]{barretina2012cancer}
+Barretina, J., Caponigro, G., Stransky, N., Venkatesan, K., Margolin, A.~A.,
+  Kim, S., Wilson, C.~J., Leh{\'a}r, J., Kryukov, G.~V., Sonkin, D., et~al.
 \newblock The cancer cell line encyclopedia enables predictive modelling of
   anticancer drug sensitivity.
-\newblock {\em Nature}, 483(7391):603, 2012.
+\newblock \emph{Nature}, 483\penalty0 (7391):\penalty0 603, 2012.
 
-\bibitem{boucheron13}
-Stephane Boucheron, Gabor Lugosi, and Pascal Massart.
-\newblock {\em Concentration {Inequalities}: {A} {Nonasymptotic} {Theory} of
+\bibitem[Boucheron et~al.(2013)Boucheron, Lugosi, and Massart]{boucheron13}
+Boucheron, S., Lugosi, G., and Massart, P.
+\newblock \emph{Concentration {Inequalities}: {A} {Nonasymptotic} {Theory} of
   {Independence}}.
 \newblock Oxford University Press, 2013.
 
-\bibitem{venkat12}
-V.~Chandrasekaran, B.~Recht, P.~A. Parrilo, and A.~S. Willsky.
+\bibitem[Chandrasekaran et~al.(2012)Chandrasekaran, Recht, Parrilo, and
+  Willsky]{venkat12}
+Chandrasekaran, V., Recht, B., Parrilo, P.~A., and Willsky, A.~S.
 \newblock The convex geometry of linear inverse problems.
-\newblock {\em Foundations of Computational Mathematics}, 12(6):805--849, 2012.
+\newblock \emph{Foundations of Computational Mathematics}, 12\penalty0
+  (6):\penalty0 805--849, 2012.
 
-\bibitem{chen09toppgene}
-Jing Chen, Eric~E Bardes, Bruce~J Aronow, and Anil~G Jegga.
+\bibitem[Chen et~al.(2009)Chen, Bardes, Aronow, and Jegga]{chen09toppgene}
+Chen, J., Bardes, E.~E., Aronow, B.~J., and Jegga, A.~G.
 \newblock Toppgene suite for gene list enrichment analysis and candidate gene
   prioritization.
-\newblock {\em Nucleic acids research}, 37(suppl\_2):W305--W311, 2009.
+\newblock \emph{Nucleic acids research}, 37\penalty0 (suppl\_2):\penalty0
+  W305--W311, 2009.
 
-\bibitem{domu16}
-F.~Dondelinger and S.~Mukherjee.
+\bibitem[Dondelinger \& Mukherjee(2016)Dondelinger and Mukherjee]{domu16}
+Dondelinger, F. and Mukherjee, S.
 \newblock High-dimensional regression over disease subgroups.
-\newblock {\em arXiv preprint arXiv:1611.00953}, 2016.
+\newblock \emph{arXiv preprint arXiv:1611.00953}, 2016.
 
-\bibitem{grti16}
-S.~M. Gross and R.~Tibshirani.
+\bibitem[Gross \& Tibshirani(2016)Gross and Tibshirani]{grti16}
+Gross, S.~M. and Tibshirani, R.
 \newblock Data shared lasso: A novel tool to discover uplift.
-\newblock {\em Computational Statistics \& Data Analysis}, 101:226--235, 2016.
+\newblock \emph{Computational Statistics \& Data Analysis}, 101:\penalty0
+  226--235, 2016.
 
-\bibitem{guba16}
-Q.~Gu and A.~Banerjee.
+\bibitem[Gu \& Banerjee(2016)Gu and Banerjee]{guba16}
+Gu, Q. and Banerjee, A.
 \newblock High dimensional structured superposition models.
-\newblock In {\em Advances In Neural Information Processing Systems}, pages
+\newblock In \emph{Advances In Neural Information Processing Systems}, pp.\
   3684--3692, 2016.
 
-\bibitem{jrsr10}
-A.~Jalali, P.~Ravikumar, S.~Sanghavi, and C.~Ruan.
+\bibitem[Jalali et~al.(2010)Jalali, Ravikumar, Sanghavi, and Ruan]{jrsr10}
+Jalali, A., Ravikumar, P., Sanghavi, S., and Ruan, C.
 \newblock {A Dirty Model for Multi-task Learning}.
-\newblock In {\em Advances in Neural Information Processing Systems}, pages
+\newblock In \emph{Advances in Neural Information Processing Systems}, pp.\
   964--972, 2010.
 
-\bibitem{mctr13}
-Michael~B McCoy and Joel~A Tropp.
+\bibitem[McCoy \& Tropp(2013)McCoy and Tropp]{mctr13}
+McCoy, M.~B. and Tropp, J.~A.
 \newblock The achievable performance of convex demixing.
-\newblock {\em arXiv preprint arXiv:1309.7478}, 2013.
+\newblock \emph{arXiv preprint arXiv:1309.7478}, 2013.
 
-\bibitem{mend15}
-Shahar Mendelson.
+\bibitem[Mendelson(2014)]{mend15}
+Mendelson, S.
 \newblock {Learning Without Concentration}.
-\newblock In {\em Journal of the ACM (JACM)}. To appear, 2014.
+\newblock In \emph{Journal of the ACM (JACM)}. To appear, 2014.
 
-\bibitem{nrwy12}
-S.~N. Negahban, P.~Ravikumar, M.~J. Wainwright, and B.~Yu.
+\bibitem[Negahban et~al.(2012)Negahban, Ravikumar, Wainwright, and Yu]{nrwy12}
+Negahban, S.~N., Ravikumar, P., Wainwright, M.~J., and Yu, B.
 \newblock {A Unified Framework for High-Dimensional Analysis of
   {\$}M{\$}-Estimators with Decomposable Regularizers}.
-\newblock {\em Statistical Science}, 27(4):538--557, 2012.
+\newblock \emph{Statistical Science}, 27\penalty0 (4):\penalty0 538--557, 2012.
+\newblock ISSN 0883-4237.
 
-\bibitem{olvi14}
-E.~Ollier and V.~Viallon.
+\bibitem[Ollier \& Viallon(2014)Ollier and Viallon]{olvi14}
+Ollier, E. and Viallon, V.
 \newblock Joint estimation of $ k $ related regression models with simple $
   l\_1 $-norm penalties.
-\newblock {\em arXiv preprint arXiv:1411.1594}, 2014.
+\newblock \emph{arXiv preprint arXiv:1411.1594}, 2014.
 
-\bibitem{olvi15}
-E.~Ollier and V.~Viallon.
+\bibitem[Ollier \& Viallon(2015)Ollier and Viallon]{olvi15}
+Ollier, E. and Viallon, V.
 \newblock Regression modeling on stratified data with the lasso.
-\newblock {\em arXiv preprint arXiv:1508.05476}, 2015.
+\newblock \emph{arXiv preprint arXiv:1508.05476}, 2015.
 
-\bibitem{oyrs15}
-S.~Oymak, B.~Recht, and M.~Soltanolkotabi.
+\bibitem[Oymak et~al.(2015)Oymak, Recht, and Soltanolkotabi]{oyrs15}
+Oymak, S., Recht, B., and Soltanolkotabi, M.
 \newblock Sharp time--data tradeoffs for linear inverse problems.
-\newblock {\em arXiv preprint arXiv:1507.04793}, 2015.
+\newblock \emph{arXiv preprint arXiv:1507.04793}, 2015.
 
-\bibitem{raskutti10}
-G.~Raskutti, M.~J. Wainwright, and B.~Yu.
+\bibitem[Raskutti et~al.(2010)Raskutti, Wainwright, and Yu]{raskutti10}
+Raskutti, G., Wainwright, M.~J., and Yu, B.
 \newblock Restricted eigenvalue properties for correlated gaussian designs.
-\newblock {\em Journal of Machine Learning Research}, 11:2241--2259, 2010.
+\newblock \emph{Journal of Machine Learning Research}, 11:\penalty0 2241--2259,
+  2010.
 
-\bibitem{ruzh13}
-M.~Rudelson and S.~Zhou.
+\bibitem[Rudelson \& Zhou(2013)Rudelson and Zhou]{ruzh13}
+Rudelson, M. and Zhou, S.
 \newblock {Reconstruction from anisotropic random measurements}.
-\newblock {\em IEEE Transactions on Information Theory}, 59(6):3434--3447,
-  2013.
+\newblock \emph{IEEE Transactions on Information Theory}, 59\penalty0
+  (6):\penalty0 3434--3447, 2013.
 
-\bibitem{trop15}
-Joel~A. Tropp.
+\bibitem[Tropp(2015)]{trop15}
+Tropp, J.~A.
 \newblock {Convex recovery of a structured signal from independent random
   linear measurements}.
-\newblock In {\em Sampling Theory - a Renaissance}. To appear, may 2015.
+\newblock In \emph{Sampling Theory - a Renaissance}. To appear, may 2015.
 
-\bibitem{vers12}
-R.~Vershynin.
+\bibitem[Vershynin(2012)]{vers12}
+Vershynin, R.
 \newblock {Introduction to the non-asymptotic analysis of random matrices}.
-\newblock In {\em Compressed Sensing}, pages 210--268. Cambridge University
+\newblock In \emph{Compressed Sensing}, pp.\  210--268. Cambridge University
   Press, Cambridge, 2012.
 
-\bibitem{yara13}
-E.~Yang and P.~Ravikumar.
+\bibitem[Yang \& Ravikumar(2013)Yang and Ravikumar]{yara13}
+Yang, E. and Ravikumar, P.
 \newblock Dirty statistical models.
-\newblock In {\em Advances in Neural Information Processing Systems}, pages
+\newblock In \emph{Advances in Neural Information Processing Systems}, pp.\
   611--619, 2013.
 
-\bibitem{zoha05}
-H.~Zou and T.~Hastie.
+\bibitem[Zou \& Hastie(2005)Zou and Hastie]{zoha05}
+Zou, H. and Hastie, T.
 \newblock {Regularization and Variable Selection via the Elastic Net}.
-\newblock {\em Journal of the Royal Statistical Society}, 67(2):301--320, 2005.
+\newblock \emph{Journal of the Royal Statistical Society}, 67\penalty0
+  (2):\penalty0 301--320, 2005.
+\newblock ISSN 1369-7412.
 
 \end{thebibliography}

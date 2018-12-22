@@ -11,9 +11,9 @@ We propose the following Projected Block Gradient Descent algorithm (PBGD), Algo
 		\STATE {\bfseries output:} $\hbbe$
 		\FOR{t = 1 \TO T}
 		\FOR{g=1 \TO G}
-		\STATE { $\bbeta _g^{(t+1)} = \Pi_{\Omega_{f_g}} \left(\bbeta _g^{(t)} + \mu_g \X_g^T \left(\y_g - \X_g \left(\bbeta _0^{(t)} + \bbeta _g^{(t)}\right) \right) \right)$}
+		\STATE {\tiny $\bbeta _g^{(t+1)} = \Pi_{\Omega_{f_g}} \left(\bbeta _g^{(t)} + \mu_g \X_g^T \left(\y_g - \X_g \left(\bbeta _0^{(t)} + \bbeta _g^{(t)}\right) \right) \right)$}
 		\ENDFOR
-		\STATE { $\bbeta _0^{(t+1)} = \Pi_{\Omega_{f_0}} \left(\bbeta _0^{(t)} + \mu_0 \X_0^T \left(\y - \X_0 \bbeta _0^{(t)} -
+		\STATE {\tiny $\bbeta _0^{(t+1)} = \Pi_{\Omega_{f_0}} \left(\bbeta _0^{(t)} + \mu_0 \X_0^T \left(\y - \X_0 \bbeta _0^{(t)} -
 		\begin{pmatrix}
 		\X_1 \bbeta _1^{(t)}      \\
 		\vdots 	 \\
@@ -49,7 +49,9 @@ We first start with the required definitions for our analysis.
 %	\ee
 	\be
 	\nr
-	\forall g \in [G]&:& \rho_g(\mu_g) = \sup_{\u, \v \in \cB_g} \v^T \big(\I_g - \mu_g \X_g^T \X_g\big) \u, \quad \eta_g(\mu_g) = \mu_g \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}
+	\forall g \in [G]&:& \rho_g(\mu_g) = \sup_{\u, \v \in \cB_g} \v^T \big(\I_g - \mu_g \X_g^T \X_g\big) \u, 
+	\\ \nr 
+	&&\eta_g(\mu_g) = \mu_g \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}},
 	\\ \nr
 	\forall g \in [G]_\setminus&:& \phi_g(\mu_g) = \mu_g \sup_{\v \in \cB_g, \u \in \cB_0} -\v^T \X_g^T \X_g \u,
 	\ee
@@ -59,12 +61,13 @@ In the following theorem, we establish a deterministic bound on iteration errors
 \begin{theorem}
 	\label{theo:iter}
 	For the PBGD algorithm \ref{alg2} initialized by $\bbeta ^{(1)} = \0$, we have the following deterministic bound for the error at iteration $t + 1$:
-	\be
+	{\small\be
 	\label{eq:singleiter}
-	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
-	\leq \rho^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}}\norm{\bbeta ^*_g}{2}   + \frac{1 - \rho^t}{1 -  \rho}   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \eta_g \norm{\oomega_g}{2},
-	\ee
-	where $\rho = \max\left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g, \max_{g \in [G]} \left[\rho_g + \sqrt{\frac{n}{n_g}}  \frac{\mu_0}{\mu_g} \phi_g \right]  \right)$.
+	&&\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
+	\\ \nr
+	&&\leq \rho^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}}\norm{\bbeta ^*_g}{2}   + \frac{1 - \rho^t}{1 -  \rho}   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \eta_g \norm{\oomega_g}{2},
+	\ee}
+	where {\small$\rho = \max\left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g, \max_{g \in [G]} \left[\rho_g + \sqrt{\frac{n}{n_g}}  \frac{\mu_0}{\mu_g} \phi_g \right]  \right)$}.
 %	\be
 %	\label{eq:rhos}
 %	\rho = \max\left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g, \max_{g \in [G]} \left[\rho_g + \sqrt{\frac{n}{n_g}}  \frac{\mu_0}{\mu_g} \phi_g \right]  \right)
@@ -101,7 +104,9 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 	\be
 	\nr
 %	&\theta_f = 1:&
-	\mu_0 = \frac{1}{4	n} \times \min_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+ \tau}{\sqrt{n_g}}\right)^{-2}, \quad \text{and} \quad \mu_g =  \frac{1}{2\sqrt{n n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)^{-1}
+	&&\mu_0 = \frac{1}{4	n} \times \min_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+ \tau}{\sqrt{n_g}}\right)^{-2}, 
+	\\ \nr 
+	&&\mu_g =  \frac{1}{2\sqrt{n n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)^{-1}
 %	\\ \nr
 %	&\theta_f = 2:& \mu_0 = \frac{1}{4	n} \times \frac{1}{\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^2} , \mu_g = \frac{l\left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)^{-1}}{8\sqrt{nn_g}\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^{2}}
 	\ee
@@ -117,11 +122,12 @@ n > 2 c_0^2 \left(2 \omega(\cA_0) + \tau\right)^2, \quad \text{and} \quad \foral
 %	where $0 < l < 1$ is arbitrary,
 	updates of the Algorithm \ref{alg2} obey the following with high probability: %probability at least $ 1 - \upsilon \exp\left[\min_{g \in [G]}\left(-\min\left[\nu_g n_g - \log G, \gamma (\omega(\cA_g) + b)^2 , \frac{b^2}{\eta_g^2 k^2}\right]\right)\right] $:
 	%where $\upsilon = \max(28, \sigma)$ and $\gamma = \min_{g \in [G] } \gamma_g$. 	
-	\be
+	{\small\be
 	\nr
 	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
-	\leq r(\tau)^t \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\bbeta^*_g}{2}   + \frac{(G+1) \sqrt{(2K^2 + 1)}}{\sqrt{n} (1 - r(\tau))}  \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + \tau \right),
-	\ee
+	&\leq& r(\tau)^t \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\bbeta^*_g}{2}   \\ \nr 
+	&+& \frac{(G+1) \sqrt{(2K^2 + 1)}}{\sqrt{n} (1 - r(\tau))}  \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + \tau \right),
+	\ee}
 	where $r(\tau) < 1$.% and $\epsilon = \max_{g \in [G]} \epsilon_g$, $\zeta = \max_{g \in [G]} \zeta_g$, $\gamma = \min_{g \in [G]} \gamma_g$.
 	
 \end{theorem}
@@ -131,8 +137,10 @@ n > 2 c_0^2 \left(2 \omega(\cA_0) + \tau\right)^2, \quad \text{and} \quad \foral
 	When $t \rightarrow \infty$ we have the following with high probability:
 	\be
 	\label{eq:scaled}
-	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{\infty}}{2}
-	\leq \frac{(G+1) \sqrt{(2K^2 + 1)}}{\sqrt{n} (1 - r(\tau))}  \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + C \sqrt{\log (G+1)} +  b \right),
+	&&\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{\infty}}{2}
+	\leq \frac{(G+1) \sqrt{(2K^2 + 1)}}{\sqrt{n} (1 - r(\tau))} 
+	\\  \nr  
+	&\times& \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + C \sqrt{\log (G+1)} +  b \right),
 	\ee
 \end{corollary}
 	It is instructive to compare RHS of \eqref{eq:scaled} with that of \eqref{eq:general}: $\kappa_{\min}$ defined in Theorem \ref{theo:re} corresponds to $(1 - r(\tau))$ % defined in Theorem \ref{theo:step}
