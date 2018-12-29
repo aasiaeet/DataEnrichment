@@ -6,7 +6,7 @@
 norm2sq <- function(x) (sum(x^2))
 
 evaluateElasticNet <- function(point, gamma){
-  return (norm(as.matrix(point), type = c("o")) + (gamma / 2) * norm2sq(as.matrix(point)))
+  return((norm(as.matrix(point), type = c("o")) + (gamma / 2) * norm2sq(as.matrix(point)))) 
 }
 
 projectOntoElasticNet <- function(projectMe, gamma, tau){
@@ -51,6 +51,6 @@ projectOntoElasticNet <- function(projectMe, gamma, tau){
   }
 }
 
-print(projectOntoElasticNet(c(3,0,-3), .1, 1))
+# print(projectOntoElasticNet(c(3,0,-3), .1, 1))
   
 
