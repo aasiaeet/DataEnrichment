@@ -74,7 +74,7 @@ Note that you need to run the preprocessing and data clean up once and the resul
 # Prediction
 Let's check how many cell lines for each cancer type have been tested with Erlotinib:
 ```{r}
-load(file.path(paths$clean,"xy", paste("XyActArea-Erlotinib.RData")))
+load(file.path(paths$clean,"xy", paste("XyActArea_Erlotinib.RData")))
 counts <- tapply(XyActArea$cancerType, XyActArea$cancerType, FUN = function(x) length(x))
 counts <- sort(counts, decreasing = T)
 counts[counts > 20]
@@ -82,7 +82,7 @@ barplot(counts, las=2, main="Number of Cell Lines per Cancer Type Treated by Erl
 ```
 Checking another drug:
 ```{r}
-load(file.path(paths$clean,"xy", paste("XyActArea-Sorafenib.RData")))
+load(file.path(paths$clean,"xy", paste("XyActArea_Sorafenib.RData")))
 counts <- tapply(XyActArea$cancerType, XyActArea$cancerType, FUN = function(x) length(x))
 counts <- sort(counts, decreasing = T)
 counts[counts > 20]
@@ -94,37 +94,34 @@ First we only focus on the two most frequent cancers, blood and lung and then we
 The baseline for comparison is elastic net which has been implemented in `glmnet` library. The following code performs cross-validation, prediction and save the results in your `scratch` folder. Note that for efficiency, in each training phase of cross-validation we remove features whose correlation with the output is smaller than $0.3$:
 ```{r, warning=FALSE}
 focusedCancerTypes <- c("HAEMATOPOIETIC_AND_LYMPHOID_TISSUE", "LUNG")
-corrThresh <- .2
+corrThresh <- .15
 source("03-glmnetPrediction.R", local = TRUE)
 source("04-dataEnrichmentPrediction.R", local = TRUE)
-focusedCancerTypes <- c("HAEMATOPOIETIC_AND_LYMPHOID_TISSUE", "LUNG")
-load(file.path(paths$scratch, paste("cvMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
-load(file=file.path(paths$scratch, paste("cvDeMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
-barplot(rbind(apply(cvDeMeans, 1, min), apply(cvMeans, 1, min)), las=2, beside = TRUE, main="Min ElasticNet and DEALER Error for Each Drug", ylim = c(0,1))
-```
-```{r, warning=FALSE}
-focusedCancerTypes <- c("HAEMATOPOIETIC_AND_LYMPHOID_TISSUE", "LUNG","SKIN")
-corrThresh <- .25
+
+focusedCancerTypes <- c("BREAST", "OVARY","SKIN")
+corrThresh <- .15
 source("03-glmnetPrediction.R", local = TRUE)
 source("04-dataEnrichmentPrediction.R", local = TRUE)
-focusedCancerTypes <- c("HAEMATOPOIETIC_AND_LYMPHOID_TISSUE", "LUNG")
-load(file.path(paths$scratch, paste("cvMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
-load(file=file.path(paths$scratch, paste("cvDeMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
-barplot(rbind(apply(cvDeMeans, 1, min), apply(cvMeans, 1, min)), las=2, beside = TRUE, main="Min ElasticNet and DEALER Error for Each Drug", ylim = c(0,1))
 ```
 
 
-Note that we can not directly use `cv.glmnet` because we want to remove less correlated features in each round of cross-validation. The core of our algorithm has been implemented in `dataSharing.R`. The code that apply data sharing on the CLLE data should be called as follows:
-```{r, warning=FALSE}
-focusedCancerTypes <- c("HAEMATOPOIETIC_AND_LYMPHOID_TISSUE", "LUNG")
-corrThresh <- .3
-
-```
-
-These two generate what we need to draw the comparison chart:
+Now drawing the results:
 ```{r}
+shorterNames <- c("17-AAG","AEW541","AZD0530","AZD6244","Erlotinib","Irinotecan","L-685458","Lapatinib","LBW242","Nilotinib","Nutlin-3","Paclitaxel","Panobino","PD-032","PD-033","PF234","PHA-66","PLX4720","RAF265","Sorafenib","TAE684","TKI258","Topotecan","ZD-6474")
+
+focusedCancerTypes <- c("HAEMATOPOIETIC_AND_LYMPHOID_TISSUE", "LUNG")
+load(file.path(paths$scratch, paste("cvMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+load(file=file.path(paths$scratch, paste("cvDeMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+barplot(rbind(apply(cvDeMeans, 1, min), apply(cvMeans, 1, min)), las=2, beside = TRUE, ylim = c(0,1), ylab = "Mean Square Error", legend = c("DE", "LASSO"), col=c("red", "blue"), args.legend = list(x = "topright", bty = "n", inset=c(0.15, 0)), names.arg = shorterNames)
+```
+```{r}
+focusedCancerTypes <- c("BREAST", "OVARY", "SKIN")
+load(file.path(paths$scratch, paste("cvMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+load(file=file.path(paths$scratch, paste("cvDeMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+barplot(rbind(apply(cvDeMeans, 1, min), apply(cvMeans, 1, min)), las=2, beside = TRUE, ylim = c(0,1), ylab = "Mean Square Error", legend = c("DE", "LASSO"), col=c("red", "blue"), args.legend = list(x = "topright", bty = "n", inset=c(0.15, 0)), names.arg = shorterNames)
 
 ```
+Note that we can not directly use `cv.glmnet` because we want to remove less correlated features in each round of cross-validation. The core of our algorithm has been implemented in `dataSharing.R`. The code that apply data sharing on the CLLE data should be called as follows:
 
 
 ```{r}
