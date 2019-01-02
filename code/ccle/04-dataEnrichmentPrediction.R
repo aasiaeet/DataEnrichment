@@ -3,6 +3,7 @@
 # Author: Amir Asiaee
 # Email: asiae002@umn.edu
 ######################################################################
+file=file.path(paths$scratch, paste("cvDeMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")){
 source("00-paths.R")
 # source("dataEnricher.R")
 norm2 <- function(x) sqrt(sum(x^2))
@@ -10,6 +11,7 @@ norm1 <- function(x) sum(abs(x))
 normInf <- function(x) max(abs(x))
 
 source("projectOntoElasticNet.R")
+source("projectOntoL1.R")
 
 singlePredict <- function(fittedBetas, x, gs){#, addIntercept){
   # if(addIntercept == TRUE){
@@ -26,15 +28,14 @@ singlePredict <- function(fittedBetas, x, gs){#, addIntercept){
 }
 
 multiDeal <- function(.Object){
-  for(i in 1:dim(.Object@grdTaus)[1]){
-    .Object@betaList[[i]] <- deal(.Object@x, .Object@y, .Object@g, .Object@gamma, .Object@grdTaus[i,])
-  }
-  return(.Object@betaList)
-}
-
-
-deal <- function(x, y, gs, gamma, taus){#, normalized = FALSE){
-  nGroup <- length(taus) - 1
+  # There is no auto-complete for objects! Simplify:
+  x <- .Object@x
+  y <- .Object@y
+  gs <- .Object@g
+  gamma <- .Object@gamma
+  grdTaus <- .Object@grdTaus
+  
+  nGroup <- dim(grdTaus)[2] - 1
   groups <- as.numeric(gs)
   # Scaling both to avoid intercept. 
   p <- dim(x)[2]
@@ -42,6 +43,7 @@ deal <- function(x, y, gs, gamma, taus){#, normalized = FALSE){
   avgY <- rep(NA, nGroup)
   ng <- rep(0, nGroup)
   n <- length(y)
+  # Saving averages for future intercept computation:
   for(g in 1:nGroup){
     groupIndex <- groups == g
     if(!any(groupIndex)){
@@ -55,69 +57,150 @@ deal <- function(x, y, gs, gamma, taus){#, normalized = FALSE){
     y[groupIndex] <- y[groupIndex] - avgY[g]
   }
   
+  BetaNex <- matrix(0, p, nGroup + 1) #warm start beta. 
   
-  etas <- sapply(1:(nGroup + 1), function(g) ifelse(g != nGroup + 1, 1/(sqrt(n * ng[g])) ,1/n))
   # etas <- etas * 10
-  nStepsGD <- 15 
+  nStepsGD <- 50
   stoppingCriteria <- .001 #1 / (20 * nrow(x))#.0001
-  
-  # x <- cbind(x, rep(1 / nrow(x), nrow(x))) #no need for intercept computation
-  BetaPrv <- matrix(0, p, nGroup + 1) #last column is dedicated for \beta_0
-  # marginalImp <- rep(0, n)
-  BetaNex <- BetaPrv
-  meanSqErrOld <- 0
-  for(i in 1:nStepsGD){
-    # if(i %% 5 == 0){
-    #   print(paste("This is iteration", i, "of SPGD"))
-    # }
-    accumMult <- c(rep(0, n))
-    for(g in 1:nGroup){
-      groupIndex <- groups == g
-      if(!any(groupIndex)){
-        print(paste("There should be at least one elements in group", levels(groups)[g]))
-        return(NULL)
+  # For each tuning parameter:
+  for(i in 1:dim(grdTaus)[1]){
+    # .Object@betaList[[i]] <- deal(.Object@x, .Object@y, .Object@g, .Object@gamma, .Object@grdTaus[i,])
+    # marginalImp <- rep(0, n)
+    ## Walk nStepGD number of gradient descent steps:
+    etas <- 10 * sapply(1:(nGroup + 1), function(g) ifelse(g != nGroup + 1, 1/(sqrt(n * ng[g])) ,1/n))
+    stableErrCounter <- 0
+    meanSqErrNew <- Inf 
+    BetaNex <- matrix(0, p, nGroup + 1) #no warm start beta.
+    for(j in 1:nStepsGD){
+      BetaPrv <- BetaNex # Warm start from previous set of parameters. 
+      meanSqErrOld <- meanSqErrNew 
+      accumMult <- c(rep(0, n))
+      ### Update per group parameters:
+      for(g in 1:nGroup){
+        groupIndex <- groups == g
+        if(!any(groupIndex)){
+          print(paste("There should be at least one elements in group", levels(groups)[g]))
+          return(NULL)
+        }
+        recycle <- as.numeric(x[groupIndex,] %*% BetaPrv[,g])
+        accumMult[groupIndex] <- recycle# to recycle the computation
+        BetaNex[,g] <-  BetaPrv[,g] + etas[g] * t(x[groupIndex,]) %*% (y[groupIndex] - recycle - x[groupIndex,] %*% BetaPrv[,nGroup + 1])
+        BetaNex[,g] <- projectOntoL1(BetaNex[,g], as.double(grdTaus[i,g]))
+        # BetaNex[,g] <- projectOntoElasticNet(BetaNex[,g], gamma, as.double(grdTaus[i,g]))
       }
-      recycle <- as.numeric(x[groupIndex,] %*% BetaPrv[,g])
-      accumMult[groupIndex] <- recycle# to recycle the computation
-      # marginalImp[groupIndex] <- y[groupIndex] - x[groupIndex,] %*% (BetaPrv[,g] + BetaPrv[,nGroup + 1])
-      BetaNex[,g] <-  BetaPrv[,g] + etas[g] * t(x[groupIndex,]) %*% (y[groupIndex] - recycle - x[groupIndex,] %*% BetaPrv[,nGroup + 1])
-      # BetaNex[,g] <- projectOntoL1(BetaNex[,g], as.double(taus[g]))
-      BetaNex[,g] <- projectOntoElasticNet(BetaNex[,g], gamma, as.double(taus[g]))
+      ### Update the shared parameter:
+      BetaNex[,nGroup + 1] <-  BetaPrv[,nGroup + 1] + etas[nGroup + 1] * t(x) %*% (y - x %*% BetaPrv[,nGroup + 1] - accumMult)
+      # BetaNex[,nGroup + 1] <- projectOntoElasticNet(BetaNex[,nGroup + 1], gamma, as.double(grdTaus[i,nGroup + 1]))
+      BetaNex[,nGroup + 1] <- projectOntoL1(BetaNex[,nGroup + 1], as.double(grdTaus[i,nGroup + 1]))
+      ### Stopping criteria.
+      predictedY <- singlePredict(rbind(compIntercept(BetaNex, avgY, avgX, ng, n), BetaNex), x, groups)
+      meanSqErrNew <- mean((y - predictedY)^2)
+      # print(paste("New mean square error:", meanSqErrNew))
+      
+      if(meanSqErrNew > meanSqErrOld){
+        stableErrCounter <- stableErrCounter + 1
+        if(stableErrCounter == 5){
+          # print(paste("Enough learning! at step", i, "no marginal improvement")) # of meanSqErr is", abs(meanSqErrNew - meanSqErrOld)))
+          break
+        }
+        BetaNex <- BetaPrv #do not update the parameters, keep the best one
+        meanSqErrNew <- meanSqErrOld #and err will stay the same.
+        etas <- etas / 1.5 #choose smaller step sizes over time. 
+        # print(paste("Mean squared error is: ", meanSqErrNew))
+      }else{stableErrCounter <- 0}
+      # if(i == nStepsGD){
+      #   print("hey")
+      #   print(paste("After", nStepsGD, "steps of GD, I reached ", normInf(BetaPrv - BetaNex), "consecutive change in beta_{ij}."))
+      # }
+      
+
     }
-    # BetaNex[,nGroup + 1] <-  BetaPrv[,nGroup + 1] + gradient #2/(nrow(x)) * t(x) %*% marginalImp
-    BetaNex[,nGroup + 1] <-  BetaPrv[,nGroup + 1] + etas[nGroup + 1] * t(x) %*% (y - x %*% BetaPrv[,nGroup + 1] - accumMult)
-    # BetaNex[,nGroup + 1] <- projectOntoL1(BetaNex[,nGroup + 1], as.double(taus[nGroup + 1]))
-    BetaNex[,nGroup + 1] <- projectOntoElasticNet(BetaNex[,nGroup + 1], gamma, as.double(taus[nGroup + 1]))
-    ### Stopping criteria.
-    
-    # predictedY <- singlePredict(BetaNex, x, groups, gamma = 2, taus)#, addIntercept = FALSE)
-    # meanSqErrNew <- mean((y - predictedY)^2)
-    # 
-    
-    # if(abs(meanSqErrNew - meanSqErrOld) < stoppingCriteria)){
-    #   # print(paste("Mean squared error is: ", meanSqErrNew))
-    #   print(paste("Enough learning! at step", i, "marginal improvement of meanSqErr is", abs(meanSqErrNew - meanSqErrOld)))
-    #   break
-    # }
-    # # if(i == nStepsGD){
-    # #   print("hey")
-    # #   print(paste("After", nStepsGD, "steps of GD, I reached ", normInf(BetaPrv - BetaNex), "consecutive change in beta_{ij}."))
-    # # }
-    # meanSqErrOld <- meanSqErrNew
-    # 
-    
-    BetaPrv <- BetaNex
+    ## Computing intercepts
+    .Object@betaList[[i]] <- rbind(compIntercept(BetaNex, avgY, avgX, ng, n), BetaNex)
   }
-  # print(paste("Training MSE was", meanSqErrOld))
-  # Computing intercepts
+  return(.Object@betaList)
+}
+
+
+compIntercept <- function(Beta, avgY, avgX, ng, n){
+  nGroup <- dim(Beta)[2] - 1
   intercept <- rep(NA, nGroup + 1)
   for(g in 1:nGroup){
-    intercept[g] <- avgY[g] - avgX[g, ] %*% (BetaNex[,g] + BetaNex[,nGroup])
+    intercept[g] <- avgY[g] - avgX[g, ] %*% (Beta[,g] + Beta[,nGroup + 1])
   }
   intercept[nGroup + 1] <- as.numeric(intercept[1:nGroup] %*% ng) / n
-  BetaNex <- rbind(intercept, BetaNex)
+  return(intercept)
+  # intercept <- rep(NA, nGroup + 1)
+  # for(g in 1:nGroup){
+  #   intercept[g] <- avgY[g] - avgX[g, ] %*% (BetaNex[,g] + BetaNex[,nGroup])
+  # }
+  # intercept[nGroup + 1] <- as.numeric(intercept[1:nGroup] %*% ng) / n
+}
+
+deal <- function(x, y, gs, gamma, taus, warmStart){#, normalized = FALSE){
   
-  return(BetaNex)
+  # 
+  # 
+  # 
+  # 
+  # 
+  # # x <- cbind(x, rep(1 / nrow(x), nrow(x))) #no need for intercept computation
+  # BetaPrv <- matrix(0, p, nGroup + 1) #last column is dedicated for \beta_0
+  # # marginalImp <- rep(0, n)
+  # BetaNex <- BetaPrv
+  # meanSqErrOld <- 0
+  # for(i in 1:nStepsGD){
+  #   # if(i %% 5 == 0){
+  #   #   print(paste("This is iteration", i, "of SPGD"))
+  #   # }
+  #   accumMult <- c(rep(0, n))
+  #   for(g in 1:nGroup){
+  #     groupIndex <- groups == g
+  #     if(!any(groupIndex)){
+  #       print(paste("There should be at least one elements in group", levels(groups)[g]))
+  #       return(NULL)
+  #     }
+  #     recycle <- as.numeric(x[groupIndex,] %*% BetaPrv[,g])
+  #     accumMult[groupIndex] <- recycle# to recycle the computation
+  #     # marginalImp[groupIndex] <- y[groupIndex] - x[groupIndex,] %*% (BetaPrv[,g] + BetaPrv[,nGroup + 1])
+  #     BetaNex[,g] <-  BetaPrv[,g] + etas[g] * t(x[groupIndex,]) %*% (y[groupIndex] - recycle - x[groupIndex,] %*% BetaPrv[,nGroup + 1])
+  #     # BetaNex[,g] <- projectOntoL1(BetaNex[,g], as.double(taus[g]))
+  #     BetaNex[,g] <- projectOntoElasticNet(BetaNex[,g], gamma, as.double(taus[g]))
+  #   }
+  #   # BetaNex[,nGroup + 1] <-  BetaPrv[,nGroup + 1] + gradient #2/(nrow(x)) * t(x) %*% marginalImp
+  #   BetaNex[,nGroup + 1] <-  BetaPrv[,nGroup + 1] + etas[nGroup + 1] * t(x) %*% (y - x %*% BetaPrv[,nGroup + 1] - accumMult)
+  #   # BetaNex[,nGroup + 1] <- projectOntoL1(BetaNex[,nGroup + 1], as.double(taus[nGroup + 1]))
+  #   BetaNex[,nGroup + 1] <- projectOntoElasticNet(BetaNex[,nGroup + 1], gamma, as.double(taus[nGroup + 1]))
+  #   ### Stopping criteria.
+  #   
+  #   # predictedY <- singlePredict(BetaNex, x, groups, gamma = 2, taus)#, addIntercept = FALSE)
+  #   # meanSqErrNew <- mean((y - predictedY)^2)
+  #   # 
+  #   
+  #   # if(abs(meanSqErrNew - meanSqErrOld) < stoppingCriteria)){
+  #   #   # print(paste("Mean squared error is: ", meanSqErrNew))
+  #   #   print(paste("Enough learning! at step", i, "marginal improvement of meanSqErr is", abs(meanSqErrNew - meanSqErrOld)))
+  #   #   break
+  #   # }
+  #   # # if(i == nStepsGD){
+  #   # #   print("hey")
+  #   # #   print(paste("After", nStepsGD, "steps of GD, I reached ", normInf(BetaPrv - BetaNex), "consecutive change in beta_{ij}."))
+  #   # # }
+  #   # meanSqErrOld <- meanSqErrNew
+  #   # 
+  #   
+  #   BetaPrv <- BetaNex
+  # }
+  # # print(paste("Training MSE was", meanSqErrOld))
+  # # Computing intercepts
+  # intercept <- rep(NA, nGroup + 1)
+  # for(g in 1:nGroup){
+  #   intercept[g] <- avgY[g] - avgX[g, ] %*% (BetaNex[,g] + BetaNex[,nGroup])
+  # }
+  # intercept[nGroup + 1] <- as.numeric(intercept[1:nGroup] %*% ng) / n
+  # BetaNex <- rbind(intercept, BetaNex)
+  # 
+  # return(BetaNex)
 }
 
 
@@ -167,12 +250,12 @@ setMethod(f="predictDeal",
             # TODO: Assert size of s matches @grdTaus
             # Currently we are not learning gamma by CV so ignore it for now.  
             predictedRes <- matrix(NA, nrow(newx), dim(s)[1])
+            ## Normalize by trainX information
+            newx <- sweep(newx, 2, FUN = "-", .Object@meanX) #subtract mean train features
+            newx <- sweep(newx, 2, FUN = "/", .Object@sdX) #divide by sd of train features
             for(i in 1:dim(s)[1]){
               # Finding the closest recorded tau to the queried one
               tausIndex <- which.min(apply(sweep(.Object@grdTaus, 2, FUN = "-", s[i,]), 1, norm2))
-              ## Normalize by trainX information
-              newx <- sweep(newx, 2, FUN = "-", .Object@meanX) #subtract mean train features
-              newx <- sweep(newx, 2, FUN = "/", .Object@sdX) #divide by sd of train features
               # if(i == 125){
               #   print("here")
               #   print("here")
@@ -226,7 +309,7 @@ dataDir <- file.path(paths$clean, "xy")
 allFiles <- list.files(dataDir)
 nfolds <- 5
 nGroup <- length(focusedCancerTypes)
-numBaseTaus <- 3
+numBaseTaus <- 5
 
 #Prepare result storage.
 drugList <- c()
@@ -265,6 +348,7 @@ for(file in allFiles){
   
   # Cross-validation
   nTrain <- length(response)
+  set.seed(123)
   foldsId <- sample(rep(1:nfolds, length.out = nTrain))
   ## Determining taus. 
   # lambdaMax <- max(sapply(predictors, function(x,y) sum(x * y), response)) / nTrain
@@ -272,9 +356,11 @@ for(file in allFiles){
   # tauMax <- 2
   # tauMin <- .25
   # print(tauMax)
-  tauMax <- max(sapply(predictors, function(x,y) sum(x * y), response)) / nTrain
-  tauMin <- .1 * tauMax 
-  myTaus <- 10^seq(log10(tauMin), log10(tauMax), length.out = numBaseTaus)
+  tauMax <- .5#(max(sapply(predictors, function(x,y) abs(sum(x * y)), response)) / nTrain) / 10
+  tauMin <- .01 * (tauMax) 
+  # myTaus <- exp(1)^seq(log(tauMin), log(tauMax), length.out = numBaseTaus)
+  myTaus <- seq(tauMin, tauMax, length.out = numBaseTaus)
+  # gridTaus <- replicate(nGroup + 1, myTaus)
   gridTaus <- as.matrix(expand.grid(replicate(nGroup + 1, myTaus, simplify = F)))
   # perpareTaus(myTaus, nGroups = 2)
   
@@ -304,15 +390,15 @@ for(file in allFiles){
     bestTestX <- testX[,mask]
     print(dim(bestTrainX))
     
-    dealerFit <- dealer(x = as.matrix(bestTrainX), y = trainY, g = as.factor(trainG), gamma = 2, grdTaus = gridTaus, normalize = TRUE)
-    yHat <- predictDeal(dealerFit, newx=as.matrix(bestTestX),newg = as.factor(testG), gamma = 2, s=gridTaus) 
+    dealerFit <- dealer(x = as.matrix(bestTrainX), y = trainY, g = as.factor(trainG), gamma = 1, grdTaus = gridTaus, normalize = TRUE)
+    yHat <- predictDeal(dealerFit, newx=as.matrix(bestTestX),newg = as.factor(testG), gamma = 1, s=gridTaus) 
     err <- sapply(as.data.frame(yHat), function(x,y) mean(abs(x - y)), testY)
     cvResults[k, ] <- err
   }
   cvDeMeans[drugName,] <-  colMeans(cvResults)
   print(min(cvDeMeans[drugName,]))
   cvDeSds[drugName,] <- apply(cvResults, 2, sd)
-  #cvMinLambdas[drugName] <- myLambda[which.min(cvMean)]
+  #cvMinLambdas[drugName] <- myLambda[which.min(cvDeMean)]
   cvDeTaus[,,drugName] <- gridTaus
   
   
@@ -382,3 +468,4 @@ save(cvDeTaus, file=file.path(paths$scratch, paste("cvDeTaus", paste(focusedCanc
 #   # refinedTaus <- apply(t(1:3), 2, function(i) (seq(from=tausMin[i], to=tausMax[i], length.out = 50)))
 #   
 # }
+}

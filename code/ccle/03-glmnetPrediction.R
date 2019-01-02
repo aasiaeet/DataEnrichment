@@ -3,6 +3,7 @@
 # Author: Amir Asiaee 
 # Email: asiae002@umn.edu
 ######################################################################
+if(!file.exists(file.path(paths$scratch, paste("cvMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))){
 source("00-paths.R")
 library(glmnet)
 set.seed(123)
@@ -43,11 +44,12 @@ for(file in allFiles){
   
   # Cross-validation
   nTrain <- length(response)
+  set.seed(123)
   foldsId <- sample(rep(1:nfolds, length.out = nTrain))
-  ## Determining lambda. 
-  lambdaMax <- max(sapply(predictors, function(x,y) sum(x * y), response)) / nTrain
-  lambdaMin <- .01 * lambdaMax
-  myLambda <- 10^seq(log10(lambdaMin), log10(lambdaMax), length.out = numLambda)
+  # Determining lambda.
+  lambdaMax <- .5 #max(sapply(predictors, function(x,y) abs(sum(x * y)), response)) / nTrain
+  lambdaMin <- .001 * lambdaMax
+  myLambda <- exp(1)^seq(log(lambdaMin), log(lambdaMax), length.out = 10)
   
   cvResults <- matrix(NA, nrow = nfolds, ncol = numLambda)
   lowestErrs <- c()
@@ -72,8 +74,10 @@ for(file in allFiles){
     mask <- (abs(correlations) >= corrThresh) 
     bestTrainX <- trainX[,mask]
     bestTestX <- testX[,mask]
+    print(dim(bestTrainX))
     
-    glmnetFit <- glmnet(x = as.matrix(bestTrainX), y = trainY, alpha=.5, lambda = myLambda)
+    
+    glmnetFit <- glmnet(x = as.matrix(bestTrainX), y = trainY, alpha=1, lambda = myLambda)
     yHat <- predict(glmnetFit, newx=as.matrix(bestTestX),s=myLambda) # make predictions
     err <- sapply(as.data.frame(yHat), function(x,y) mean(abs(x - y)), testY)
     cvResults[k, ] <- err
@@ -83,7 +87,7 @@ for(file in allFiles){
   cvSds[drugName,] <- apply(cvResults, 2, sd)
   #cvMinLambdas[drugName] <- myLambda[which.min(cvMean)]
   cvLambdas[drugName,] <- myLambda
-  
+  print(min(cvMeans[drugName,]))
   
   # par(mar=c(4,4,4,4))
   # plot(log(cv1005$lambda),cv1005$cvm,pch=19,col="red",xlab="log(Lambda)",ylab=cv1005$name)
@@ -121,6 +125,6 @@ for(file in allFiles){
 save(cvMeans, file=file.path(paths$scratch, paste("cvMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
 save(cvSds, file=file.path(paths$scratch, paste("cvSds_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
 save(cvLambdas, file=file.path(paths$scratch, paste("cvLambdas_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
-     
+}
      
      
