@@ -14,10 +14,10 @@
 %We focus on independent isotropic sub-Gaussian random vectors $\x_{gi}$ where $\normth{\x_{gi}}{\psi_2} \leq k$ and $\ex \x_{gi}^T \x_{gi}  = \I_{p \times p}$.
 
 %\subsection{The Estimator}
-We write a compact equivalent of our proposed estimator estimator \eqref{eq:super} as:% optimization problem as: %:
+A compact form of our proposed DE estimator \eqref{eq:super} is:% optimization problem as: %:
 \be
 \label{eq:compact}
-\hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \quad \forall g \in [G]:f_g(\bbeta_g ) \leq f_g(\bbeta^*_g),
+\hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \forall g \in [G]:f_g(\bbeta_g ) \leq f_g(\bbeta^*_g),
 \ee
 where $\y  = (\y^T_1, \dots \y^T_G)^T \in \reals^n$,  $\bbeta  = ({\bbeta _0}^T, \dots, {\bbeta _G}^T)^T \in \reals^{(G+1)p}$ and
 \be
@@ -36,8 +36,8 @@ where $\y  = (\y^T_1, \dots \y^T_G)^T \in \reals^n$,  $\bbeta  = ({\bbeta _0}^T,
 
 \subsection{Error Set and Deterministic Error Bound}
 \label{sec:deter}
-With componentwise estimation error $\ddelta_g = \hbbe_g - \bbeta^*_g$,
-since $\hbbe_g = \bbeta ^*_g + \ddelta_g$ is a feasible point of \eqref{eq:compact}, the error vector $\ddelta_g$ will belong to the following restricted error set:% which is the set of all descent directions at $\bbeta _g^*$ on $f_g(\cdot)$ :
+Consider the group-wise estimation error $\ddelta_g = \hbbe_g - \bbeta^*_g$.
+Since $\hbbe_g = \bbeta ^*_g + \ddelta_g$ is a feasible point of \eqref{eq:compact}, the error vector $\ddelta_g$ will belong to the following restricted error set:% which is the set of all descent directions at $\bbeta _g^*$ on $f_g(\cdot)$ :
 \be
 \nr
 \cE_g = \left\{\ddelta_g | f_g(\bbeta _g^* + \ddelta_g) \leq f_g(\bbeta _g^*)\right\}, \quad g \in [G]~.
@@ -66,7 +66,7 @@ where $\oomega = [\oomega_1^T, \dots, \oomega_G^T]^T \in \reals^n$ is the vector
 Using this basic inequality, we can establish the following deterministic error bound.
 \begin{theorem}
 	\label{theo:deter}
-	For the proposed estimator \eqref{eq:compact}, assume there exist $0 < \kappa \leq \inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2$. Then, for $\gamma = \max_{g \in [G]_{\setminus}} \frac{n}{n_g}$, the following deterministic upper bounds holds:
+	For the proposed estimator \eqref{eq:compact}, assume there exist $0 < \kappa \leq \inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2$. Then, for the sample condition number $\gamma = \max_{g \in [G]_{\setminus}} \frac{n}{n_g}$, the following deterministic upper bounds holds:
 	\be
 	\nr
 	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq \frac{2{\gamma}\sup_{\u \in \bcH}\oomega^T \X \u}{n\kappa}. \nr	
