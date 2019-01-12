@@ -1,46 +1,48 @@
 
 \section{Introduction}
-Consider the problem of modeling involving more than one cohort/group in the population which are similar in many ways but have certain unique aspects. Scoping the exposition to linear models,
-one can assume that for each group, the data comes from a different linear model with distinct parameter $\bbeta^*_g$, i.e., $y_{gi} = \x_{gi}^T \bbeta_g^* + \omega_{gi}$, where $g$ and $i$ index the group and samples of each group respectively. Such an approach fails to acknowledge the fact the groups are similar in many ways, and will need suitably large sample size for each group for effective modeling. 
-Altarnatively, one can ignore the group information and build a global model using the simple linear model $y_i = \x_i^T \bbeta^* + \omega_i$. While such a model will have the advantage of using a large dataset to build the model, the model will be inaccurate for the groups since it is not modeling their unique aspects.
+Consider the problem of predicting an outcome for a population which consists of sub-populations (groups) that are similar in some aspects but different in others. Focusing the exposition to linear models, one can assume that for each group, the data comes from a different linear model with distinct parameter $\bbeta^*_g$, i.e., $y_{gi} = \x_{gi}^T \bbeta_g^* + \omega_{gi}$, where $g$ and $i$ index the group and samples therein respectively. Such an approach fails to capture the common similarities of the population.
+%Besides, to efficiently estimate per group parameters $\bbeta^*_g$ one needs a suitably large number of samples for all group.
+Alternatively, one can ignore the grouping information and build a global model by lumping together all of the samples from heterogeneous groups and fit a single linear model $y_i = \x_i^T \bbeta^* + \omega_i$. While any prediction procedure based on this assumption benefits from a larger number of samples, it fails to capture unique aspects of each group which may lead to poorer prediction accuracy and less interpretable estimated parameter.
 
-In this work, we consider the {\em data enrichment} model recently suggested in the literature \cite{domu16, grti16,  olvi14, olvi15} for such settings. In particular, a data enriched model assumes that there is a \emph{common} parameter $\bbeta^*_0$ shared between all groups which captures the similarity between groups and \emph{individual} per-group parameters $\bbeta_g$ that captures the unique aspects of the groups:
+In this work, we consider the \emph{data enrichment} strategy recently suggested in the literature \cite{domu16, grti16,  olvi14, olvi15} for the above problem setup. A data enriched model \emph{enriches} above models by taking their middle ground. It assumes that there are a \emph{common} parameter $\bbeta^*_0$ shared between all groups and \emph{individual} per-group parameters:
 \be
 \label{eq:dsl}
 y_{gi} &=& \x_{gi}^T (\bbeta_0^* + \bbeta^*_g) + \omega_{gi}, \quad g \in \{1, \dots, G\}.
 \ee
-In \eqref{eq:dsl}, we have $G$ linear regression models that share the parameter $\bbeta_0^*$, which captures the shared characteristics of the different groups. 
+In \eqref{eq:dsl}, we have $G$ linear models coupled by the common parameter $\bbeta^*_0$ which models similarities between all samples. Individual parameters $\bbeta_g$s capture unique aspects of samples of each group.
+We specifically focus on high-dimensional regimes for \eqref{eq:dsl} where the number of samples for each group is much smaller than the ambient dimensionality, i.e., $\forall g: n_g \ll p$. Similar to all other high-dimensional data models, we assume that the parameters $\bbeta_g$ are structured, i.e., for suitable convex functions $f_g$s, $f_g(\bbeta_g)$ is small.
+For example, when the structure is sparsity, $f_g$s are $l_1$-norms.
+
 %We call these set of models, \emph{``data sharing''} model \cite{grti16}.
-We specifically focus on structured high dimensional data enriched linear models  \eqref{eq:dsl} when the number of samples for each group is much smaller than the ambient dimensionality, i.e., $\forall g: n_g \ll p$ and the
-parameters $\bbeta_g$ are structured, i.e., for suitable convex functions $f_g$s, $f_g(\bbeta_g)$ are small.
-For example, when the structure is sparsity the corresponding function is $l_1$-norm.
 %In high dimensional regime, we assume that both common and individual parameters are structured, i.e., for suitable \emph{convex} functions $f_g$, $f_g(\bbeta^*_g)$s are small.
 % and one desirable scenario is when the common parameter is much denser than the individual ones.
 %In other words, for $g \in \{1, \dots, G\}$ $\bbeta^*_g$s are $s_g$-sparse vectors where $s_0 \gg s_g$.
 %The common parameter $\bbeta^*_0$ captures the shared effect of features among groups.
 %the ``dense similarity'' and individual parameters capture ``slight difference'' between groups and hopefully common parameter estimation will benefit from all of the shared data.
 
-Note that each of the linear models of \eqref{eq:dsl} is a superposition \cite{guba16} or dirty statistical model \cite{yara13}. Therefore, data enriched models are effectively coupled superposition models.
+Note that each of the linear models of \eqref{eq:dsl} is a superposition \cite{guba16} or dirty statistical model \cite{yara13}. \ab{cite relevant paper(s) by McCoy-Tropp on convex de-mixing} Therefore, a data-enriched model is \emph{a system of coupled superposition models}.
 A related model is proposed by \cite{jrsr10} in the context of multi-task learning, where for each task $g$ the output is coming from $y_{gi} = \x_{gi}^T (\bbeta_{0g}^* + \bbeta^*_g) + \omega_{gi}$.
-As emphasized by the subscript of $\bbeta_{0g}^*$ the common parameters are different in every task but they share a same support (index of non-zero values), i.e., $\text{supp}(\bbeta_{0i}^*) = \text{supp}(\bbeta_{0j}^*)$.
+As emphasized by the subscript of $\bbeta_{0g}^*$ the common parameters are different in every task but they share a same support (index of non-zero values), i.e., $\bbeta_{0i}^* \neq \bbeta_{0j}^*$ but $\text{supp}(\bbeta_{0i}^*) = \text{supp}(\bbeta_{0j}^*)$. \ab{need a line on what Jalali et al.~show, and how our results are (qualitatively) different} 
+
+\ab{we don't have a discussion on 'related work' -- including hierarchical models, multi-task learning; should we have a sub-section on these, or otherwise discuss these related developments}
 %Also \cite{jrsr10} considers only the cases where function $f_g(\cdot)$ are $l_1$-norm.
 
-data enriched model where $\bbeta_g$s are sparse, has recently gained attention because of its application in wide range of domains such as personalized medicine \cite{domu16}, sentiment analysis, banking strategy \cite{grti16}, single cell data analysis \cite{olvi15}, road safety \cite{olvi14}, and disease subtype analysis \cite{domu16}.
-More generally, in any high dimensional domain where the population consists of groups, data enrichment framework has the potential to boost both parameter estimation and prediction.
+The data enriched model where $\bbeta_g$s are sparse has recently gained attention because of its application in wide range of domains such as personalized medicine \cite{domu16}, sentiment analysis, banking strategy \cite{grti16}, single cell data analysis \cite{olvi15}, road safety \cite{olvi14}, and disease subtype analysis \cite{domu16}.
+More generally, in any high-dimensional problem where the population consists of groups, data enrichment framework has the potential to boost the prediction accuracy and results in a more interpretable set of parameters.
 
 In spite of the recent surge in applying data enrichment framework to different domains, limited advances have been made in
-understanding statistical and computational properties of suitable estimators for the data enriched model.
+understanding the statistical and computational properties of suitable estimators for the data enriched model.
 In fact, non-asymptotic statistical properties, including sample complexity and statistical rates of convergence, of regularized estimators for the data enriched model is still an open question \cite{grti16, olvi14}.
-To the best of our knowledge, the only theoretical guarantee for data enrichment is provided in \cite{olvi15} where authors prove sparsistency of their proposed method under the stringent irrepresentability condition of the design matrix.
-Also beyond sparsity and $l_1$-norm, no other structure has been investigated for these models. Further, no computational results, such as computational rates of convergence of iterative algorithms for the estimators, exist in the literature.
-
+To the best of our knowledge, the only theoretical guarantee for data enrichment is provided in \cite{olvi15} where authors prove sparsistency of their proposed method under the stringent irrepresentability condition of the design matrix.\ab{If they show support recovery, the condition may have been necessary -- maybe give them due credit, and show how much more the current results are, though we are doing norm consistency, not support recovery.}
+Also beyond sparsity and $l_1$-norm, no other structure has been investigated for the data enriched model. Moreover, no computational results, such as rates of convergence of the optimization algorithms
+associated with the proposed estimators, exist in the literature.
 %{\color{red} TODO: Emphasis that functions can be non-convex.}
 
 %{\bf Contributions:}
 {\bf Notation and Preliminaries:}
-We denote sets with curly $\cV$, matrices by bold capital $\V$, random variables by capital $V$, and vectors by small bold $\v$ letters.
-We take $[G] = \{0, \dots, G\}$ and $[G]_\setminus = [G] - \{0\}$.
-Given $G$ group and $n_g$ samples in each one as $\{ \{\x_{gi}, y_{gi} \}_{i=1}^{n_g} \}_{g = 1}^G$, we can form the per group design matrix $\X_g \in \reals^{n_g \times p}$ and output vector $\y_g \in \reals ^{n_g}$.
+We denote sets by curly $\cV$, matrices by bold capital $\V$, random variables by capital $V$, and vectors by small bold $\v$ letters.
+We take $[G] = \{0, \dots, G\}$ and $[G]_\setminus = [G] \setminus \{0\}$.
+Given $G$ groups and $n_g$ samples in each as $\{ \{\x_{gi}, y_{gi} \}_{i=1}^{n_g} \}_{g = 1}^G$, we can form the per group design matrix $\X_g \in \reals^{n_g \times p}$ and output vector $\y_g \in \reals ^{n_g}$.
 The total number of samples is  $n = \sum_{g = 1}^{G} n_g$.
 The data enriched model takes the following vector form:
 \be
@@ -55,11 +57,11 @@ where each row of $\X_g$ is $\x_{gi}^T$ and $\oomega_g^T = (\omega_{g1}, \dots, 
 %We name the sample covariance of any matrix $M$ by $S_M$ vs. the actual parameter $\Sigma_M$.
 
 %\noindent {\bf Sub-Gaussian (Sub-exponential) random variable and vector.}
-A random variable $V$ is sub-Gaussian if the moments satisfies $\forall p \geq 1: (\ex |V|^p )^{1/p} \leq K_2 \sqrt{p}$
-The minimum value of $K_2$ is called sub-Gaussian  norm of $V$, denoted by $\normth{V}{\psi_2}$ \cite{vers12}.
+A random variable $V$ is sub-Gaussian if its moments satisfies $\forall p \geq 1: (\ex |V|^p )^{1/p} \leq K_2 \sqrt{p}$.
+The minimum value of $K_2$ is called the sub-Gaussian  norm of $V$, denoted by $\normth{V}{\psi_2}$ \cite{vers12}.
 A random vector $\v \in \reals^p$ is sub-Gaussian if the one-dimensional marginals $\langle \v, \u \rangle$ are sub-Gaussian random variables for all $\u \in \reals^p$. The sub-Gaussian norm of $\v$ is defined \cite{vers12} as $\normth{\v}{\psi_2} = \sup_{\u \in \sphere} \normth{\langle \v, \u \rangle}{\psi_2}$.
 %We abuse notation and use shorthand $\v \sim \subg(0, \Sigma_{\v}, K_{\v})$ for zero mean sub-Gaussian random vector with covariance $\Sigma_{\v}$ and sub-Gaussian norm of $K_{\v}$, although keeping in mind that no other moments, nor the exact form of the distribution function is known.
-For any set $\cV \in \reals^p$ the Gaussian width of the set $\cV$ is defined as $\omega(\cV) = \ex_\g \left[ \sup_{\u \in \cV} \langle \g, \u \rangle \right]$ \cite{venkat12}, where the expectation is over $\g \sim N(\0, \I_{p \times p})$, a vector of independent zero-mean unit-variance Gaussian.
+For any set $\cV \in \reals^p$ the Gaussian width of the set $\cV$ is defined as $\omega(\cV) = \ex_\g \left[ \sup_{\u \in \cV} \langle \g, \u \rangle \right]$ \cite{venkat12}, \ab{cite Vershynin's 2019 book} where the expectation is over $\g \sim N(\0, \I_{p \times p})$, a vector of independent zero-mean unit-variance Gaussian.
 
 %We define the minimum and maximum eigenvalues of a matrix $\M$ restricted to the set $\cA \subseteq \eS^{p-1}$ as $\lambda_{\min}(\M|\cA) = \inf_{\u \in \cA} \u^T \M \u$, and $\lambda_{\max}(\M|\cA) = \sup_{\u \in \cA} \u^T \M \u$ respectively.
 %All $c_i$, $c$, and $C$ represent universal constants throughout the manuscript.
@@ -68,28 +70,27 @@ For any set $\cV \in \reals^p$ the Gaussian width of the set $\cV$ is defined as
 
 %\subsection{Contributions}
 {\bf Contributions:}
-We propose the following estimator $\hbbe$ for recovering the structured common and individual parameters where the structure is induced by a \emph{convex} functions $f_g(\cdot)$.
-\be
-	\nr \label{eq:super}
-	\hbbe = (\hbbe_0^T, \dots, \hbbe_G^T) &\in& \argmin_{\bbeta _0, \dots, \bbeta _G} \frac{1}{n} \sum_{g=1}^{G} \norm{\y_g - \X_g (\bbeta _0 + \bbeta _g)}{2}^2,
+We propose the following Data Enrichment (DE) estimator $\hbbe$ for recovering the structured parameters where the structure is induced by \emph{convex} functions $f_g(\cdot)$:
+{\small\be
+	\label{eq:super}
+	\hbbe = (\hbbe_0^T, \dots, \hbbe_G^T) \in \argmin_{\bbeta _0, \dots, \bbeta _G} \frac{1}{n} \sum_{g=1}^{G} \norm{\y_g - \X_g (\bbeta _0 + \bbeta _g)}{2}^2,
 	\\ \nr
-	&&
 	\text{s.t.} \quad \forall g \in [G]:f_g(\bbeta _g) \leq f_g(\bbeta _g^*).
-\ee
+\ee}
 
 %We are investigating the conjecture that the pooled data from all groups will facilitate estimation of the common parameter $\bbeta_0^*$ in both samples complexity and error-bound rate regards.
 %In our work, we explicitly answer these questions as follows:
 
-We present several new statistical and computational results for the data enriched model:
+We present several statistical and computational results for the DE estimator \eqref{eq:super} of the data enriched model:
 \begin{itemize}[leftmargin = .4cm]
-	\item The data enrichment estimator \eqref{eq:super} succeeds if a geometric condition that we call \emph{Data Enrichment Incoherence Condition} (DEIC) is satisfied. Compared to other known geometric conditions in the literature such as structural coherence \cite{guba16} and stable recovery conditions \cite{mctr13}, DEIC is a considerably weaker condition.
-	\item Assuming DEIC holds, we establish a high probability non-asymptotic bound on the weighted sum of component-wise estimation error, $\ddelta_g = \hbbe_g - \bbeta_g^*$ as:
+	\item The DE estimator \eqref{eq:super} succeeds if a geometric condition that we call \emph{Data EnRichment Incoherence Condition} (DERIC) is satisfied. Compared to other known geometric conditions in the literature such as structural coherence \cite{guba16} and stable recovery conditions \cite{mctr13}, DERIC is a considerably weaker condition.
+	\item Assuming DERIC holds, we establish a high probability non-asymptotic bound on the weighted sum of parameter-wise estimation error, $\ddelta_g = \hbbe_g - \bbeta_g^*$ as:
 	{\small \be
 	\label{eq:errorsum}
-	\sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq  C \gamma \frac{\max_{g \in [G]} \omega(\cC_g \cap \sphere) + \sqrt{\log (G+1)}}{\sqrt{n}}~,
+	\sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \|\ddelta_g\|_2 \leq  C \gamma \frac{\max_{g \in [G]} \omega(\cC_g \cap \sphere) + \sqrt{\log (G+1)}}{\sqrt{n}},
 	\ee}
-	where $n_g$ is number of samples per group, $n = n_0$ is the total number of samples, $\gamma = \max_{g \in [G] } \frac{n}{n_g}$ is the \emph{balance condition number}, and $\cC_g$ is the error cone corresponding to $\bbeta_g^*$ exactly defined in Section \ref{sec:deter}.
-	To the best of our knowledge, this is the first statistical estimation guarantee for data enriched models.
+	where $n_g$ is number of samples per group, $n_0 \triangleq n$ is the total number of samples, $\gamma \triangleq \max_{g \in [G] } \frac{n}{n_g}$ is the \emph{sample condition number}, and $\cC_g$ is the error cone corresponding to $\bbeta_g^*$ exactly defined in Section \ref{sec:deter}.
+	To the best of our knowledge, this is the first statistical estimation guarantee for the data enriched model.
 	%Gaussian width of a set $\cS$ is $\omega(\cS) = \ex_\g \left[ \sup_{\u \in \cS} \langle \g, \u \rangle \right]$. Gaussian width has been a standard tool for capturing the complexity of high-dimensional problems \cite{venkat12}.
 	
 %	Similar to previous works, we make a geometric assumption regarding the relation $\cC_g$s in each individual problem which is known as Structural Coherence assumption \cite{guba16, trop15}.
@@ -100,16 +101,15 @@ We present several new statistical and computational results for the data enrich
 %	\ee
 %	Observe that $l_2$-norm of the estimation error for the common parameter decays as $1/\sqrt{n}$, similar to the well-studied high dimensional regression case \cite{venkat12, banerjee14}.
 %	So the common parameter's estimator exploits all of the pooled data to reduce its error.
-	\item We also establish that the required sample complexity for the estimation of parameters for all groups as $n_g = O(\omega(\cC_g \cap \sphere))^2$ and for the common parameter as $n = O(\omega(\cC_0 \cap \sphere))^2$. In other words, enough \emph{total} number of samples $n$ is good enough to recover the common parameter $\bbeta_0$,
-illustrating the fact that the common parameter estimation benefits from the shared data.
-	\item We present an efficient Projected Block Gradient Descent (PBGD) algorithm for the estimation problem which converges geometrically to the statistical error bound of \eqref{eq:errorsum}. To the best of our knowledge, this is the first rigorous computational result for data enrichment models.
-	\item Finally, we apply the data enrichment estimator of \eqref{eq:super} to find biological predictor of drug sensitivity of cancer cell lines. Individual components detected by PBGD provides us an interpretable model which detects important drug sensitivity predictors in each cancer.
+	\item We also establish the sample complexity of the DE estimator for all parameters as $\forall g \in [G]: n_g = O(\omega(\cC_g \cap \sphere))^2$. We emphasize that our result proofs that the recovery of the common parameter $\bbeta_0$ by DE estimator benefits from \emph{all} of the $n$ pooled samples.
+	\item We present an efficient Projected Block Gradient Descent (PBGD) algorithm to solve DE's objective \eqref{eq:super} which converges geometrically to the statistical error bound of \eqref{eq:errorsum}. To the best of our knowledge, this is the first rigorous computational result for the high-dimensional data-enriched regression.
+	\item We illustrate promising empirical performance of the model on synthetic data as well as on the problem of finding bio-markers associated with drug sensitivity of cell lines from different cancer types, where the support of individual parameters $\hbbe_g^T$ for each cancer $g$ shows a different set of bio-markers per cancer type.
 \end{itemize}
 
 The rest of this paper is organized as follows:
 %First, we present a review of the related works in Section \ref{relwork}.
 First, we characterize the error set of our estimator and provide a deterministic error bound in Section \ref{sec:esti}.
-Then in Section \ref{sec:re}, we discuss the restricted eigenvalue condition and calculate the per-group and total sample complexity required for the recovery of the true parameters by our estimator under DEIC condition.
-We close the statistical analysis in Section \ref{sec:error} by providing high probability error bounds.
+Then in Section \ref{sec:re}, we discuss the restricted eigenvalue condition and calculate the sample complexity required for the recovery of the true parameters by our estimator under DERIC condition.
+We close the statistical analysis in Section \ref{sec:error} by providing non-asymptotic high probability error bound for parameter recovery.
 We delineate our linearly convergent algorithm, PBGD in Section \ref{sec:opt} and finally supplement our work with synthetic and real data experiments in Sections \ref{sec:expds} and \ref{realexp}.
 

@@ -1,7 +1,7 @@
 
 \section{Estimation Algorithm}
 \label{sec:opt}
-We propose the following Projected Block Gradient Descent algorithm (PBGD), Algorithm \ref{alg2} where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq d_g\}$ where $d_g = f_g(\bbeta_g^*)$ and is dropped to avoid clutter. In practice, $d_g$ can be determined by cross-validation.
+We propose the following Projected Block Gradient Descent algorithm (PBGD), Algorithm \ref{alg2}, where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq d_g\}$ where $d_g = f_g(\bbeta_g^*)$ and is dropped to avoid cluttering. In practice, $d_g$ can be determined by cross-validation.
 
 \begin{algorithm}[t]
 	\caption{  PBGD: {\sc Projected Block Gradient Descent}}
@@ -40,7 +40,7 @@ We first start with the required definitions for our analysis.
 
 \begin{definition}
 	\label{def:only}
-	We define the following positive constants for $\mu_g > 0$: %, where for simplification we assume $\X_0 = \oomega$ and $\oomega_0 = \oomega$:
+	We define the following positive constants as functions of step sizes $\mu_g > 0$: %, where for simplification we assume $\X_0 = \oomega$ and $\oomega_0 = \oomega$:
 %	\be
 %	\nr
 %	\rho_g(\mu_g) &=& \sup_{\u, \v \in \cB_g} \v^T \big(\I_g - \mu_g \X_g^T \X_g\big) \u, \quad g \in [G] \\ \nr
@@ -55,19 +55,19 @@ We first start with the required definitions for our analysis.
 	\\ \nr
 	\forall g \in [G]_\setminus&:& \phi_g(\mu_g) = \mu_g \sup_{\v \in \cB_g, \u \in \cB_0} -\v^T \X_g^T \X_g \u,
 	\ee
-	where $\cB_g =  \cC_g \cap \ball$ is the intersection of the error cone and the unit ball and $\oomega_0 := \oomega$.
+	where $\cB_g =  \cC_g \cap \ball$ is the intersection of the error cone and the unit ball.% and $\oomega_0 := \oomega$.
 \end{definition}
-In the following theorem, we establish a deterministic bound on iteration errors which depends on constants defined in Definition \ref{def:only}.
+In the following theorem, we establish a deterministic bound on iteration errors  $\norm{\ddelta_g^{(t)}}{2}$ which depends on constants defined in Definition \ref{def:only}.
 \begin{theorem}
 	\label{theo:iter}
-	For the PBGD algorithm \ref{alg2} initialized by $\bbeta ^{(1)} = \0$, we have the following deterministic bound for the error at iteration $t + 1$:
+	For Algorithm \ref{alg2} initialized by $\bbeta ^{(1)} = \0$, we have the following deterministic bound for the error at iteration $t + 1$:
 	{\small\be
 	\label{eq:singleiter}
 	&&\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
 	\\ \nr
 	&&\leq \rho^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}}\norm{\bbeta ^*_g}{2}   + \frac{1 - \rho^t}{1 -  \rho}   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \eta_g \norm{\oomega_g}{2},
 	\ee}
-	where {\small$\rho = \max\left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g, \max_{g \in [G]} \left[\rho_g + \sqrt{\frac{n}{n_g}}  \frac{\mu_0}{\mu_g} \phi_g \right]  \right)$}.
+	where {\small$\rho \triangleq \max\left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g, \max_{g \in [G]} \left[\rho_g + \sqrt{\frac{n}{n_g}}  \frac{\mu_0}{\mu_g} \phi_g \right]  \right)$}.
 %	\be
 %	\label{eq:rhos}
 %	\rho = \max\left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g, \max_{g \in [G]} \left[\rho_g + \sqrt{\frac{n}{n_g}}  \frac{\mu_0}{\mu_g} \phi_g \right]  \right)
@@ -77,15 +77,15 @@ In the following theorem, we establish a deterministic bound on iteration errors
 
 The RHS of \eqref{eq:singleiter} consists of two terms.
 If we keep $\rho < 1$, the first term approaches zero exponentially fast, i.e., with linear rate, and the second term determines the bound. %which depends on the sub-Gaussian noise $\oomega$, and therefore for noiseless case of $\y = \X \bbeta$ it becomes zero.
-In the following we show that for specific choices of step sizes $\mu_g$s, the second term can be upper bounded using the analysis of Section \ref{sec:error}.
+In the following, we show that for specific choices of step sizes $\mu_g$s, the second term can be upper bounded using the analysis of Section \ref{sec:error}.
 More specifically, the first term corresponds to the optimization error which shrinks in every iteration while the second term is constant times the upper bound of the statistical error characterized in Corollary \ref{corr:calcub}.
-Therefore, if we can keep $\rho$ below one, the estimation error of PBGD algorithm geometrically converges to the approximate statistical error bound. %and we get to $\hbbe$ exponentially fast.
+Therefore, if we keep $\rho$ below one, the estimation error of PBGD algorithm linearly converges to the approximate statistical error bound. %and we get to $\hbbe$ exponentially fast.
 
 %i.e., $\norm{\hbbe - \bbeta^*}{2} = \norm{\ddelta}{2} =  \sqrt{\sum_{g=1}^{G} \norm{\ddelta_g}{2}^2} \leq \sum_{g=1}^{G} \norm{\ddelta_g}{2}$ where we characterized a scaled version of it as $\sum_{g=1}^{G} \sqrt{\frac{n_g}{n}}\norm{\ddelta_g}{2}$ in \eqref{eq:general}.
 
 
-One way for having $\rho < 1$ is to keep all arguments of $\max(\cdots)$  determining $\rho$ strictly below $1$. %, i.e., $\rho_g < 1/\theta_f $.
-To this end, we first establish high probability upper bound for $\rho_g$, $\eta_g$, and $\eta_g$ (in the Appendix) and then show that with enough number of samples and proper step sizes $\mu_g$, $\rho$ can be kept strictly below one with high probability. In Section~\ref{sec:expds}, we empirically illustrate such geometric convergence.
+One way for having $\rho < 1$ is to keep all arguments of $\max(\cdots)$  defining $\rho$ strictly below $1$. %, i.e., $\rho_g < 1/\theta_f $.
+To this end, we first establish high probability upper bound for $\rho_g$, $\eta_g$, and $\phi_g$ (in the Appendix) and then show that with enough number of samples and proper step sizes $\mu_g$, $\rho$ can be kept strictly below one with high probability. In Section~\ref{sec:expds}, we empirically illustrate such geometric convergence.
 The high probability bounds for constants in Definition \ref{def:only} and the deterministic bound of Theorem \ref{theo:iter} leads to the following theorem which shows for enough number of samples, of the same order as the statistical sample complexity, we can keep $\rho$ below one and have geometric convergence.
 
 
@@ -100,7 +100,7 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 \begin{theorem}
 	\label{theo:step}		
 	%Remember that $\theta_f = 1$ for the convex and  $\theta_f = 2$ for the non-convex case.
-	Let $\tau = C\sqrt{\log(G+1)} + b$ for $b > 0$ and $\omega_{0g} = \omega(\cA_0) + \omega(\cA_g)$. For the per group step sizes of:
+	Let $\tau = C\sqrt{\log(G+1)} + b$ for $b > 0$ and $\omega_{0g} = \omega(\cA_0) + \omega(\cA_g)$. For the per-group step sizes of:
 	\be
 	\nr
 %	&\theta_f = 1:&
@@ -110,15 +110,15 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 %	\\ \nr
 %	&\theta_f = 2:& \mu_0 = \frac{1}{4	n} \times \frac{1}{\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^2} , \mu_g = \frac{l\left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)^{-1}}{8\sqrt{nn_g}\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^{2}}
 	\ee
-	and sample complexities of:
-	\be
-	\nr
-	%&\theta_f = 1:&
-%	n > 2 c_0^2 \left(2 \omega(\cA_0) + \tau\right)^2, \forall g \in [G]_\setminus: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2
-n > 2 c_0^2 \left(2 \omega(\cA_0) + \tau\right)^2, \quad \text{and} \quad \forall g \in [G]_\setminus: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2
-%	\\ \nr
-%	&\theta_f = 2:& n > 2 (1 - l)^{-2} c_0^2 \left(2 \omega(\cA_0) + \tau\right)^2, \forall g \in [G]_\setminus: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2
-	\ee
+	and sample complexities of $\forall g \in [G]: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2$,
+%	\be
+%	\nr
+%	%&\theta_f = 1:&
+%%	n > 2 c_0^2 \left(2 \omega(\cA_0) + \tau\right)^2, \forall g \in [G]_\setminus: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2
+%n > 2 c_0^2 \left(2 \omega(\cA_0) + \tau\right)^2, \quad \text{and} \quad \forall g \in [G]_\setminus: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2
+%%	\\ \nr
+%%	&\theta_f = 2:& n > 2 (1 - l)^{-2} c_0^2 \left(2 \omega(\cA_0) + \tau\right)^2, \forall g \in [G]_\setminus: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2
+%	\ee
 %	where $0 < l < 1$ is arbitrary,
 	updates of the Algorithm \ref{alg2} obey the following with high probability: %probability at least $ 1 - \upsilon \exp\left[\min_{g \in [G]}\left(-\min\left[\nu_g n_g - \log G, \gamma (\omega(\cA_g) + b)^2 , \frac{b^2}{\eta_g^2 k^2}\right]\right)\right] $:
 	%where $\upsilon = \max(28, \sigma)$ and $\gamma = \min_{g \in [G] } \gamma_g$. 	
@@ -144,7 +144,7 @@ n > 2 c_0^2 \left(2 \omega(\cA_0) + \tau\right)^2, \quad \text{and} \quad \foral
 	\ee
 \end{corollary}
 	It is instructive to compare RHS of \eqref{eq:scaled} with that of \eqref{eq:general}: $\kappa_{\min}$ defined in Theorem \ref{theo:re} corresponds to $(1 - r(\tau))$ % defined in Theorem \ref{theo:step}
-	and the extra $G+1$ factor corresponds to $\gamma = \max_{g \in [G] } \frac{n}{n_g}$.
+	and the extra $G+1$ factor corresponds to the sample condition number $\gamma = \max_{g \in [G] } \frac{n}{n_g}$.
 	Therefore, Corollary \ref{corr:show} shows that PBGD converges to a scaled variant of statical error bound determined in Corollary \ref{corr:calcub}.
 %	The extra factor of $G+1$ can be dismissed if we have more samples and also take a more conservative step size of $\mu_g = \frac{1}{(G+1) n_g}$.
 %	Following proposition states this result.
