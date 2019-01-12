@@ -3,7 +3,6 @@
 # Author: Amir Asiaee
 # Email: asiae002@umn.edu
 ######################################################################
-file=file.path(paths$scratch, paste("cvDeMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")){
 source("00-paths.R")
 # source("dataEnricher.R")
 norm2 <- function(x) sqrt(sum(x^2))
@@ -304,6 +303,7 @@ setMethod(f = "initialize",
 # Author: Amir Asiaee
 # Email: asiae002@umn.edu
 ######################################################################
+if(!file.exists(file=file.path(paths$scratch, paste("cvDeMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))){
 set.seed(123)
 dataDir <- file.path(paths$clean, "xy") 
 allFiles <- list.files(dataDir)
