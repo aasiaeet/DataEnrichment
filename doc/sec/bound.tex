@@ -2,11 +2,14 @@
 \label{sec:error}
 In this section, we provide a high probability upper bound for the estimation error of the common and individual parameters.% with the structure inducing convex functions $f_g(\cdot)$s.
 To avoid cluttering the notation, we rename the vector of all noises as $\oomega_0 \triangleq \oomega$.
+
+\ab{We are using $\omega$ to denote two different things---the Gaussian width and the noise!}
+
 First, we massage the deterministic upper bound of Theorem \ref{theo:deter} as follows:
 	\be
 	\nr
-	\oomega ^T \X\ddelta &=& \sum_{g=0}^{G} \langle \X_g^T \oomega _g,  \ddelta_g \rangle 
-	\\ \nr 
+	\oomega ^T \X\ddelta &=& \sum_{g=0}^{G} \langle \X_g^T \oomega _g,  \ddelta_g \rangle
+	\\ \nr
 	&=& \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}} \rangle \sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2} \\ \nr
 	%(\forall g: \u_g \in \cC_g \cap \sphere) &=& \norm{\ddelta_0}{2} \langle \X_0^T \frac{\oomega }{\norm{\oomega }{2}}, \u_0 \rangle \norm{\oomega }{2} + \sum_{g=1}^{G} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \u_g \rangle \norm{\oomega _g}{2} \\ \nr
 	\ee
@@ -44,7 +47,7 @@ Next, using the following lemma, we upper bounds $b_g$ with high probability.
 	\label{lemm:mainlem}
 	For $\x_{gi}$ and $\omega_{gi}$ defined in Definition \ref{def:obs} and $\tau > 0$, with probability at least $1 - \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu_g n_g - \log (G+1), \frac{\tau^2}{\eta_g^2 k^2}\right]\right)$ we have:
 	{\small\be
-	&&\sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \u_g \rangle \\ \nr 
+	&&\sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \u_g \rangle \\ \nr
 	&\leq&
 	\sqrt{(2K^2 + 1)n} \left(\zeta_g k \omega(\cA_g) + \epsilon_g \sqrt{\log (G+1)} +  \tau \right), \nr
 	\ee}
@@ -79,6 +82,8 @@ The following corollary characterizes the general error bound and results from t
 	\ee	}
 	where $C = 8\sqrt{2 K^2 + 1}$, $\zeta = \max_{g \in [G]} \zeta_g$, $\epsilon = \max_{g \in [G]} \epsilon_g$, $\gamma = \max_{g \in [G]_{\setminus}} n/n_g$  and $\tau > 0$.
 \end{corollary}
+
+\ab{This section will be very hard to follow without examples. Lets use the two examples we (will) introduce earlier.}
 
 %\begin{corollary}
 %	\label{corr:single}

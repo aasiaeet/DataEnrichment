@@ -34,12 +34,21 @@ where $\y  = (\y^T_1, \dots \y^T_G)^T \in \reals^n$,  $\bbeta  = ({\bbeta _0}^T,
 %For simplicity, during steps of the analysis we denote $\X = [\X_0 \enskip \D]$ which is the concatenation of $\X_0 \in \reals^{n \times p}$ that represents the \emph{whole} design matrix consisting of all data points as rows and $\D \in \reals^{n \times pG}$ which is the \emph{diagonal} part of the $\X$ where all $\X_g$s are on the diagonal.
 %Following this convention, we refer to total number of samples $n$ as $n_0$ in our analysis.
 
+\ab{Give at least 2 specific examples, e.g., a sparse+sparse for vector estimation, and a low-rank + sparse for matrix estimation. And we want to carry these examples through
+the technical results, e.g., see the Chen-Banerjee NIPS 2015 paper.}
+
+\begin{example}
+This is an example
+\end{example}
+
 \subsection{Error Set and Deterministic Error Bound}
 \label{sec:deter}
+\ab{Unless we need a second subsection, drop this subsection heading -- its unusual to have one subsection in a section.}
+
 Consider the group-wise estimation error $\ddelta_g = \hbbe_g - \bbeta^*_g$.
 Since $\hbbe_g = \bbeta ^*_g + \ddelta_g$ is a feasible point of \eqref{eq:compact}, the error vector $\ddelta_g$ will belong to the following restricted error set:% which is the set of all descent directions at $\bbeta _g^*$ on $f_g(\cdot)$ :
 \be
-\nr
+%\nr
 \cE_g = \left\{\ddelta_g | f_g(\bbeta _g^* + \ddelta_g) \leq f_g(\bbeta _g^*)\right\}, \quad g \in [G]~.
 \ee
 We denote the cone of the error set as $\cC_g \triangleq \text{Cone}(\cE_g)$ and the spherical cap corresponding to it as $\cA_g \triangleq \cC_g \cap \sphere$.
@@ -51,9 +60,9 @@ We denote the cone of the error set as $\cC_g \triangleq \text{Cone}(\cE_g)$ and
 %where $0 < l < 1$ indexes the family.
 Consider the set $\cC = \{ \ddelta = (\ddelta_0^T, \dots, \ddelta_G^T)^T \Big| \ddelta_g \in \cC_g \}$, following two subsets of $\cC$ play key roles in our analysis:
 \be
-\nr
+%\nr
 \cH  &\triangleq&  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}~, %\label{setH}
-\\ \nr 
+\\ %\nr
 \bcH &\triangleq&  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}~. %\label{setH}
 \ee
 Starting from the optimality of $\hbbe = \bbeta ^* + \ddelta$ as $\frac{1}{n}\norm{\y - \X \hbbe}{2}^2 \leq \frac{1}{n} \norm{\y - \X \bbeta ^*}{2}^2$, we have:
@@ -69,11 +78,18 @@ Using this basic inequality, we can establish the following deterministic error 
 	For the proposed estimator \eqref{eq:compact}, assume there exist $0 < \kappa \leq \inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2$. Then, for the sample condition number $\gamma = \max_{g \in [G]_{\setminus}} \frac{n}{n_g}$, the following deterministic upper bounds holds:
 	\be
 	\nr
-	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq \frac{2{\gamma}\sup_{\u \in \bcH}\oomega^T \X \u}{n\kappa}. \nr	
+	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq \frac{2{\gamma}\sup_{\u \in \bcH}\oomega^T \X \u}{n\kappa}~. %\nr	
 	\ee
 \end{theorem}
 
+\ab{Adding a remark -- these will make it easier for the reader. This specific remark can be dropped as needed.}
 
+\begin{remark}
+Consider the setting where $n_g = \Theta(\frac{n}{G})$ so that each group has approximately $\frac{1}{G}$ fraction of the samples. Then, $\gamma = \Theta(G)$ and hence
+\beq
+\frac{1}{G} \sum_{g=0}^G \| \delta_g \|_2 \leq O( G^{1/2} ) \frac{\sup_{\u \in \bcH}\oomega^T \X \u}{n}~.
+\eeq
+\end{remark}
 
 %We define $\gamma_g = \norm{\ddelta_g}{2}$ and for $\ddelta \in \cH$ we have $\sum_{g = 0}^{G} \gamma_g = 1$.
 %We are interested in the following RE condition:
