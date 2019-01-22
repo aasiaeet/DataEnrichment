@@ -109,6 +109,12 @@ Rudelson, M. and Zhou, S.
 \newblock \emph{IEEE Transactions on Information Theory}, 59\penalty0
   (6):\penalty0 3434--3447, 2013.
 
+\bibitem[Tibshirani(1996)]{tibs96}
+Tibshirani, R.
+\newblock Regression shrinkage and selection via the lasso.
+\newblock \emph{Journal of the Royal Statistical Society. Series B
+  (Methodological)}, pp.\  267--288, 1996.
+
 \bibitem[Tropp(2015)]{trop15}
 Tropp, J.~A.
 \newblock {Convex recovery of a structured signal from independent random
@@ -126,12 +132,5 @@ Yang, E. and Ravikumar, P.
 \newblock Dirty statistical models.
 \newblock In \emph{Advances in Neural Information Processing Systems}, pp.\
   611--619, 2013.
-
-\bibitem[Zou \& Hastie(2005)Zou and Hastie]{zoha05}
-Zou, H. and Hastie, T.
-\newblock {Regularization and Variable Selection via the Elastic Net}.
-\newblock \emph{Journal of the Royal Statistical Society}, 67\penalty0
-  (2):\penalty0 301--320, 2005.
-\newblock ISSN 1369-7412.
 
 \end{thebibliography}

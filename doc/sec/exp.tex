@@ -97,12 +97,13 @@ Finally, Figure \ref{fig syn2b} considers a very high-dimensional problem where 
 %\end{figure}
 
 \vspace{-10mm}
-\section{Drug Sensitivity Analysis for Cancer Cell Lines}
+\section{Anti-Cancer Drug Sensitivity Prediction}
 \label{realexp}
 In this section we investigate the application of DE in analyzing the response of patients with cancer to different doses of various drugs. 
 Each cancer type (lung, blood, etc.) is a group $g$ in our DE model and the respond of patient $i$ with cancer $g$ to the drug is our output $y_{gi}$. 
 The set of features for each patient $\x_{gi}$ consists of gene expressions, copy number variation, and mutations and $y_{gi}$ is the ``activity area'' above the dose-response curve, Figure \ref{fig:dr}.
 Given $\x_{gi}$ and a drug, we have two goals: accurately predict a patient's response to the drug and identifying genetic predictors of drug sensitivity. 
+We present more details about and results of the drug sensitivity experiment in Appendix \ref{?}.
 %In other words, we are interested in both predicting of $y_{gi}$ and identifying feature $j$ with highest absolute $\bbeta_{g}(j)$ value for each cancer $g$.
 %We hope that the data enriched model captures the important shared feature between cancers, as long as the cancer-specific genetic factors that determine the response to therapy.
 %In the following, we first explain the dataset and then compare the prediction performance of DS with elastic net on 24 drugs. 
@@ -123,19 +124,30 @@ Given $\x_{gi}$ and a drug, we have two goals: accurately predict a patient's re
 %\end{figure}
 
 %In this experiment 
-We use Cancer Cell Line Encyclopedia (CCLE) \cite{barretina2012cancer} which is a compilation $\sim$500 human cancer cell lines where responses of them to 24 anticancer drugs have been measured.%\footnote{Here the technical meaning of response $y_{gi}$ is the ``activity area'' above the dose-response curve\cite{barretina2012cancer}.}.
+We use Cancer Cell Line Encyclopedia (CCLE) \cite{barretina2012cancer} which is a compilation $\sim$500 human cancer cell lines where their responses to 24 anticancer drugs have been measured.%\footnote{Here the technical meaning of response $y_{gi}$ is the ``activity area'' above the dose-response curve\cite{barretina2012cancer}.}.
 %The goal of the study was to identify genetic predictor of drug sensitivity for different cancers. 
 %The method used for analysis of CCLE in the original paper was Elastic Net \cite{zoha05} which we use as the comparison baseline. 
 %\footnote{Cancer type is the first tissue where the cancer was observed.} 
-From the 36 cancer type available in CCLE, we focus on lung and blood.%\footnote{By blood cancer, we mean any cancer originate from haematopoietic and lymphoid tissues.} 
-Not all of the ~500 lines have been treated with all of the drugs. 
-Therefore we end up with a different number of samples $n$ for each drug where the range is $n \in [150, 200]$.
-Also, we perform a standard preprocessing \cite{barretina2012cancer} where we remove features with less than $.1$ absolute correlation with the response of interest which reduce the dimension to $p \in [1500, 5000]$ range. 
-%Since the features that get removed are different for each drug, the dimension in the 24 problems is also variable, where the range is $p \in [1500, 5000]$. 
+We perform two \emph{experiments} where the number of cancers in each data set are $G =2$ or $3$ and we name them TWO and THREE experiments, respectively. 
+We consider lung and blood\footnote{By blood cancer, we mean any cancer originate from haematopoietic and lymphoid tissues.} for TWO while for THREE we predict the drug sensitivity of skin, breast and ovary cancer cell lines. 
+Beyond these five cancer types, others have less than 50 samples, so we remove them from consideration.
+Each experiment consists of 24 \emph{problems} each corresponds to a drug. % drug sensitivity prediction of 
+Not all of the $~$500 cell lines have been treated with all of the drugs. 
+Therefore each problem has a different number of samples $n$ where $n \in [70, 130]$ for TWO and $n \in [?]$ for THREE experiments.
+We perform a standard preprocessing \cite{barretina2012cancer} where we remove features with less than $.2$ absolute correlation with the response of interest.% which reduces the dimension from $>30,000$ to $p \in [?, ?]$.% range. 
+Note that the features that get removed vary by problem, therefore the dimension $p$ is reduced from from $>30,000$ to $p \in [1000, 15000]$. 
 
 %\subsection{Results}
-{\bf Prediction:} Here we run, 24 different experiments, each for one drug.  %= \{f_g(\bbeta) < b_g\}$
-Since the values of $d_g$  in constraint sets $\Omega_{f_g}(d_g)$  are unknown, we tune them by 10-fold cross-validation and report the mean squared error (MSE) of the Elastic Net \cite{zoha05} (method used in the original CCLE paper\cite{barretina2012cancer}) and the data enrichment in Figure \ref{fig:prediction}. Both methods have very close prediction performance.
+{\bf Prediction:} In each TWO and THREE experiments, we predict the drug sensitivity for 24 different drugs.  %= \{f_g(\bbeta) < b_g\}$
+Since the values of $d_g$  in constraint sets $\Omega_{f_g}(d_g)$  are unknown, we tune them by 5-fold cross-validation and report the mean squared error (MSE) of DE and a baseline method. 
+Our \emph{baseline} method BL is the LASSO \cite{tibs96} equivalent of DE where we set $\forall g \in [G]_\setminus d_g = 0$ and only estimate the common parameter $\bbeta_0$. 
+Figure \ref{fig:prediction} and \ref{fig:prediction} illustrates the performance of DE and BL for TWO and THREE experiments respectively. 
+Note that DE outperforms BL in ? and ? out of 24 problems in TWO and THREE experiments, respectively.
+
+To ensure that the prediction improvement of DE over the baseline is significant, we supplement our analysis with the bootstrapped error of both methods for the TWO experiment.
+For each problem in the TWO experiment, we generate 100 bootstrapped data sets by sampling with replacement as $\{(\X^{(i)}_{\text{TWO}}, \y^{(i)}_{\text{TWO}})\}_{i=1}^{100}$.  
+Then, we fix $d_g$s hyper-parameters to values determined by cross-validation in the last stage and run both methods and compute pairs of MSEs as $\{(\text{MSE}^{(i)}_{\text{DE}}, \text{MSE}^{(i)}_{\text{BL}})\}$. We perform paired t-test to determine if mean difference between MSEs is significant. In ? out of 24 problems DE's MSE is lesser than BL's with significance level of $\alpha = 0.05$. A representative set of results is demonstrated in Figure \ref{?}. 
+
 	\begin{figure*}
 	\begin{subfigure}[b]{0.32\textwidth}
 		\includegraphics[width=\textwidth]{./img/dr4.pdf}
@@ -149,13 +161,13 @@ Since the values of $d_g$  in constraint sets $\Omega_{f_g}(d_g)$  are unknown, 
 	\includegraphics[width=\textwidth,]{./img/Saracatinib.pdf}
 	\caption{}\label{fig:Saracatinib}
 	\end{subfigure}
-	\caption{a) A sample fitted dose-response curve where Activity Area $y_{gi}$ is shaded. b) Comparison of Mean Square Error of elastic net and data enrichment in predicting the response to 24 drugs for lung and blood cancer cell lines. Each dot represents an experiment for a drug. Prediction accuracy of both algorithms are very close. c) Distribution of responses to Saracatinib.}
+	\caption{a) A sample fitted dose-response curve where Activity Area $y_{gi}$ is shaded. b) Comparison of Mean Square Error of elastic net and data enrichment in predicting the response to 24 drugs for lung and blood cancer cell lines. Each dot represents an experiment for a drug. Prediction accuracy of both algorithms are very close. c) Distribution of responses to Saracatinib. Note that some cell lines of both lung and blood cancers have responded to Saracatinib which makes it a good candidate for interpretability analysis.}
 	\label{fig syn2}
 	\end{figure*}
 
 {\bf Interpretation}
 %Next we focus on the interpretation of the selected genes. 
-We select Saracatinib, a drug that works on both lung and blood cancers, Figure \ref{fig:Saracatinib}. 
+We select Saracatinib, a drug which shows activity on both lung and blood cancers, Figure \ref{fig:Saracatinib}. 
 Fixing the $d_g$ parameters, we select the genes which have non-zero coefficient 40 times across 50 runs of PBGD on bootstrapped samples.
 Now, we have three lists of genes based on the supports of shared , lung , and blood parameters. 
 We perform gene enrichment analysis using ToppGene \cite{chen09toppgene} to see where in functional/disease/drug databases these genes have been observed together with statistical significance. 
