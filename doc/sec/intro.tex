@@ -64,9 +64,10 @@ More generally, in any high-dimensional problem where the population consists of
 In spite of the recent surge in applying data enrichment framework to different domains, limited advances have been made in
 understanding the statistical and computational properties of suitable estimators for the data enriched model.
 In fact, non-asymptotic statistical properties, including sample complexity and statistical rates of convergence, of regularized estimators for the data enriched model is still an open question \cite{grti16, olvi14}.
-To the best of our knowledge, the only theoretical guarantee for data enrichment is provided in \cite{olvi15} where authors prove sparsistency of their proposed method under the stringent irrepresentability condition of the design matrix.\ab{If they show support recovery, the condition may have been necessary -- maybe give them due credit, and show how much more the current results are, though we are doing norm consistency, not support recovery.}
-Also beyond sparsity and $l_1$-norm, no other structure has been investigated for the data enriched model. Moreover, no computational results, such as rates of convergence of the optimization algorithms
-associated with the proposed estimators, exist in the literature.
+To the best of our knowledge, the only theoretical guarantee for data enrichment is provided in \cite{olvi15} where authors prove sparsistency of their proposed method under the stringent irrepresentability condition of the design matrix for recovering supports of common and individual parameters.
+%\ab{If they show support recovery, the condition may have been necessary -- maybe give them due credit, and show how much more the current results are, though we are doing norm consistency, not support recovery.}
+In contrast to \cite{olvi15} where the analysis is restricted to sparsity and $l_1$-norm, our estimator and \emph{norm consistency} analysis work for any structure induced by arbitrary convex functions. %has been investigated for the data enriched model. 
+Moreover, no computational results, such as rates of convergence of the optimization algorithms associated with proposed estimators, exist in the literature.
 %{\color{red} TODO: Emphasis that functions can be non-convex.}
 
 %\newlength\heightfiga\newlength\heightcapa
