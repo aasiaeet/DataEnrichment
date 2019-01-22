@@ -4,45 +4,45 @@ The top-level auxiliary file: datasenrichment.aux
 The style file: icml2019.bst
 Database file #1: nips18.bib
 Warning--I didn't find a database entry for "["
-You've used 21 entries,
+You've used 22 entries,
             2773 wiz_defined-function locations,
-            713 strings with 8126 characters,
-and the built_in function-call counts, 10550 in all, are:
-= -- 954
-> -- 594
-< -- 18
-+ -- 201
-- -- 180
-* -- 812
-:= -- 1576
-add.period$ -- 67
-call.type$ -- 21
-change.case$ -- 121
-chr.to.int$ -- 21
-cite$ -- 42
-duplicate$ -- 505
-empty$ -- 868
-format.name$ -- 217
-if$ -- 2259
+            718 strings with 8390 characters,
+and the built_in function-call counts, 11193 in all, are:
+= -- 997
+> -- 666
+< -- 20
++ -- 226
+- -- 204
+* -- 870
+:= -- 1688
+add.period$ -- 70
+call.type$ -- 22
+change.case$ -- 130
+chr.to.int$ -- 22
+cite$ -- 44
+duplicate$ -- 525
+empty$ -- 900
+format.name$ -- 242
+if$ -- 2383
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 22
-newline$ -- 114
-num.names$ -- 84
-pop$ -- 250
+missing$ -- 24
+newline$ -- 119
+num.names$ -- 88
+pop$ -- 273
 preamble$ -- 1
-purify$ -- 101
+purify$ -- 110
 quote$ -- 0
-skip$ -- 405
+skip$ -- 425
 stack$ -- 0
-substring$ -- 427
-swap$ -- 85
-text.length$ -- 6
+substring$ -- 429
+swap$ -- 87
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 226
+type$ -- 232
 warning$ -- 0
-while$ -- 94
+while$ -- 97
 width$ -- 0
-write$ -- 277
+write$ -- 290
 (There was 1 warning)

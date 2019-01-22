@@ -1,4 +1,4 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{22}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -27,13 +27,6 @@ Boucheron, S., Lugosi, G., and Massart, P.
   {Independence}}.
 \newblock Oxford University Press, 2013.
 
-\bibitem[Chandrasekaran et~al.(2012)Chandrasekaran, Recht, Parrilo, and
-  Willsky]{venkat12}
-Chandrasekaran, V., Recht, B., Parrilo, P.~A., and Willsky, A.~S.
-\newblock The convex geometry of linear inverse problems.
-\newblock \emph{Foundations of Computational Mathematics}, 12\penalty0
-  (6):\penalty0 805--849, 2012.
-
 \bibitem[Chen et~al.(2009)Chen, Bardes, Aronow, and Jegga]{chen09toppgene}
 Chen, J., Bardes, E.~E., Aronow, B.~J., and Jegga, A.~G.
 \newblock Toppgene suite for gene list enrichment analysis and candidate gene
@@ -57,6 +50,13 @@ Gu, Q. and Banerjee, A.
 \newblock High dimensional structured superposition models.
 \newblock In \emph{Advances In Neural Information Processing Systems}, pp.\
   3684--3692, 2016.
+
+\bibitem[Iorio et~al.(2016)Iorio, Knijnenburg, Vis, Bignell, Menden, Schubert,
+  Aben, Goncalves, Barthorpe, Lightfoot, et~al.]{iorio2016landscape1}
+Iorio, F., Knijnenburg, T.~A., Vis, D.~J., Bignell, G.~R., Menden, M.~P.,
+  Schubert, M., Aben, N., Goncalves, E., Barthorpe, S., Lightfoot, H., et~al.
+\newblock A landscape of pharmacogenomic interactions in cancer.
+\newblock \emph{Cell}, 166\penalty0 (3):\penalty0 740--754, 2016.
 
 \bibitem[Jalali et~al.(2010)Jalali, Ravikumar, Sanghavi, and Ruan]{jrsr10}
 Jalali, A., Ravikumar, P., Sanghavi, S., and Ruan, C.
@@ -126,6 +126,12 @@ Vershynin, R.
 \newblock {Introduction to the non-asymptotic analysis of random matrices}.
 \newblock In \emph{Compressed Sensing}, pp.\  210--268. Cambridge University
   Press, Cambridge, 2012.
+
+\bibitem[Vershynin(2018)]{vershynin2018high}
+Vershynin, R.
+\newblock \emph{High-dimensional probability: An introduction with applications
+  in data science}, volume~47.
+\newblock Cambridge University Press, 2018.
 
 \bibitem[Yang \& Ravikumar(2013)Yang and Ravikumar]{yara13}
 Yang, E. and Ravikumar, P.
