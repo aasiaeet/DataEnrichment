@@ -99,7 +99,7 @@ Finally, Figure \ref{fig syn2b} considers a very high-dimensional problem where 
 \vspace{-10mm}
 \section{Anti-Cancer Drug Sensitivity Prediction}
 \label{realexp}
-In this section we investigate the application of DE in analyzing the response of patients with cancer to different doses of various drugs. 
+In this section, we investigate the application of DE in analyzing the response of patients with cancer to different doses of various drugs. 
 Each cancer type (lung, blood, etc.) is a group $g$ in our DE model and the respond of patient $i$ with cancer $g$ to the drug is our output $y_{gi}$. 
 The set of features for each patient $\x_{gi}$ consists of gene expressions, copy number variation, and mutations and $y_{gi}$ is the ``activity area'' above the dose-response curve, Figure \ref{fig:dr}.
 Given $\x_{gi}$ and a drug, we have two goals: accurately predict a patient's response to the drug and identifying genetic predictors of drug sensitivity. 
@@ -154,7 +154,7 @@ Then, we fix $d_g$s hyper-parameters to values determined by cross-validation in
 		\caption{}\label{fig:dr}
 	\end{subfigure} ~
 	\begin{subfigure}[b]{0.30\textwidth}
-		\includegraphics[width=\textwidth]{./img/MSEComparison.pdf}
+		\includegraphics[width=\textwidth]{./img/lung-blood-barplot.pdf}
 		\caption{}\label{fig:prediction}
 	\end{subfigure}
 	\begin{subfigure}[b]{0.29\textwidth}

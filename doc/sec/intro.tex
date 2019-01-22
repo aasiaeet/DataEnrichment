@@ -67,6 +67,53 @@ Also beyond sparsity and $l_1$-norm, no other structure has been investigated fo
 associated with the proposed estimators, exist in the literature.
 %{\color{red} TODO: Emphasis that functions can be non-convex.}
 
+\newlength\heightfiga\newlength\heightcapa
+\newlength\heightfigb\newlength\heightcapb
+\newlength\heightfigc\newlength\heightcapc
+\newlength\heightfig
+
+\begin{figure*}
+	%Definition of lengths
+	\setlength\heightfiga{3cm}
+	\setlength\heightfigb{3cm}
+	\setlength\heightcapa{1\baselineskip}
+	\setlength\heightcapb{2\baselineskip}
+	%Do not change
+	\setlength\heightcapc{\heightcapa}
+	\setlength\heightfigc{\heightfiga+\heightfigb+\heightcapa}
+	\setlength\heightfig{\heightfigc+\heightcapc}
+	\begin{minipage}[b][\heightfig][t]{0.68\linewidth}
+		\centering
+		\includegraphics[height=\heightfigc]{./img/concept}
+		\parbox[b][\heightcapc][t]{1.\linewidth}{\subcaption{Data Enrichment.}\label{subfig3}}
+	\end{minipage}	\hfill
+	\begin{minipage}[b][\heightfig][t]{0.3\linewidth}\centering
+		\includegraphics[height=\heightfiga]{./img/sc.pdf}
+		\parbox[b][\heightcapa][t]{1\linewidth}{\subcaption{SC}\label{subfig1}}
+		\includegraphics[height=\heightfigb]{./img/deric.pdf}
+		\parbox[b][\heightcapb][t]{1\linewidth}{\subcaption{DERIC}\label{subfig2}}
+	\end{minipage}
+	\caption{a) A conceptual illustration of data enrichment model for learning representation of  different cat species. The common parameter $\bbeta_0$ captures a \emph{generic cat} which consists of shared features among all cats. b) Our  c) Distribution of responses to Saracatinib. Note that some cell lines of both lung and blood cancers have responded to Saracatinib which makes it a good candidate for interpretability analysis.}
+	\label{fig}
+\end{figure*}
+
+%	\begin{figure*}
+%	\begin{subfigure}[b]{0.55\textwidth}
+%		\includegraphics[width=\textwidth]{./img/concept.pdf}
+%		\caption{}\label{fig:concept}
+%	\end{subfigure} ~
+%	\begin{subfigure}[b]{0.2\textwidth}
+%		\includegraphics[width=\textwidth]{./img/deric.pdf}
+%		\caption{}\label{fig:deric}
+%	\end{subfigure} ~
+%	\begin{subfigure}[b]{0.2\textwidth}
+%		\includegraphics[width=\textwidth,]{./img/sc.pdf}
+%		\caption{}\label{fig:sc}
+%	\end{subfigure}
+%	\caption{a) A conceptual illustration of data enrichment model for learning representation of  different cat species. The common parameter $\bbeta_0$ captures a \emph{generic cat} which consists of shared features among all cats. b) Our  c) Distribution of responses to Saracatinib. Note that some cell lines of both lung and blood cancers have responded to Saracatinib which makes it a good candidate for interpretability analysis.}
+%	\label{fig syn2}
+%\end{figure*}
+
 %{\bf Contributions:}
 {\bf Notation and Preliminaries:}
 We denote sets by curly $\cV$, matrices by bold capital $\V$, random variables by capital $V$, and vectors by small bold $\v$ letters.
