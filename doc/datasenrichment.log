@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.15)  22 JAN 2019 11:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.15)  22 JAN 2019 11:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -754,9 +754,8 @@ Overfull \hbox (16.29202pt too wide) in alignment at lines 18--21
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.44 		\item
-             $\sum_{i\in \cI} n_i\geq \lceil \ratio n\rceil$.])
-(./sec/bound.tex
+l.47 \end{definition}
+                     ]) (./sec/bound.tex
 Overfull \hbox (16.6392pt too wide) in alignment at lines 9--15
  [][][] []
  []
@@ -782,24 +781,44 @@ Underfull \hbox (badness 1005) in paragraph at lines 61--64
 s-tributed ac-cord-
  []
 
+
+Overfull \hbox (30.03496pt too wide) in alignment at lines 64--68
+ [][][] []
+ []
+
 [5pdfTeX warning (ext4): destination with the same identifier (name{equation.4.
 11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.64 	\be
-         pdfTeX warning (ext4): destination with the same identifier (name{equa
-tion.4.11}) has been already used, duplicate ignored
+l.78 	{\small\be
+                pdfTeX warning (ext4): destination with the same identifier (na
+me{equation.4.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.64 	\be
-         ]
-Overfull \hbox (30.03496pt too wide) in alignment at lines 64--68
- [][][] []
- []
-
-
+l.78 	{\small\be
+                ]pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.4.12}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.78 	{\small\be
+                pdfTeX warning (ext4): destination with the same identifier (na
+me{equation.4.12}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.78 	{\small\be
+                pdfTeX warning (ext4): destination with the same identifier (na
+me{equation.4.12}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.78 	{\small\be
+                pdfTeX warning (ext4): destination with the same identifier (na
+me{equation.4.12}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.78 	{\small\be
+                
 Overfull \hbox (35.0877pt too wide) in alignment at lines 78--82
  [][][] []
  []
@@ -810,100 +829,73 @@ Overfull \hbox (31.74652pt too wide) in paragraph at lines 70--76
 m/it/10 (-20) . 
  []
 
-[6pdfTeX warning (ext4): destination with the same identifier (name{equation.4.
-12}) has been already used, duplicate ignored
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.91 
-     pdfTeX warning (ext4): destination with the same identifier (name{equation
-.5.13}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.91 
-     ]
 Overfull \hbox (40.59235pt too wide) in alignment at lines 126--131
  [][][] []
  []
 
-) (./sec/exp.tex
-<./img/betag_converge_G10_p100.pdf, id=349, 722.7pt x 578.16pt>
+
+Underfull \vbox (badness 5696) has occurred while \output is active []
+
+ [6pdfTeX warning (ext4): destination with the same identifier (name{equation.5
+.13}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.131 	\ee
+          }]pdfTeX warning (ext4): destination with the same identifier (name{e
+quation.5.14}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.139 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.5.14}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.139 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.5.14}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.139 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.5.14}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.139 	\be
+          ) (./sec/exp.tex
+<./img/betag_converge_G10_p100.pdf, id=350, 722.7pt x 578.16pt>
 File: ./img/betag_converge_G10_p100.pdf Graphic file (type pdf)
 <use ./img/betag_converge_G10_p100.pdf>
 Package pdftex.def Info: ./img/betag_converge_G10_p100.pdf  used on input line 
 43.
 (pdftex.def)             Requested size: 112.19708pt x 89.75502pt.
-<./img/betag_converge_noise_G10_p100.pdf, id=350, 722.7pt x 578.16pt>
+<./img/betag_converge_noise_G10_p100.pdf, id=351, 722.7pt x 578.16pt>
 File: ./img/betag_converge_noise_G10_p100.pdf Graphic file (type pdf)
 <use ./img/betag_converge_noise_G10_p100.pdf>
 Package pdftex.def Info: ./img/betag_converge_noise_G10_p100.pdf  used on input
  line 48.
 (pdftex.def)             Requested size: 112.19708pt x 89.75502pt.
-<./img/betag_converge_G10_p100_fast.pdf, id=351, 722.7pt x 578.16pt>
+<./img/betag_converge_G10_p100_fast.pdf, id=352, 722.7pt x 578.16pt>
 File: ./img/betag_converge_G10_p100_fast.pdf Graphic file (type pdf)
 <use ./img/betag_converge_G10_p100_fast.pdf>
 Package pdftex.def Info: ./img/betag_converge_G10_p100_fast.pdf  used on input 
 line 54.
 (pdftex.def)             Requested size: 112.19708pt x 89.75502pt.
-<./img/betag_converge_G100_p1000_shrink.pdf, id=352, 722.7pt x 578.16pt>
+<./img/betag_converge_G100_p1000_shrink.pdf, id=353, 722.7pt x 578.16pt>
 File: ./img/betag_converge_G100_p1000_shrink.pdf Graphic file (type pdf)
 <use ./img/betag_converge_G100_p1000_shrink.pdf>
 Package pdftex.def Info: ./img/betag_converge_G100_p1000_shrink.pdf  used on in
 put line 58.
 (pdftex.def)             Requested size: 112.19708pt x 89.75502pt.
-
-Underfull \hbox (badness 1132) in paragraph at lines 132--132
-[][][]\T1/ptm/m/n/9 (+20) By blood can-cer, we mean any can-cer orig-i-nate fro
-m
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [7pdfTeX warning (ext4): destination with the same identifier (name{equation.5
 .14}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.139 
-      pdfTeX warning (ext4): destination with the same identifier (name{equatio
-n.5.14}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.139 
-      ]
-
-LaTeX Warning: Reference `?' on page 8 undefined on input line 149.
-
-
-Underfull \vbox (badness 1478) has occurred while \output is active []
-
-
-
-pdfTeX warning: pdflatex.exe (file ./img/dr4.pdf): PDF inclusion: found PDF ver
-sion <1.6>, but at most version <1.5> allowed
-<./img/dr4.pdf, id=374, 280.33372pt x 200.98889pt>
-File: ./img/dr4.pdf Graphic file (type pdf)
-<use ./img/dr4.pdf>
-Package pdftex.def Info: ./img/dr4.pdf  used on input line 153.
-(pdftex.def)             Requested size: 156.10677pt x 111.9243pt.
-<./img/lung-blood-barplot.pdf, id=375, 794.97pt x 614.295pt>
-File: ./img/lung-blood-barplot.pdf Graphic file (type pdf)
-<use ./img/lung-blood-barplot.pdf>
-Package pdftex.def Info: ./img/lung-blood-barplot.pdf  used on input line 157.
-(pdftex.def)             Requested size: 146.34824pt x 113.08038pt.
-<./img/Saracatinib.pdf, id=376, 256.28583pt x 206.40999pt>
-File: ./img/Saracatinib.pdf Graphic file (type pdf)
-<use ./img/Saracatinib.pdf>
-Package pdftex.def Info: ./img/Saracatinib.pdf  used on input line 161.
-(pdftex.def)             Requested size: 141.46524pt x 113.93527pt.
-)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8 <./img/betag_converge_G10_p100.pdf> <./img/betag_converge_noise_G10_p100.pd
-f
+l.125 
+       <./img/betag_converge_G10_p100.pdf> <./img/betag_converge_noise_G10_p100
+.pdf
 
 pdfTeX warning: pdflatex.exe (file ./img/betag_converge_noise_G10_p100.pdf): PD
 F inclusion: multiple pdfs with page group included in a single page
@@ -915,8 +907,43 @@ pdfTeX warning: pdflatex.exe (file ./img/betag_converge_G10_p100_fast.pdf): PDF
 
 pdfTeX warning: pdflatex.exe (file ./img/betag_converge_G100_p1000_shrink.pdf):
  PDF inclusion: multiple pdfs with page group included in a single page
->] (./datasenrichment.bbl [9 <./img/dr4.pdf> <./img/lung-blood-barplot.pdf> <./
-img/Saracatinib.pdf>]) (./sec/proofs.tex [10
+>]
+Underfull \hbox (badness 1132) in paragraph at lines 132--132
+[][][]\T1/ptm/m/n/9 (+20) By blood can-cer, we mean any can-cer orig-i-nate fro
+m
+ []
+
+
+LaTeX Warning: Reference `?' on page 8 undefined on input line 149.
+
+
+
+pdfTeX warning: pdflatex.exe (file ./img/dr4.pdf): PDF inclusion: found PDF ver
+sion <1.6>, but at most version <1.5> allowed
+<./img/dr4.pdf, id=603, 280.33372pt x 200.98889pt>
+File: ./img/dr4.pdf Graphic file (type pdf)
+<use ./img/dr4.pdf>
+Package pdftex.def Info: ./img/dr4.pdf  used on input line 153.
+(pdftex.def)             Requested size: 156.10677pt x 111.9243pt.
+<./img/lung-blood-barplot.pdf, id=604, 794.97pt x 614.295pt>
+File: ./img/lung-blood-barplot.pdf Graphic file (type pdf)
+<use ./img/lung-blood-barplot.pdf>
+Package pdftex.def Info: ./img/lung-blood-barplot.pdf  used on input line 157.
+(pdftex.def)             Requested size: 146.34824pt x 113.08038pt.
+<./img/Saracatinib.pdf, id=605, 256.28583pt x 206.40999pt>
+File: ./img/Saracatinib.pdf Graphic file (type pdf)
+<use ./img/Saracatinib.pdf>
+Package pdftex.def Info: ./img/Saracatinib.pdf  used on input line 161.
+(pdftex.def)             Requested size: 141.46524pt x 113.93527pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8]
+(./datasenrichment.bbl [9 <./img/dr4.pdf> <./img/lung-blood-barplot.pdf> <./img
+/Saracatinib.pdf>]) (./sec/proofs.tex [10
 
 ]
 LaTeX Font Info:    Try loading font information for U+bbm on input line 126.
@@ -1459,49 +1486,52 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 154.
  ) 
 Here is how much of TeX's memory you used:
- 11894 strings out of 492639
- 174954 string characters out of 6133102
+ 11893 strings out of 492639
+ 174940 string characters out of 6133102
  330945 words of memory out of 5000000
  15092 multiletter control sequences out of 15000+600000
  68949 words of font info for 249 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,14n,45p,1876b,752s stack positions out of 5000i,500n,10000p,200000b,80000s
- <c:/Users/amira/.texlive2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600p
-k>{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2018/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx6.pfb><c:/texlive/2018/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmbx7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmbx9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mex10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7
-.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb>
-<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texli
-ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2018/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2018/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2018/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmib10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/c
-mextra/cmmib6.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmext
-ra/cmmib7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/c
-mmib9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive
-/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2018/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2018/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy5.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-6.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/20
-18/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2018/t
-exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2018/texmf
--dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb><c:/texlive/2018/texmf-dist
-/fonts/type1/urw/helvetic/uhvr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/ur
-w/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
-><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/
-texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on datasenrichment.pdf (26 pages, 1045420 bytes).
+pdfTeX warning (dest): name{subsection.2.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+ <c:/Users/amira/.texlive2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk>
+{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2018/texmf-dist/font
+s/type1/public/amsfonts/cm/cmbx6.pfb><c:/texlive/2018/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmbx9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cme
+x10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.p
+fb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><c
+:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2018/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2018/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmib10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cme
+xtra/cmmib6.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra
+/cmmib7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmm
+ib9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c
+:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2
+018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2018/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy5.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.
+pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/te
+xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2018
+/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2018/tex
+mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msbm7.pfb><c:/texlive/2018/texmf-dist/f
+onts/type1/urw/helvetic/uhvr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/
+times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
+c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/te
+xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on datasenrichment.pdf (26 pages, 1043179 bytes).
 PDF statistics:
- 1093 PDF objects out of 1200 (max. 8388607)
- 836 compressed objects within 9 object streams
- 165 named destinations out of 1000 (max. 500000)
+ 1092 PDF objects out of 1200 (max. 8388607)
+ 835 compressed objects within 9 object streams
+ 164 named destinations out of 1000 (max. 500000)
  35891 words of extra memory for PDF output out of 42996 (max. 10000000)
 

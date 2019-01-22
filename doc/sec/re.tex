@@ -17,8 +17,7 @@ As a consequence, $\exists \alpha > 0$ such that $\forall \u \in \sphere$ we hav
 zero-mean, unit-variance sub-Gaussian with $\normth{\omega_{gi}}{\psi_2} \leq K$.
 \end{definition}
 
-\ab{Minor comment -- we are using variants of $k$ for different things, e.g., $k, K, \kappa$. While the notation is consistent, this can be a bit hard to follow. If possible, make the $\psi_2$
-norms $c, C$.}
+%\ab{Minor comment -- we are using variants of $k$ for different things, e.g., $k, K, \kappa$. While the notation is consistent, this can be a bit hard to follow. If possible, make the $\psi_2$ norms $c, C$.}
 
 Unlike standard high-dimensional statistical estimation, for RE condition to be true, parameters of the data enriched model \eqref{eq:dirtymodel} needs to satisfy a geometric condition under which trivial solutions such as $\ddelta_g=-\ddelta_0$ for all $g \in [G]_\setminus$ are avoided.
 To derive this condition, first note that each of the linear models in \eqref{eq:dirtymodel} is a superposition model \cite{guba16} or dirty statistical model \cite{yara13}. RE condition of individual superposition models can be established under the so-called Structural Coherence (SC) condition \cite{guba16, mctr13}. However, SC condition on each individual problem fails to utilize the true coupling structure in the data enriched model, where $\bbeta_0$ is involved in all models. In fact, as we show shortly, using SC on each individual model leads to radically pessimistic estimates of the sample complexity.
