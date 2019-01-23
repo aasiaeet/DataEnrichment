@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.15)  23 JAN 2019 08:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.15)  23 JAN 2019 13:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -535,25 +535,25 @@ LaTeX Warning: Label `fig syn2' multiply defined.
 )
 \openout1 = `datasenrichment.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 71.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 77.
  (c:/texlive/2018/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
-LaTeX Info: Redefining \microtypecontext on input line 71.
+LaTeX Info: Redefining \microtypecontext on input line 77.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -598,7 +598,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box42
-Package hyperref Info: Link coloring ON on input line 71.
+Package hyperref Info: Link coloring ON on input line 77.
 
 (c:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -608,9 +608,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count161
 )
-LaTeX Info: Redefining \ref on input line 71.
-LaTeX Info: Redefining \pageref on input line 71.
-LaTeX Info: Redefining \nameref on input line 71.
+LaTeX Info: Redefining \ref on input line 77.
+LaTeX Info: Redefining \pageref on input line 77.
+LaTeX Info: Redefining \nameref on input line 77.
 
 (./datasenrichment.out) (./datasenrichment.out)
 \@outlinefile=\write3
@@ -624,20 +624,20 @@ Package caption Info: End \AtBeginDocument code.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 114.
+(hyperref)                removing `\\' on input line 120.
 
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 114.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 120.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 114.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 120.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 114.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 120.
 \c@@affil@anon=\count162
 (c:/texlive/2018/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 114.
+LaTeX Font Info:    Try loading font information for U+msa on input line 120.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -645,7 +645,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (c:/texlive/2018/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 114.
+LaTeX Font Info:    Try loading font information for U+msb on input line 120.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -654,7 +654,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 
-Package hyperref Warning: Ignoring empty anchor on input line 124.
+Package hyperref Warning: Ignoring empty anchor on input line 130.
 
 (./sec/abstract.tex
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
@@ -677,31 +677,31 @@ File: ./img/concept.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./img/concept.pdf  used on input line 105.
 (pdftex.def)             Requested size: 224.91785pt x 151.62964pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--121
+Underfull \hbox (badness 10000) in paragraph at lines 119--122
 []\T1/ptm/m/n/10 (+20) Given $\OML/cmm/m/it/10 G$ \T1/ptm/m/n/10 (+20) groups a
 nd $\OML/cmm/m/it/10 n[]$ \T1/ptm/m/n/10 (+20) sam-ples in each as
  []
 
 
-Underfull \hbox (badness 2027) in paragraph at lines 118--121
+Underfull \hbox (badness 2027) in paragraph at lines 119--122
 \OMS/cmsy/m/n/10 ff\OT1/cmr/bx/n/10 x[]\OML/cmm/m/it/10 ; y[]\OMS/cmsy/m/n/10 g
 []g[]$\T1/ptm/m/n/10 (+20) , we can form the per group de-
  []
 
 [2 <./img/concept.pdf, page is rotated 90 degrees>]
-Overfull \hbox (14.48163pt too wide) in alignment at lines 147--152
+Overfull \hbox (14.48163pt too wide) in alignment at lines 148--153
  [][][] []
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 159.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 158.
 
 (c:/texlive/2018/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 159.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 158.
 
-Overfull \hbox (37.96513pt too wide) in alignment at lines 161--164
+Overfull \hbox (37.96513pt too wide) in alignment at lines 160--163
  [][][] []
  []
 
@@ -712,7 +712,7 @@ ion <1.6>, but at most version <1.5> allowed
 <./img/sc.pdf, id=175, 273.45363pt x 277.34215pt>
 File: ./img/sc.pdf Graphic file (type pdf)
 <use ./img/sc.pdf>
-Package pdftex.def Info: ./img/sc.pdf  used on input line 192.
+Package pdftex.def Info: ./img/sc.pdf  used on input line 191.
 (pdftex.def)             Requested size: 112.19708pt x 113.79564pt.
 
 
@@ -721,10 +721,10 @@ ersion <1.6>, but at most version <1.5> allowed
 <./img/deric.pdf, id=176, 282.52551pt x 277.34114pt>
 File: ./img/deric.pdf Graphic file (type pdf)
 <use ./img/deric.pdf>
-Package pdftex.def Info: ./img/deric.pdf  used on input line 197.
+Package pdftex.def Info: ./img/deric.pdf  used on input line 196.
 (pdftex.def)             Requested size: 116.6842pt x 114.54004pt.
 
-Overfull \hbox (4.48712pt too wide) in paragraph at lines 197--198
+Overfull \hbox (4.48712pt too wide) in paragraph at lines 196--197
 [][] 
  []
 
@@ -752,21 +752,18 @@ Overfull \hbox (16.29202pt too wide) in alignment at lines 18--21
  []
 
 
-Underfull \vbox (badness 6641) has occurred while \output is active []
-
- [3 <./img/sc.pdf, page is rotated 90 degrees> <./img/deric.pdf, page is rotate
-d 90 degrees>]
 Overfull \hbox (10.61212pt too wide) in alignment at lines 42--45
  [][][] []
  []
 
-) (./sec/re.tex [4pdfTeX warning (ext4): destination with the same identifier (
-name{equation.2.11}) has been already used, duplicate ignored
+[3 <./img/sc.pdf, page is rotated 90 degrees> <./img/deric.pdf, page is rotated
+ 90 degrees>]) (./sec/re.tex [4pdfTeX warning (ext4): destination with the same
+ identifier (name{equation.2.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.33 \end{prop}
-               ]) (./sec/bound.tex
+l.36 
+     ]) (./sec/bound.tex
 Overfull \hbox (0.51855pt too wide) in alignment at lines 6--12
  [][][] []
  []
@@ -793,20 +790,20 @@ Overfull \hbox (28.92108pt too wide) in alignment at lines 55--59
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.64 	\be
-         pdfTeX warning (ext4): destination with the same identifier (name{equa
-tion.4.12}) has been already used, duplicate ignored
+l.69 \end{example}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{equation.4.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.64 	\be
-         pdfTeX warning (ext4): destination with the same identifier (name{equa
-tion.4.12}) has been already used, duplicate ignored
+l.69 \end{example}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{equation.4.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.64 	\be
-         ]) (./sec/opt.tex
+l.69 \end{example}
+                  ]) (./sec/opt.tex
 Overfull \hbox (31.74652pt too wide) in paragraph at lines 70--76
  \T1/ptm/m/it/10 (-20) where $\OML/cmm/m/it/9 ^^Z \U/msa/m/n/9 , [] []$\T1/ptm/
 m/it/10 (-20) . 
@@ -817,9 +814,15 @@ m/it/10 (-20) .
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.131 	\ee
-          ]pdfTeX warning (ext4): destination with the same identifier (name{eq
-uation.5.15}) has been already used, duplicate ignored
+l.139 	{\small\be
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.5.15}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.139 	{\small\be
+                 ]pdfTeX warning (ext4): destination with the same identifier (
+name{equation.5.15}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.139 	{\small\be
@@ -868,14 +871,17 @@ File: ./img/betag_converge_G100_p1000_shrink.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./img/betag_converge_G100_p1000_shrink.pdf  used on in
 put line 57.
 (pdftex.def)             Requested size: 106.10078pt x 84.87645pt.
- [7pdfTeX warning (ext4): destination with the same identifier (name{equation.5
-.15}) has been already used, duplicate ignored
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.124 
-       <./img/betag_converge_G10_p100.pdf> <./img/betag_converge_noise_G10_p100
-.pdf
+Underfull \hbox (badness 1132) in paragraph at lines 133--133
+[][][]\T1/ptm/m/n/9 (+20) By blood can-cer, we mean any can-cer orig-i-nate fro
+m
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./img/betag_converge_G10_p100.pdf> <./img/betag_converge_noise_G10_p100.pd
+f
 
 pdfTeX warning: pdflatex.exe (file ./img/betag_converge_noise_G10_p100.pdf): PD
 F inclusion: multiple pdfs with page group included in a single page
@@ -888,54 +894,86 @@ pdfTeX warning: pdflatex.exe (file ./img/betag_converge_G10_p100_fast.pdf): PDF
 pdfTeX warning: pdflatex.exe (file ./img/betag_converge_G100_p1000_shrink.pdf):
  PDF inclusion: multiple pdfs with page group included in a single page
 >]
-Underfull \hbox (badness 1132) in paragraph at lines 131--131
-[][][]\T1/ptm/m/n/9 (+20) By blood can-cer, we mean any can-cer orig-i-nate fro
-m
- []
-
-
-LaTeX Warning: Reference `?' on page 8 undefined on input line 148.
-
-
 
 pdfTeX warning: pdflatex.exe (file ./img/dr4.pdf): PDF inclusion: found PDF ver
 sion <1.6>, but at most version <1.5> allowed
-<./img/dr4.pdf, id=681, 280.33372pt x 200.98889pt>
+<./img/dr4.pdf, id=684, 280.33372pt x 200.98889pt>
 File: ./img/dr4.pdf Graphic file (type pdf)
 <use ./img/dr4.pdf>
-Package pdftex.def Info: ./img/dr4.pdf  used on input line 153.
+Package pdftex.def Info: ./img/dr4.pdf  used on input line 155.
 (pdftex.def)             Requested size: 107.32153pt x 76.94392pt.
-<./img/Saracatinib.pdf, id=682, 256.28583pt x 206.40999pt>
+<./img/Saracatinib.pdf, id=685, 256.28583pt x 206.40999pt>
 File: ./img/Saracatinib.pdf Graphic file (type pdf)
 <use ./img/Saracatinib.pdf>
-Package pdftex.def Info: ./img/Saracatinib.pdf  used on input line 157.
+Package pdftex.def Info: ./img/Saracatinib.pdf  used on input line 159.
 (pdftex.def)             Requested size: 93.6198pt x 75.39963pt.
-<./img/lung-blood-barplot.pdf, id=683, 794.97pt x 614.295pt>
+<./img/lung-blood-barplot.pdf, id=686, 794.97pt x 614.295pt>
 File: ./img/lung-blood-barplot.pdf Graphic file (type pdf)
 <use ./img/lung-blood-barplot.pdf>
-Package pdftex.def Info: ./img/lung-blood-barplot.pdf  used on input line 168.
+Package pdftex.def Info: ./img/lung-blood-barplot.pdf  used on input line 171.
 (pdftex.def)             Requested size: 107.32153pt x 82.92624pt.
-<./img/skin-ovary-breast.pdf, id=684, 794.97pt x 614.295pt>
+<./img/skin-ovary-breast.pdf, id=687, 794.97pt x 614.295pt>
 File: ./img/skin-ovary-breast.pdf Graphic file (type pdf)
 <use ./img/skin-ovary-breast.pdf>
-Package pdftex.def Info: ./img/skin-ovary-breast.pdf  used on input line 172.
+Package pdftex.def Info: ./img/skin-ovary-breast.pdf  used on input line 175.
 (pdftex.def)             Requested size: 107.32153pt x 82.92624pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-)
+pdfTeX warning: pdflatex.exe (file ./img/bar1.pdf): PDF inclusion: found PDF ve
+rsion <1.6>, but at most version <1.5> allowed
+<./img/bar1.pdf, id=688, 794.97pt x 397.485pt>
+File: ./img/bar1.pdf Graphic file (type pdf)
+<use ./img/bar1.pdf>
+Package pdftex.def Info: ./img/bar1.pdf  used on input line 187.
+(pdftex.def)             Requested size: 107.32153pt x 53.65816pt.
+
+
+pdfTeX warning: pdflatex.exe (file ./img/bar2.pdf): PDF inclusion: found PDF ve
+rsion <1.6>, but at most version <1.5> allowed
+<./img/bar2.pdf, id=689, 794.97pt x 397.485pt>
+File: ./img/bar2.pdf Graphic file (type pdf)
+<use ./img/bar2.pdf>
+Package pdftex.def Info: ./img/bar2.pdf  used on input line 194.
+(pdftex.def)             Requested size: 107.32153pt x 53.65816pt.
+
+
+pdfTeX warning: pdflatex.exe (file ./img/bar3.pdf): PDF inclusion: found PDF ve
+rsion <1.6>, but at most version <1.5> allowed
+<./img/bar3.pdf, id=690, 794.97pt x 397.485pt>
+File: ./img/bar3.pdf Graphic file (type pdf)
+<use ./img/bar3.pdf>
+Package pdftex.def Info: ./img/bar3.pdf  used on input line 201.
+(pdftex.def)             Requested size: 107.32153pt x 53.65816pt.
+
+
+pdfTeX warning: pdflatex.exe (file ./img/bar4.pdf): PDF inclusion: found PDF ve
+rsion <1.6>, but at most version <1.5> allowed
+<./img/bar4.pdf, id=691, 794.97pt x 397.485pt>
+File: ./img/bar4.pdf Graphic file (type pdf)
+<use ./img/bar4.pdf>
+Package pdftex.def Info: ./img/bar4.pdf  used on input line 208.
+(pdftex.def)             Requested size: 107.32153pt x 53.65816pt.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8 <./img/dr4.pdf> <./img/Saracatinib.pdf> <./img/lung-blood-barplot.pdf> <./i
-mg/skin-ovary-breast.pdf>] (./datasenrichment.bbl
+mg/skin-ovary-breast.pdf> <./img/bar1.pdf, page is rotated 90 degrees> <./img/b
+ar2.pdf, page is rotated 90 degrees> <./img/bar3.pdf, page is rotated 90 degree
+s> <./img/bar4.pdf, page is rotated 90 degrees>])
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+(./datasenrichment.bbl
 LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 12.
- [9]) (./sec/proofs.tex [10]
+ [9] [10]) (./sec/proofs.tex [11
+
+]
 LaTeX Font Info:    Try loading font information for U+bbm on input line 128.
 
 (c:/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [11
+) [12
 
 pdfTeX warning (ext4): destination with the same identifier (name{equation.A.18
 }) has been already used, duplicate ignored
@@ -943,7 +981,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.A.18
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.167 \subsubsection
-                    {Lower Bounding the First Term}] [12pdfTeX warning (ext4): 
+                    {Lower Bounding the First Term}] [13pdfTeX warning (ext4): 
 destination with the same identifier (name{equation.A.20}) has been already use
 d, duplicate ignored
 
@@ -996,7 +1034,7 @@ ation.A.20}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.363 	\be
-           [13pdfTeX warning (ext4): destination with the same identifier (name
+           [14pdfTeX warning (ext4): destination with the same identifier (name
 {equation.A.20}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1027,7 +1065,7 @@ tm/m/it/10 (+20) , with prob-a-bil-ity at least $\OT1/cmr/m/n/10 1 \OMS/cmsy/m/
 n/10 ^^@
  []
 
-[14pdfTeX warning (ext4): destination with the same identifier (name{equation.A
+[15pdfTeX warning (ext4): destination with the same identifier (name{equation.A
 .22}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1059,7 +1097,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 795--797
 /10 (+20) as
  []
 
-[15pdfTeX warning (ext4): destination with the same identifier (name{equation.A
+[16pdfTeX warning (ext4): destination with the same identifier (name{equation.A
 .23}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1079,7 +1117,7 @@ cmm/m/it/10 a[] \OT1/cmr/m/n/10 = 2[] [] \OML/cmm/m/it/10 =b[]$ \T1/ptm/m/n/10
 (+20) where $\OML/cmm/m/it/10 b[] \OMS/cmsy/m/n/10 ^^T
  []
 
-[16pdfTeX warning (ext4): destination with the same identifier (name{equation.A
+[17pdfTeX warning (ext4): destination with the same identifier (name{equation.A
 .28}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1106,17 +1144,17 @@ l.899 	\ee
           ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [17]
+ [18]
 Overfull \hbox (10.24338pt too wide) in alignment at lines 982--999
  [][][] []
  []
 
-[18]
+[19]
 Overfull \hbox (3.4044pt too wide) in alignment at lines 1040--1045
  [][][] []
  []
 
-[19pdfTeX warning (ext4): destination with the same identifier (name{equation.A
+[20pdfTeX warning (ext4): destination with the same identifier (name{equation.A
 .41}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1137,7 +1175,7 @@ l.1111 	\ee
            ]
 Underfull \vbox (badness 2409) has occurred while \output is active []
 
- [20pdfTeX warning (ext4): destination with the same identifier (name{equation.
+ [21pdfTeX warning (ext4): destination with the same identifier (name{equation.
 B.43}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1149,7 +1187,7 @@ uation.B.43}) has been already used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1152 	\ee
-           ] [21pdfTeX warning (ext4): destination with the same identifier (na
+           ] [22pdfTeX warning (ext4): destination with the same identifier (na
 me{equation.B.43}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1234,13 +1272,13 @@ Underfull \hbox (badness 1077) in paragraph at lines 1245--1253
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [22pdfTeX warning (ext4): destination with the same identifier (name{equation.
+ [23pdfTeX warning (ext4): destination with the same identifier (name{equation.
 B.44}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1272 	\ee
-           ] [23]pdfTeX warning (ext4): destination with the same identifier (n
+           ] [24]pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.B.46}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1320,13 +1358,13 @@ uation.B.46}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1332 	\be
-            [24pdfTeX warning (ext4): destination with the same identifier (nam
+            [25pdfTeX warning (ext4): destination with the same identifier (nam
 e{equation.B.46}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1406 	\ee
-           ] [25pdfTeX warning (ext4): destination with the same identifier (na
+           ] [26pdfTeX warning (ext4): destination with the same identifier (na
 me{equation.B.47}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1339,41 +1377,38 @@ uation.B.51}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.1471 	\ee
            ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 160.
- [26pdfTeX warning (ext4): destination with the same identifier (name{equation.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 166.
+ [27pdfTeX warning (ext4): destination with the same identifier (name{equation.
 B.52}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.160 \end{document}
+l.166 \end{document}
                     pdfTeX warning (ext4): destination with the same identifier
  (name{equation.B.52}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.160 \end{document}
+l.166 \end{document}
                     ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 160.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 166.
  (./datasenrichment.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 160.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 160.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 166.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 166.
 Package rerunfilecheck Info: File `datasenrichment.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 160.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 166.
  ) 
 Here is how much of TeX's memory you used:
- 12036 strings out of 492639
- 177683 string characters out of 6133102
- 331959 words of memory out of 5000000
- 15170 multiletter control sequences out of 15000+600000
- 85584 words of font info for 277 fonts, out of 8000000 for 9000
+ 12069 strings out of 492639
+ 178238 string characters out of 6133102
+ 332057 words of memory out of 5000000
+ 15187 multiletter control sequences out of 15000+600000
+ 86077 words of font info for 284 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,14n,45p,1876b,752s stack positions out of 5000i,500n,10000p,200000b,80000s
  <c:/Users/amira/.texlive2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600p
@@ -1408,10 +1443,10 @@ exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2018/texmf
 w/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/
 texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on datasenrichment.pdf (26 pages, 1135999 bytes).
+Output written on datasenrichment.pdf (27 pages, 1359743 bytes).
 PDF statistics:
- 1214 PDF objects out of 1440 (max. 8388607)
- 945 compressed objects within 10 object streams
- 192 named destinations out of 1000 (max. 500000)
- 41016 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 1322 PDF objects out of 1440 (max. 8388607)
+ 1009 compressed objects within 11 object streams
+ 194 named destinations out of 1000 (max. 500000)
+ 41036 words of extra memory for PDF output out of 42996 (max. 10000000)
 

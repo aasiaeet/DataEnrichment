@@ -434,16 +434,16 @@ source("projectOntoL1.R")
 
 
 corrThresh <- 0.2
-# focusedCancerTypes <- c("HAEMATOPOIETIC_AND_LYMPHOID_TISSUE", "LUNG")
-focusedCancerTypes <- c("BREAST", "OVARY", "SKIN")
+focusedCancerTypes <- c("HAEMATOPOIETIC_AND_LYMPHOID_TISSUE", "LUNG")
+# focusedCancerTypes <- c("BREAST", "OVARY", "SKIN")
 
 
-load(file=file.path(paths$scratch, paste("newer_cvMinLambdas", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+load(file=file.path(paths$scratch, paste("newer_cvMinLambdas", paste(focusedCancerTypes,corrThresh, collapse = "_") ,".RData")))
 bestTaus <- cvMinLambdas
 # load(file=file.path(paths$scratch, paste("new_cvMinLambdas_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
 # bestLambdas <- cvMinLambdas
 # bestLambdas <- bestLambdas[25:48]#why the first 24 is garbage :)
-load(file=file.path(paths$scratch, paste("newester_cvMinLambdas", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+load(file=file.path(paths$scratch, paste("newester_cvMinLambdas", paste(focusedCancerTypes,corrThresh,  collapse = "_") ,".RData")))
 bestSharedTaus <- cvMinLambdas
 
 
@@ -532,8 +532,13 @@ for(file in allFiles){
   avgFreqOfImpIndex <- runningSumOfImpIndex / numBootStrap
   # impFeatureIndex <- (avgFreqOfImpIndex >= .8 & avgOfCoeffsEffect > 0.8) #avgOfCoeffsEffect > 0 select those features that increase y on average.
   # print(sum(impFeatureIndex) / 3)
-  impFeatureIndex <- (avgFreqOfImpIndex >= .4)
-  print(sum(impFeatureIndex) / (nGroup + 1))
+  # impFeatureIndex <- (avgFreqOfImpIndex >= .4)
+  impFeatureIndex <- c()
+  for(i in 1:(nGroup + 1)){
+    impFeatureIndex <- cbind(impFeatureIndex, order(avgFreqOfImpIndex[,i], decreasing = TRUE)[1:5])
+  }
+   
+  # print(sum(impFeatureIndex) / (nGroup + 1))
   
   for(i in 1:(nGroup+1)){
     fileConnGroup <- file(file.path(paths$scratch, paste(file, "group-huge-3",i,".txt")))
@@ -548,10 +553,10 @@ for(file in allFiles){
 }
 
 
-save(errFull, file=file.path(paths$scratch, paste("errDE", paste(focusedCancerTypes, collapse = "_") ,".RData")))
-save(errShared, file=file.path(paths$scratch, paste("errDEShared", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+save(errFull, file=file.path(paths$scratch, paste("errDE", paste(focusedCancerTypes, corrThresh, collapse = "_") ,".RData")))
+save(errShared, file=file.path(paths$scratch, paste("errDEShared", paste(focusedCancerTypes, corrThresh, collapse = "_") ,".RData")))
 
-pdf("errorBoxPlots.pdf")
+pdf(paste(focusedCancerTypes, corrThresh, "errorBoxPlots.pdf"))
 cnt <- 0 
 par(mfrow=c(3,2),mai = c(.2, 0.2, 0.2, 0.2), oma = c(1, 1, 2, 2))
 for(i in 1:24){

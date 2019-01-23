@@ -57,9 +57,11 @@ Finally, Figure \ref{fig syn2b} considers a very high-dimensional problem where 
 				\includegraphics[width=\textwidth]{./img/betag_converge_G100_p1000_shrink.pdf}
 				\caption{}\label{fig syn2b}
 			\end{subfigure}
+			\squeezeup
 			\caption{a) Noiseless fast convergence. b) Noise on the first group does not impact other groups as much. c) Increasing sample size improves rate of convergence. d) Our algorithm convergences fast even with a large number of groups $G=100$.}
 			\label{fig syn2}
 		\end{figure}
+	
 
 %%%%%%%%%%%%% Amir's exp commented for now
 %In this section we supplement our theoretical results with a simple synthetic experiment. 
@@ -145,7 +147,7 @@ Note that \dc{} outperforms BL in 21 and 18 out of 24 problems in TWO and THREE 
 
 To ensure that the prediction improvement of \dc{} over the baseline is significant, we supplement our analysis with the bootstrapped error of both methods for the TWO experiment.
 For each problem in the TWO experiment, we generate 100 bootstrapped data sets by sampling with replacement as $\{(\X^{(i)}_{\text{TWO}}, \y^{(i)}_{\text{TWO}})\}_{i=1}^{100}$.  
-Then, we fix $d_g$s hyper-parameters to values determined by cross-validation in the last stage and run both methods and compute pairs of MSEs as $\{(\text{MSE}^{(i)}_{\text{\dc}}, \text{MSE}^{(i)}_{\text{BL}})\}_{i=1}^{100}$. We perform paired t-test to determine if mean difference between MSEs is significant. In ? out of 24 problems \dc's MSE is lesser than BL's with significance level of $\alpha = 0.05$. A representative set of results is demonstrated in Figure \ref{?}. 
+Then, we fix $d_g$s hyper-parameters to values determined by cross-validation in the last stage and run both methods and compute pairs of MSEs as $\{(\text{MSE}^{(i)}_{\text{\dc}}, \text{MSE}^{(i)}_{\text{BL}})\}_{i=1}^{100}$. We perform paired t-test to determine if mean difference between MSEs is significant. In 21 out of 24 problems \dc's MSE is lesser than BL's with significance level of $\alpha = 0.05$. A representative set of results is demonstrated in Figure \ref{fig:allbars}. 
 
 	\begin{figure}
 	\centering
@@ -157,6 +159,7 @@ Then, we fix $d_g$s hyper-parameters to values determined by cross-validation in
 	\includegraphics[height=2.65cm]{./img/Saracatinib.pdf}
 	\caption{}\label{fig:Saracatinib}
 	\end{subfigure}
+	\squeezeup
 	\caption{a) A sample fitted dose-response curve where Activity Area $y_{gi}$ is shaded. b) Distribution of responses to Saracatinib for which some lung and blood cancer cell lines have responded.}
 	\label{fig syn2}
 	\end{figure}
@@ -172,14 +175,53 @@ Then, we fix $d_g$s hyper-parameters to values determined by cross-validation in
 		\includegraphics[width=\textwidth]{./img/skin-ovary-breast.pdf}
 		\caption{Skin, Ovary, and Breast}\label{fig:three}
 	\end{subfigure}
-	\caption{Comparison of Mean Square Error of \dc{} and BL in predicting the response to 24 drugs in TWO and THREE experiments. Each bar is the mean of MSE for 5-fold cross-validation.}
+	\squeezeup
+	\caption{Distribution of MSE Comparison of Mean Square Error of \dc{} and BL in predicting the response to 24 drugs in TWO and THREE experiments. Each bar is the mean of MSE for 5-fold cross-validation.}
 	\label{fig syn2}
 \end{figure}
+
+	\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.22\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./img/bar1.pdf}
+		\caption{}    
+%		\label{fig:mean and std of net14}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.22\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{./img/bar2.pdf}
+		\caption{}    
+%		\label{fig:mean and std of net14}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.22\textwidth}   
+		\centering 
+		\includegraphics[width=\textwidth]{./img/bar3.pdf}
+		\caption{}    
+%		\label{fig:mean and std of net14}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.22\textwidth}   
+		\centering 
+		\includegraphics[width=\textwidth]{./img/bar4.pdf}
+		\caption{}    
+%		\label{fig:mean and std of net14}
+	\end{subfigure}
+	\squeezeup
+	\caption{MSE for 100 bootstrapped dataset of four drugs of experiment TWO. (a),(b) Sample result of large difference between mean of MSEs and small p-values. (c) Smaller mean difference with significant p-value. (d) One of the three cases where \dc{} is outperformed by the baseline.} 
+	\label{fig:allbars}
+	\end{figure}
+
+
 {\bf Interpretation}
 %Next we focus on the interpretation of the selected genes. 
-We select Saracatinib, a drug which shows activity on both lung and blood cancers, Figure \ref{fig:Saracatinib}. 
-Fixing the $d_g$ parameters, we select the genes which have non-zero coefficient 40 times across 50 runs of PBGD on bootstrapped samples.
-Now, we have three lists of genes based on the supports of shared , lung , and blood parameters. 
+We select Saracatinib, a drug which shows activity on both lung and blood cancer cell lines, Figure \ref{fig:Saracatinib}. 
+Then, during the bootstrap experiment of TWO, we record support of the estimated parameters by \dc. 
+%Fixing the $d_g$ parameters, 
+We pick the top five most frequently selected genes across 100 bootstrapped runs for further analysis. 
+Now, we have three lists of genes for common, lung , and blood parameters. 
 We perform gene enrichment analysis using ToppGene \cite{chen09toppgene} to see where in functional/disease/drug databases these genes have been observed together with statistical significance. 
 Table \ref{table:1} summarizes a highlight of our findings which shows lung and blood parameters are correctly capturing a meaningful set of genes.% while the shared parameter has mixed set of genes. 
 %{\small 

@@ -103,8 +103,9 @@ Moreover, no computational results, such as rates of convergence of the optimiza
 \begin{figure}
 		\centering
 		\includegraphics[scale=.39]{./img/concept.pdf}
+		\squeezeup
 		\caption{A conceptual illustration of data enrichment model for learning representation of  different cat species. The common parameter $\bbeta_0$ captures a \emph{generic cat} which consists of shared features among all cats.}
-		\label{fig:cat}
+		\label{fig:cat}		
 \end{figure}
 
 
@@ -150,10 +151,8 @@ We propose the following Data Enrichment (DE) estimator $\hbbe$ for recovering t
 	\\ \nr
 	\text{s.t.} \quad \forall g \in [G]:f_g(\bbeta _g) \leq f_g(\bbeta _g^*).
 \ee}
-
 %We are investigating the conjecture that the pooled data from all groups will facilitate estimation of the common parameter $\bbeta_0^*$ in both samples complexity and error-bound rate regards.
 %In our work, we explicitly answer these questions as follows:
-
 We present several statistical and computational results for the DE estimator \eqref{eq:super} of the data enriched model:
 \begin{itemize}[leftmargin = .4cm]
 	\item The DE estimator \eqref{eq:super} succeeds if a geometric condition that we call \emph{Data EnRichment Incoherence Condition} (DERIC) is satisfied. Compared to other known geometric conditions in the literature such as structural coherence \cite{guba16} and stable recovery conditions \cite{mctr13}, DERIC is a considerably weaker condition.
@@ -184,7 +183,7 @@ The rest of this paper is organized as follows:
 First, we characterize the error set of our estimator and provide a deterministic error bound in Section \ref{sec:esti}.
 Then in Section \ref{sec:re}, we discuss the restricted eigenvalue condition and calculate the sample complexity required for the recovery of the true parameters by our estimator under DERIC condition.
 We close the statistical analysis in Section \ref{sec:error} by providing non-asymptotic high probability error bound for parameter recovery.
-We delineate our geometrically convergent algorithm, \dc{} in Section \ref{sec:opt} and finally supplement our work with synthetic and real data experiments in Sections \ref{sec:expds} and \ref{realexp}.
+We delineate our geometrically convergent algorithm, \dc{} in Section \ref{sec:opt} and finally supplement our work with synthetic and real experiments in Sections \ref{sec:expds} and \ref{realexp}.
 
 \begin{figure}[t!]
 	\centering
@@ -198,6 +197,7 @@ We delineate our geometrically convergent algorithm, \dc{} in Section \ref{sec:o
 		\caption{Data EnRichment Incoherence Condition (DERIC). }
 		\label{fig:deric}
 	\end{subfigure}
+	\squeezeup
 	\caption{a) State of the art condition for recovering common and individual parameters in superposition models where $\cC_g = \text{Cone}(\cE_g)$ are error cones and $\cE_g = \left\{\ddelta_g | f_g(\bbeta _g^* + \ddelta_g) \leq f_g(\bbeta _g^*)\right\}$ are the error sets for each parameter $\bbeta^*_g \in [G]$ \cite{guba16} b) Our more relaxed recovery condition which allows \emph{arbitrary non-zero fraction } of the error cones of individual parameters intersect with $-\cC_0$.}
 	\label{fig syn2}
 \end{figure}
