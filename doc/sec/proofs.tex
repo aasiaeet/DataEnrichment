@@ -1,7 +1,9 @@
 \newpage 
 \onecolumn
-\section{Proofs}
+\section{Proofs of Theorems}
 \label{sec:dsproofs}
+In this Section we present detail proof for each theorem and proposition. To avoid cluttering, during our proofs, we state some needed results as lemmas and provide their proof in the next Section \ref{sec:lemmas}. 
+
 \subsection{Proof of Theorem \ref{theo:deter}}
 \begin{proof}
 	Starting from the optimality inequality, for the lower bound with the set $\cH$ we get:
@@ -174,25 +176,7 @@ Our main result is the following lemma which uses the DERIC condition of the Def
 	\ee 	
 	which implies that $t_1(\X)=\inf_{\ddelta\in \cH} \sum_{g=1}^G\frac{n_G}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g})$ satisfies the same RHS bound of \eqref{eq:rhs}.
 \end{lemma}
-\begin{proof}
-	LHS of \eqref{eq:rhs} is the weighted summation of $\xi_g Q_{2\xi_g}(\ddelta_{0g}) = \norm{\ddelta_{0g}}{2}\xi \pr(|\langle \x, , \ddelta_{0g}/\norm{\ddelta_{0g}}{2} \rangle| > 2\xi) = \norm{\ddelta_{0g}}{2}\xi Q_{2\xi}(\u)$ where $\xi > 0$ and $\u = \ddelta_{0g}/\norm{\ddelta_{0g}}{2}$ is a unit length vector. 
-	So we can rewrite the LHS of \eqref{eq:rhs} as:
-	\be 
-	\nr 
-	\sum_{g=1}^G\frac{n_g}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g}) = \sum_{g=1}^G\frac{n_g}{n}\norm{\ddelta_{0} +  \ddelta_{g}}{2}\xi Q_{2\xi}(\u)
-	\ee 
-	With this observation, the lower bound of the Lemma \ref{lemm:shareInc} is a direct consequence of the following two results: 
-	\begin{lemma}\label{paley} Let $\u$ be any unit length vector and suppose $\x$ obeys Definiton \ref{def:obs}. Then for any $\u$, we have
-		\be 
-		Q_{2\xi}(\u) \geq \frac{(\alpha - 2\xi)^2}{4ck^2}.
-		\ee 	
-	\end{lemma}
-	\begin{lemma} \label{incolem main} Suppose Definition \ref{incodef} holds. Then, we have: 
-		\be 
-		\sum_{i=1}^G n_i\norm{\ddelta_0+\ddelta_i}{2}\geq\frac{\ratio\lamin}{3} \left(Gn\norm{\ddelta_0}{2}+\sum_{i=1}^Gn_i\norm{\ddelta_i}{2}\right), \quad \forall i \in [G]: \ddelta_i\in \cC_i.
-		\ee 
-	\end{lemma}	
-\end{proof}
+
 %\begin{proof}[Proof of Lemma \ref{lemm:secTerm}] Recall $\xi_g=\xi\tn{\ddelta_0+\ddelta_g}$. Using Lemma \ref{paley}, we have $Q_{2\xi_g}(\ddelta_{0g})\geq \frac{(\alpha - 2\xi)^2}{4cK^2}$.
 %	Hence, $f(\ddelta)$ obeys
 %	\[
@@ -266,7 +250,7 @@ Therefore:
 &\leq&  \frac{2\xi}{n}
 \ee 
 Note that for $\ddelta \in \cH$ we have $\norm{\ddelta_0}{2} + \frac{n_g}{n}\norm{\ddelta_g}{2} \leq 1$ which results in $\norm{\ddelta_0}{2} \leq 1$ and $\norm{\ddelta_g}{2} \leq \frac{n}{n_g}$. 
-Now, we can invoke the bounded difference inequality \cite[Theorem 6.2]{boucheron13} which says that with probability at least $1 - e^{-\tau^2/2}$ we have: $t_2(\X) \leq \ex t_2(\X) + \frac{\tau}{\sqrt{n}}$. 
+Now, we can invoke the bounded difference inequality from Theorem 6.2 of \cite{boucheron13} which says that with probability at least $1 - e^{-\tau^2/2}$ we have: $t_2(\X) \leq \ex t_2(\X) + \frac{\tau}{\sqrt{n}}$. 
 
 
 Having this concentration bound, it is enough to bound the expectation of the second term. 
@@ -397,85 +381,7 @@ Following lemma provides us with the bound on the expectation.
 	Finally, to conclude, we take $\tau = \sqrt{n} \kappa_{\min}/2$. 
 	\qed 
 
-\subsection{Proof of Lemma \ref{lemm:mainlem}}
-\begin{proof} 
-	To avoid cluttering let $h_g(\oomega_g, \X_g) = \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \u_g \rangle $, $e_g = \zeta_g k \omega(\cA_g) + \epsilon_g\sqrt{\log G} + \tau$, where $s_g = \sqrt{\frac{n}{n_g}}\sqrt{(2K^2 + 1)n_g}$.
-	\be
-	\label{eq:twoterms}
-	\pr\left( h_g(\oomega_g , \X_g) >  e_g s_g \right) 
-	&=& \pr \left( h_g(\oomega_g , \X_g) >  e_g s_g \Big| \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} > s_g \right) \pr\left(\sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} > s_g\right) \\ 
-	\nr
-	&+& \pr \left( h_g(\oomega_g , \X_g) >  e_g s_g \Big| \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} < s_g \right) \pr\left(\sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} < s_g\right) \\ 
-	\nr 
-	&\leq& \pr\left(\sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} > s_g \right) + \pr \left( h_g(\oomega_g , \X_g) >  e_g s_g \Big| \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} < s_g \right) \\
-	\nr 
-	&\leq& \pr\left(\norm{\oomega_g}{2} > \sqrt{(2K^2 + 1)n_g}\right) + \pr \left( \sup_{\u_g \in \cC_g \cap \sphere} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \u_g \rangle >  e_g  \right) \\
-	\nr 
-	&\leq& \pr\left(\norm{\oomega_g}{2} > \sqrt{(2K^2 + 1)n_g}\right) + \sup_{\v \in \sphere}\pr \left( \sup_{\u_g \in \cC_g \cap \sphere} \langle \X_g^T \v , \u_g \rangle >  e_g  \right)
-	\ee 
-	Let's focus on the first term. 
-	Since $\oomega_g$ consists of i.i.d. centered unit-variance sub-Gaussian elements with $\normth{\omega_{gi}}{\psi_2} < K$, $\omega_{gi}^2$ is sub-exponential with $\normth{\omega_{gi}}{\psi_1} < 2K^2$. 
-	Let's apply the Bernstein’s inequality to $\norm{\oomega_g}{2}^2 = \sum_{i=1}^{n_g} \omega_{gi}^2$:
-	\be 
-	\nr 
-	\pr\left( \big| \norm{\oomega_g}{2}^2  - \ex\norm{\oomega_g}{2}^2  \big|  > \tau \right) \leq 
-	2 \exp\left(-\nu_g  \min\left[\frac{\tau^2}{4K^4n_g}, \frac{\tau }{2K^2}\right]\right) 
-	\ee
-	We also know that $\ex \norm{\omega_g}{2}^2 \leq n_g$ \cite{banerjee14} which gives us:
-	\be
-	\nr 
-	\pr\left( \norm{\oomega_g}{2}  > \sqrt{n_g + \tau } \right) \leq 
-	2 \exp\left(-\nu_g  \min\left[\frac{\tau^2}{4K^4n_g}, \frac{\tau }{2K^2}\right]\right)
-	\ee	
-	%	Now substitute $\tau = t + \epsilon_g \log G$, where $\epsilon_g \geq 2K^2  \max(\sqrt{\frac{n_g}{\nu_g}}, \frac{1}{\nu_g})$. 
-	%	\be
-	%	\pr\left( \norm{\oomega_g}{2}  > \sqrt{n_g + t + \epsilon_g\log G } \right) 
-	%	&\leq& 2 \exp\left(-\nu_g  \min\left[\frac{(t + \epsilon_g\log G)^2}{4K^4n_g}, \frac{(t + \epsilon_g\log G) }{2K^2}\right]\right) \\ 
-	%	\nr 
-	%	&\leq&2 \exp\left(- \min\left[\frac{(t^2 + \epsilon_g^2 \log G)}{4K^4n_g/\nu_g }, \frac{(t + \epsilon_g\log G) }{2K^2/\nu_g }\right]\right) \\ 
-	%	\nr 
-	%	&\leq&2 \exp\left(\log G - \nu_g \min\left[\frac{t^2}{4K^4n_g}, \frac{t}{2K^2}\right]\right) \\
-	%	\nr 
-	%	&\leq& \frac{2}{G}\exp\left(-\nu_g \min\left[\frac{t^2}{4K^4n_g}, \frac{t}{2K^2}\right]\right)  
-	%	\ee 
-	Finally, we set $\tau = 2K^2 n_g$:
-	\be
-	\nr 
-	%\label{eq:omeggg}
-	\pr\left( \norm{\oomega_g}{2}  > \sqrt{(2K^2 + 1)n_g } \right) 
-	&\leq& 2\exp\left(-\nu_g n_g \right) = \frac{2}{(G+1)} \exp\left(-\nu_g n_g + \log (G+1)\right)
-	\ee 
-	Now we upper bound the second term of \eqref{eq:twoterms}.
-	Given any fixed $\v \in \sphere$, $\X_g \v$ is a sub-Gaussian random vector with $\normth{\X_g^T \v}{\psi_2} \leq C_gk$ \cite{banerjee14}. 
-	From Theorem 9 of \cite{banerjee14} for any $\v \in \sphere$ we have:
-	\be 
-%	\label{eq:widthbound}
-	\nr 
-	\pr \left( \sup_{\u_g \in \cA_g} \langle \X_g^T \v , \u_g \rangle >  \upsilon_g C_gk \omega(\cA_g) + t  \right)
-	\leq \pi_g \exp \left( - \left( \frac{t}{\theta_g C_g k \phi_g}\right)^2 \right)
-	\ee 	
-	where $\phi_g = \sup_{\u_g \in \cA_g} \norm{\u_g}{2}$ and in our problem $\phi_g = 1$. 
-	We now substitute $t = \tau + \epsilon_g \sqrt{\log (G+1)}$ where $\epsilon_g = \theta_g C_g k$.
-	\be 
-	\nr 
-	\pr \left( \sup_{\u_g \in \cA_g} \langle \X_g^T \v , \u_g \rangle >  \upsilon_g C_gk \omega(\cA_g) + \epsilon_g \sqrt{\log (G+1)} + \tau \right)
-	&\leq& \pi_g \exp \left( - \left( \frac{\tau + \epsilon_g \sqrt{\log (G+1)}}{\epsilon_g }\right)^2 \right) \\ 
-	\nr 
-	&\leq& \pi_g \exp \left( - \log G - \left( \frac{\tau}{\theta_g C_g k}\right)^2 \right) \\ 
-	\nr 
-	&\leq& \frac{\pi_g}{(G+1)} \exp \left( - \left( \frac{\tau}{\theta_g C_g k} \right)^2 \right) 
-	\ee 	
-	Now we put back results to the original inequality \eqref{eq:twoterms}:
-	\be 
-	\nr
-	&& \pr\left( h_g(\oomega_g , \X_g) >  \sqrt{\frac{n}{n_g}} \sqrt{(2K^2 + 1)n_g} \times \left(\upsilon_g C_gk \omega(\cA_g) + \epsilon_g \sqrt{\log (G+1)} +  \tau \right) \right) 
-	\\ \nr 
-	&\leq&  \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu_g  n_g - \log (G+1), \frac{\tau^2}{\theta_g^2 C_g^2 k^2}\right]\right) \\ 
-	\nr 
-	&\leq& \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu_g  n_g - \log (G+1), \frac{\tau^2}{\eta_g^2 k^2}\right]\right) 
-	\ee 
-	where $\sigma_g = \pi_g + 2$, $\zeta_g = \upsilon_g C_g$, $\eta_g = \theta_g C_g$. %, and $\epsilon_g = \max(\eta_g k, 2K^2  \max(\sqrt{\frac{n_g}{\nu_g}}, \frac{1}{\nu_g}))$.\qed 
-\end{proof}
+
 
 
 %\subsection{Proof of Theorem \ref{theo:ub} with $\frac{n_g}{n}$}
@@ -600,76 +506,20 @@ Following lemma provides us with the bound on the expectation.
 	\nr 
 	&\leq& \sigma \exp\left(-\min_{g \in [G]}\left[\nu_g  n_g - \log (G+1), \frac{\tau^2}{\eta_g^2 k^2}\right]\right) 
 	\ee 
-	where $\sigma = \max_{g \in [G]} \sigma_g$. 	 
+	where $\sigma = \max_{g \in [G]} \sigma_g$ and the last inequality is a result of the following lemma:
+	\begin{lemma}
+		\label{lemm:mainlem}
+		For $\x_{gi}$ and $\omega_{gi}$ defined in Definition \ref{def:obs} and $\tau > 0$, with probability at least $1 - \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu_g n_g - \log (G+1), \frac{\tau^2}{\eta_g^2 k^2}\right]\right)$ we have:
+		\be
+			\sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \u_g \rangle 
+			&\leq&
+			\sqrt{(2K^2 + 1)n} \left(\zeta_g k \omega(\cA_g) + \epsilon_g \sqrt{\log (G+1)} +  \tau \right), \nr
+		\ee
+		where $\sigma_g, \eta_g, \zeta_g$ and $\epsilon_g$ are group dependent constants.
+	\end{lemma}	
 \end{proof} 
 
 
-\subsection{Proof of Lemma \ref{lem:recurse}}
-\begin{proof}
-	We upper bound the individual error $\norm{\ddelta_g^{(t+1)}}{2}$ and the common one $\norm{\ddelta_0^{(t+1)}}{2}$ in the followings:
-	\be
-	\nr 
-	\norm{\ddelta_g^{(t+1)}}{2} &=& \norm{\bbeta _g^{(t+1)} - \bbeta _g^*}{2} \\ \nr  
-	&=& \normlr{\Pi_{\Omega_{f_g}} \bigg(\bbeta_g^{(t)} + \mu_g \X_g^T \Big(\y_g - \X_g \big(\bbeta_0^{(t)} + \bbeta_g^{(t)}\big) \Big) \bigg) - \bbeta _g^*}{2} \\ \nr 
-	\text{(Lemma 6.3 of \cite{oyrs15})}&=& \normlr{\Pi_{\Omega_{f_g}-\{ \bbeta _g^* \}} \bigg(\bbeta_g^{(t)} + \mu_g \X_g^T \Big(\y_g - \X_g \big(\bbeta_0^{(t)} + \bbeta_g^{(t)}\big) \Big) - \bbeta _g^* \bigg)}{2} \\ \nr 
-	&=& \normlr{\Pi_{\cE_g} \bigg(\ddelta_g^{(t)} + \mu_g \X_g^T \Big(\y_g - \X_g \big(\bbeta_0^{(t)} + \bbeta_g^{(t)}\big) - \X_g \big(\bbeta _0^* + \bbeta _g^* \big) + \X_g \big(\bbeta _0^* + \bbeta _g^*\big) \Big) \bigg)}{2} \\ \nr 
-	&=& \normlr{\Pi_{\cE_g} \bigg(\ddelta_g^{(t)} + \mu_g \X_g^T \Big(\oomega_g - \X_g \big(\ddelta_0^{(t)}  + \ddelta_g^{(t)}\big) \Big) \bigg)}{2} \\ \nr 
-	\text{(Lemma 6.4 of \cite{oyrs15})}&\leq&  \normlr{\Pi_{\cC_g} \bigg(\ddelta_g^{(t)} + \mu_g \X_g^T \Big(\oomega_g - \X_g \big(\ddelta_0^{(t)}  + \ddelta_g^{(t)}\big) \Big) \bigg)}{2} \\ \nr 
-	\text{(Lemma 6.2 of \cite{oyrs15})}&\leq&  \sup_{\v \in \cC_g \cap \ball} \v^T \bigg(\ddelta_g^{(t)} + \mu_g \X_g^T \Big(\oomega_g - \X_g \big(\ddelta_0^{(t)}  + \ddelta_g^{(t)}\big) \Big) \bigg) \\ \nr
-	(\cB_g =  \cC_g \cap \ball) &=&  \sup_{\v \in \cB_g} \v^T \bigg(\ddelta_g^{(t)} + \mu_g \X_g^T \Big(\oomega_g - \X_g \big(\ddelta_0^{(t)}  + \ddelta_g^{(t)}\big) \Big) \bigg) \\ \nr
-	&\leq&  \sup_{\v \in \cB_g} \v^T \big(\I_g - \mu_g \X_g^T \X_g\big) \ddelta_g^{(t)} +  \mu_g \sup_{\v \in \cB_g} \v^T \X_g^T \oomega_g  +  \mu_g \sup_{\v \in \cB_g} -\v^T \X_g^T \X_g \ddelta_0^{(t)}   \\ \nr
-	&\leq&  \normlr{\ddelta_g^{(t)}}{2} \sup_{\u, \v \in \cB_g} \v^T \big(\I_g - \mu_g \X_g^T \X_g\big) \u  +  \mu_g \norm{\oomega_g}{2} \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}  \\ \nr 
-	&+&  \mu_g  \norm{\ddelta_0^{(t)} }{2}  \sup_{\v \in \cB_g, \u \in \cB_0} -\v^T \X_g^T \X_g \u \\ \nr   
-	&=&  \rho_g(\mu_g)\norm{\ddelta_g^{(t)}}{2}   +   \xi_g(\mu_g) \norm{\oomega_g}{2} +  \phi_g(\mu_g) \norm{\ddelta_0^{(t)}}{2} 
-	\ee 
-%	where $\theta_f = 1$ for convex $f$ and $\theta_f = 2$ for the non-convex case. 
-	%	Note that the last term is lower bounded by zero. To see this clearly consider the set $\cB_{0g} = \{\ddelta_0 + \ddelta_{g} | \ddelta_0 \in \cC_0, \ddelta_g \in \cC_g, \norm{\ddelta_0 + \ddelta_g}{2} \leq 1\}$ where $\cB_0, \cB_g \subseteq \cB_{0g}$:
-	%	\be 
-	%	\label{eq:zerolb}
-	%	\inf_{\v \in \cB_g, \u \in \cB_0} \v^T \X_g^T \X_g \u &\geq& \inf_{\u \in \cB_{0g}} \norm{\X_g \u}{2}^2 \geq 0
-	%	\ee 
-	So the final bound becomes:
-	\be 
-	\label{eq:optg}
-	\norm{\ddelta_g^{(t+1)}}{2} &\leq&   \rho_g(\mu_g)\norm{\ddelta_g^{(t)}}{2}   +  \xi_g(\mu_g) \norm{\oomega_g}{2} + \phi_g(\mu_g) \norm{\ddelta_0^{(t)}}{2} 
-	\ee 	
-	Now we upper bound the error of common parameter. Remember common parameter's update:
-	$\bbeta _0^{(t+1)} = \Pi_{\Omega_{f_0}} \left(\bbeta_0^{(t)} + \mu_0 \X_0^T   
-	\begin{pmatrix}
-	(\y_1 - \X_1 (\bbeta_0^{(t)} + \bbeta _1^{(t)}))     \\
-	\vdots 	 \\
-	(\y_G - \X_G (\bbeta_0^{(t)} + \bbeta _G^{(t)})) 
-	\end{pmatrix}\right)$.
-	\be 
-	\nr 
-	\norm{\ddelta_0^{(t+1)}}{2} &=& \norm{\bbeta _0^{(t+1)} - \bbeta _0^*}{2} \\ \nr  \\ \nr 
-	&=& \normlr{\Pi_{\Omega_{f_0}} \bigg(\bbeta_0^{(t)} + \mu_0 \sum_{g = 1}^{G} \X_g^T \Big(\y_g - \X_g (\bbeta_0^{(t)} + \bbeta_g^{(t)}) \Big) \bigg) - \bbeta _0^*}{2} \\ \nr 
-	\text{(Lemma 6.3 of \cite{oyrs15})} &=& \normlr{\Pi_{\Omega_{f_0}-\{ \bbeta _0^* \}} \bigg(\bbeta_0^{(t)} + \mu_0 \sum_{g = 1}^{G}   \X_g^T \Big(\y_g - \X_g (\bbeta_0^{(t)} + \bbeta_g^{(t)}) \Big) - \bbeta _0^* \bigg)}{2} \\ \nr 
-	%		&=& \normlr{\Pi_{\cE_0} \bigg(\ddelta_0^{(t)} + \mu_0 \X_0^T \Big(\y - \X_0 \bbeta_0^{(t)} - \tD \bbeta _{1:g}^{t} - \X_0 \bbeta _0^* - \tD \bbeta _{1:g}^* + \X_0 \bbeta _0^* + \tD \bbeta _{1:g}^*   \Big) \bigg)}{2} \\ \nr 
-	%		&=& \normlr{\Pi_{\cE_0} \bigg(\ddelta_0^{(t)} + \mu_0 \X_0^T \Big(\oomega - \X_0 \big( \bbeta_0^{(t)} - \bbeta _0^* \big) - \tD \big( \bbeta _{1:g}^{t} - \bbeta _{1:g}^*  \big) \Big) \bigg)}{2} \\ \nr 
-	&=& \normlr{\Pi_{\cE_0} \bigg(\ddelta_0^{(t)} + \mu_0\sum_{g = 1}^{G}   \X_g^T \Big(\y_g - \X_g (\bbeta_0^{(t)} + \bbeta_g^{(t)}) \Big)}{2} \\ \nr 
-	\text{(Lemma 6.4 of \cite{oyrs15})} &\leq&  \normlr{\Pi_{\cC_0} \bigg(\ddelta_0^{(t)} + \mu_0 \sum_{g = 1}^{G}   \X_g^T \Big(\oomega_g - \X_g (\ddelta_0^{(t)} + \ddelta_g^{(t)}) \Big) \bigg)}{2} \\ \nr 
-	\text{(Lemma 6.2 of \cite{oyrs15})} &\leq&   \sup_{\v \in \cB_0 } \v^T \bigg(\ddelta_0^{(t)} + \mu_0 \sum_{g = 1}^{G}   \X_g^T \Big(\oomega_g - \X_g (\ddelta_0^{(t)} + \ddelta_g^{(t)}) \Big) \bigg)%, \quad \cB_0 =  \cC_0 \cap \ball 
-	\\ \nr
-	&\leq&  \sup_{\v \in \cB_0} \v^T \big(\I - \mu_0 \sum_{g = 1}^{G}   \X_g^T\X_g  \big) \ddelta_0^{(t)} +  \mu_0 \sup_{\v \in \cB_0} \v^T \sum_{g = 1}^{G}   \X_g^T \oomega_g 
-	\\ \nr 
-	&+&  \mu_0 \sup_{\v \in \cB_0}  -\v^T \sum_{g=1}^{G}   \X_g^T \X_g \ddelta_g^{(t)}
-	\\ \nr 
-	&\leq&  \norm{\ddelta_0^{(t)}}{2} \sup_{\u, \v \in \cB_0} \v^T \big(\I - \mu_0 \X_0^T\X_0  \big) \u  +  \mu_0 \sup_{\v \in \cB_0} \v^T \X_0^T \frac{\oomega_0}{\norm{\oomega_0}{2}} \norm{\oomega_0}{2} 
-	\\ \nr 
-	&+&  \mu_0 \sum_{g=1}^{G}  \sup_{\v_g \in \cB_0, \u_g \in \cB_g} - \v_g^T \X_g^T \X_g \u_g \norm{\ddelta_g^{(t)}}{2} \\ \label{rewrite}
-	&\leq&  \rho_0(\mu_0) \norm{\ddelta_0^{(t)}}{2}   +  \xi_0(\mu_0) \norm{\oomega_0}{2} +  \mu_0 \sum_{g=1}^{G}  \frac{\phi_g(\mu_g)}{\mu_g} \norm{\ddelta_g^{(t)}}{2} \\ \nr 
-	\ee 
-	
-	To avoid cluttering we drop $\mu_g$ as the arguments.
-	Putting together \eqref{eq:optg} and \eqref{rewrite} inequalities we reach to the followings: 
-	\be 
-	\nr 
-	\norm{\ddelta_g^{(t+1)}}{2} &\leq&   \rho_g\norm{\ddelta_g^{(t)}}{2}   +  \xi_g \norm{\oomega_g}{2} + \phi_g \norm{\ddelta_0^{(t)}}{2} 
-	\\ \nr 
-	\norm{\ddelta_0^{(t+1)}}{2} &\leq& \rho_0 \norm{\ddelta_0^{(t)}}{2} + \xi_0 \norm{\oomega_0}{2} + \mu_0 \sum_{g=1}^{G}  \frac{\phi_g}{\mu_g} \norm{\ddelta_g^{(t)}}{2}  
-	\ee 
-\end{proof}
 
 
 \subsection{Proof of Theorem \ref{theo:iter}}
@@ -685,7 +535,7 @@ Following lemma provides us with the bound on the expectation.
 	
 	\begin{lemma}
 		\label{lem:recurse}
-		We have the following recursive dependency between the error of $t+1$th iteration and $t$th iteration of PBGD:
+		We have the following recursive dependency between the error of $t+1$th iteration and $t$th iteration of DE:
 		\be 
 		\nr 
 		\norm{\ddelta_g^{(t+1)}}{2} &\leq&   \left(\rho_g(\mu_g)\norm{\ddelta_g^{(t)}}{2}   +  \xi_g(\mu_g) \norm{\oomega_g}{2} + \phi_g(\mu_g) \norm{\ddelta_0^{(t)}}{2} \right)
@@ -921,6 +771,7 @@ Following lemma provides us with the bound on the expectation.
 
 
 \subsection{Proof of Theorem \ref{theo:step}}
+\label{twolems}
 \begin{proof}
 	First we need following two lemmas which are proved separately in the following sections. 
 	
@@ -1198,54 +1049,35 @@ Following lemma provides us with the bound on the expectation.
 
 \end{proof} 
 
-\subsection{Proof of Lemma \ref{paley}}
-\begin{proof}
-	To obtain lower bound, we use the Paley--Zygmund inequality for the zero-mean, non-degenerate ($0 < \alpha \leq \ex |\langle \x, \u \rangle|, \u \in \sphere$) sub-Gaussian random vector $\x$ with $\normth{\x}{\psi_2} \leq k$ \cite{trop15}. 
-		\be 
-		\nr 
-		Q_{2\xi}(\u)  \geq \frac{(\alpha - 2\xi)^2}{4ck^2}.
-		\ee 	
-\end{proof}	
 
-\subsection{Proof of Lemma \ref{incolem main}}
+
+
+\section{Proofs of Lemmas}
+\label{sec:lemmas}
+Here, we present proofs of each lemma used during the proofs of theorems in Section \ref{sec:dsproofs}.
+
+
+\subsection{Proof of Lemma \ref{lemm:shareInc}}
 \begin{proof}
-	We split $\Gsm-\cI$ into two groups $\cJ,\cK$. $\cJ$ consists of $\ddelta_i$'s with $\norm{\ddelta_i}{2}\geq 2\norm{\ddelta_0}{2}$ and $\cK=\Gsm-\cI-\cJ$. We use the bounds
-	\be 
-	\norm{\ddelta_0+\ddelta_i}{2}\geq 
-	\begin{cases}
-		\lamin(\norm{\ddelta_i}{2}+\norm{\ddelta_0}{2}) &\text{if}~i\in \cI
-		\\ 
-		\norm{\ddelta_i}{2}/2 &\text{if}~i\in \cJ
-		\\
-		0 &\text{if}~i\in \cK			
-	\end{cases}
-	\ee 
-	This implies
-	\[
-	\sum_{i=1}^G n_i\norm{\ddelta_0+\ddelta_i}{2}\geq \sum_{i\in \cJ}\frac{n_i}{2}\norm{\ddelta_i}{2}+\lamin\sum_{i\in \cI} n_i (\norm{\ddelta_i}{2}+\norm{\ddelta_0}{2}).
-	\]
-	Let $S_\cS=\sum_{i\in \cS}n_i\norm{\ddelta_i}{2}$ for $\cS=\cI,\cJ,\cK$.
-	We know that over $\cK$, $\norm{\ddelta_i}{2}\leq 2\norm{\ddelta_0}{2}$ which implies $S_\cK = \sum_{i\in \cK}n_i\norm{\ddelta_i}{2}\leq 2\sum_{i\in \cK}n_i\norm{\ddelta_0}{2}\leq 2n\norm{\ddelta_0}{2}$. Set $\rinc=\min\{1/2,\lamin\ratio/3\}=\lamin\ratio/3$.  Using $1/2\geq \rinc$, we write:
+	LHS of \eqref{eq:rhs} is the weighted summation of $\xi_g Q_{2\xi_g}(\ddelta_{0g}) = \norm{\ddelta_{0g}}{2}\xi \pr(|\langle \x, , \ddelta_{0g}/\norm{\ddelta_{0g}}{2} \rangle| > 2\xi) = \norm{\ddelta_{0g}}{2}\xi Q_{2\xi}(\u)$ where $\xi > 0$ and $\u = \ddelta_{0g}/\norm{\ddelta_{0g}}{2}$ is a unit length vector. 
+	So we can rewrite the LHS of \eqref{eq:rhs} as:
 	\be 
 	\nr 
-	\sum_{i=1}^G n_i\norm{\ddelta_0+\ddelta_i}{2}
-	&\geq& \rinc S_\cJ +\lamin\sum_{i\in \cI}n_i (\norm{\ddelta_i}{2}+\norm{\ddelta_0}{2})
-	\\ \nr 
-	(S_\cK \leq 2n\norm{\ddelta_0}{2}) &\geq& \rinc S_\cJ +\rinc S_\cK - 2\rinc n\norm{\ddelta_0}{2}+\left(\sum_{i\in \cI} n_i\right)\lamin \norm{\ddelta_0}{2}+\lamin S_{\Ic}
-	\\ \nr 
-	(\lamin\geq \rinc) &\geq& \rinc (S_\cI + S_\cJ + S_\cK)+ \left(\left(\sum_{i\in \cI} n_i\right)\lamin-2\rinc n\right)\norm{\ddelta_0}{2}.
+	\sum_{g=1}^G\frac{n_g}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g}) = \sum_{g=1}^G\frac{n_g}{n}\norm{\ddelta_{0} +  \ddelta_{g}}{2}\xi Q_{2\xi}(\u)
 	\ee 
-	Now, observe that, assumption of the Definition \ref{incodef}, $\sum_{i\in \cI} n_i \geq \ratio n$ implies:
-	\be 
-	\nr 
-	\left(\sum_{i\in \cI} n_i\right)\lamin-2\rinc n\geq (\ratio\lamin -2\rinc)n\geq \rinc n.
-	\ee 
-	Combining all, we obtain:
-	\be 
-	\nr 
-	\sum_{i=1}^Gn_i \norm{\ddelta_0+\ddelta_i}{2} \geq \rinc (S_\cI + S_\cJ + S_\cK + \norm{\ddelta_0}{2}) = \rinc(n\norm{\ddelta_0}{2} +\sum_{i=1}^G n_i\norm{\ddelta_i}{2}).
-	\ee 
+	With this observation, the lower bound of the Lemma \ref{lemm:shareInc} is a direct consequence of the following two results: 
+	\begin{lemma}\label{paley} Let $\u$ be any unit length vector and suppose $\x$ obeys Definiton \ref{def:obs}. Then for any $\u$, we have
+		\be 
+		Q_{2\xi}(\u) \geq \frac{(\alpha - 2\xi)^2}{4ck^2}.
+		\ee 	
+	\end{lemma}
+	\begin{lemma} \label{incolem main} Suppose Definition \ref{incodef} holds. Then, we have: 
+		\be 
+		\sum_{i=1}^G n_i\norm{\ddelta_0+\ddelta_i}{2}\geq\frac{\ratio\lamin}{3} \left(Gn\norm{\ddelta_0}{2}+\sum_{i=1}^Gn_i\norm{\ddelta_i}{2}\right), \quad \forall i \in [G]: \ddelta_i\in \cC_i.
+		\ee 
+	\end{lemma}	
 \end{proof}
+
 
 
 \subsection{Proof of Lemma \ref{lemm:secTerm}}
@@ -1302,6 +1134,152 @@ Following lemma provides us with the bound on the expectation.
 	Note that the $\h_{gi}$ is a sub-Gaussian random vector which let us bound the $\ex \sup$ using the Gaussian width \cite{trop15} in the last step. 
 \end{proof}
 
+\subsection{Proof of Lemma \ref{lemm:mainlem}}
+\begin{proof} 
+	To avoid cluttering let $h_g(\oomega_g, \X_g) = \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \u_g \rangle $, $e_g = \zeta_g k \omega(\cA_g) + \epsilon_g\sqrt{\log G} + \tau$, where $s_g = \sqrt{\frac{n}{n_g}}\sqrt{(2K^2 + 1)n_g}$.
+	\be
+	\label{eq:twoterms}
+	\pr\left( h_g(\oomega_g , \X_g) >  e_g s_g \right) 
+	&=& \pr \left( h_g(\oomega_g , \X_g) >  e_g s_g \Big| \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} > s_g \right) \pr\left(\sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} > s_g\right) \\ 
+	\nr
+	&+& \pr \left( h_g(\oomega_g , \X_g) >  e_g s_g \Big| \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} < s_g \right) \pr\left(\sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} < s_g\right) \\ 
+	\nr 
+	&\leq& \pr\left(\sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} > s_g \right) + \pr \left( h_g(\oomega_g , \X_g) >  e_g s_g \Big| \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} < s_g \right) \\
+	\nr 
+	&\leq& \pr\left(\norm{\oomega_g}{2} > \sqrt{(2K^2 + 1)n_g}\right) + \pr \left( \sup_{\u_g \in \cC_g \cap \sphere} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \u_g \rangle >  e_g  \right) \\
+	\nr 
+	&\leq& \pr\left(\norm{\oomega_g}{2} > \sqrt{(2K^2 + 1)n_g}\right) + \sup_{\v \in \sphere}\pr \left( \sup_{\u_g \in \cC_g \cap \sphere} \langle \X_g^T \v , \u_g \rangle >  e_g  \right)
+	\ee 
+	Let's focus on the first term. 
+	Since $\oomega_g$ consists of i.i.d. centered unit-variance sub-Gaussian elements with $\normth{\omega_{gi}}{\psi_2} < K$, $\omega_{gi}^2$ is sub-exponential with $\normth{\omega_{gi}}{\psi_1} < 2K^2$. 
+	Let's apply the Bernstein’s inequality to $\norm{\oomega_g}{2}^2 = \sum_{i=1}^{n_g} \omega_{gi}^2$:
+	\be 
+	\nr 
+	\pr\left( \big| \norm{\oomega_g}{2}^2  - \ex\norm{\oomega_g}{2}^2  \big|  > \tau \right) \leq 
+	2 \exp\left(-\nu_g  \min\left[\frac{\tau^2}{4K^4n_g}, \frac{\tau }{2K^2}\right]\right) 
+	\ee
+	We also know that $\ex \norm{\omega_g}{2}^2 \leq n_g$ \cite{banerjee14} which gives us:
+	\be
+	\nr 
+	\pr\left( \norm{\oomega_g}{2}  > \sqrt{n_g + \tau } \right) \leq 
+	2 \exp\left(-\nu_g  \min\left[\frac{\tau^2}{4K^4n_g}, \frac{\tau }{2K^2}\right]\right)
+	\ee	
+	%	Now substitute $\tau = t + \epsilon_g \log G$, where $\epsilon_g \geq 2K^2  \max(\sqrt{\frac{n_g}{\nu_g}}, \frac{1}{\nu_g})$. 
+	%	\be
+	%	\pr\left( \norm{\oomega_g}{2}  > \sqrt{n_g + t + \epsilon_g\log G } \right) 
+	%	&\leq& 2 \exp\left(-\nu_g  \min\left[\frac{(t + \epsilon_g\log G)^2}{4K^4n_g}, \frac{(t + \epsilon_g\log G) }{2K^2}\right]\right) \\ 
+	%	\nr 
+	%	&\leq&2 \exp\left(- \min\left[\frac{(t^2 + \epsilon_g^2 \log G)}{4K^4n_g/\nu_g }, \frac{(t + \epsilon_g\log G) }{2K^2/\nu_g }\right]\right) \\ 
+	%	\nr 
+	%	&\leq&2 \exp\left(\log G - \nu_g \min\left[\frac{t^2}{4K^4n_g}, \frac{t}{2K^2}\right]\right) \\
+	%	\nr 
+	%	&\leq& \frac{2}{G}\exp\left(-\nu_g \min\left[\frac{t^2}{4K^4n_g}, \frac{t}{2K^2}\right]\right)  
+	%	\ee 
+	Finally, we set $\tau = 2K^2 n_g$:
+	\be
+	\nr 
+	%\label{eq:omeggg}
+	\pr\left( \norm{\oomega_g}{2}  > \sqrt{(2K^2 + 1)n_g } \right) 
+	&\leq& 2\exp\left(-\nu_g n_g \right) = \frac{2}{(G+1)} \exp\left(-\nu_g n_g + \log (G+1)\right)
+	\ee 
+	Now we upper bound the second term of \eqref{eq:twoterms}.
+	Given any fixed $\v \in \sphere$, $\X_g \v$ is a sub-Gaussian random vector with $\normth{\X_g^T \v}{\psi_2} \leq C_gk$ \cite{banerjee14}. 
+	From Theorem 9 of \cite{banerjee14} for any $\v \in \sphere$ we have:
+	\be 
+	%	\label{eq:widthbound}
+	\nr 
+	\pr \left( \sup_{\u_g \in \cA_g} \langle \X_g^T \v , \u_g \rangle >  \upsilon_g C_gk \omega(\cA_g) + t  \right)
+	\leq \pi_g \exp \left( - \left( \frac{t}{\theta_g C_g k \phi_g}\right)^2 \right)
+	\ee 	
+	where $\phi_g = \sup_{\u_g \in \cA_g} \norm{\u_g}{2}$ and in our problem $\phi_g = 1$. 
+	We now substitute $t = \tau + \epsilon_g \sqrt{\log (G+1)}$ where $\epsilon_g = \theta_g C_g k$.
+	\be 
+	\nr 
+	\pr \left( \sup_{\u_g \in \cA_g} \langle \X_g^T \v , \u_g \rangle >  \upsilon_g C_gk \omega(\cA_g) + \epsilon_g \sqrt{\log (G+1)} + \tau \right)
+	&\leq& \pi_g \exp \left( - \left( \frac{\tau + \epsilon_g \sqrt{\log (G+1)}}{\epsilon_g }\right)^2 \right) \\ 
+	\nr 
+	&\leq& \pi_g \exp \left( - \log G - \left( \frac{\tau}{\theta_g C_g k}\right)^2 \right) \\ 
+	\nr 
+	&\leq& \frac{\pi_g}{(G+1)} \exp \left( - \left( \frac{\tau}{\theta_g C_g k} \right)^2 \right) 
+	\ee 	
+	Now we put back results to the original inequality \eqref{eq:twoterms}:
+	\be 
+	\nr
+	&& \pr\left( h_g(\oomega_g , \X_g) >  \sqrt{\frac{n}{n_g}} \sqrt{(2K^2 + 1)n_g} \times \left(\upsilon_g C_gk \omega(\cA_g) + \epsilon_g \sqrt{\log (G+1)} +  \tau \right) \right) 
+	\\ \nr 
+	&\leq&  \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu_g  n_g - \log (G+1), \frac{\tau^2}{\theta_g^2 C_g^2 k^2}\right]\right) \\ 
+	\nr 
+	&\leq& \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu_g  n_g - \log (G+1), \frac{\tau^2}{\eta_g^2 k^2}\right]\right) 
+	\ee 
+	where $\sigma_g = \pi_g + 2$, $\zeta_g = \upsilon_g C_g$, $\eta_g = \theta_g C_g$. %, and $\epsilon_g = \max(\eta_g k, 2K^2  \max(\sqrt{\frac{n_g}{\nu_g}}, \frac{1}{\nu_g}))$.\qed 
+\end{proof}
+
+\subsection{Proof of Lemma \ref{lem:recurse}}
+\begin{proof}
+	We upper bound the individual error $\norm{\ddelta_g^{(t+1)}}{2}$ and the common one $\norm{\ddelta_0^{(t+1)}}{2}$ in the followings:
+	\be
+	\nr 
+	\norm{\ddelta_g^{(t+1)}}{2} &=& \norm{\bbeta _g^{(t+1)} - \bbeta _g^*}{2} \\ \nr  
+	&=& \normlr{\Pi_{\Omega_{f_g}} \bigg(\bbeta_g^{(t)} + \mu_g \X_g^T \Big(\y_g - \X_g \big(\bbeta_0^{(t)} + \bbeta_g^{(t)}\big) \Big) \bigg) - \bbeta _g^*}{2} \\ \nr 
+	\text{(Lemma 6.3 of \cite{oyrs15})}&=& \normlr{\Pi_{\Omega_{f_g}-\{ \bbeta _g^* \}} \bigg(\bbeta_g^{(t)} + \mu_g \X_g^T \Big(\y_g - \X_g \big(\bbeta_0^{(t)} + \bbeta_g^{(t)}\big) \Big) - \bbeta _g^* \bigg)}{2} \\ \nr 
+	&=& \normlr{\Pi_{\cE_g} \bigg(\ddelta_g^{(t)} + \mu_g \X_g^T \Big(\y_g - \X_g \big(\bbeta_0^{(t)} + \bbeta_g^{(t)}\big) - \X_g \big(\bbeta _0^* + \bbeta _g^* \big) + \X_g \big(\bbeta _0^* + \bbeta _g^*\big) \Big) \bigg)}{2} \\ \nr 
+	&=& \normlr{\Pi_{\cE_g} \bigg(\ddelta_g^{(t)} + \mu_g \X_g^T \Big(\oomega_g - \X_g \big(\ddelta_0^{(t)}  + \ddelta_g^{(t)}\big) \Big) \bigg)}{2} \\ \nr 
+	\text{(Lemma 6.4 of \cite{oyrs15})}&\leq&  \normlr{\Pi_{\cC_g} \bigg(\ddelta_g^{(t)} + \mu_g \X_g^T \Big(\oomega_g - \X_g \big(\ddelta_0^{(t)}  + \ddelta_g^{(t)}\big) \Big) \bigg)}{2} \\ \nr 
+	\text{(Lemma 6.2 of \cite{oyrs15})}&\leq&  \sup_{\v \in \cC_g \cap \ball} \v^T \bigg(\ddelta_g^{(t)} + \mu_g \X_g^T \Big(\oomega_g - \X_g \big(\ddelta_0^{(t)}  + \ddelta_g^{(t)}\big) \Big) \bigg) \\ \nr
+	(\cB_g =  \cC_g \cap \ball) &=&  \sup_{\v \in \cB_g} \v^T \bigg(\ddelta_g^{(t)} + \mu_g \X_g^T \Big(\oomega_g - \X_g \big(\ddelta_0^{(t)}  + \ddelta_g^{(t)}\big) \Big) \bigg) \\ \nr
+	&\leq&  \sup_{\v \in \cB_g} \v^T \big(\I_g - \mu_g \X_g^T \X_g\big) \ddelta_g^{(t)} +  \mu_g \sup_{\v \in \cB_g} \v^T \X_g^T \oomega_g  +  \mu_g \sup_{\v \in \cB_g} -\v^T \X_g^T \X_g \ddelta_0^{(t)}   \\ \nr
+	&\leq&  \normlr{\ddelta_g^{(t)}}{2} \sup_{\u, \v \in \cB_g} \v^T \big(\I_g - \mu_g \X_g^T \X_g\big) \u  +  \mu_g \norm{\oomega_g}{2} \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}  \\ \nr 
+	&+&  \mu_g  \norm{\ddelta_0^{(t)} }{2}  \sup_{\v \in \cB_g, \u \in \cB_0} -\v^T \X_g^T \X_g \u \\ \nr   
+	&=&  \rho_g(\mu_g)\norm{\ddelta_g^{(t)}}{2}   +   \xi_g(\mu_g) \norm{\oomega_g}{2} +  \phi_g(\mu_g) \norm{\ddelta_0^{(t)}}{2} 
+	\ee 
+	%	where $\theta_f = 1$ for convex $f$ and $\theta_f = 2$ for the non-convex case. 
+	%	Note that the last term is lower bounded by zero. To see this clearly consider the set $\cB_{0g} = \{\ddelta_0 + \ddelta_{g} | \ddelta_0 \in \cC_0, \ddelta_g \in \cC_g, \norm{\ddelta_0 + \ddelta_g}{2} \leq 1\}$ where $\cB_0, \cB_g \subseteq \cB_{0g}$:
+	%	\be 
+	%	\label{eq:zerolb}
+	%	\inf_{\v \in \cB_g, \u \in \cB_0} \v^T \X_g^T \X_g \u &\geq& \inf_{\u \in \cB_{0g}} \norm{\X_g \u}{2}^2 \geq 0
+	%	\ee 
+	So the final bound becomes:
+	\be 
+	\label{eq:optg}
+	\norm{\ddelta_g^{(t+1)}}{2} &\leq&   \rho_g(\mu_g)\norm{\ddelta_g^{(t)}}{2}   +  \xi_g(\mu_g) \norm{\oomega_g}{2} + \phi_g(\mu_g) \norm{\ddelta_0^{(t)}}{2} 
+	\ee 	
+	Now we upper bound the error of common parameter. Remember common parameter's update:
+	$\bbeta _0^{(t+1)} = \Pi_{\Omega_{f_0}} \left(\bbeta_0^{(t)} + \mu_0 \X_0^T   
+	\begin{pmatrix}
+	(\y_1 - \X_1 (\bbeta_0^{(t)} + \bbeta _1^{(t)}))     \\
+	\vdots 	 \\
+	(\y_G - \X_G (\bbeta_0^{(t)} + \bbeta _G^{(t)})) 
+	\end{pmatrix}\right)$.
+	\be 
+	\nr 
+	\norm{\ddelta_0^{(t+1)}}{2} &=& \norm{\bbeta _0^{(t+1)} - \bbeta _0^*}{2} \\ \nr  \\ \nr 
+	&=& \normlr{\Pi_{\Omega_{f_0}} \bigg(\bbeta_0^{(t)} + \mu_0 \sum_{g = 1}^{G} \X_g^T \Big(\y_g - \X_g (\bbeta_0^{(t)} + \bbeta_g^{(t)}) \Big) \bigg) - \bbeta _0^*}{2} \\ \nr 
+	\text{(Lemma 6.3 of \cite{oyrs15})} &=& \normlr{\Pi_{\Omega_{f_0}-\{ \bbeta _0^* \}} \bigg(\bbeta_0^{(t)} + \mu_0 \sum_{g = 1}^{G}   \X_g^T \Big(\y_g - \X_g (\bbeta_0^{(t)} + \bbeta_g^{(t)}) \Big) - \bbeta _0^* \bigg)}{2} \\ \nr 
+	%		&=& \normlr{\Pi_{\cE_0} \bigg(\ddelta_0^{(t)} + \mu_0 \X_0^T \Big(\y - \X_0 \bbeta_0^{(t)} - \tD \bbeta _{1:g}^{t} - \X_0 \bbeta _0^* - \tD \bbeta _{1:g}^* + \X_0 \bbeta _0^* + \tD \bbeta _{1:g}^*   \Big) \bigg)}{2} \\ \nr 
+	%		&=& \normlr{\Pi_{\cE_0} \bigg(\ddelta_0^{(t)} + \mu_0 \X_0^T \Big(\oomega - \X_0 \big( \bbeta_0^{(t)} - \bbeta _0^* \big) - \tD \big( \bbeta _{1:g}^{t} - \bbeta _{1:g}^*  \big) \Big) \bigg)}{2} \\ \nr 
+	&=& \normlr{\Pi_{\cE_0} \bigg(\ddelta_0^{(t)} + \mu_0\sum_{g = 1}^{G}   \X_g^T \Big(\y_g - \X_g (\bbeta_0^{(t)} + \bbeta_g^{(t)}) \Big)}{2} \\ \nr 
+	\text{(Lemma 6.4 of \cite{oyrs15})} &\leq&  \normlr{\Pi_{\cC_0} \bigg(\ddelta_0^{(t)} + \mu_0 \sum_{g = 1}^{G}   \X_g^T \Big(\oomega_g - \X_g (\ddelta_0^{(t)} + \ddelta_g^{(t)}) \Big) \bigg)}{2} \\ \nr 
+	\text{(Lemma 6.2 of \cite{oyrs15})} &\leq&   \sup_{\v \in \cB_0 } \v^T \bigg(\ddelta_0^{(t)} + \mu_0 \sum_{g = 1}^{G}   \X_g^T \Big(\oomega_g - \X_g (\ddelta_0^{(t)} + \ddelta_g^{(t)}) \Big) \bigg)%, \quad \cB_0 =  \cC_0 \cap \ball 
+	\\ \nr
+	&\leq&  \sup_{\v \in \cB_0} \v^T \big(\I - \mu_0 \sum_{g = 1}^{G}   \X_g^T\X_g  \big) \ddelta_0^{(t)} +  \mu_0 \sup_{\v \in \cB_0} \v^T \sum_{g = 1}^{G}   \X_g^T \oomega_g 
+	\\ \nr 
+	&+&  \mu_0 \sup_{\v \in \cB_0}  -\v^T \sum_{g=1}^{G}   \X_g^T \X_g \ddelta_g^{(t)}
+	\\ \nr 
+	&\leq&  \norm{\ddelta_0^{(t)}}{2} \sup_{\u, \v \in \cB_0} \v^T \big(\I - \mu_0 \X_0^T\X_0  \big) \u  +  \mu_0 \sup_{\v \in \cB_0} \v^T \X_0^T \frac{\oomega_0}{\norm{\oomega_0}{2}} \norm{\oomega_0}{2} 
+	\\ \nr 
+	&+&  \mu_0 \sum_{g=1}^{G}  \sup_{\v_g \in \cB_0, \u_g \in \cB_g} - \v_g^T \X_g^T \X_g \u_g \norm{\ddelta_g^{(t)}}{2} \\ \label{rewrite}
+	&\leq&  \rho_0(\mu_0) \norm{\ddelta_0^{(t)}}{2}   +  \xi_0(\mu_0) \norm{\oomega_0}{2} +  \mu_0 \sum_{g=1}^{G}  \frac{\phi_g(\mu_g)}{\mu_g} \norm{\ddelta_g^{(t)}}{2} \\ \nr 
+	\ee 
+	
+	To avoid cluttering we drop $\mu_g$ as the arguments.
+	Putting together \eqref{eq:optg} and \eqref{rewrite} inequalities we reach to the followings: 
+	\be 
+	\nr 
+	\norm{\ddelta_g^{(t+1)}}{2} &\leq&   \rho_g\norm{\ddelta_g^{(t)}}{2}   +  \xi_g \norm{\oomega_g}{2} + \phi_g \norm{\ddelta_0^{(t)}}{2} 
+	\\ \nr 
+	\norm{\ddelta_0^{(t+1)}}{2} &\leq& \rho_0 \norm{\ddelta_0^{(t)}}{2} + \xi_0 \norm{\oomega_0}{2} + \mu_0 \sum_{g=1}^{G}  \frac{\phi_g}{\mu_g} \norm{\ddelta_g^{(t)}}{2}  
+	\ee 
+\end{proof}
 
 \subsection{Proof of Lemma \ref{lemm:hpub}}
 We will need the following lemma in our proof. 
@@ -1450,5 +1428,55 @@ Now the proof for Lemma \ref{lemm:hpub}:
 	&\leq& \pr(\cE_2) + \pr(\cE_1)
 	\\ \nr
 	&\leq& 4\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2 \right)
+	\ee 
+\end{proof}
+
+
+\subsection{Proof of Lemma \ref{paley}}
+\begin{proof}
+	To obtain lower bound, we use the Paley--Zygmund inequality for the zero-mean, non-degenerate ($0 < \alpha \leq \ex |\langle \x, \u \rangle|, \u \in \sphere$) sub-Gaussian random vector $\x$ with $\normth{\x}{\psi_2} \leq k$ \cite{trop15}. 
+	\be 
+	\nr 
+	Q_{2\xi}(\u)  \geq \frac{(\alpha - 2\xi)^2}{4ck^2}.
+	\ee 	
+\end{proof}	
+
+\subsection{Proof of Lemma \ref{incolem main}}
+\begin{proof}
+	We split $\Gsm-\cI$ into two groups $\cJ,\cK$. $\cJ$ consists of $\ddelta_i$'s with $\norm{\ddelta_i}{2}\geq 2\norm{\ddelta_0}{2}$ and $\cK=\Gsm-\cI-\cJ$. We use the bounds
+	\be 
+	\norm{\ddelta_0+\ddelta_i}{2}\geq 
+	\begin{cases}
+		\lamin(\norm{\ddelta_i}{2}+\norm{\ddelta_0}{2}) &\text{if}~i\in \cI
+		\\ 
+		\norm{\ddelta_i}{2}/2 &\text{if}~i\in \cJ
+		\\
+		0 &\text{if}~i\in \cK			
+	\end{cases}
+	\ee 
+	This implies
+	\[
+	\sum_{i=1}^G n_i\norm{\ddelta_0+\ddelta_i}{2}\geq \sum_{i\in \cJ}\frac{n_i}{2}\norm{\ddelta_i}{2}+\lamin\sum_{i\in \cI} n_i (\norm{\ddelta_i}{2}+\norm{\ddelta_0}{2}).
+	\]
+	Let $S_\cS=\sum_{i\in \cS}n_i\norm{\ddelta_i}{2}$ for $\cS=\cI,\cJ,\cK$.
+	We know that over $\cK$, $\norm{\ddelta_i}{2}\leq 2\norm{\ddelta_0}{2}$ which implies $S_\cK = \sum_{i\in \cK}n_i\norm{\ddelta_i}{2}\leq 2\sum_{i\in \cK}n_i\norm{\ddelta_0}{2}\leq 2n\norm{\ddelta_0}{2}$. Set $\rinc=\min\{1/2,\lamin\ratio/3\}=\lamin\ratio/3$.  Using $1/2\geq \rinc$, we write:
+	\be 
+	\nr 
+	\sum_{i=1}^G n_i\norm{\ddelta_0+\ddelta_i}{2}
+	&\geq& \rinc S_\cJ +\lamin\sum_{i\in \cI}n_i (\norm{\ddelta_i}{2}+\norm{\ddelta_0}{2})
+	\\ \nr 
+	(S_\cK \leq 2n\norm{\ddelta_0}{2}) &\geq& \rinc S_\cJ +\rinc S_\cK - 2\rinc n\norm{\ddelta_0}{2}+\left(\sum_{i\in \cI} n_i\right)\lamin \norm{\ddelta_0}{2}+\lamin S_{\Ic}
+	\\ \nr 
+	(\lamin\geq \rinc) &\geq& \rinc (S_\cI + S_\cJ + S_\cK)+ \left(\left(\sum_{i\in \cI} n_i\right)\lamin-2\rinc n\right)\norm{\ddelta_0}{2}.
+	\ee 
+	Now, observe that, assumption of the Definition \ref{incodef}, $\sum_{i\in \cI} n_i \geq \ratio n$ implies:
+	\be 
+	\nr 
+	\left(\sum_{i\in \cI} n_i\right)\lamin-2\rinc n\geq (\ratio\lamin -2\rinc)n\geq \rinc n.
+	\ee 
+	Combining all, we obtain:
+	\be 
+	\nr 
+	\sum_{i=1}^Gn_i \norm{\ddelta_0+\ddelta_i}{2} \geq \rinc (S_\cI + S_\cJ + S_\cK + \norm{\ddelta_0}{2}) = \rinc(n\norm{\ddelta_0}{2} +\sum_{i=1}^G n_i\norm{\ddelta_i}{2}).
 	\ee 
 \end{proof}
