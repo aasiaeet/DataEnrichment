@@ -1,10 +1,10 @@
 
 \section{Estimation Algorithm}
 \label{sec:opt}
-We propose \emph{Data Enricher} (DE) a projected block gradient descent algorithm, Algorithm \ref{alg2}, where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq d_g\}$ where $d_g = f_g(\bbeta_g^*)$ and is dropped to avoid cluttering. In practice, $d_g$ can be determined by cross-validation.
+We propose \emph{Data enrIChER} (\dc) a projected block gradient descent algorithm, Algorithm \ref{alg2}, where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq d_g\}$ where $d_g = f_g(\bbeta_g^*)$ and is dropped to avoid cluttering. In practice, $d_g$ can be determined by cross-validation.
 
 \begin{algorithm}[t]
-	\caption{  DE: {\sc Data Enricher}}
+	\caption{  \dc }
 	\label{alg2}
 	\begin{algorithmic}[1]
 		\STATE {\bfseries input:} $\X, \y$, learning rates $(\mu_0, \dots, \mu_G)$, initialization $\bbeta ^{(1)} = \0$
@@ -32,8 +32,8 @@ We propose \emph{Data Enricher} (DE) a projected block gradient descent algorith
 %\subsection{Convergence Rate Analysis}
 %\ab{Unless we need a second subsection, drop this subsection heading -- its unusual to have one subsection in a section.}
 
-To analysis convergence properties of DE, we should upper bound the error of each iteration.% of the DE algorithm.
-Let's $\ddelta^{(t)} = \bbeta^{(t)} - \bbeta^*$ be the error of  iteration $t$ of DE, i.e., the distance from the true parameter (not the optimization minimum, $\hbbe$).
+To analysis convergence properties of \dc, we should upper bound the error of each iteration.% of the DE algorithm.
+Let's $\ddelta^{(t)} = \bbeta^{(t)} - \bbeta^*$ be the error of  iteration $t$ of \dc, i.e., the distance from the true parameter (not the optimization minimum, $\hbbe$).
 %The goal of this chapter is to show that the $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^t}{2}$ decreases exponentially fast it $t$, and converges to the upper bound of the statistical error $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}$ characterized in \eqref{eq:general}.
 We show that $\norm{\ddelta^{(t)}}{2}$ decreases exponentially fast in $t$ to the statistical error $\norm{\ddelta}{2} = \norm{\hbbe - \bbeta^*}{2}$.
 %In other word, we show that the optimization error $\norm{\hbbe - \bbeta^(t)}{2}$ linearly converges to zero.
@@ -136,13 +136,12 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 \begin{corollary}
 	\label{corr:show}
 	For enough number of samples, iterations of DE algorithm with step sizes $\mu_0 = \Theta(\frac{1}{n})$ and $\mu_g =  \Theta(\frac{1}{\sqrt{n n_g}})$ geometrically converges to the following with high probability:
-	\be
+	{\small\be
 	\label{eq:scaled}
-	&&\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{\infty}}{2}
-	\leq \frac{(G+1) \sqrt{(2K^2 + 1)}}{\sqrt{n} (1 - r(\tau))}
-	\\  \nr
-	&\times& \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + C \sqrt{\log (G+1)} +  b \right),
-	\ee
+	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{\infty}}{2}
+	\leq c \frac{\zeta k \max_{g \in [G]} \omega(\cA_g) + C \sqrt{\log (G+1)} +  b}{\sqrt{n} (1 - r(\tau))}
+	\ee}
+	where $c = (G+1) \sqrt{(2K^2 + 1)}$. 
 \end{corollary}
 	It is instructive to compare RHS of \eqref{eq:scaled} with that of \eqref{eq:general}: $\kappa_{\min}$ defined in Theorem \ref{theo:re} corresponds to $(1 - r(\tau))$ % defined in Theorem \ref{theo:step}
 	and the extra $G+1$ factor corresponds to the sample condition number $\gamma = \max_{g \in [G] } \frac{n}{n_g}$.

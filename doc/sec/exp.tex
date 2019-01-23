@@ -39,22 +39,21 @@ Finally, Figure \ref{fig syn2b} considers a very high-dimensional problem where 
 \vspace{5mm}
 
 		\begin{figure}[t!]
-			\begin{subfigure}[b]{0.23\textwidth}
-				\includegraphics[width=\textwidth]{./img/betag_converge_G10_p100.pdf}
-				
+			\centering
+			\begin{subfigure}[b]{0.2175\textwidth}
+				\includegraphics[width=\textwidth]{./img/betag_converge_G10_p100.pdf}				
 				\caption{}\label{fig syn1a}
 			\end{subfigure} ~
-			\begin{subfigure}[b]{0.23\textwidth}
-				\includegraphics[width=\textwidth]{./img/betag_converge_noise_G10_p100.pdf}
-				
+			\begin{subfigure}[b]{0.2175\textwidth}
+				\includegraphics[width=\textwidth]{./img/betag_converge_noise_G10_p100.pdf}				
 				\caption{}\label{fig syn1b}
 			\end{subfigure}
 %			\label{fig syn1}
-			\begin{subfigure}[b]{0.23\textwidth}
+			\begin{subfigure}[b]{0.2175\textwidth}
 				\includegraphics[width=\textwidth]{./img/betag_converge_G10_p100_fast.pdf}
 				\caption{} \label{fig syn2a}
 			\end{subfigure} ~
-			\begin{subfigure}[b]{0.23\textwidth}
+			\begin{subfigure}[b]{0.2175\textwidth}
 				\includegraphics[width=\textwidth]{./img/betag_converge_G100_p1000_shrink.pdf}
 				\caption{}\label{fig syn2b}
 			\end{subfigure}
@@ -99,7 +98,7 @@ Finally, Figure \ref{fig syn2b} considers a very high-dimensional problem where 
 \vspace{-10mm}
 \section{Anti-Cancer Drug Sensitivity Prediction}
 \label{realexp}
-In this section, we investigate the application of DE in analyzing the response of cancer tumor cell lines to different doses of various drugs. 
+In this section, we investigate the application of \dc{} in analyzing the response of cancer tumor cell lines to different doses of various drugs. 
 Each cancer type (lung, blood, etc.) is a group $g$ in our DE model and the respond of patient $i$ with cancer $g$ to the drug is our output $y_{gi}$. 
 The set of features for each patient $\x_{gi}$ consists of gene expressions, copy number variation, and mutations and $y_{gi}$ is the ``activity area'' above the dose-response curve, Figure \ref{fig:dr}.
 Given $\x_{gi}$ and a drug, we have two goals: accurately predict a patient's response to the drug and identifying genetic predictors of drug sensitivity. 
@@ -139,14 +138,14 @@ Note that the features that get removed vary by problem, therefore the dimension
 
 %\subsection{Results}
 {\bf Prediction:} In each TWO and THREE experiments, we predict the drug sensitivity for 24 different drugs.  %= \{f_g(\bbeta) < b_g\}$
-Since the values of $d_g$  in constraint sets $\Omega_{f_g}(d_g)$  are unknown, we tune them by 5-fold cross-validation and report the mean squared error (MSE) of DE and a baseline method. 
+Since the values of $d_g$  in constraint sets $\Omega_{f_g}(d_g)$  are unknown, we tune them by 5-fold cross-validation and report the mean squared error (MSE) of \dc{} and a baseline method. 
 Our \emph{baseline} method BL is the LASSO \cite{tibs96} equivalent of DE where we set $\forall g \in [G]_\setminus d_g = 0$ and only estimate the common parameter $\bbeta_0$. 
-Figure \ref{fig:two} and \ref{fig:three} illustrate the performance of DE and BL for TWO and THREE experiments respectively. 
-Note that DE outperforms BL in 21 and 18 out of 24 problems in TWO and THREE experiments, respectively.
+Figure \ref{fig:two} and \ref{fig:three} illustrate the performance of \dc{} and BL for TWO and THREE experiments respectively. 
+Note that \dc{} outperforms BL in 21 and 18 out of 24 problems in TWO and THREE experiments, respectively.
 
-To ensure that the prediction improvement of DE over the baseline is significant, we supplement our analysis with the bootstrapped error of both methods for the TWO experiment.
+To ensure that the prediction improvement of \dc{} over the baseline is significant, we supplement our analysis with the bootstrapped error of both methods for the TWO experiment.
 For each problem in the TWO experiment, we generate 100 bootstrapped data sets by sampling with replacement as $\{(\X^{(i)}_{\text{TWO}}, \y^{(i)}_{\text{TWO}})\}_{i=1}^{100}$.  
-Then, we fix $d_g$s hyper-parameters to values determined by cross-validation in the last stage and run both methods and compute pairs of MSEs as $\{(\text{MSE}^{(i)}_{\text{DE}}, \text{MSE}^{(i)}_{\text{BL}})\}_{i=1}^{100}$. We perform paired t-test to determine if mean difference between MSEs is significant. In ? out of 24 problems DE's MSE is lesser than BL's with significance level of $\alpha = 0.05$. A representative set of results is demonstrated in Figure \ref{?}. 
+Then, we fix $d_g$s hyper-parameters to values determined by cross-validation in the last stage and run both methods and compute pairs of MSEs as $\{(\text{MSE}^{(i)}_{\text{\dc}}, \text{MSE}^{(i)}_{\text{BL}})\}_{i=1}^{100}$. We perform paired t-test to determine if mean difference between MSEs is significant. In ? out of 24 problems \dc's MSE is lesser than BL's with significance level of $\alpha = 0.05$. A representative set of results is demonstrated in Figure \ref{?}. 
 
 	\begin{figure}
 	\centering
@@ -164,6 +163,7 @@ Then, we fix $d_g$s hyper-parameters to values determined by cross-validation in
 
 
 	\begin{figure}
+	\centering
 	\begin{subfigure}[b]{0.22\textwidth}
 		\includegraphics[width=\textwidth]{./img/lung-blood-barplot.pdf}
 		\caption{Lung and Blood}\label{fig:two}
@@ -172,7 +172,7 @@ Then, we fix $d_g$s hyper-parameters to values determined by cross-validation in
 		\includegraphics[width=\textwidth]{./img/skin-ovary-breast.pdf}
 		\caption{Skin, Ovary, and Breast}\label{fig:three}
 	\end{subfigure}
-	\caption{Comparison of Mean Square Error of DE and BL in predicting the response to 24 drugs in TWO and THREE experiments. Each bar is the mean of MSE for 5-fold cross-validation.}
+	\caption{Comparison of Mean Square Error of \dc{} and BL in predicting the response to 24 drugs in TWO and THREE experiments. Each bar is the mean of MSE for 5-fold cross-validation.}
 	\label{fig syn2}
 \end{figure}
 {\bf Interpretation}

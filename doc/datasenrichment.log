@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.15)  23 JAN 2019 07:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.15)  23 JAN 2019 08:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -535,25 +535,25 @@ LaTeX Warning: Label `fig syn2' multiply defined.
 )
 \openout1 = `datasenrichment.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 66.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 71.
  (c:/texlive/2018/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
-LaTeX Info: Redefining \microtypecontext on input line 66.
+LaTeX Info: Redefining \microtypecontext on input line 71.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -598,7 +598,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box42
-Package hyperref Info: Link coloring ON on input line 66.
+Package hyperref Info: Link coloring ON on input line 71.
 
 (c:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -608,9 +608,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count161
 )
-LaTeX Info: Redefining \ref on input line 66.
-LaTeX Info: Redefining \pageref on input line 66.
-LaTeX Info: Redefining \nameref on input line 66.
+LaTeX Info: Redefining \ref on input line 71.
+LaTeX Info: Redefining \pageref on input line 71.
+LaTeX Info: Redefining \nameref on input line 71.
 
 (./datasenrichment.out) (./datasenrichment.out)
 \@outlinefile=\write3
@@ -624,20 +624,20 @@ Package caption Info: End \AtBeginDocument code.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 109.
+(hyperref)                removing `\\' on input line 114.
 
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 109.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 114.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 109.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 114.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 109.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 114.
 \c@@affil@anon=\count162
 (c:/texlive/2018/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 109.
+LaTeX Font Info:    Try loading font information for U+msa on input line 114.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -645,7 +645,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (c:/texlive/2018/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 109.
+LaTeX Font Info:    Try loading font information for U+msb on input line 114.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -654,7 +654,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 
-Package hyperref Warning: Ignoring empty anchor on input line 119.
+Package hyperref Warning: Ignoring empty anchor on input line 124.
 
 (./sec/abstract.tex
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
@@ -779,7 +779,7 @@ s-tributed ac-cord-
  []
 
 
-Overfull \hbox (30.03496pt too wide) in alignment at lines 41--45
+Overfull \hbox (35.17381pt too wide) in alignment at lines 41--45
  [][][] []
  []
 
@@ -822,56 +822,58 @@ l.131 	\ee
 uation.5.15}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.139 	\be
-          pdfTeX warning (ext4): destination with the same identifier (name{equ
-ation.5.15}) has been already used, duplicate ignored
+l.139 	{\small\be
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.5.15}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.139 	\be
-          pdfTeX warning (ext4): destination with the same identifier (name{equ
-ation.5.15}) has been already used, duplicate ignored
+l.139 	{\small\be
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.5.15}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.139 	\be
-          pdfTeX warning (ext4): destination with the same identifier (name{equ
-ation.5.15}) has been already used, duplicate ignored
+l.139 	{\small\be
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.5.15}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.139 	\be
-          ) (./sec/exp.tex
+l.139 	{\small\be
+                 
+Overfull \hbox (26.56401pt too wide) in alignment at lines 139--143
+ [][][] []
+ []
+
+) (./sec/exp.tex
 <./img/betag_converge_G10_p100.pdf, id=429, 722.7pt x 578.16pt>
 File: ./img/betag_converge_G10_p100.pdf Graphic file (type pdf)
 <use ./img/betag_converge_G10_p100.pdf>
 Package pdftex.def Info: ./img/betag_converge_G10_p100.pdf  used on input line 
-43.
-(pdftex.def)             Requested size: 112.19708pt x 89.75502pt.
+44.
+(pdftex.def)             Requested size: 106.10078pt x 84.87645pt.
 <./img/betag_converge_noise_G10_p100.pdf, id=430, 722.7pt x 578.16pt>
 File: ./img/betag_converge_noise_G10_p100.pdf Graphic file (type pdf)
 <use ./img/betag_converge_noise_G10_p100.pdf>
 Package pdftex.def Info: ./img/betag_converge_noise_G10_p100.pdf  used on input
  line 48.
-(pdftex.def)             Requested size: 112.19708pt x 89.75502pt.
+(pdftex.def)             Requested size: 106.10078pt x 84.87645pt.
 <./img/betag_converge_G10_p100_fast.pdf, id=431, 722.7pt x 578.16pt>
 File: ./img/betag_converge_G10_p100_fast.pdf Graphic file (type pdf)
 <use ./img/betag_converge_G10_p100_fast.pdf>
 Package pdftex.def Info: ./img/betag_converge_G10_p100_fast.pdf  used on input 
-line 54.
-(pdftex.def)             Requested size: 112.19708pt x 89.75502pt.
+line 53.
+(pdftex.def)             Requested size: 106.10078pt x 84.87645pt.
 <./img/betag_converge_G100_p1000_shrink.pdf, id=432, 722.7pt x 578.16pt>
 File: ./img/betag_converge_G100_p1000_shrink.pdf Graphic file (type pdf)
 <use ./img/betag_converge_G100_p1000_shrink.pdf>
 Package pdftex.def Info: ./img/betag_converge_G100_p1000_shrink.pdf  used on in
-put line 58.
-(pdftex.def)             Requested size: 112.19708pt x 89.75502pt.
-
-Underfull \vbox (badness 2799) has occurred while \output is active []
-
+put line 57.
+(pdftex.def)             Requested size: 106.10078pt x 84.87645pt.
  [7pdfTeX warning (ext4): destination with the same identifier (name{equation.5
 .15}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.125 
+l.124 
        <./img/betag_converge_G10_p100.pdf> <./img/betag_converge_noise_G10_p100
 .pdf
 
@@ -886,13 +888,13 @@ pdfTeX warning: pdflatex.exe (file ./img/betag_converge_G10_p100_fast.pdf): PDF
 pdfTeX warning: pdflatex.exe (file ./img/betag_converge_G100_p1000_shrink.pdf):
  PDF inclusion: multiple pdfs with page group included in a single page
 >]
-Underfull \hbox (badness 1132) in paragraph at lines 132--132
+Underfull \hbox (badness 1132) in paragraph at lines 131--131
 [][][]\T1/ptm/m/n/9 (+20) By blood can-cer, we mean any can-cer orig-i-nate fro
 m
  []
 
 
-LaTeX Warning: Reference `?' on page 8 undefined on input line 149.
+LaTeX Warning: Reference `?' on page 8 undefined on input line 148.
 
 
 
@@ -901,16 +903,13 @@ sion <1.6>, but at most version <1.5> allowed
 <./img/dr4.pdf, id=681, 280.33372pt x 200.98889pt>
 File: ./img/dr4.pdf Graphic file (type pdf)
 <use ./img/dr4.pdf>
-Package pdftex.def Info: ./img/dr4.pdf  used on input line 154.
+Package pdftex.def Info: ./img/dr4.pdf  used on input line 153.
 (pdftex.def)             Requested size: 107.32153pt x 76.94392pt.
 <./img/Saracatinib.pdf, id=682, 256.28583pt x 206.40999pt>
 File: ./img/Saracatinib.pdf Graphic file (type pdf)
 <use ./img/Saracatinib.pdf>
-Package pdftex.def Info: ./img/Saracatinib.pdf  used on input line 158.
+Package pdftex.def Info: ./img/Saracatinib.pdf  used on input line 157.
 (pdftex.def)             Requested size: 93.6198pt x 75.39963pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 <./img/lung-blood-barplot.pdf, id=683, 794.97pt x 614.295pt>
 File: ./img/lung-blood-barplot.pdf Graphic file (type pdf)
 <use ./img/lung-blood-barplot.pdf>
@@ -921,6 +920,9 @@ File: ./img/skin-ovary-breast.pdf Graphic file (type pdf)
 <use ./img/skin-ovary-breast.pdf>
 Package pdftex.def Info: ./img/skin-ovary-breast.pdf  used on input line 172.
 (pdftex.def)             Requested size: 107.32153pt x 82.92624pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1337,24 +1339,24 @@ uation.B.51}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.1471 	\ee
            ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 155.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 160.
  [26pdfTeX warning (ext4): destination with the same identifier (name{equation.
 B.52}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.155 \end{document}
+l.160 \end{document}
                     pdfTeX warning (ext4): destination with the same identifier
  (name{equation.B.52}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.155 \end{document}
+l.160 \end{document}
                     ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 155.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 160.
  (./datasenrichment.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 155.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 155.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 160.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 160.
 Package rerunfilecheck Info: File `datasenrichment.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1364,14 +1366,14 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 155.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 160.
  ) 
 Here is how much of TeX's memory you used:
- 12008 strings out of 492639
- 177385 string characters out of 6133102
- 331977 words of memory out of 5000000
- 15164 multiletter control sequences out of 15000+600000
- 69981 words of font info for 259 fonts, out of 8000000 for 9000
+ 12036 strings out of 492639
+ 177683 string characters out of 6133102
+ 331959 words of memory out of 5000000
+ 15170 multiletter control sequences out of 15000+600000
+ 85584 words of font info for 277 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,14n,45p,1876b,752s stack positions out of 5000i,500n,10000p,200000b,80000s
  <c:/Users/amira/.texlive2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600p
@@ -1406,10 +1408,10 @@ exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2018/texmf
 w/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/
 texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on datasenrichment.pdf (26 pages, 1134938 bytes).
+Output written on datasenrichment.pdf (26 pages, 1135999 bytes).
 PDF statistics:
  1214 PDF objects out of 1440 (max. 8388607)
  945 compressed objects within 10 object streams
  192 named destinations out of 1000 (max. 500000)
- 35896 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 41016 words of extra memory for PDF output out of 42996 (max. 10000000)
 
