@@ -1,10 +1,10 @@
 
 \section{Estimation Algorithm}
 \label{sec:opt}
-We propose the following Projected Block Gradient Descent algorithm (PBGD), Algorithm \ref{alg2}, where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq d_g\}$ where $d_g = f_g(\bbeta_g^*)$ and is dropped to avoid cluttering. In practice, $d_g$ can be determined by cross-validation.
+We propose \emph{Data Enricher} (DE) a projected block gradient descent algorithm, Algorithm \ref{alg2}, where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq d_g\}$ where $d_g = f_g(\bbeta_g^*)$ and is dropped to avoid cluttering. In practice, $d_g$ can be determined by cross-validation.
 
 \begin{algorithm}[t]
-	\caption{  PBGD: {\sc Projected Block Gradient Descent}}
+	\caption{  DE: {\sc Data Enricher}}
 	\label{alg2}
 	\begin{algorithmic}[1]
 		\STATE {\bfseries input:} $\X, \y$, learning rates $(\mu_0, \dots, \mu_G)$, initialization $\bbeta ^{(1)} = \0$
@@ -29,10 +29,11 @@ We propose the following Projected Block Gradient Descent algorithm (PBGD), Algo
 %In the following section, we show with these learning rates, Algorithm \ref{alg2} converges exponentially fast.
 
 %{\color{red} TODO: Intuitively explain why this choice makes sense.}
-\subsection{Convergence Rate Analysis}
+%\subsection{Convergence Rate Analysis}
+%\ab{Unless we need a second subsection, drop this subsection heading -- its unusual to have one subsection in a section.}
 
-Here, we want to upper bound the error of each iteration of the PBGD algorithm.
-Let's $\ddelta^{(t)} = \bbeta^{(t)} - \bbeta^*$ be the error of  iteration $t$ of PBGD, i.e., the distance from the true parameter (not the optimization minimum, $\hbbe$).
+To analysis convergence properties of DE, we should upper bound the error of each iteration.% of the DE algorithm.
+Let's $\ddelta^{(t)} = \bbeta^{(t)} - \bbeta^*$ be the error of  iteration $t$ of DE, i.e., the distance from the true parameter (not the optimization minimum, $\hbbe$).
 %The goal of this chapter is to show that the $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^t}{2}$ decreases exponentially fast it $t$, and converges to the upper bound of the statistical error $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}$ characterized in \eqref{eq:general}.
 We show that $\norm{\ddelta^{(t)}}{2}$ decreases exponentially fast in $t$ to the statistical error $\norm{\ddelta}{2} = \norm{\hbbe - \bbeta^*}{2}$.
 %In other word, we show that the optimization error $\norm{\hbbe - \bbeta^(t)}{2}$ linearly converges to zero.
@@ -49,8 +50,8 @@ We first start with the required definitions for our analysis.
 %	\ee
 	\be
 	\nr
-	\forall g \in [G]&:& \rho_g(\mu_g) = \sup_{\u, \v \in \cB_g} \v^T \big(\I_g - \mu_g \X_g^T \X_g\big) \u, 
-	\\ \nr 
+	\forall g \in [G]&:& \rho_g(\mu_g) = \sup_{\u, \v \in \cB_g} \v^T \big(\I_g - \mu_g \X_g^T \X_g\big) \u,
+	\\ \nr
 	&&\eta_g(\mu_g) = \mu_g \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}},
 	\\ \nr
 	\forall g \in [G]_\setminus&:& \phi_g(\mu_g) = \mu_g \sup_{\v \in \cB_g, \u \in \cB_0} -\v^T \X_g^T \X_g \u,
@@ -61,7 +62,7 @@ In the following theorem, we establish a deterministic bound on iteration errors
 \begin{theorem}
 	\label{theo:iter}
 	For Algorithm \ref{alg2} initialized by $\bbeta ^{(1)} = \0$, we have the following deterministic bound for the error at iteration $t + 1$:
-	{\small\be
+	{\be
 	\label{eq:singleiter}
 	&&\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
 	\\ \nr
@@ -76,16 +77,16 @@ In the following theorem, we establish a deterministic bound on iteration errors
 
 
 The RHS of \eqref{eq:singleiter} consists of two terms.
-If we keep $\rho < 1$, the first term approaches zero exponentially fast, i.e., with linear rate, and the second term determines the bound. %which depends on the sub-Gaussian noise $\oomega$, and therefore for noiseless case of $\y = \X \bbeta$ it becomes zero.
+If we keep $\rho < 1$, the first term approaches zero fast, 
+%i.e., with linear rate, 
+and the second term determines the bound. %which depends on the sub-Gaussian noise $\oomega$, and therefore for noiseless case of $\y = \X \bbeta$ it becomes zero.
 In the following, we show that for specific choices of step sizes $\mu_g$s, the second term can be upper bounded using the analysis of Section \ref{sec:error}.
 More specifically, the first term corresponds to the optimization error which shrinks in every iteration while the second term is constant times the upper bound of the statistical error characterized in Corollary \ref{corr:calcub}.
-Therefore, if we keep $\rho$ below one, the estimation error of PBGD algorithm linearly converges to the approximate statistical error bound. %and we get to $\hbbe$ exponentially fast.
+Therefore, if we keep $\rho$ below one, the estimation error of DE algorithm geometrically converges to the approximate statistical error bound. %and we get to $\hbbe$ exponentially fast.
 
 %i.e., $\norm{\hbbe - \bbeta^*}{2} = \norm{\ddelta}{2} =  \sqrt{\sum_{g=1}^{G} \norm{\ddelta_g}{2}^2} \leq \sum_{g=1}^{G} \norm{\ddelta_g}{2}$ where we characterized a scaled version of it as $\sum_{g=1}^{G} \sqrt{\frac{n_g}{n}}\norm{\ddelta_g}{2}$ in \eqref{eq:general}.
-
-
 One way for having $\rho < 1$ is to keep all arguments of $\max(\cdots)$  defining $\rho$ strictly below $1$. %, i.e., $\rho_g < 1/\theta_f $.
-To this end, we first establish high probability upper bound for $\rho_g$, $\eta_g$, and $\phi_g$ (in the Appendix) and then show that with enough number of samples and proper step sizes $\mu_g$, $\rho$ can be kept strictly below one with high probability. In Section~\ref{sec:expds}, we empirically illustrate such geometric convergence.
+To this end, we first establish high probability upper bound for $\rho_g$, $\eta_g$, and $\phi_g$ (in the Appendix \ref{twolems}) and then show that with enough number of samples and proper step sizes $\mu_g$, $\rho$ can be kept strictly below one with high probability. %In Section~\ref{sec:expds}, we empirically illustrate such geometric convergence.
 The high probability bounds for constants in Definition \ref{def:only} and the deterministic bound of Theorem \ref{theo:iter} leads to the following theorem which shows for enough number of samples, of the same order as the statistical sample complexity, we can keep $\rho$ below one and have geometric convergence.
 
 
@@ -104,9 +105,9 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 	\be
 	\nr
 %	&\theta_f = 1:&
-	&&\mu_0 = \frac{1}{4	n} \times \min_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+ \tau}{\sqrt{n_g}}\right)^{-2}, 
-	\\ \nr 
-	&&\mu_g =  \frac{1}{2\sqrt{n n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)^{-1}
+	\mu_0 &=& \frac{1}{4	n} \times \min_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+ \tau}{\sqrt{n_g}}\right)^{-2},
+	\\ \nr
+	\mu_g &=&  \frac{1}{2\sqrt{n n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)^{-1}
 %	\\ \nr
 %	&\theta_f = 2:& \mu_0 = \frac{1}{4	n} \times \frac{1}{\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^2} , \mu_g = \frac{l\left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)^{-1}}{8\sqrt{nn_g}\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^{2}}
 	\ee
@@ -122,36 +123,36 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 %	where $0 < l < 1$ is arbitrary,
 	updates of the Algorithm \ref{alg2} obey the following with high probability: %probability at least $ 1 - \upsilon \exp\left[\min_{g \in [G]}\left(-\min\left[\nu_g n_g - \log G, \gamma (\omega(\cA_g) + b)^2 , \frac{b^2}{\eta_g^2 k^2}\right]\right)\right] $:
 	%where $\upsilon = \max(28, \sigma)$ and $\gamma = \min_{g \in [G] } \gamma_g$. 	
-	{\small\be
+	\be
 	\nr
-	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
-	&\leq& r(\tau)^t \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\bbeta^*_g}{2}   \\ \nr 
+	&&\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
+	\leq r(\tau)^t \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\bbeta^*_g}{2}   \\ \nr
 	&+& \frac{(G+1) \sqrt{(2K^2 + 1)}}{\sqrt{n} (1 - r(\tau))}  \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + \tau \right),
-	\ee}
+	\ee
 	where $r(\tau) < 1$.% and $\epsilon = \max_{g \in [G]} \epsilon_g$, $\zeta = \max_{g \in [G]} \zeta_g$, $\gamma = \min_{g \in [G]} \gamma_g$.
 	
 \end{theorem}
 
 \begin{corollary}
 	\label{corr:show}
-	When $t \rightarrow \infty$ we have the following with high probability:
+	For enough number of samples, iterations of DE algorithm with step sizes $\mu_0 = \Theta(\frac{1}{n})$ and $\mu_g =  \Theta(\frac{1}{\sqrt{n n_g}})$ geometrically converges to the following with high probability:
 	\be
 	\label{eq:scaled}
 	&&\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{\infty}}{2}
-	\leq \frac{(G+1) \sqrt{(2K^2 + 1)}}{\sqrt{n} (1 - r(\tau))} 
-	\\  \nr  
+	\leq \frac{(G+1) \sqrt{(2K^2 + 1)}}{\sqrt{n} (1 - r(\tau))}
+	\\  \nr
 	&\times& \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + C \sqrt{\log (G+1)} +  b \right),
 	\ee
 \end{corollary}
 	It is instructive to compare RHS of \eqref{eq:scaled} with that of \eqref{eq:general}: $\kappa_{\min}$ defined in Theorem \ref{theo:re} corresponds to $(1 - r(\tau))$ % defined in Theorem \ref{theo:step}
 	and the extra $G+1$ factor corresponds to the sample condition number $\gamma = \max_{g \in [G] } \frac{n}{n_g}$.
-	Therefore, Corollary \ref{corr:show} shows that PBGD converges to a scaled variant of statical error bound determined in Corollary \ref{corr:calcub}.
+	Therefore, Corollary \ref{corr:show} shows that DE converges to a scaled variant of statical error bound determined in Corollary \ref{corr:calcub}.
 %	The extra factor of $G+1$ can be dismissed if we have more samples and also take a more conservative step size of $\mu_g = \frac{1}{(G+1) n_g}$.
 %	Following proposition states this result.
 %
 %\begin{prop}
 %	\label{prop:2}
-%	For per group step size of $\mu_g = \frac{1}{(G+1) n_g}$ and common parameter step size of $\mu_0 = \frac{1}{(G+1) n}$ when per group and total number of samples are large enough, i.e., $n_g \geq 4 \theta_f^2 c_g^2(\omega(\cA_g) + \tau)^2$ we have the following for PBGD with probability at least $ 1 - \upsilon \exp\left\{-\min_{g \in [G]} \left(\min\left[\nu_g n_g - \log G, -\gamma_g (\omega(\cA_g) + t)^2, \frac{t^2}{\eta_g^2 k^2}\right]\right) \right\}$:
+%	For per group step size of $\mu_g = \frac{1}{(G+1) n_g}$ and common parameter step size of $\mu_0 = \frac{1}{(G+1) n}$ when per group and total number of samples are large enough, i.e., $n_g \geq 4 \theta_f^2 c_g^2(\omega(\cA_g) + \tau)^2$ we have the following for DE with probability at least $ 1 - \upsilon \exp\left\{-\min_{g \in [G]} \left(\min\left[\nu_g n_g - \log G, -\gamma_g (\omega(\cA_g) + t)^2, \frac{t^2}{\eta_g^2 k^2}\right]\right) \right\}$:
 %	\be
 %	\nr
 %	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{\infty}}{2}
@@ -173,7 +174,7 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 %\begin{proof} These are fairly standard results. For instance, the reader is referred to Theorem $1.1$ of Liaw et al. \cite{liaw2017simple} or \cite{oymak2015isometric}.
 %\end{proof}
 %The next theorem provides our main result on convergence with near optimal sample complexity where $n_g\geq C\omega^2(\cA_g)$ per group. We assumed a noiseless model to have a cleaner presentation which keeps the result more insightful.
-%\begin{theorem} Consider the modified PBGD algorithm where line 7 uses $\beta_g^{(t)}$ instead of $\beta_g^{(t+1)}$. Assume sample sizes $n_i$ are set same as in Theorem \ref{theo:re}. Set $\kappa=\kappa_{\min}^2/4$. Let $r_g=G n_g/n$ and $r_0=1$. Set learning rates to be $\mu_g=\mu$ for $g\geq 1$ and $\mu_0=G^{-2}\mu$ where
+%\begin{theorem} Consider the modified DE algorithm where line 7 uses $\beta_g^{(t)}$ instead of $\beta_g^{(t+1)}$. Assume sample sizes $n_i$ are set same as in Theorem \ref{theo:re}. Set $\kappa=\kappa_{\min}^2/4$. Let $r_g=G n_g/n$ and $r_0=1$. Set learning rates to be $\mu_g=\mu$ for $g\geq 1$ and $\mu_0=G^{-2}\mu$ where
 %	\begin{align}
 %	\mu=c{\kappa}\min_{1\leq g\leq G}\{\frac{1}{G\max\{1,K^4p_g/n_g\}},\frac{1}{\max\{1,K^4p_0/n\}} \}\label{learning rate rule}
 %	\end{align}
@@ -193,7 +194,7 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 %\]
 %This means that, compared to traditional least squares regression, we are losing a factor of $G^3$ in terms of convergence rate. Additionally, we converge not directly in $\ell_2$ distance but rather scaled $\ell_2$ distance where contribution of $\ddelta_0$ is heavier than the rest.
 %\begin{proof}
-%	PBGD iterations imply that
+%	DE iterations imply that
 %	\[
 %	\ddelta_g^{t+1}=\Pi_g(\ddelta_g-\mu \X_g^T\X_g(\ddelta_0^t+\ddelta_g^t))
 %	\]
