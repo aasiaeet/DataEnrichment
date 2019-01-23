@@ -1,4 +1,4 @@
-\begin{thebibliography}{41}
+\begin{thebibliography}{39}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -93,13 +93,6 @@ Chatterjee, S., Chen, S., and Banerjee, A.
 \newblock Generalized dantzig selector: Application to the k-support norm.
 \newblock In \emph{Advances in Neural Information Processing Systems}, pp.\
   1934--1942, 2014.
-
-\bibitem[Chen et~al.(2009)Chen, Bardes, Aronow, and Jegga]{chen09toppgene}
-Chen, J., Bardes, E.~E., Aronow, B.~J., and Jegga, A.~G.
-\newblock Toppgene suite for gene list enrichment analysis and candidate gene
-  prioritization.
-\newblock \emph{Nucleic acids research}, 37\penalty0 (suppl\_2):\penalty0
-  W305--W311, 2009.
 
 \bibitem[Dondelinger \& Mukherjee(2016)Dondelinger and Mukherjee]{domu16}
 Dondelinger, F. and Mukherjee, S.
@@ -228,17 +221,11 @@ Rudelson, M. and Zhou, S.
 \newblock \emph{IEEE Transactions on Information Theory}, 59\penalty0
   (6):\penalty0 3434--3447, 2013.
 
-\bibitem[Tibshirani(1996{\natexlab{a}})]{tibs96}
+\bibitem[Tibshirani(1996)]{tibshirani1996regression}
 Tibshirani, R.
 \newblock Regression shrinkage and selection via the lasso.
 \newblock \emph{Journal of the Royal Statistical Society. Series B
-  (Methodological)}, pp.\  267--288, 1996{\natexlab{a}}.
-
-\bibitem[Tibshirani(1996{\natexlab{b}})]{tibshirani1996regression}
-Tibshirani, R.
-\newblock Regression shrinkage and selection via the lasso.
-\newblock \emph{Journal of the Royal Statistical Society. Series B
-  (Methodological)}, pp.\  267--288, 1996{\natexlab{b}}.
+  (Methodological)}, pp.\  267--288, 1996.
 
 \bibitem[Tropp(2015)]{trop15}
 Tropp, J.~A.

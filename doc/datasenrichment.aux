@@ -49,11 +49,11 @@
 \citation{guba16}
 \newlabel{eq:super}{{3}{3}{}{equation.1.3}{}}
 \newlabel{eq:errorsum}{{4}{3}{}{equation.1.4}{}}
-\newlabel{fig:sc}{{2a}{3}{Structural Coherence (SC) condition.\relax }{figure.caption.2}{}}
-\newlabel{sub@fig:sc}{{a}{3}{Structural Coherence (SC) condition.\relax }{figure.caption.2}{}}
+\newlabel{fig:sc}{{2a}{3}{SC condition.\relax }{figure.caption.2}{}}
+\newlabel{sub@fig:sc}{{a}{3}{SC condition.\relax }{figure.caption.2}{}}
 \newlabel{fig:deric}{{2b}{3}{Data EnRichment Incoherence Condition (DERIC). \relax }{figure.caption.2}{}}
 \newlabel{sub@fig:deric}{{b}{3}{Data EnRichment Incoherence Condition (DERIC). \relax }{figure.caption.2}{}}
-\newlabel{fig syn2}{{2}{3}{a) State of the art condition for recovering common and individual parameters in superposition models where $\cC _g = \text {Cone}(\cE _g)$ are error cones and $\cE _g = \left \{\ddelta _g | f_g(\bbeta _g^* + \ddelta _g) \leq f_g(\bbeta _g^*)\right \}$ are the error sets for each parameter $\bbeta ^*_g \in [G]$ \cite {guba16} b) Our more relaxed recovery condition which allows \emph {arbitrary non-zero fraction } of the error cones of individual parameters intersect with $-\cC _0$.\relax }{figure.caption.2}{}}
+\newlabel{fig syn2}{{2}{3}{Geometric recovery conditions on error cones $\cC _g, g=0,\ldots ,G$: (a) Structured coherence (SC) condition \cite {guba16} requires $C_g \cap - \cC _0 = \emptyset $, i.e., no intersection between any $\cC _g$ and $-\cC _0$; and (b) proposed Data EnRichment Incoherence Condition (DERIC) condition allows intersections between some (not all) $\cC _g$ and $-\cC _0$.\relax }{figure.caption.2}{}}
 \newlabel{sec:esti}{{2}{3}{}{section.2}{}}
 \newlabel{eq:compact}{{5}{3}{}{equation.2.5}{}}
 \citation{banerjee14,nrwy12,raskutti10}
@@ -88,35 +88,6 @@
 \newlabel{theo:iter}{{4}{6}{}{theorem.4}{}}
 \newlabel{eq:singleiter}{{14}{6}{}{equation.5.14}{}}
 \newlabel{theo:step}{{5}{6}{}{theorem.5}{}}
-\newlabel{corr:show}{{2}{7}{}{corollary.2}{}}
-\newlabel{eq:scaled}{{15}{7}{}{equation.5.15}{}}
-\newlabel{sec:expds}{{6}{7}{}{section.6}{}}
-\newlabel{fig syn1a}{{3a}{7}{\relax }{figure.caption.3}{}}
-\newlabel{sub@fig syn1a}{{a}{7}{\relax }{figure.caption.3}{}}
-\newlabel{fig syn1b}{{3b}{7}{\relax }{figure.caption.3}{}}
-\newlabel{sub@fig syn1b}{{b}{7}{\relax }{figure.caption.3}{}}
-\newlabel{fig syn2a}{{3c}{7}{\relax }{figure.caption.3}{}}
-\newlabel{sub@fig syn2a}{{c}{7}{\relax }{figure.caption.3}{}}
-\newlabel{fig syn2b}{{3d}{7}{\relax }{figure.caption.3}{}}
-\newlabel{sub@fig syn2b}{{d}{7}{\relax }{figure.caption.3}{}}
-\newlabel{fig syn2}{{3}{7}{a) Noiseless fast convergence. b) Noise on the first group does not impact other groups as much. c) Increasing sample size improves rate of convergence. d) Our algorithm convergences fast even with a large number of groups $G=100$.\relax }{figure.caption.3}{}}
-\newlabel{realexp}{{7}{7}{}{section.7}{}}
-\citation{barretina2012cancer}
-\citation{barretina2012cancer}
-\citation{tibs96}
-\citation{chen09toppgene}
-\citation{chen09toppgene}
-\citation{chen09toppgene}
-\newlabel{fig:dr}{{4a}{8}{\relax }{figure.caption.4}{}}
-\newlabel{sub@fig:dr}{{a}{8}{\relax }{figure.caption.4}{}}
-\newlabel{fig:Saracatinib}{{4b}{8}{\relax }{figure.caption.4}{}}
-\newlabel{sub@fig:Saracatinib}{{b}{8}{\relax }{figure.caption.4}{}}
-\newlabel{fig syn2}{{4}{8}{a) A sample fitted dose-response curve where Activity Area $y_{gi}$ is shaded. b) Distribution of responses to Saracatinib for which some lung and blood cancer cell lines have responded.\relax }{figure.caption.4}{}}
-\newlabel{fig:two}{{5a}{8}{Lung and Blood\relax }{figure.caption.5}{}}
-\newlabel{sub@fig:two}{{a}{8}{Lung and Blood\relax }{figure.caption.5}{}}
-\newlabel{fig:three}{{5b}{8}{Skin, Ovary, and Breast\relax }{figure.caption.5}{}}
-\newlabel{sub@fig:three}{{b}{8}{Skin, Ovary, and Breast\relax }{figure.caption.5}{}}
-\newlabel{fig syn2}{{5}{8}{Comparison of Mean Square Error of \dc {} and BL in predicting the response to 24 drugs in TWO and THREE experiments. Each bar is the mean of MSE for 5-fold cross-validation.\relax }{figure.caption.5}{}}
 \bibstyle{icml2019}
 \bibdata{nips18}
 \bibcite{bach2012optimization}{{1}{2012}{{Bach et~al.}}{{Bach, Jenatton, Mairal, Obozinski, et~al.}}}
@@ -132,73 +103,72 @@
 \bibcite{candes2006robust}{{11}{2006}{{Cand{\`e}s et~al.}}{{Cand{\`e}s, Romberg, and Tao}}}
 \bibcite{venkat12}{{12}{2012}{{Chandrasekaran et~al.}}{{Chandrasekaran, Recht, Parrilo, and Willsky}}}
 \bibcite{chatterjee2014generalized}{{13}{2014}{{Chatterjee et~al.}}{{Chatterjee, Chen, and Banerjee}}}
-\bibcite{chen09toppgene}{{14}{2009}{{Chen et~al.}}{{Chen, Bardes, Aronow, and Jegga}}}
-\bibcite{domu16}{{15}{2016}{{Dondelinger \& Mukherjee}}{{Dondelinger and Mukherjee}}}
-\bibcite{donoho2006compressed}{{16}{2006}{{Donoho}}{{}}}
-\bibcite{friedman2008sparse}{{17}{2008}{{Friedman et~al.}}{{Friedman, Hastie, and Tibshirani}}}
-\bibcite{grti16}{{18}{2016}{{Gross \& Tibshirani}}{{Gross and Tibshirani}}}
-\bibcite{guba16}{{19}{2016}{{Gu \& Banerjee}}{{Gu and Banerjee}}}
-\bibcite{hastie2017generalized}{{20}{2017}{{Hastie}}{{}}}
-\bibcite{iorio2016landscape1}{{21}{2016}{{Iorio et~al.}}{{Iorio, Knijnenburg, Vis, Bignell, Menden, Schubert, Aben, Goncalves, Barthorpe, Lightfoot, et~al.}}}
-\bibcite{jain2013low}{{22}{2013}{{Jain et~al.}}{{Jain, Netrapalli, and Sanghavi}}}
-\bibcite{jrsr10}{{23}{2010}{{Jalali et~al.}}{{Jalali, Ravikumar, Sanghavi, and Ruan}}}
-\newlabel{table:1}{{1}{9}{Each column is (Cancer Type, Number of significant genes) and highlights show where the set of genes have been observed together. p-Values are computed by Fisher's exact test \cite {chen09toppgene}.\relax }{table.caption.6}{}}
-\bibcite{mctr13}{{24}{2013}{{McCoy \& Tropp}}{{McCoy and Tropp}}}
-\bibcite{mend15}{{25}{2014}{{Mendelson}}{{}}}
-\bibcite{negahban2012restricted}{{26}{2012}{{Negahban \& Wainwright}}{{Negahban and Wainwright}}}
-\bibcite{negahban2009unified}{{27}{2009}{{Negahban et~al.}}{{Negahban, Yu, Wainwright, and Ravikumar}}}
-\bibcite{nrwy12}{{28}{2012}{{Negahban et~al.}}{{Negahban, Ravikumar, Wainwright, and Yu}}}
-\bibcite{olvi14}{{29}{2014}{{Ollier \& Viallon}}{{Ollier and Viallon}}}
-\bibcite{olvi15}{{30}{2015}{{Ollier \& Viallon}}{{Ollier and Viallon}}}
-\bibcite{oyrs15}{{31}{2015}{{Oymak et~al.}}{{Oymak, Recht, and Soltanolkotabi}}}
-\bibcite{plan2017high}{{32}{2017}{{Plan et~al.}}{{Plan, Vershynin, and Yudovina}}}
-\bibcite{raskutti10}{{33}{2010}{{Raskutti et~al.}}{{Raskutti, Wainwright, and Yu}}}
-\bibcite{rigby2005generalized}{{34}{2005}{{Rigby \& Stasinopoulos}}{{Rigby and Stasinopoulos}}}
-\bibcite{ruzh13}{{35}{2013}{{Rudelson \& Zhou}}{{Rudelson and Zhou}}}
-\bibcite{tibs96}{{36}{1996{a}}{{Tibshirani}}{{}}}
-\bibcite{tibshirani1996regression}{{37}{1996{b}}{{Tibshirani}}{{}}}
-\bibcite{trop15}{{38}{2015}{{Tropp}}{{}}}
-\bibcite{vers12}{{39}{2012}{{Vershynin}}{{}}}
-\bibcite{vershynin2018high}{{40}{2018}{{Vershynin}}{{}}}
-\bibcite{yara13}{{41}{2013}{{Yang \& Ravikumar}}{{Yang and Ravikumar}}}
+\bibcite{domu16}{{14}{2016}{{Dondelinger \& Mukherjee}}{{Dondelinger and Mukherjee}}}
+\newlabel{corr:show}{{2}{7}{}{corollary.2}{}}
+\newlabel{eq:scaled}{{15}{7}{}{equation.5.15}{}}
+\bibcite{donoho2006compressed}{{15}{2006}{{Donoho}}{{}}}
+\bibcite{friedman2008sparse}{{16}{2008}{{Friedman et~al.}}{{Friedman, Hastie, and Tibshirani}}}
+\bibcite{grti16}{{17}{2016}{{Gross \& Tibshirani}}{{Gross and Tibshirani}}}
+\bibcite{guba16}{{18}{2016}{{Gu \& Banerjee}}{{Gu and Banerjee}}}
+\bibcite{hastie2017generalized}{{19}{2017}{{Hastie}}{{}}}
+\bibcite{iorio2016landscape1}{{20}{2016}{{Iorio et~al.}}{{Iorio, Knijnenburg, Vis, Bignell, Menden, Schubert, Aben, Goncalves, Barthorpe, Lightfoot, et~al.}}}
+\bibcite{jain2013low}{{21}{2013}{{Jain et~al.}}{{Jain, Netrapalli, and Sanghavi}}}
+\bibcite{jrsr10}{{22}{2010}{{Jalali et~al.}}{{Jalali, Ravikumar, Sanghavi, and Ruan}}}
+\bibcite{mctr13}{{23}{2013}{{McCoy \& Tropp}}{{McCoy and Tropp}}}
+\bibcite{mend15}{{24}{2014}{{Mendelson}}{{}}}
+\bibcite{negahban2012restricted}{{25}{2012}{{Negahban \& Wainwright}}{{Negahban and Wainwright}}}
+\bibcite{negahban2009unified}{{26}{2009}{{Negahban et~al.}}{{Negahban, Yu, Wainwright, and Ravikumar}}}
+\bibcite{nrwy12}{{27}{2012}{{Negahban et~al.}}{{Negahban, Ravikumar, Wainwright, and Yu}}}
+\bibcite{olvi14}{{28}{2014}{{Ollier \& Viallon}}{{Ollier and Viallon}}}
+\bibcite{olvi15}{{29}{2015}{{Ollier \& Viallon}}{{Ollier and Viallon}}}
+\bibcite{oyrs15}{{30}{2015}{{Oymak et~al.}}{{Oymak, Recht, and Soltanolkotabi}}}
+\bibcite{plan2017high}{{31}{2017}{{Plan et~al.}}{{Plan, Vershynin, and Yudovina}}}
+\bibcite{raskutti10}{{32}{2010}{{Raskutti et~al.}}{{Raskutti, Wainwright, and Yu}}}
+\bibcite{rigby2005generalized}{{33}{2005}{{Rigby \& Stasinopoulos}}{{Rigby and Stasinopoulos}}}
+\bibcite{ruzh13}{{34}{2013}{{Rudelson \& Zhou}}{{Rudelson and Zhou}}}
+\bibcite{tibshirani1996regression}{{35}{1996}{{Tibshirani}}{{}}}
+\bibcite{trop15}{{36}{2015}{{Tropp}}{{}}}
+\bibcite{vers12}{{37}{2012}{{Vershynin}}{{}}}
+\bibcite{vershynin2018high}{{38}{2018}{{Vershynin}}{{}}}
+\bibcite{yara13}{{39}{2013}{{Yang \& Ravikumar}}{{Yang and Ravikumar}}}
 \citation{guba16}
-\newlabel{sec:dsproofs}{{A}{11}{}{appendix.A}{}}
-\newlabel{eq:tre}{{16}{11}{}{equation.A.16}{}}
-\newlabel{eq:tub}{{17}{11}{}{equation.A.17}{}}
-\newlabel{eq:long}{{18}{11}{}{equation.A.18}{}}
+\newlabel{sec:dsproofs}{{A}{9}{}{appendix.A}{}}
+\newlabel{eq:tre}{{16}{9}{}{equation.A.16}{}}
+\newlabel{eq:tub}{{17}{9}{}{equation.A.17}{}}
+\newlabel{eq:long}{{18}{9}{}{equation.A.18}{}}
 \citation{boucheron13}
 \citation{boucheron13}
-\newlabel{lemm:shareInc}{{1}{12}{}{lemma.1}{}}
-\newlabel{eq:rhs}{{19}{12}{}{equation.A.19}{}}
-\newlabel{eq:ah}{{20}{12}{}{equation.A.20}{}}
-\newlabel{lemm:secTerm}{{2}{13}{}{lemma.2}{}}
-\newlabel{eq:maxex}{{22}{14}{}{equation.A.22}{}}
-\newlabel{lemm:mainlem}{{3}{14}{}{lemma.3}{}}
-\newlabel{lem:recurse}{{4}{14}{}{lemma.4}{}}
-\newlabel{eq:complicated}{{23}{15}{}{equation.A.23}{}}
-\newlabel{twolems}{{A.6}{15}{}{subsection.A.6}{}}
-\newlabel{lemm:hpub}{{5}{15}{}{lemma.5}{}}
-\newlabel{lemm:phi}{{6}{15}{}{lemma.6}{}}
-\newlabel{eq:deterOpt}{{26}{15}{}{equation.A.26}{}}
-\newlabel{eq:rhoss}{{27}{15}{}{equation.A.27}{}}
-\newlabel{eq:boring}{{28}{16}{}{equation.A.28}{}}
-\newlabel{eq:cvx}{{29}{16}{}{equation.A.29}{}}
-\newlabel{eq:branch}{{32}{17}{}{equation.A.32}{}}
-\newlabel{bracket}{{34}{17}{}{equation.A.33}{}}
-\newlabel{eq:aas}{{36}{17}{}{equation.A.36}{}}
-\newlabel{eq:bigbound}{{37}{18}{}{equation.A.37}{}}
-\newlabel{eq:part1}{{38}{18}{}{equation.A.38}{}}
-\newlabel{eq:part2}{{39}{18}{}{equation.A.39}{}}
-\newlabel{eq:part3}{{40}{19}{}{equation.A.40}{}}
-\newlabel{sec:lemmas}{{B}{19}{}{appendix.B}{}}
-\newlabel{paley}{{7}{19}{}{lemma.7}{}}
-\newlabel{incolem main}{{8}{19}{}{lemma.8}{}}
+\newlabel{lemm:shareInc}{{1}{10}{}{lemma.1}{}}
+\newlabel{eq:rhs}{{19}{10}{}{equation.A.19}{}}
+\newlabel{eq:ah}{{20}{10}{}{equation.A.20}{}}
+\newlabel{lemm:secTerm}{{2}{11}{}{lemma.2}{}}
+\newlabel{eq:maxex}{{22}{12}{}{equation.A.22}{}}
+\newlabel{lemm:mainlem}{{3}{12}{}{lemma.3}{}}
+\newlabel{lem:recurse}{{4}{12}{}{lemma.4}{}}
+\newlabel{eq:complicated}{{23}{13}{}{equation.A.23}{}}
+\newlabel{twolems}{{A.6}{13}{}{subsection.A.6}{}}
+\newlabel{lemm:hpub}{{5}{13}{}{lemma.5}{}}
+\newlabel{lemm:phi}{{6}{13}{}{lemma.6}{}}
+\newlabel{eq:deterOpt}{{26}{13}{}{equation.A.26}{}}
+\newlabel{eq:rhoss}{{27}{13}{}{equation.A.27}{}}
+\newlabel{eq:boring}{{28}{14}{}{equation.A.28}{}}
+\newlabel{eq:cvx}{{29}{14}{}{equation.A.29}{}}
+\newlabel{eq:branch}{{32}{15}{}{equation.A.32}{}}
+\newlabel{bracket}{{34}{15}{}{equation.A.33}{}}
+\newlabel{eq:aas}{{36}{15}{}{equation.A.36}{}}
+\newlabel{eq:bigbound}{{37}{16}{}{equation.A.37}{}}
+\newlabel{eq:part1}{{38}{16}{}{equation.A.38}{}}
+\newlabel{eq:part2}{{39}{16}{}{equation.A.39}{}}
+\newlabel{eq:part3}{{40}{17}{}{equation.A.40}{}}
+\newlabel{sec:lemmas}{{B}{17}{}{appendix.B}{}}
+\newlabel{paley}{{7}{17}{}{lemma.7}{}}
+\newlabel{incolem main}{{8}{17}{}{lemma.8}{}}
 \citation{trop15}
-\newlabel{sec:proofSecTerm}{{B.2}{20}{}{subsection.B.2}{}}
+\newlabel{sec:proofSecTerm}{{B.2}{18}{}{subsection.B.2}{}}
 \citation{banerjee14}
 \citation{banerjee14}
 \citation{banerjee14}
-\newlabel{eq:twoterms}{{43}{21}{}{equation.B.43}{}}
+\newlabel{eq:twoterms}{{43}{19}{}{equation.B.43}{}}
 \citation{oyrs15}
 \citation{oyrs15}
 \citation{oyrs15}
@@ -223,9 +193,9 @@
 \citation{oyrs15}
 \citation{oyrs15}
 \citation{oyrs15}
-\newlabel{eq:optg}{{44}{22}{}{equation.B.44}{}}
+\newlabel{eq:optg}{{44}{20}{}{equation.B.44}{}}
 \citation{banerjee14}
-\newlabel{rewrite}{{45}{23}{}{equation.B.45}{}}
-\newlabel{lem:gennips}{{9}{23}{Theorem 11 of \cite {banerjee14}}{lemma.9}{}}
-\newlabel{eq:rhoub}{{46}{24}{}{equation.B.46}{}}
+\newlabel{rewrite}{{45}{21}{}{equation.B.45}{}}
+\newlabel{lem:gennips}{{9}{21}{Theorem 11 of \cite {banerjee14}}{lemma.9}{}}
+\newlabel{eq:rhoub}{{46}{22}{}{equation.B.46}{}}
 \citation{trop15}
