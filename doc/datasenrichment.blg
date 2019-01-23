@@ -3,46 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: datasenrichment.aux
 The style file: icml2019.bst
 Database file #1: nips18.bib
-Warning--I didn't find a database entry for "["
-You've used 22 entries,
+You've used 26 entries,
             2773 wiz_defined-function locations,
-            718 strings with 8390 characters,
-and the built_in function-call counts, 11193 in all, are:
-= -- 997
-> -- 666
-< -- 20
-+ -- 226
-- -- 204
-* -- 870
-:= -- 1688
-add.period$ -- 70
-call.type$ -- 22
-change.case$ -- 130
-chr.to.int$ -- 22
-cite$ -- 44
-duplicate$ -- 525
-empty$ -- 900
-format.name$ -- 242
-if$ -- 2383
+            740 strings with 9092 characters,
+and the built_in function-call counts, 13487 in all, are:
+= -- 1206
+> -- 802
+< -- 21
++ -- 272
+- -- 246
+* -- 1074
+:= -- 2027
+add.period$ -- 82
+call.type$ -- 26
+change.case$ -- 154
+chr.to.int$ -- 26
+cite$ -- 52
+duplicate$ -- 623
+empty$ -- 1084
+format.name$ -- 288
+if$ -- 2868
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 24
-newline$ -- 119
-num.names$ -- 88
-pop$ -- 273
+missing$ -- 28
+newline$ -- 139
+num.names$ -- 104
+pop$ -- 318
 preamble$ -- 1
-purify$ -- 110
+purify$ -- 130
 quote$ -- 0
-skip$ -- 425
+skip$ -- 503
 stack$ -- 0
-substring$ -- 429
-swap$ -- 87
-text.length$ -- 7
+substring$ -- 564
+swap$ -- 103
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 232
+type$ -- 276
 warning$ -- 0
-while$ -- 97
+while$ -- 118
 width$ -- 0
-write$ -- 290
-(There was 1 warning)
+write$ -- 342

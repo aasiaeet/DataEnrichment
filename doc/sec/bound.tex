@@ -3,13 +3,13 @@
 In this section, we provide a high probability upper bound for the estimation error of the common and individual parameters.% with the structure inducing convex functions $f_g(\cdot)$s.
 To avoid cluttering the notation, we rename the vector of all noises as $\oomega_0 \triangleq \oomega$.%\ab{We are using $\omega$ to denote two different things---the Gaussian width and the noise!}
 First, we massage the deterministic upper bound of Theorem \ref{theo:deter} as follows:
-	\be
+	{\small\be
 	\nr
 	\oomega ^T \X\ddelta &=& \sum_{g=0}^{G} \langle \X_g^T \oomega _g,  \ddelta_g \rangle
 	\\ \nr
 	&=& \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}} \rangle \sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2} \\ \nr
 	%(\forall g: \u_g \in \cC_g \cap \sphere) &=& \norm{\ddelta_0}{2} \langle \X_0^T \frac{\oomega }{\norm{\oomega }{2}}, \u_0 \rangle \norm{\oomega }{2} + \sum_{g=1}^{G} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \u_g \rangle \norm{\oomega _g}{2} \\ \nr
-	\ee
+	\ee}
 Assume $b_g = \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}}  \rangle \sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2}$ and $a_g = \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}$.
 Then the above term is the inner product of two vectors $\a = (a_0, \dots, a_G)$ and $\b = (b_0, \dots, b_G)$ for which we have:
 %\be
@@ -59,8 +59,16 @@ The following corollary characterizes the general error bound and results from t
 	\ee	}
 	where $C = 8\sqrt{2 K^2 + 1}$, $\zeta = \max_{g \in [G]} \zeta_g$, $\epsilon = \max_{g \in [G]} \epsilon_g$, $\gamma = \max_{g \in [G]_{\setminus}} n/n_g$  and $\tau > 0$.
 \end{corollary}
+\begin{example}
+	{\bf ($L_1$-norm)} For sparse DE estimator of \eqref{sde}, results of Theorem \ref{theo:re} and \ref{theo:ub} translates to the following: For enough number of samples as $\forall g \in [G]: n_g \geq m_g = \Theta(s_g \log p)$, the error bound of \eqref{eq:general} simplifies to:
+	\be
+	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}	= O \left(\sqrt{\frac{(\max_{g \in [G]}  s_g)\log p}{n}}\right) %+ \epsilon \sqrt{\log (G+1)}+ \tau }{\kappa_{\min}^2 \sqrt{n}}	)
+	\ee 
+	Therefore, individual errors are bounded as $\norm{\ddelta_g}{2}	= O (\sqrt{(\max_{g \in [G]}  s_g)\log p/n_g})$
+	which is slightly worse than $O(\sqrt{s_g\log p/n_g})$, the well-known error bound for recovering $s_g$-sparse vector from $n_g$ observations using LASSO or similar estimators \cite{banerjee14, venkat12, candes2007dantzig, chatterjee2014generalized, bickel2009simultaneous}. Note that $\max_{g \in [G]}  s_g$ (instead of $s_g$) is the price we pay to recover the common parameter $\bbeta_0$. 
+\end{example}
 
-\ab{This section will be very hard to follow without examples. Lets use the two examples we (will) introduce earlier.}
+%\ab{This section will be very hard to follow without examples. Lets use the two examples we (will) introduce earlier.}
 
 %\begin{corollary}
 %	\label{corr:single}

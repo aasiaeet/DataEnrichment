@@ -34,11 +34,16 @@ where $\y  = (\y^T_1, \dots \y^T_G)^T \in \reals^n$,  $\bbeta  = ({\bbeta _0}^T,
 %For simplicity, during steps of the analysis we denote $\X = [\X_0 \enskip \D]$ which is the concatenation of $\X_0 \in \reals^{n \times p}$ that represents the \emph{whole} design matrix consisting of all data points as rows and $\D \in \reals^{n \times pG}$ which is the \emph{diagonal} part of the $\X$ where all $\X_g$s are on the diagonal.
 %Following this convention, we refer to total number of samples $n$ as $n_0$ in our analysis.
 
-\ab{Give at least 2 specific examples, e.g., a sparse+sparse for vector estimation, and a low-rank + sparse for matrix estimation. And we want to carry these examples through
-the technical results, e.g., see the Chen-Banerjee NIPS 2015 paper.}
+%\ab{Give at least 2 specific examples, e.g., a sparse+sparse for vector estimation, and a low-rank + sparse for matrix estimation. And we want to carry these examples through
+%the technical results, e.g., see the Chen-Banerjee NIPS 2015 paper.}
 
 \begin{example}
-This is an example
+{\bf ($L_1$-norm)} When all parameters $\bbeta_g$s are $s_g$-sparse, i.e.,$|\text{supp}(\bbeta_{g}^*)| = s_g$ by using $l_1$-norm as the sparsity inducing function, our DE estimator of \eqref{eq:compact} becomes:
+\be 
+\label{sde}
+\hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \forall g \in [G]: \norm{\bbeta_g}{1} \leq \norm{\bbeta^*_g}{1}.
+\ee 
+We call \eqref{sde} \emph{sparse DE } estimator and use it as a running example throughout the paper to illustrate outcomes of our analysis.
 \end{example}
 
 %\subsection{Error Set and Deterministic Error Bound}
