@@ -105,12 +105,13 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 	\be
 	\nr
 %	&\theta_f = 1:&
-	\mu_0 &=& \frac{1}{4	n} \times \min_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+ \tau}{\sqrt{n_g}}\right)^{-2},
-	\\ \nr
-	\mu_g &=&  \frac{1}{2\sqrt{n n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)^{-1}
+	\mu_0 = \frac{\min_{g \in [G]_\setminus} h_g(\tau)^{-2}}{4	n} ,
+%	\\ \nr
+	\mu_g =  \frac{h_g(\tau)^{-1}}{2\sqrt{n n_g}} 
 %	\\ \nr
 %	&\theta_f = 2:& \mu_0 = \frac{1}{4	n} \times \frac{1}{\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^2} , \mu_g = \frac{l\left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)^{-1}}{8\sqrt{nn_g}\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^{2}}
 	\ee
+	where $h_g(\tau) = \left(1 + c_{0g} \frac{\omega_{0g}+ \tau}{\sqrt{n_g}}\right)$
 	and sample complexities of $\forall g \in [G]: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2$,
 %	\be
 %	\nr

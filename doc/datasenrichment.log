@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.15)  23 JAN 2019 13:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.15)  23 JAN 2019 14:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -815,63 +815,43 @@ Overfull \hbox (31.74652pt too wide) in paragraph at lines 70--76
 m/it/10 (-20) . 
  []
 
+
+Overfull \hbox (26.56401pt too wide) in alignment at lines 140--144
+ [][][] []
+ []
+
 [6pdfTeX warning (ext4): destination with the same identifier (name{equation.5.
 14}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.139 	{\small\be
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.5.15}) has been already used, duplicate ignored
+l.144 	\ee
+          }pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.5.15}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.139 	{\small\be
-                 ]pdfTeX warning (ext4): destination with the same identifier (
-name{equation.5.15}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.139 	{\small\be
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.5.15}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.139 	{\small\be
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.5.15}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.139 	{\small\be
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.5.15}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.139 	{\small\be
-                 
-Overfull \hbox (26.56401pt too wide) in alignment at lines 139--143
- [][][] []
- []
-
-) (./sec/exp.tex
-<./img/betag_converge_G10_p100.pdf, id=424, 722.7pt x 578.16pt>
+l.144 	\ee
+          }]) (./sec/exp.tex
+<./img/betag_converge_G10_p100.pdf, id=425, 722.7pt x 578.16pt>
 File: ./img/betag_converge_G10_p100.pdf Graphic file (type pdf)
 <use ./img/betag_converge_G10_p100.pdf>
 Package pdftex.def Info: ./img/betag_converge_G10_p100.pdf  used on input line 
 7.
 (pdftex.def)             Requested size: 106.10078pt x 84.87645pt.
-<./img/betag_converge_noise_G10_p100.pdf, id=425, 722.7pt x 578.16pt>
+<./img/betag_converge_noise_G10_p100.pdf, id=426, 722.7pt x 578.16pt>
 File: ./img/betag_converge_noise_G10_p100.pdf Graphic file (type pdf)
 <use ./img/betag_converge_noise_G10_p100.pdf>
 Package pdftex.def Info: ./img/betag_converge_noise_G10_p100.pdf  used on input
  line 11.
 (pdftex.def)             Requested size: 106.10078pt x 84.87645pt.
-<./img/betag_converge_G10_p100_fast.pdf, id=426, 722.7pt x 578.16pt>
+<./img/betag_converge_G10_p100_fast.pdf, id=427, 722.7pt x 578.16pt>
 File: ./img/betag_converge_G10_p100_fast.pdf Graphic file (type pdf)
 <use ./img/betag_converge_G10_p100_fast.pdf>
 Package pdftex.def Info: ./img/betag_converge_G10_p100_fast.pdf  used on input 
 line 16.
 (pdftex.def)             Requested size: 106.10078pt x 84.87645pt.
-<./img/betag_converge_G100_p1000_shrink.pdf, id=427, 722.7pt x 578.16pt>
+<./img/betag_converge_G100_p1000_shrink.pdf, id=428, 722.7pt x 578.16pt>
 File: ./img/betag_converge_G100_p1000_shrink.pdf Graphic file (type pdf)
 <use ./img/betag_converge_G100_p1000_shrink.pdf>
 Package pdftex.def Info: ./img/betag_converge_G100_p1000_shrink.pdf  used on in
@@ -881,12 +861,12 @@ put line 20.
 
 pdfTeX warning: pdflatex.exe (file ./img/dr4.pdf): PDF inclusion: found PDF ver
 sion <1.6>, but at most version <1.5> allowed
-<./img/dr4.pdf, id=433, 280.33372pt x 200.98889pt>
+<./img/dr4.pdf, id=434, 280.33372pt x 200.98889pt>
 File: ./img/dr4.pdf Graphic file (type pdf)
 <use ./img/dr4.pdf>
 Package pdftex.def Info: ./img/dr4.pdf  used on input line 104.
 (pdftex.def)             Requested size: 107.32153pt x 76.94392pt.
-<./img/Saracatinib.pdf, id=434, 256.28583pt x 206.40999pt>
+<./img/Saracatinib.pdf, id=435, 256.28583pt x 206.40999pt>
 File: ./img/Saracatinib.pdf Graphic file (type pdf)
 <use ./img/Saracatinib.pdf>
 Package pdftex.def Info: ./img/Saracatinib.pdf  used on input line 108.
@@ -897,12 +877,12 @@ Underfull \hbox (badness 1132) in paragraph at lines 165--165
 m
  []
 
-<./img/lung-blood-barplot.pdf, id=445, 794.97pt x 614.295pt>
+<./img/lung-blood-barplot.pdf, id=446, 794.97pt x 614.295pt>
 File: ./img/lung-blood-barplot.pdf Graphic file (type pdf)
 <use ./img/lung-blood-barplot.pdf>
 Package pdftex.def Info: ./img/lung-blood-barplot.pdf  used on input line 176.
 (pdftex.def)             Requested size: 107.32153pt x 82.92624pt.
-<./img/skin-ovary-breast.pdf, id=446, 794.97pt x 614.295pt>
+<./img/skin-ovary-breast.pdf, id=447, 794.97pt x 614.295pt>
 File: ./img/skin-ovary-breast.pdf Graphic file (type pdf)
 <use ./img/skin-ovary-breast.pdf>
 Package pdftex.def Info: ./img/skin-ovary-breast.pdf  used on input line 180.
@@ -910,8 +890,14 @@ Package pdftex.def Info: ./img/skin-ovary-breast.pdf  used on input line 180.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7 <./img/betag_converge_G10_p100.pdf> <./img/betag_converge_noise_G10_p100.pd
-f
+ [7pdfTeX warning (ext4): destination with the same identifier (name{equation.5
+.15}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.188 
+       <./img/betag_converge_G10_p100.pdf> <./img/betag_converge_noise_G10_p100
+.pdf
 
 pdfTeX warning: pdflatex.exe (file ./img/betag_converge_noise_G10_p100.pdf): PD
 F inclusion: multiple pdfs with page group included in a single page
@@ -1412,7 +1398,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 167.
 Here is how much of TeX's memory you used:
  12098 strings out of 492639
  178746 string characters out of 6133102
- 331841 words of memory out of 5000000
+ 332841 words of memory out of 5000000
  15207 multiletter control sequences out of 15000+600000
  86442 words of font info for 289 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1449,7 +1435,7 @@ exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2018/texmf
 w/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/
 texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on datasenrichment.pdf (26 pages, 1358737 bytes).
+Output written on datasenrichment.pdf (26 pages, 1358664 bytes).
 PDF statistics:
  1318 PDF objects out of 1440 (max. 8388607)
  1006 compressed objects within 11 object streams

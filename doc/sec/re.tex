@@ -48,14 +48,14 @@ But given the nature of coupling in the data enriched model, we hope to be able 
 Here, we introduce DERIC, a considerably weaker geometric condition compared to SC of \cite{guba16, mctr13}. 
 %The rigorous definition of DERIC is provided below.%  for a superposition signal $\ddelta = \ddelta_0 + \ddelta_g$ error cones of $\ddelta_0$ and $\ddelta_g$ should satisfy a condition known as structural coherence, defined below.
 \begin{definition}[Data EnRichment Incoherence Condition (DERIC)]  \label{incodef}
-	There exists a set $\cI\subseteq \Gsm$ of groups where for some scalars $0\leq \ratio\leq 1$ and $\lamin>0$ the following holds:
+	There exists a non-empty set $\cI\subseteq \Gsm$ of groups where for some scalars $0 < \ratio\leq 1$ and $\lamin>0$ the following holds:
 	\begin{enumerate}
 		\item $\sum_{i\in \cI} n_i\geq \lceil \ratio n\rceil$.
 		\item $\forall i \in \cI$, $\forall \ddelta_i \in \cC_i$, and $\ddelta_0\in\cC_0$: $\norm{\ddelta_i+\ddelta_0}{2}\geq \lamin (\norm{\ddelta_0}{2}+\norm{\ddelta_i}{2})$
 	\end{enumerate}
-	Observe that $0\leq \lamin,\ratio\leq 1$ by definition.
+	Observe that $0 < \lamin,\ratio\leq 1$ by definition.
 \end{definition}
-\ab{why would $\bar{\rho}=0$ work? also, can $\cI$ be empty? pls update as needed} 
+%\ab{why would $\bar{\rho}=0$ work? also, can $\cI$ be empty? pls update as needed} 
 
 %\ab{add a remark -- so the reader can follow what we are saying}
 
