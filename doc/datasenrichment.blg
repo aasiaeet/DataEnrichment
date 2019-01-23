@@ -3,44 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: datasenrichment.aux
 The style file: icml2019.bst
 Database file #1: nips18.bib
-You've used 26 entries,
+You've used 41 entries,
             2773 wiz_defined-function locations,
-            740 strings with 9092 characters,
-and the built_in function-call counts, 13487 in all, are:
-= -- 1206
-> -- 802
-< -- 21
-+ -- 272
-- -- 246
-* -- 1074
-:= -- 2027
-add.period$ -- 82
-call.type$ -- 26
-change.case$ -- 154
-chr.to.int$ -- 26
-cite$ -- 52
-duplicate$ -- 623
-empty$ -- 1084
-format.name$ -- 288
-if$ -- 2868
-int.to.chr$ -- 1
+            822 strings with 11499 characters,
+and the built_in function-call counts, 21134 in all, are:
+= -- 1936
+> -- 1164
+< -- 35
++ -- 396
+- -- 354
+* -- 1685
+:= -- 3137
+add.period$ -- 130
+call.type$ -- 41
+change.case$ -- 234
+chr.to.int$ -- 40
+cite$ -- 82
+duplicate$ -- 987
+empty$ -- 1744
+format.name$ -- 423
+if$ -- 4523
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 28
-newline$ -- 139
-num.names$ -- 104
-pop$ -- 318
+missing$ -- 43
+newline$ -- 214
+num.names$ -- 164
+pop$ -- 467
 preamble$ -- 1
-purify$ -- 130
+purify$ -- 195
 quote$ -- 0
-skip$ -- 503
+skip$ -- 786
 stack$ -- 0
-substring$ -- 564
-swap$ -- 103
-text.length$ -- 8
+substring$ -- 991
+swap$ -- 168
+text.length$ -- 13
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 276
+type$ -- 441
 warning$ -- 0
-while$ -- 118
+while$ -- 197
 width$ -- 0
-write$ -- 342
+write$ -- 540

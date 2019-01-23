@@ -1,10 +1,10 @@
 
 \section{Introduction}
-Over the past two decades, major advances have been made in estimating structured parameters, e.g., sparse, low-rank, etc., in high-dimensional small sample problems [][][].
+Over the past two decades, major advances have been made in estimating structured parameters, e.g., sparse, low-rank, etc., in high-dimensional small sample problems \cite{donoho2006compressed,candes2010power,friedman2008sparse}.
 Such estimators consider a suitable (semi) parametric model of the response: $y = \phi(\x,\bbeta^*) + \omega$ based on $n$ samples $\{(\x_i,y_i),i=1,\ldots,n\}$ and $\beta \in \reals^p$
 is the parameter of interest. The unique aspect of such high-dimensional setup is that the number of samples $n < p$, and the structure in $\bbeta^*$, e.g., sparsity, low-rank, makes
-the estimation possible [][][]. While the earlier developments in such high dimensional estimation problems had focused on parametric linear models, the results
-have been widely extended to non-linear models, e.g., generalized linear models [][], broad families of semi-parametric and single-index models [][], non-convex models [][], etc.
+the estimation possible \cite{tibshirani1996regression,candes2006robust,candes2009exact}. While the earlier developments in such high dimensional estimation problems had focused on parametric linear models, the results
+have been widely extended to non-linear models, e.g., generalized linear models \cite{negahban2009unified,bach2012optimization}, broad families of semi-parametric and single-index models \cite{plan2017high,boufounos20081}, non-convex models \cite{blumensath2009iterative,jain2013low}, etc.
 
 In several real world problems, the assumption that one global model parameter $\bbeta$ is suitable for the entire population is unrealistic.
 We consider the more general setting where the population consists of sub-populations (groups) which are similar is many aspects but are different in certain
@@ -35,11 +35,11 @@ y_{gi} &=& \phi(\x_{gi}, (\bbeta_0^* + \bbeta^*_g)) + \omega_{gi}, \quad g \in \
 where $g$ and $i$ index the group and samples respectively. In \eqref{eq:dsl}, we have $G$ 
 models coupled by the common parameter $\bbeta^*_0$ which models similarities between all samples. Individual parameters $\bbeta_g$s capture unique aspects of each group.
 We specifically focus on the high-dimensional small sample regime for \eqref{eq:dsl} where the number of samples $n_g$ for each group is much smaller than the ambient 
-dimensionality, i.e., $\forall g: n_g \ll p$. Similar to all other high-dimensional models, we assume that the parameters $\bbeta_g$ are structured, i.e., for suitable convex functions $f_g$s, $f_g(\bbeta_g)$ is small.
+dimensionality, i.e., $\forall g: n_g \ll p$. Similar to all other high-dimensional models, we assume that the parameters $\bbeta_g$ are structured, i.e., for suitable convex functions $f_g$'s, $f_g(\bbeta_g)$ is small.
 For example, when the structure is sparsity, $f_g$s are $L_1$-norms. Further, for the technical analysis and proofs,
 we focus on the case of linear models, i.e., $\phi(\x,\bbeta) = \x^T \bbeta$. The results
-seamlessly extend to more general non-linear models, e.g., generalized linear models [][], broad families of semi-parametric and single-index models [][], non-convex models [][], etc., using
-existing results, i.e., how models like Lasso have been extended to these settings [][]. \ab{Is the last line correct? Lets check this.}
+seamlessly extend to more general non-linear models, e.g., generalized linear models, broad families of semi-parametric and single-index models, non-convex models, etc., using
+existing results, i.e., how models like Lasso have been extended to these settings (e.g.~employing ideas such as restricted strong convexity \cite{negahban2012restricted}). {\color{red}{it is OK I think}}\ab{Is the last line correct? Lets check this.}
 
 %We call these set of models, \emph{``data sharing''} model \cite{grti16}.
 %In high dimensional regime, we assume that both common and individual parameters are structured, i.e., for suitable \emph{convex} functions $f_g$, $f_g(\bbeta^*_g)$s are small.
@@ -51,14 +51,14 @@ existing results, i.e., how models like Lasso have been extended to these settin
 Note that the models in \eqref{eq:dsl} for each group is a superposition \cite{guba16, mctr13}, or dirty statistical model \cite{yara13}. %\ab{cite relevant paper(s) by McCoy-Tropp on convex de-mixing} Therefore, a {\em data-enriched}
 (DE) model is \emph{a system of coupled superposition models}.
 A related model is proposed by \cite{jrsr10} in the context of multi-task learning, where for each task $g$ the output is coming from $y_{gi} = \x_{gi}^T (\bbeta_{0g}^* + \bbeta^*_g) + \omega_{gi}$.
-As emphasized by the subscript of $\bbeta_{0g}^*$ the common parameters are different in every task but they share a same support (index of non-zero values), i.e., $\bbeta_{0i}^* \neq \bbeta_{0j}^*$ but $\text{supp}(\bbeta_{0i}^*) = \text{supp}(\bbeta_{0j}^*)$. \ab{need a line on what Jalali et al.~show, and how our results are (qualitatively) different} 
+As emphasized by the subscript of $\bbeta_{0g}^*$ the common parameters are different in every task but they share a same support (index of non-zero values), i.e., $\bbeta_{0i}^* \neq \bbeta_{0j}^*$ but $\text{supp}(\bbeta_{0i}^*) = \text{supp}(\bbeta_{0j}^*)$. {\color{red}{This setup requires that every task should have enough samples to learn their own common parameters. In contrast, our model shares the common parameters and only requires that {\em{total dataset over all tasks}} is sufficiently large.}} \ab{need a line on what Jalali et al.~show, and how our results are (qualitatively) different} 
 \ab{we don't have a discussion on `related work' -- including hierarchical models, multi-task learning; should we have a sub-section on these, or otherwise discuss these related developments}
 %Also \cite{jrsr10} considers only the cases where function $f_g(\cdot)$ are $l_1$-norm.
 At a high level, the DE model can be viewed as a
-of hierarchical additive model [][], where $\bbeta_0^*$ corresponds to the root and $\bbeta_g^*$ correspond to the refinements in the leaves. 
+of hierarchical additive model \cite{hastie2017generalized,rigby2005generalized} {\color{red}{couldn't find good ref, we might want to remove this}}, where $\bbeta_0^*$ corresponds to the root and $\bbeta_g^*$ correspond to the refinements in the leaves. 
 
 
-The DE model where $\bbeta_g$s are sparse has recently gained attention because of its application in wide range of domains such as personalized medicine \cite{domu16}, sentiment analysis, banking strategy \cite{grti16}, single cell data analysis \cite{olvi15}, road safety \cite{olvi14}, and disease subtype analysis \cite{domu16}.
+The DE model where $\bbeta_g$'s are sparse has recently gained attention because of its application in wide range of domains such as personalized medicine \cite{domu16}, sentiment analysis, banking strategy \cite{grti16}, single cell data analysis \cite{olvi15}, road safety \cite{olvi14}, and disease subtype analysis \cite{domu16}.
 More generally, in any high-dimensional problem where the population consists of groups, data enrichment framework has the potential to boost the prediction accuracy and results in a more interpretable set of parameters.
 
 In spite of the recent surge in applying data enrichment framework to different domains, limited advances have been made in
@@ -175,7 +175,7 @@ We present several statistical and computational results for the DE estimator \e
 %	Observe that $l_2$-norm of the estimation error for the common parameter decays as $1/\sqrt{n}$, similar to the well-studied high dimensional regression case \cite{venkat12, banerjee14}.
 %	So the common parameter's estimator exploits all of the pooled data to reduce its error.
 	\item We also establish the sample complexity of the DE estimator for all parameters as $\forall g \in [G]: n_g = O(\omega(\cC_g \cap \sphere))^2$. We emphasize that our result proofs that the recovery of the common parameter $\bbeta_0$ by DE estimator benefits from \emph{all} of the $n$ pooled samples.
-	\item We present an efficient Projected Block Gradient Descent (PBGD) algorithm to solve DE's objective \eqref{eq:super} which converges geometrically to the statistical error bound of \eqref{eq:errorsum}. To the best of our knowledge, this is the first rigorous computational result for the high-dimensional data-enriched regression.
+	\item We present an efficient projected block gradient descent algorithm \emph{\dc}, to solve DE's objective \eqref{eq:super} which converges geometrically to the statistical error bound of \eqref{eq:errorsum}. To the best of our knowledge, this is the first rigorous computational result for the high-dimensional data-enriched regression.
 	\item We illustrate promising empirical performance of the model on synthetic data as well as on the problem of finding bio-markers associated with drug sensitivity of cell lines from different cancer types, where the support of individual parameters $\hbbe_g^T$ for each cancer $g$ shows a different set of bio-markers per cancer type.
 \end{itemize}
 
@@ -184,7 +184,7 @@ The rest of this paper is organized as follows:
 First, we characterize the error set of our estimator and provide a deterministic error bound in Section \ref{sec:esti}.
 Then in Section \ref{sec:re}, we discuss the restricted eigenvalue condition and calculate the sample complexity required for the recovery of the true parameters by our estimator under DERIC condition.
 We close the statistical analysis in Section \ref{sec:error} by providing non-asymptotic high probability error bound for parameter recovery.
-We delineate our linearly convergent algorithm, PBGD in Section \ref{sec:opt} and finally supplement our work with synthetic and real data experiments in Sections \ref{sec:expds} and \ref{realexp}.
+We delineate our geometrically convergent algorithm, \dc in Section \ref{sec:opt} and finally supplement our work with synthetic and real data experiments in Sections \ref{sec:expds} and \ref{realexp}.
 
 \begin{figure}[t!]
 	\centering
@@ -198,7 +198,7 @@ We delineate our linearly convergent algorithm, PBGD in Section \ref{sec:opt} an
 		\caption{Data EnRichment Incoherence Condition (DERIC). }
 		\label{fig:deric}
 	\end{subfigure}
-	\caption{(a) State of the art condition for recovering common and individual parameters in superposition models where $\cC_g = \text{Cone}(\cE_g)$ are error cones and $\cE_g = \left\{\ddelta_g | f_g(\bbeta _g^* + \ddelta_g) \leq f_g(\bbeta _g^*)\right\}$ are the error sets for each parameter $\bbeta^*_g \in [G]$ \cite{guba16} (b) Our more relaxed recovery condition which allows \emph{arbitrary non-zero fraction } of the error cones of individual parameters intersect with $-\cC_0$.}
+	\caption{a) State of the art condition for recovering common and individual parameters in superposition models where $\cC_g = \text{Cone}(\cE_g)$ are error cones and $\cE_g = \left\{\ddelta_g | f_g(\bbeta _g^* + \ddelta_g) \leq f_g(\bbeta _g^*)\right\}$ are the error sets for each parameter $\bbeta^*_g \in [G]$ \cite{guba16} b) Our more relaxed recovery condition which allows \emph{arbitrary non-zero fraction } of the error cones of individual parameters intersect with $-\cC_0$.}
 	\label{fig syn2}
 \end{figure}
 

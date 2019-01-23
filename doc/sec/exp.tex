@@ -133,7 +133,7 @@ We consider lung and blood\footnote{By blood cancer, we mean any cancer originat
 Beyond these five cancer types, others have less than 50 samples, so we remove them from consideration.
 Each experiment consists of 24 \emph{problems} each corresponds to a drug. % drug sensitivity prediction of 
 Not all of the $~$500 cell lines have been treated with all of the drugs. 
-Therefore each problem has a different number of samples $n$ where $n \in [70, 130]$ for TWO and $n \in [?]$ for THREE experiments.
+Therefore each problem has a different number of samples $n$ where $n \in [90, 160]$ for TWO and $n \in [70, 100]$ for THREE experiments.
 We perform a standard preprocessing \cite{barretina2012cancer} where we remove features with less than $.2$ absolute correlation with the response of interest.% which reduces the dimension from $>30,000$ to $p \in [?, ?]$.% range. 
 Note that the features that get removed vary by problem, therefore the dimension $p$ is reduced from from $>30,000$ to $p \in [1000, 15000]$. 
 
@@ -141,30 +141,40 @@ Note that the features that get removed vary by problem, therefore the dimension
 {\bf Prediction:} In each TWO and THREE experiments, we predict the drug sensitivity for 24 different drugs.  %= \{f_g(\bbeta) < b_g\}$
 Since the values of $d_g$  in constraint sets $\Omega_{f_g}(d_g)$  are unknown, we tune them by 5-fold cross-validation and report the mean squared error (MSE) of DE and a baseline method. 
 Our \emph{baseline} method BL is the LASSO \cite{tibs96} equivalent of DE where we set $\forall g \in [G]_\setminus d_g = 0$ and only estimate the common parameter $\bbeta_0$. 
-Figure \ref{fig:prediction} and \ref{fig:prediction} illustrates the performance of DE and BL for TWO and THREE experiments respectively. 
-Note that DE outperforms BL in ? and ? out of 24 problems in TWO and THREE experiments, respectively.
+Figure \ref{fig:two} and \ref{fig:three} illustrate the performance of DE and BL for TWO and THREE experiments respectively. 
+Note that DE outperforms BL in 21 and 18 out of 24 problems in TWO and THREE experiments, respectively.
 
 To ensure that the prediction improvement of DE over the baseline is significant, we supplement our analysis with the bootstrapped error of both methods for the TWO experiment.
 For each problem in the TWO experiment, we generate 100 bootstrapped data sets by sampling with replacement as $\{(\X^{(i)}_{\text{TWO}}, \y^{(i)}_{\text{TWO}})\}_{i=1}^{100}$.  
-Then, we fix $d_g$s hyper-parameters to values determined by cross-validation in the last stage and run both methods and compute pairs of MSEs as $\{(\text{MSE}^{(i)}_{\text{DE}}, \text{MSE}^{(i)}_{\text{BL}})\}$. We perform paired t-test to determine if mean difference between MSEs is significant. In ? out of 24 problems DE's MSE is lesser than BL's with significance level of $\alpha = 0.05$. A representative set of results is demonstrated in Figure \ref{?}. 
+Then, we fix $d_g$s hyper-parameters to values determined by cross-validation in the last stage and run both methods and compute pairs of MSEs as $\{(\text{MSE}^{(i)}_{\text{DE}}, \text{MSE}^{(i)}_{\text{BL}})\}_{i=1}^{100}$. We perform paired t-test to determine if mean difference between MSEs is significant. In ? out of 24 problems DE's MSE is lesser than BL's with significance level of $\alpha = 0.05$. A representative set of results is demonstrated in Figure \ref{?}. 
 
-	\begin{figure*}
-	\begin{subfigure}[b]{0.32\textwidth}
+	\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.22\textwidth}
 		\includegraphics[width=\textwidth]{./img/dr4.pdf}
 		\caption{}\label{fig:dr}
 	\end{subfigure} ~
-	\begin{subfigure}[b]{0.30\textwidth}
-		\includegraphics[width=\textwidth]{./img/lung-blood-barplot.pdf}
-		\caption{}\label{fig:prediction}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.29\textwidth}
-	\includegraphics[width=\textwidth,]{./img/Saracatinib.pdf}
+	\begin{subfigure}[b]{0.22\textwidth}
+	\includegraphics[height=2.65cm]{./img/Saracatinib.pdf}
 	\caption{}\label{fig:Saracatinib}
 	\end{subfigure}
-	\caption{a) A sample fitted dose-response curve where Activity Area $y_{gi}$ is shaded. b) Comparison of Mean Square Error of elastic net and data enrichment in predicting the response to 24 drugs for lung and blood cancer cell lines. Each dot represents an experiment for a drug. Prediction accuracy of both algorithms are very close. c) Distribution of responses to Saracatinib. Note that some cell lines of both lung and blood cancers have responded to Saracatinib which makes it a good candidate for interpretability analysis.}
+	\caption{a) A sample fitted dose-response curve where Activity Area $y_{gi}$ is shaded. b) Distribution of responses to Saracatinib for which some lung and blood cancer cell lines have responded.}
 	\label{fig syn2}
-	\end{figure*}
+	\end{figure}
 
+
+	\begin{figure}
+	\begin{subfigure}[b]{0.22\textwidth}
+		\includegraphics[width=\textwidth]{./img/lung-blood-barplot.pdf}
+		\caption{Lung and Blood}\label{fig:two}
+	\end{subfigure} ~
+	\begin{subfigure}[b]{0.22\textwidth}
+		\includegraphics[width=\textwidth]{./img/skin-ovary-breast.pdf}
+		\caption{Skin, Ovary, and Breast}\label{fig:three}
+	\end{subfigure}
+	\caption{Comparison of Mean Square Error of DE and BL in predicting the response to 24 drugs in TWO and THREE experiments. Each bar is the mean of MSE for 5-fold cross-validation.}
+	\label{fig syn2}
+\end{figure}
 {\bf Interpretation}
 %Next we focus on the interpretation of the selected genes. 
 We select Saracatinib, a drug which shows activity on both lung and blood cancers, Figure \ref{fig:Saracatinib}. 

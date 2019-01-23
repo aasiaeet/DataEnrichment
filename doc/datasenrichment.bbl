@@ -1,9 +1,16 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{41}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bach et~al.(2012)Bach, Jenatton, Mairal, Obozinski,
+  et~al.]{bach2012optimization}
+Bach, F., Jenatton, R., Mairal, J., Obozinski, G., et~al.
+\newblock Optimization with sparsity-inducing penalties.
+\newblock \emph{Foundations and Trends{\textregistered} in Machine Learning},
+  4\penalty0 (1):\penalty0 1--106, 2012.
 
 \bibitem[Banerjee et~al.(2014)Banerjee, Chen, Fazayeli, and
   Sivakumar]{banerjee14}
@@ -28,11 +35,24 @@ Bickel, P.~J., Ritov, Y., Tsybakov, A.~B., et~al.
 \newblock \emph{The Annals of Statistics}, 37\penalty0 (4):\penalty0
   1705--1732, 2009.
 
+\bibitem[Blumensath \& Davies(2009)Blumensath and
+  Davies]{blumensath2009iterative}
+Blumensath, T. and Davies, M.~E.
+\newblock Iterative hard thresholding for compressed sensing.
+\newblock \emph{Applied and computational harmonic analysis}, 27\penalty0
+  (3):\penalty0 265--274, 2009.
+
 \bibitem[Boucheron et~al.(2013)Boucheron, Lugosi, and Massart]{boucheron13}
 Boucheron, S., Lugosi, G., and Massart, P.
 \newblock \emph{Concentration {Inequalities}: {A} {Nonasymptotic} {Theory} of
   {Independence}}.
 \newblock Oxford University Press, 2013.
+
+\bibitem[Boufounos \& Baraniuk(2008)Boufounos and Baraniuk]{boufounos20081}
+Boufounos, P.~T. and Baraniuk, R.~G.
+\newblock 1-bit compressive sensing.
+\newblock In \emph{Information Sciences and Systems, 2008. CISS 2008. 42nd
+  Annual Conference on}, pp.\  16--21. IEEE, 2008.
 
 \bibitem[Candes et~al.(2007)Candes, Tao, et~al.]{candes2007dantzig}
 Candes, E., Tao, T., et~al.
@@ -40,6 +60,25 @@ Candes, E., Tao, T., et~al.
   than n.
 \newblock \emph{The Annals of Statistics}, 35\penalty0 (6):\penalty0
   2313--2351, 2007.
+
+\bibitem[Cand{\`e}s \& Recht(2009)Cand{\`e}s and Recht]{candes2009exact}
+Cand{\`e}s, E.~J. and Recht, B.
+\newblock Exact matrix completion via convex optimization.
+\newblock \emph{Foundations of Computational mathematics}, 9\penalty0
+  (6):\penalty0 717, 2009.
+
+\bibitem[Cand{\`e}s \& Tao(2010)Cand{\`e}s and Tao]{candes2010power}
+Cand{\`e}s, E.~J. and Tao, T.
+\newblock The power of convex relaxation: Near-optimal matrix completion.
+\newblock \emph{IEEE Transactions on Information Theory}, 56\penalty0
+  (5):\penalty0 2053--2080, 2010.
+
+\bibitem[Cand{\`e}s et~al.(2006)Cand{\`e}s, Romberg, and Tao]{candes2006robust}
+Cand{\`e}s, E.~J., Romberg, J., and Tao, T.
+\newblock Robust uncertainty principles: Exact signal reconstruction from
+  highly incomplete frequency information.
+\newblock \emph{IEEE Transactions on information theory}, 52\penalty0
+  (2):\penalty0 489--509, 2006.
 
 \bibitem[Chandrasekaran et~al.(2012)Chandrasekaran, Recht, Parrilo, and
   Willsky]{venkat12}
@@ -67,6 +106,18 @@ Dondelinger, F. and Mukherjee, S.
 \newblock High-dimensional regression over disease subgroups.
 \newblock \emph{arXiv preprint arXiv:1611.00953}, 2016.
 
+\bibitem[Donoho(2006)]{donoho2006compressed}
+Donoho, D.~L.
+\newblock Compressed sensing.
+\newblock \emph{IEEE Transactions on information theory}, 52\penalty0
+  (4):\penalty0 1289--1306, 2006.
+
+\bibitem[Friedman et~al.(2008)Friedman, Hastie, and
+  Tibshirani]{friedman2008sparse}
+Friedman, J., Hastie, T., and Tibshirani, R.
+\newblock Sparse inverse covariance estimation with the graphical lasso.
+\newblock \emph{Biostatistics}, 9\penalty0 (3):\penalty0 432--441, 2008.
+
 \bibitem[Gross \& Tibshirani(2016)Gross and Tibshirani]{grti16}
 Gross, S.~M. and Tibshirani, R.
 \newblock Data shared lasso: A novel tool to discover uplift.
@@ -79,12 +130,23 @@ Gu, Q. and Banerjee, A.
 \newblock In \emph{Advances In Neural Information Processing Systems}, pp.\
   3684--3692, 2016.
 
+\bibitem[Hastie(2017)]{hastie2017generalized}
+Hastie, T.~J.
+\newblock Generalized additive models.
+\newblock In \emph{Statistical models in S}, pp.\  249--307. Routledge, 2017.
+
 \bibitem[Iorio et~al.(2016)Iorio, Knijnenburg, Vis, Bignell, Menden, Schubert,
   Aben, Goncalves, Barthorpe, Lightfoot, et~al.]{iorio2016landscape1}
 Iorio, F., Knijnenburg, T.~A., Vis, D.~J., Bignell, G.~R., Menden, M.~P.,
   Schubert, M., Aben, N., Goncalves, E., Barthorpe, S., Lightfoot, H., et~al.
 \newblock A landscape of pharmacogenomic interactions in cancer.
 \newblock \emph{Cell}, 166\penalty0 (3):\penalty0 740--754, 2016.
+
+\bibitem[Jain et~al.(2013)Jain, Netrapalli, and Sanghavi]{jain2013low}
+Jain, P., Netrapalli, P., and Sanghavi, S.
+\newblock Low-rank matrix completion using alternating minimization.
+\newblock In \emph{Proceedings of the forty-fifth annual ACM symposium on
+  Theory of computing}, pp.\  665--674. ACM, 2013.
 
 \bibitem[Jalali et~al.(2010)Jalali, Ravikumar, Sanghavi, and Ruan]{jrsr10}
 Jalali, A., Ravikumar, P., Sanghavi, S., and Ruan, C.
@@ -101,6 +163,22 @@ McCoy, M.~B. and Tropp, J.~A.
 Mendelson, S.
 \newblock {Learning Without Concentration}.
 \newblock In \emph{Journal of the ACM (JACM)}. To appear, 2014.
+
+\bibitem[Negahban \& Wainwright(2012)Negahban and
+  Wainwright]{negahban2012restricted}
+Negahban, S. and Wainwright, M.~J.
+\newblock Restricted strong convexity and weighted matrix completion: Optimal
+  bounds with noise.
+\newblock \emph{Journal of Machine Learning Research}, 13\penalty0
+  (May):\penalty0 1665--1697, 2012.
+
+\bibitem[Negahban et~al.(2009)Negahban, Yu, Wainwright, and
+  Ravikumar]{negahban2009unified}
+Negahban, S., Yu, B., Wainwright, M.~J., and Ravikumar, P.~K.
+\newblock A unified framework for high-dimensional analysis of $ m $-estimators
+  with decomposable regularizers.
+\newblock In \emph{Advances in Neural Information Processing Systems}, pp.\
+  1348--1356, 2009.
 
 \bibitem[Negahban et~al.(2012)Negahban, Ravikumar, Wainwright, and Yu]{nrwy12}
 Negahban, S.~N., Ravikumar, P., Wainwright, M.~J., and Yu, B.
@@ -125,11 +203,24 @@ Oymak, S., Recht, B., and Soltanolkotabi, M.
 \newblock Sharp time--data tradeoffs for linear inverse problems.
 \newblock \emph{arXiv preprint arXiv:1507.04793}, 2015.
 
+\bibitem[Plan et~al.(2017)Plan, Vershynin, and Yudovina]{plan2017high}
+Plan, Y., Vershynin, R., and Yudovina, E.
+\newblock High-dimensional estimation with geometric constraints.
+\newblock \emph{Information and Inference: A Journal of the IMA}, 6\penalty0
+  (1):\penalty0 1--40, 2017.
+
 \bibitem[Raskutti et~al.(2010)Raskutti, Wainwright, and Yu]{raskutti10}
 Raskutti, G., Wainwright, M.~J., and Yu, B.
 \newblock Restricted eigenvalue properties for correlated gaussian designs.
 \newblock \emph{Journal of Machine Learning Research}, 11:\penalty0 2241--2259,
   2010.
+
+\bibitem[Rigby \& Stasinopoulos(2005)Rigby and
+  Stasinopoulos]{rigby2005generalized}
+Rigby, R.~A. and Stasinopoulos, D.~M.
+\newblock Generalized additive models for location, scale and shape.
+\newblock \emph{Journal of the Royal Statistical Society: Series C (Applied
+  Statistics)}, 54\penalty0 (3):\penalty0 507--554, 2005.
 
 \bibitem[Rudelson \& Zhou(2013)Rudelson and Zhou]{ruzh13}
 Rudelson, M. and Zhou, S.
@@ -137,11 +228,17 @@ Rudelson, M. and Zhou, S.
 \newblock \emph{IEEE Transactions on Information Theory}, 59\penalty0
   (6):\penalty0 3434--3447, 2013.
 
-\bibitem[Tibshirani(1996)]{tibs96}
+\bibitem[Tibshirani(1996{\natexlab{a}})]{tibs96}
 Tibshirani, R.
 \newblock Regression shrinkage and selection via the lasso.
 \newblock \emph{Journal of the Royal Statistical Society. Series B
-  (Methodological)}, pp.\  267--288, 1996.
+  (Methodological)}, pp.\  267--288, 1996{\natexlab{a}}.
+
+\bibitem[Tibshirani(1996{\natexlab{b}})]{tibshirani1996regression}
+Tibshirani, R.
+\newblock Regression shrinkage and selection via the lasso.
+\newblock \emph{Journal of the Royal Statistical Society. Series B
+  (Methodological)}, pp.\  267--288, 1996{\natexlab{b}}.
 
 \bibitem[Tropp(2015)]{trop15}
 Tropp, J.~A.
