@@ -3,7 +3,12 @@
 # Author: Amir Asiaee 
 # Email: asiae002@umn.edu
 ######################################################################
-if(!file.exists(file.path(paths$scratch, paste("cvMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))){
+# Remove these two lines at the end. 
+# focusedCancerTypes <- c("BREAST", "OVARY", "SKIN")
+# # focusedCancerTypes <- c("HAEMATOPOIETIC_AND_LYMPHOID_TISSUE", "LUNG")
+# corrThresh <- .3
+###########################
+# if(!file.exists(file.path(paths$scratch, paste("cvMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))){
 source("00-paths.R")
 library(glmnet)
 set.seed(123)
@@ -26,6 +31,9 @@ cvSds <- matrix(NA, nrow = length(drugList), ncol = numLambda)
 rownames(cvSds) <- drugList
 cvLambdas <- matrix(NA, nrow = length(drugList), ncol = numLambda)
 rownames(cvLambdas) <- drugList
+cvMinLambdas <- matrix(NA, nrow = length(drugList), ncol = 1)
+rownames(cvMinLambdas) <- drugList
+
 
 for(file in allFiles){
   load(file.path(dataDir,file))
@@ -77,15 +85,16 @@ for(file in allFiles){
     print(dim(bestTrainX))
     
     
+    # glmnetFit <- glmnet(x = as.matrix(bestTrainX), y = trainY, alpha=2/3, lambda = myLambda)
     glmnetFit <- glmnet(x = as.matrix(bestTrainX), y = trainY, alpha=1, lambda = myLambda)
     yHat <- predict(glmnetFit, newx=as.matrix(bestTestX),s=myLambda) # make predictions
-    err <- sapply(as.data.frame(yHat), function(x,y) mean(abs(x - y)), testY)
+    err <- sapply(as.data.frame(yHat), function(x,y) mean((x - y)^2), testY)
     cvResults[k, ] <- err
     # print(paste("Done with the elastic net on fold", k))
   }
   cvMeans[drugName,] <-  colMeans(cvResults)
   cvSds[drugName,] <- apply(cvResults, 2, sd)
-  #cvMinLambdas[drugName] <- myLambda[which.min(cvMean)]
+  cvMinLambdas[drugName] <- myLambda[which.min(cvMeans[drugName,])]
   cvLambdas[drugName,] <- myLambda
   print(min(cvMeans[drugName,]))
   
@@ -122,9 +131,13 @@ for(file in allFiles){
   
   # readline(print("Should I go to the next drug?!"))
 }
-save(cvMeans, file=file.path(paths$scratch, paste("cvMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
-save(cvSds, file=file.path(paths$scratch, paste("cvSds_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
-save(cvLambdas, file=file.path(paths$scratch, paste("cvLambdas_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
-}
-     
-     
+save(cvMeans, file=file.path(paths$scratch, paste("new_cvMeans_", paste(focusedCancerTypes, corrThresh, collapse = "_") ,".RData")))
+save(cvSds, file=file.path(paths$scratch, paste("new_cvSds_", paste(focusedCancerTypes, corrThresh, collapse = "_") ,".RData")))
+save(cvLambdas, file=file.path(paths$scratch, paste("new_cvLambdas_", paste(focusedCancerTypes, corrThresh, collapse = "_") ,".RData")))
+save(cvMinLambdas, file=file.path(paths$scratch, paste("new_cvMinLambdas_", paste(focusedCancerTypes, corrThresh, collapse = "_") ,".RData")))
+
+
+
+# }
+
+

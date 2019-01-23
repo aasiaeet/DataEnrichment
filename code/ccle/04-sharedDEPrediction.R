@@ -3,6 +3,11 @@
 # Author: Amir Asiaee
 # Email: asiae002@umn.edu
 ######################################################################
+# Remove these two lines at the end. 
+# focusedCancerTypes <- c("BREAST", "OVARY", "SKIN")
+# # focusedCancerTypes <- c("HAEMATOPOIETIC_AND_LYMPHOID_TISSUE", "LUNG")
+# corrThresh <- .3
+###########################
 source("00-paths.R")
 # source("dataEnricher.R")
 norm2 <- function(x) sqrt(sum(x^2))
@@ -66,7 +71,7 @@ multiDeal <- function(.Object){
     # .Object@betaList[[i]] <- deal(.Object@x, .Object@y, .Object@g, .Object@gamma, .Object@grdTaus[i,])
     # marginalImp <- rep(0, n)
     ## Walk nStepGD number of gradient descent steps:
-    etas <- 10 * sapply(1:(nGroup + 1), function(g) ifelse(g != nGroup + 1, 1/(sqrt(n * ng[g])) ,1/n))
+    etas <- sapply(1:(nGroup + 1), function(g) ifelse(g != nGroup + 1, 1/(sqrt(n * ng[g])) ,1/n))
     stableErrCounter <- 0
     meanSqErrNew <- Inf 
     BetaNex <- matrix(0, p, nGroup + 1) #no warm start beta.
@@ -92,14 +97,16 @@ multiDeal <- function(.Object){
       # BetaNex[,nGroup + 1] <- projectOntoElasticNet(BetaNex[,nGroup + 1], gamma, as.double(grdTaus[i,nGroup + 1]))
       BetaNex[,nGroup + 1] <- projectOntoL1(BetaNex[,nGroup + 1], as.double(grdTaus[i,nGroup + 1]))
       ### Stopping criteria.
-      predictedY <- singlePredict(rbind(compIntercept(BetaNex, avgY, avgX, ng, n), BetaNex), x, groups)
+      # predictedY <- singlePredict(rbind(compIntercept(BetaNex, avgY, avgX, ng, n), BetaNex), x, groups)
+      predictedY <- singlePredict(rbind(0, BetaNex), x, groups)
+      
       meanSqErrNew <- mean((y - predictedY)^2)
       # print(paste("New mean square error:", meanSqErrNew))
       
       if(meanSqErrNew > meanSqErrOld){
         stableErrCounter <- stableErrCounter + 1
         if(stableErrCounter == 5){
-          # print(paste("Enough learning! at step", i, "no marginal improvement")) # of meanSqErr is", abs(meanSqErrNew - meanSqErrOld)))
+          # print(paste("Enough learning! at step", j, "no marginal improvement")) # of meanSqErr is", abs(meanSqErrNew - meanSqErrOld)))
           break
         }
         BetaNex <- BetaPrv #do not update the parameters, keep the best one
@@ -112,10 +119,11 @@ multiDeal <- function(.Object){
       #   print(paste("After", nStepsGD, "steps of GD, I reached ", normInf(BetaPrv - BetaNex), "consecutive change in beta_{ij}."))
       # }
       
-
+      
     }
     ## Computing intercepts
-    .Object@betaList[[i]] <- rbind(compIntercept(BetaNex, avgY, avgX, ng, n), BetaNex)
+    # .Object@betaList[[i]] <- rbind(compIntercept(BetaNex, avgY, avgX, ng, n), BetaNex)
+    .Object@betaList[[i]] <- rbind(0, BetaNex)
   }
   return(.Object@betaList)
 }
@@ -135,73 +143,6 @@ compIntercept <- function(Beta, avgY, avgX, ng, n){
   # }
   # intercept[nGroup + 1] <- as.numeric(intercept[1:nGroup] %*% ng) / n
 }
-
-deal <- function(x, y, gs, gamma, taus, warmStart){#, normalized = FALSE){
-  
-  # 
-  # 
-  # 
-  # 
-  # 
-  # # x <- cbind(x, rep(1 / nrow(x), nrow(x))) #no need for intercept computation
-  # BetaPrv <- matrix(0, p, nGroup + 1) #last column is dedicated for \beta_0
-  # # marginalImp <- rep(0, n)
-  # BetaNex <- BetaPrv
-  # meanSqErrOld <- 0
-  # for(i in 1:nStepsGD){
-  #   # if(i %% 5 == 0){
-  #   #   print(paste("This is iteration", i, "of SPGD"))
-  #   # }
-  #   accumMult <- c(rep(0, n))
-  #   for(g in 1:nGroup){
-  #     groupIndex <- groups == g
-  #     if(!any(groupIndex)){
-  #       print(paste("There should be at least one elements in group", levels(groups)[g]))
-  #       return(NULL)
-  #     }
-  #     recycle <- as.numeric(x[groupIndex,] %*% BetaPrv[,g])
-  #     accumMult[groupIndex] <- recycle# to recycle the computation
-  #     # marginalImp[groupIndex] <- y[groupIndex] - x[groupIndex,] %*% (BetaPrv[,g] + BetaPrv[,nGroup + 1])
-  #     BetaNex[,g] <-  BetaPrv[,g] + etas[g] * t(x[groupIndex,]) %*% (y[groupIndex] - recycle - x[groupIndex,] %*% BetaPrv[,nGroup + 1])
-  #     # BetaNex[,g] <- projectOntoL1(BetaNex[,g], as.double(taus[g]))
-  #     BetaNex[,g] <- projectOntoElasticNet(BetaNex[,g], gamma, as.double(taus[g]))
-  #   }
-  #   # BetaNex[,nGroup + 1] <-  BetaPrv[,nGroup + 1] + gradient #2/(nrow(x)) * t(x) %*% marginalImp
-  #   BetaNex[,nGroup + 1] <-  BetaPrv[,nGroup + 1] + etas[nGroup + 1] * t(x) %*% (y - x %*% BetaPrv[,nGroup + 1] - accumMult)
-  #   # BetaNex[,nGroup + 1] <- projectOntoL1(BetaNex[,nGroup + 1], as.double(taus[nGroup + 1]))
-  #   BetaNex[,nGroup + 1] <- projectOntoElasticNet(BetaNex[,nGroup + 1], gamma, as.double(taus[nGroup + 1]))
-  #   ### Stopping criteria.
-  #   
-  #   # predictedY <- singlePredict(BetaNex, x, groups, gamma = 2, taus)#, addIntercept = FALSE)
-  #   # meanSqErrNew <- mean((y - predictedY)^2)
-  #   # 
-  #   
-  #   # if(abs(meanSqErrNew - meanSqErrOld) < stoppingCriteria)){
-  #   #   # print(paste("Mean squared error is: ", meanSqErrNew))
-  #   #   print(paste("Enough learning! at step", i, "marginal improvement of meanSqErr is", abs(meanSqErrNew - meanSqErrOld)))
-  #   #   break
-  #   # }
-  #   # # if(i == nStepsGD){
-  #   # #   print("hey")
-  #   # #   print(paste("After", nStepsGD, "steps of GD, I reached ", normInf(BetaPrv - BetaNex), "consecutive change in beta_{ij}."))
-  #   # # }
-  #   # meanSqErrOld <- meanSqErrNew
-  #   # 
-  #   
-  #   BetaPrv <- BetaNex
-  # }
-  # # print(paste("Training MSE was", meanSqErrOld))
-  # # Computing intercepts
-  # intercept <- rep(NA, nGroup + 1)
-  # for(g in 1:nGroup){
-  #   intercept[g] <- avgY[g] - avgX[g, ] %*% (BetaNex[,g] + BetaNex[,nGroup])
-  # }
-  # intercept[nGroup + 1] <- as.numeric(intercept[1:nGroup] %*% ng) / n
-  # BetaNex <- rbind(intercept, BetaNex)
-  # 
-  # return(BetaNex)
-}
-
 
 dealer <- setClass(
   # Set the name for the class
@@ -255,11 +196,6 @@ setMethod(f="predictDeal",
             for(i in 1:dim(s)[1]){
               # Finding the closest recorded tau to the queried one
               tausIndex <- which.min(apply(sweep(.Object@grdTaus, 2, FUN = "-", s[i,]), 1, norm2))
-              # if(i == 125){
-              #   print("here")
-              #   print("here")
-              #   print("here")
-              # }
               predictedRes[,i] <- singlePredict(.Object@betaList[[tausIndex]], newx, newg)#, addIntercept = TRUE)
             }
             # Add back mean and sd of the response from trainY
@@ -303,13 +239,13 @@ setMethod(f = "initialize",
 # Author: Amir Asiaee
 # Email: asiae002@umn.edu
 ######################################################################
-if(!file.exists(file=file.path(paths$scratch, paste("cvDeMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))){
+# if(!file.exists(file=file.path(paths$scratch, paste("cvDeMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))){
 set.seed(123)
 dataDir <- file.path(paths$clean, "xy") 
 allFiles <- list.files(dataDir)
 nfolds <- 5
 nGroup <- length(focusedCancerTypes)
-numBaseTaus <- 5
+numBaseTaus <- 10
 
 #Prepare result storage.
 drugList <- c()
@@ -319,15 +255,29 @@ for(file in allFiles){
   drugName <- strsplit(drugName, "[.]")[[1]][1]
   drugList <- append(drugList, drugName)
 }
-cvDeMeans <- matrix(NA, nrow = length(drugList), ncol = numBaseTaus ^ (nGroup + 1))
+# cvDeMeans <- matrix(NA, nrow = length(drugList), ncol = numBaseTaus ^ (nGroup + 1))
+# rownames(cvDeMeans) <- drugList
+# cvDeSds <- matrix(NA, nrow = length(drugList), ncol = numBaseTaus ^ (nGroup + 1))
+# rownames(cvDeSds) <- drugList
+# cvDeTaus <- array(rep(NA, length(drugList) * numBaseTaus^(nGroup + 1) * (nGroup + 1)), 
+#                   dim = c(numBaseTaus^(nGroup + 1), (nGroup + 1), length(drugList)),
+#                   dimnames = list(c(),c(),drugList)
+# )
+# cvMinLambdas <- matrix(NA, nrow = length(drugList), ncol = (nGroup + 1))
+# rownames(cvMinLambdas) <- drugList
+
+cvDeMeans <- matrix(NA, nrow = length(drugList), ncol = numBaseTaus)
 rownames(cvDeMeans) <- drugList
-cvDeSds <- matrix(NA, nrow = length(drugList), ncol = numBaseTaus ^ (nGroup + 1))
+cvDeSds <- matrix(NA, nrow = length(drugList), ncol = numBaseTaus)
 rownames(cvDeSds) <- drugList
-# cvDETaus <- sapply(drugList, function(x) NULL)
 cvDeTaus <- array(rep(NA, length(drugList) * numBaseTaus^(nGroup + 1) * (nGroup + 1)), 
-                  dim = c(numBaseTaus^(nGroup + 1), (nGroup + 1), length(drugList)),
+                  dim = c(numBaseTaus, (nGroup + 1), length(drugList)),
                   dimnames = list(c(),c(),drugList)
 )
+cvMinLambdas <- matrix(NA, nrow = length(drugList), ncol = (nGroup + 1))
+rownames(cvMinLambdas) <- drugList
+
+
 counter <- 0
 for(file in allFiles){
   load(file.path(dataDir,file))
@@ -351,18 +301,13 @@ for(file in allFiles){
   set.seed(123)
   foldsId <- sample(rep(1:nfolds, length.out = nTrain))
   ## Determining taus. 
-  # lambdaMax <- max(sapply(predictors, function(x,y) sum(x * y), response)) / nTrain
-  # lambdaMin <- .1 * lambdaMax
-  # tauMax <- 2
-  # tauMin <- .25
-  # print(tauMax)
   tauMax <- .5#(max(sapply(predictors, function(x,y) abs(sum(x * y)), response)) / nTrain) / 10
-  tauMin <- .01 * (tauMax) 
+  tauMin <- .01 #* (tauMax) 
   # myTaus <- exp(1)^seq(log(tauMin), log(tauMax), length.out = numBaseTaus)
   myTaus <- seq(tauMin, tauMax, length.out = numBaseTaus)
   # gridTaus <- replicate(nGroup + 1, myTaus)
-  gridTaus <- as.matrix(expand.grid(replicate(nGroup + 1, myTaus, simplify = F)))
-  # perpareTaus(myTaus, nGroups = 2)
+  # gridTaus <- as.matrix(expand.grid(replicate(nGroup + 1, myTaus, simplify = F)))
+  gridTaus <- t(sapply(1:numBaseTaus, function(x) c(rep(0,nGroup),myTaus[x])))
   
   cvResults <- matrix(NA, nrow = nfolds, ncol = dim(gridTaus)[1])
   lowestErrs <- c()
@@ -392,52 +337,24 @@ for(file in allFiles){
     
     dealerFit <- dealer(x = as.matrix(bestTrainX), y = trainY, g = as.factor(trainG), gamma = 1, grdTaus = gridTaus, normalize = TRUE)
     yHat <- predictDeal(dealerFit, newx=as.matrix(bestTestX),newg = as.factor(testG), gamma = 1, s=gridTaus) 
-    err <- sapply(as.data.frame(yHat), function(x,y) mean(abs(x - y)), testY)
+    err <- sapply(as.data.frame(yHat), function(x,y) mean((x - y)^2), testY)
     cvResults[k, ] <- err
   }
   cvDeMeans[drugName,] <-  colMeans(cvResults)
   print(min(cvDeMeans[drugName,]))
   cvDeSds[drugName,] <- apply(cvResults, 2, sd)
-  #cvMinLambdas[drugName] <- myLambda[which.min(cvDeMean)]
+  cvMinLambdas[drugName,] <- gridTaus[which.min(cvDeMeans[drugName,]), ]
+  # cvMinLambdas <- gridTaus[which.min(cvDeMeans[drugName,]),]
+  dealerFit <- dealer(x = as.matrix(bestTrainX), y = trainY, g = as.factor(trainG), gamma = 1, grdTaus = t(cvMinLambdas[drugName,]), normalize = TRUE)
   cvDeTaus[,,drugName] <- gridTaus
-  
-  
-  # par(mar=c(4,4,4,4))
-  # plot(log(cv1005$lambda),cv1005$cvm,pch=19,col="red",xlab="log(Lambda)",ylab=cv1005$name)
-  # print("Done plotting the results!")
-  #   
-  ############################
-  # This is for important feature selection. Disabled for now.
-  ############################
-  
-  #   print("Starting the bootstrap!")
-  #   runningSumOfImpIndex <- matrix(0L, nrow = ncol(data), ncol = 1)
-  #   numBootStrap <- 50
-  #   for(i in 1:numBootStrap){
-  #     print(paste("Resample number ", i))
-  #     bootStrapSampleIndex <- sample(1:nrow(data), nrow(data), replace=TRUE)
-  #     bootStrapData <- data[bootStrapSampleIndex,]
-  #     bootStrapCv1005 <- myElasticNetRegression(bootStrapData, savedLambda.min)
-  #     runningSumOfImpIndex <- runningSumOfImpIndex + as.integer(abs(as.matrix(coef(bootStrapCv1005))) >0.00000001)
-  #   }
-  
-  #readline(print("Stop!"))
-  
-  #avgFreqOfImpIndex <- runningSumOfImpIndex / numBootStrap
-  #impFeatureIndex <- (avgFreqOfImpIndex >= .5)
-  
-  #valueOfCoef <- as.matrix(coef(cv1005, s="lambda.min"))
-  #valueOfImpCoef <- valueOfCoef[impFeatureIndex]
-  #nameOfImpCoef <- rownames(valueOfCoef)[impFeatureIndex]
-  #sortedValueOfImpCoef <- sort(valueOfImpCoef, decreasing = TRUE, index.return=TRUE)
-  #print(nameOfImpCoef[sortedValueOfImpCoef$ix])
-  ############################
-  
   # readline(print("Should I go to the next drug?!"))
 }
-save(cvDeMeans, file=file.path(paths$scratch, paste("cvDeMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
-save(cvDeSds, file=file.path(paths$scratch, paste("cvDeSds_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
-save(cvDeTaus, file=file.path(paths$scratch, paste("cvDeTaus", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+save(cvDeMeans, file=file.path(paths$scratch, paste("newester_cvDeMeans_", paste(focusedCancerTypes, corrThresh, collapse = "_") ,".RData")))
+save(cvDeSds, file=file.path(paths$scratch, paste("newester_cvDeSds_", paste(focusedCancerTypes, corrThresh, collapse = "_") ,".RData")))
+save(cvDeTaus, file=file.path(paths$scratch, paste("newester_cvDeTaus", paste(focusedCancerTypes, corrThresh, collapse = "_") ,".RData")))
+
+save(cvMinLambdas, file=file.path(paths$scratch, paste("newester_cvMinLambdas", paste(focusedCancerTypes,corrThresh,  collapse = "_") ,".RData")))
+
 
 
 
@@ -468,4 +385,4 @@ save(cvDeTaus, file=file.path(paths$scratch, paste("cvDeTaus", paste(focusedCanc
 #   # refinedTaus <- apply(t(1:3), 2, function(i) (seq(from=tausMin[i], to=tausMax[i], length.out = 50)))
 #   
 # }
-}
+# }
