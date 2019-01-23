@@ -4,7 +4,10 @@
 # Author: asiae002@umn.edu
 #############################
 projectOntoL1 <- function(projectMe, tau){
-  stopifnot(tau > 0)
+  stopifnot(tau >= 0)
+  if(tau == 0){
+    return(rep(0,length(projectMe)))
+  }
   if(sum(abs(projectMe)) < tau)
     return(projectMe)
   u <- sort(abs(projectMe), decreasing = TRUE)
@@ -14,4 +17,4 @@ projectOntoL1 <- function(projectMe, tau){
   return( sign(projectMe) * pmax( abs(projectMe) - theta, rep(0, length(projectMe)) ))
 }
 
-
+# print(projectOntoL1(1:3,0))

@@ -3,14 +3,14 @@
 # Author: Amir Asiaee T. 
 # Email: asiae002@umn.edu
 ######################################################################
-norm2sq <- function(x) (sum(x^2))
+
 
 evaluateElasticNet <- function(point, gamma){
-  return((norm(as.matrix(point), type = c("o")) + (gamma / 2) * norm2sq(as.matrix(point)))) 
+  return(sum(abs(point)) + (gamma / 2) * sum(point^2)) 
 }
 
-projectOntoElasticNet <- function(projectMe, gamma, tau){
-  if (evaluateElasticNet(projectMe, gamma) <= tau)
+projectOntoElasticNet <- function(projectMe, gamma, radius){
+  if (evaluateElasticNet(projectMe, gamma) <= radius)
     return (projectMe)
   else{
     U <- 1:length(projectMe);
@@ -33,7 +33,7 @@ projectOntoElasticNet <- function(projectMe, gamma, tau){
       
       deltaRho <- length(aboveIndexSet)
       deltaS <- evaluateElasticNet(aboveValueVec, gamma)
-      if(s + deltaS - (rho + deltaRho) * evaluateElasticNet(currentValue, gamma) < tau * (1 + gamma * currentValue)**2){
+      if(s + deltaS - (rho + deltaRho) * evaluateElasticNet(currentValue, gamma) < radius * (1 + gamma * currentValue)**2){
         s <- s + deltaS
         rho <- deltaRho
         U <- belowIndexSet
@@ -43,14 +43,15 @@ projectOntoElasticNet <- function(projectMe, gamma, tau){
       }
       sortedAbsProjectMe <- sortedAbsProjectMe[sortedAbsProjectMe$ix %in% U, ]
     }
-    a <- gamma**2 * tau + gamma*rho / 2
-    b <- 2 * gamma * tau + rho
-    c <- tau - s 
-    lambda <- (-b + sqrt(b**2 - 4 * a * c)) / (2 * a)
-    return (unlist(lapply(projectMe, function(x) sign(x)* max(abs(x) - lambda,0) / (1 + lambda * gamma))))
+    a <- gamma^2 * radius + gamma*rho / 2
+    b <- 2 * gamma * radius + rho
+    c <- radius - s 
+    lambda <- (-b + sqrt(b^2 - 4 * a * c)) / (2 * a)
+    return (sapply(projectMe, function(x) sign(x)* max(abs(x) - lambda,0) / (1 + lambda * gamma)))
   }
 }
 
-# print(projectOntoElasticNet(c(3,0,-3), .1, 1))
-  
+# for small gamma this implementation does not work? 
+# print(projectOntoElasticNet(c(2,0,-2), .001, 1))
+
 
