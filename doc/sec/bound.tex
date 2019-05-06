@@ -60,12 +60,12 @@ The following corollary characterizes the general error bound and results from t
 	where $C = 8\sqrt{2 K^2 + 1}$, $\zeta = \max_{g \in [G]} \zeta_g$, $\epsilon = \max_{g \in [G]} \epsilon_g$, $\gamma = \max_{g \in [G]_{\setminus}} n/n_g$  and $\tau > 0$.
 \end{corollary}
 \begin{example}
-	{\bf ($L_1$-norm)} For sparse DE estimator of \eqref{sde}, results of Theorem \ref{theo:re} and \ref{theo:ub} translates to the following: For enough number of samples as $\forall g \in [G]: n_g \geq m_g = \Theta(s_g \log p)$, the error bound of \eqref{eq:general} simplifies to:
+	{\bf ($L_1$-norm)} For sparse DE estimator of \eqref{sde}, results of Theorem \ref{theo:re} and \ref{theo:ub} translates to the following: For enough number of samples as $\forall g \in [G]: n_g \geq m_g = O(s_g \log p)$, the error bound of \eqref{eq:general} simplifies to:
 	\be
 	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}	= O \left(\sqrt{\frac{(\max_{g \in [G]}  s_g)\log p}{n}}\right) %+ \epsilon \sqrt{\log (G+1)}+ \tau }{\kappa_{\min}^2 \sqrt{n}}	)
 	\ee 
 	Therefore, individual errors are bounded as $\norm{\ddelta_g}{2}	= O (\sqrt{(\max_{g \in [G]}  s_g)\log p/n_g})$
-	which is slightly worse than $O(\sqrt{s_g\log p/n_g})$, the well-known error bound for recovering $s_g$-sparse vector from $n_g$ observations using LASSO or similar estimators \cite{banerjee14, venkat12, candes2007dantzig, chatterjee2014generalized, bickel2009simultaneous}. Note that $\max_{g \in [G]}  s_g$ (instead of $s_g$) is the price we pay to recover the common parameter $\bbeta_0$. 
+	which is slightly worse than $O(\sqrt{s_g\log p/n_g})$, the well-known error bound for recovering an $s_g$-sparse vector from $n_g$ observations using LASSO or similar estimators \cite{banerjee14, venkat12, candes2007dantzig, chatterjee2014generalized, bickel2009simultaneous}. Note that $\max_{g \in [G]}  s_g$ (instead of $s_g$) is the price we pay to recover the common parameter $\bbeta_0$. 
 \end{example}
 
 %\ab{This section will be very hard to follow without examples. Lets use the two examples we (will) introduce earlier.}

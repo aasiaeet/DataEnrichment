@@ -87,7 +87,7 @@ Therefore, if we keep $\rho$ below one, the estimation error of DE algorithm geo
 %i.e., $\norm{\hbbe - \bbeta^*}{2} = \norm{\ddelta}{2} =  \sqrt{\sum_{g=1}^{G} \norm{\ddelta_g}{2}^2} \leq \sum_{g=1}^{G} \norm{\ddelta_g}{2}$ where we characterized a scaled version of it as $\sum_{g=1}^{G} \sqrt{\frac{n_g}{n}}\norm{\ddelta_g}{2}$ in \eqref{eq:general}.
 One way for having $\rho < 1$ is to keep all arguments of $\max(\cdots)$  defining $\rho$ strictly below $1$. %, i.e., $\rho_g < 1/\theta_f $.
 To this end, we first establish high probability upper bound for $\rho_g$, $\eta_g$, and $\phi_g$ (in the Appendix \ref{twolems}) and then show that with enough number of samples and proper step sizes $\mu_g$, $\rho$ can be kept strictly below one with high probability. %In Section~\ref{sec:expds}, we empirically illustrate such geometric convergence.
-The high probability bounds for constants in Definition \ref{def:only} and the deterministic bound of Theorem \ref{theo:iter} leads to the following theorem which shows for enough number of samples, of the same order as the statistical sample complexity, we can keep $\rho$ below one and have geometric convergence.
+The high probability bounds for constants in Definition \ref{def:only} and the deterministic bound of Theorem \ref{theo:iter} leads to the following theorem which shows that for enough number of samples, of the same order as the statistical sample complexity of Theorem \ref{theo:re}, we can keep $\rho$ below one and have geometric convergence.
 
 
 
@@ -101,13 +101,13 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 \begin{theorem}
 	\label{theo:step}		
 	%Remember that $\theta_f = 1$ for the convex and  $\theta_f = 2$ for the non-convex case.
-	Let $\tau = C\sqrt{\log(G+1)} + b$ for $b > 0$ and $\omega_{0g} = \omega(\cA_0) + \omega(\cA_g)$. For the per-group step sizes of:
+	Let $\tau = C\sqrt{\log(G+1)} + b$ for $b > 0$ and $\omega_{0g} = \omega(\cA_0) + \omega(\cA_g)$. For the step sizes of:
 	\be
 	\nr
 %	&\theta_f = 1:&
 	\mu_0 = \frac{\min_{g \in [G]_\setminus} h_g(\tau)^{-2}}{4	n} ,
 %	\\ \nr
-	\mu_g =  \frac{h_g(\tau)^{-1}}{2\sqrt{n n_g}} 
+	\forall \in [G]_\setminus: \mu_g =  \frac{h_g(\tau)^{-1}}{2\sqrt{n n_g}} 
 %	\\ \nr
 %	&\theta_f = 2:& \mu_0 = \frac{1}{4	n} \times \frac{1}{\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^2} , \mu_g = \frac{l\left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)^{-1}}{8\sqrt{nn_g}\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^{2}}
 	\ee
@@ -146,7 +146,7 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 \end{corollary}
 	It is instructive to compare RHS of \eqref{eq:scaled} with that of \eqref{eq:general}: $\kappa_{\min}$ defined in Theorem \ref{theo:re} corresponds to $(1 - r(\tau))$ % defined in Theorem \ref{theo:step}
 	and the extra $G+1$ factor corresponds to the sample condition number $\gamma = \max_{g \in [G] } \frac{n}{n_g}$.
-	Therefore, Corollary \ref{corr:show} shows that DE converges to a scaled variant of statical error bound determined in Corollary \ref{corr:calcub}.
+	Therefore, Corollary \ref{corr:show} shows that \dc{} converges to a scaled variant of statical error bound determined in Corollary \ref{corr:calcub}.
 %	The extra factor of $G+1$ can be dismissed if we have more samples and also take a more conservative step size of $\mu_g = \frac{1}{(G+1) n_g}$.
 %	Following proposition states this result.
 %
