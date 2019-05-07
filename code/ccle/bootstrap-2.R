@@ -438,12 +438,12 @@ focusedCancerTypes <- c("HAEMATOPOIETIC_AND_LYMPHOID_TISSUE", "LUNG")
 # focusedCancerTypes <- c("BREAST", "OVARY", "SKIN")
 
 
-load(file=file.path(paths$scratch, paste("newer_cvMinLambdas", paste(focusedCancerTypes,corrThresh, collapse = "_") ,".RData")))
+load(file=file.path(paths$scratch, paste("newer_cvMinLambdas", paste(focusedCancerTypes, collapse = "_") ,".RData")))
 bestTaus <- cvMinLambdas
 # load(file=file.path(paths$scratch, paste("new_cvMinLambdas_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
 # bestLambdas <- cvMinLambdas
 # bestLambdas <- bestLambdas[25:48]#why the first 24 is garbage :)
-load(file=file.path(paths$scratch, paste("newester_cvMinLambdas", paste(focusedCancerTypes,corrThresh,  collapse = "_") ,".RData")))
+load(file=file.path(paths$scratch, paste("newester_cvMinLambdas", paste(focusedCancerTypes, collapse = "_") ,".RData")))
 bestSharedTaus <- cvMinLambdas
 
 
@@ -476,7 +476,7 @@ for(file in allFiles){
   drugName <- strsplit(drugName, "[.]")[[1]][1]
   print(paste("Data for", drugName, "loaded!"))
   drugs[drugCnt] <- drugName
-
+  
   # Using data to trim features.
   ## Removing features with variance zero
   zeroVarFeatureIndex <- (sapply(predictors, var) <= .02^2)
@@ -511,11 +511,13 @@ for(file in allFiles){
       i <- i - 1
       next 
     }
-      
     
-    fullTaus <- t(as.matrix(bestTaus[drugName,]))
+    
+    fullTaus <- t(as.matrix(c(.5,.25,1)))
+    # fullTaus <- t(as.matrix(bestTaus[drugName,]))
     dealerFit <- dealer(x = as.matrix(bestPredictors[bsIndex,]), y = response[bsIndex], g = groupsId[bsIndex], gamma = 1, grdTaus = fullTaus, normalize = TRUE)
-    sharedTaus  <- t(as.matrix(bestSharedTaus[drugName,]))
+    sharedTaus  <- t(as.matrix(c(0,0,.1)))
+    # sharedTaus <- t(as.matrix(bestSharedTaus[drugName,]))
     dealerFitShared <- sdealer(x = as.matrix(bestPredictors[bsIndex,]), y = response[bsIndex], g = groupsId[bsIndex], gamma = 1, grdTaus = sharedTaus, normalize = TRUE)
     
     # t-test for errors
@@ -532,16 +534,11 @@ for(file in allFiles){
   avgFreqOfImpIndex <- runningSumOfImpIndex / numBootStrap
   # impFeatureIndex <- (avgFreqOfImpIndex >= .8 & avgOfCoeffsEffect > 0.8) #avgOfCoeffsEffect > 0 select those features that increase y on average.
   # print(sum(impFeatureIndex) / 3)
-  # impFeatureIndex <- (avgFreqOfImpIndex >= .4)
-  impFeatureIndex <- c()
-  for(i in 1:(nGroup + 1)){
-    impFeatureIndex <- cbind(impFeatureIndex, order(avgFreqOfImpIndex[,i], decreasing = TRUE)[1:5])
-  }
-   
-  # print(sum(impFeatureIndex) / (nGroup + 1))
+  impFeatureIndex <- (avgFreqOfImpIndex >= .5)
+  print(sum(impFeatureIndex) / (nGroup + 1))
   
   for(i in 1:(nGroup+1)){
-    fileConnGroup <- file(file.path(paths$scratch, paste(file, "group-huge-3",i,".txt")))
+    fileConnGroup <- file(file.path(paths$scratch, paste(file, "group-small-2-manual",i,".txt")))
     nameOfImpCoef <- names(bestPredictors)[impFeatureIndex[,i]]
     nameOfImpCoef <- sub("-cna", "", nameOfImpCoef)
     nameOfImpCoef <- sub("-exp", "", nameOfImpCoef)
@@ -553,10 +550,10 @@ for(file in allFiles){
 }
 
 
-save(errFull, file=file.path(paths$scratch, paste("errDE", paste(focusedCancerTypes, corrThresh, collapse = "_") ,".RData")))
-save(errShared, file=file.path(paths$scratch, paste("errDEShared", paste(focusedCancerTypes, corrThresh, collapse = "_") ,".RData")))
+save(errFull, file=file.path(paths$scratch, paste("errDE", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+save(errShared, file=file.path(paths$scratch, paste("errDEShared", paste(focusedCancerTypes, collapse = "_") ,".RData")))
 
-pdf(paste(focusedCancerTypes, corrThresh, "errorBoxPlots.pdf"))
+pdf("errorBoxPlots.pdf")
 cnt <- 0 
 par(mfrow=c(3,2),mai = c(.2, 0.2, 0.2, 0.2), oma = c(1, 1, 2, 2))
 for(i in 1:24){

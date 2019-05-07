@@ -1,12 +1,13 @@
-###############################
-### Set the root directory, which is where we can find the CyTOF
-### data on the local machine. Need to do this before 'source'ing
-### the 'overlay' code
+######################################################################
+# Data Enrichment for Cancer Cell Line Encyclopedia (CCLE)
+# Author: Amir Asiaee
+# Email: asiae002@umn.edu
+######################################################################
 
 home <- Sys.getenv("HOME", unset = NA)
 if (is.na(home)) stop("Cannot find 'HOME' from environment variable s.")
 
-jinfo <- file.path(home, "Paths", "datasharing.json")
+jinfo <- file.path(home, "Paths", "dataenrichment.json")
 if (!file.exists(jinfo)) stop("Cannot locate file: '", jinfo, "'.\n", sep='')
 library(rjson)
 temp <- fromJSON(file = jinfo)
