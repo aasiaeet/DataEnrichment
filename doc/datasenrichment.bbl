@@ -1,4 +1,4 @@
-\begin{thebibliography}{41}
+\begin{thebibliography}{39}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -130,11 +130,6 @@ Gu, Q. and Banerjee, A.
 \newblock In \emph{Advances In Neural Information Processing Systems}, pp.\
   3684--3692, 2016.
 
-\bibitem[Hastie(2017)]{hastie2017generalized}
-Hastie, T.~J.
-\newblock Generalized additive models.
-\newblock In \emph{Statistical models in S}, pp.\  249--307. Routledge, 2017.
-
 \bibitem[Iorio et~al.(2016)Iorio, Knijnenburg, Vis, Bignell, Menden, Schubert,
   Aben, Goncalves, Barthorpe, Lightfoot, et~al.]{iorio2016landscape1}
 Iorio, F., Knijnenburg, T.~A., Vis, D.~J., Bignell, G.~R., Menden, M.~P.,
@@ -214,13 +209,6 @@ Raskutti, G., Wainwright, M.~J., and Yu, B.
 \newblock Restricted eigenvalue properties for correlated gaussian designs.
 \newblock \emph{Journal of Machine Learning Research}, 11:\penalty0 2241--2259,
   2010.
-
-\bibitem[Rigby \& Stasinopoulos(2005)Rigby and
-  Stasinopoulos]{rigby2005generalized}
-Rigby, R.~A. and Stasinopoulos, D.~M.
-\newblock Generalized additive models for location, scale and shape.
-\newblock \emph{Journal of the Royal Statistical Society: Series C (Applied
-  Statistics)}, 54\penalty0 (3):\penalty0 507--554, 2005.
 
 \bibitem[Rudelson \& Zhou(2013)Rudelson and Zhou]{ruzh13}
 Rudelson, M. and Zhou, S.
