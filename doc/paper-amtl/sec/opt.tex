@@ -1,8 +1,10 @@
-
 \section{Estimation Algorithm}
 \label{sec:opt}
-We propose \emph{Data enrIChER} (\dc) a projected block gradient descent algorithm, Algorithm \ref{alg2}, where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq d_g\}$ where $d_g = f_g(\bbeta_g^*)$ and is dropped to avoid cluttering. In practice, $d_g$ can be determined by cross-validation.
-
+We propose \emph{Data enrIChER} (\dc) a projected block gradient descent algorithm, Algorithm \ref{alg2}, where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq f_g(\bbeta_g^*)\}$.% and is dropped to avoid cluttering. In practice, $d_g$ can be determined by cross-validation.
+To analysis convergence properties of \dc, we should upper bound the error of each iteration.% of the DE algorithm.
+Let's $\ddelta^{(t)} = \bbeta^{(t)} - \bbeta^*$ be the error of  iteration $t$ of \dc, i.e., the distance from the true parameter (not the optimization minimum, $\hbbe$).
+%The goal of this chapter is to show that the $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^t}{2}$ decreases exponentially fast it $t$, and converges to the upper bound of the statistical error $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}$ characterized in \eqref{eq:general}.
+We show that $\norm{\ddelta^{(t)}}{2}$ decreases exponentially fast in $t$ to the statistical error $\norm{\ddelta}{2} = \norm{\hbbe - \bbeta^*}{2}$.
 \begin{algorithm}[t]
 	\caption{  \dc }
 	\label{alg2}
@@ -22,114 +24,17 @@ We propose \emph{Data enrIChER} (\dc) a projected block gradient descent algorit
 		\ENDFOR
 	\end{algorithmic}
 \end{algorithm}
-
-
-%In remark ?, we discuss the deficiency of the method presented in \cite{oyrs15} applied to data enrichment problem.
-%We suggest $\mu_g = \frac{1}{n_g}$ as the per group learning rate and $\mu_0 = \frac{1}{n}$ for the step-size of the common parameter update.
-%In the following section, we show with these learning rates, Algorithm \ref{alg2} converges exponentially fast.
-
-%{\color{red} TODO: Intuitively explain why this choice makes sense.}
-%\subsection{Convergence Rate Analysis}
-%\ab{Unless we need a second subsection, drop this subsection heading -- its unusual to have one subsection in a section.}
-
-To analysis convergence properties of \dc, we should upper bound the error of each iteration.% of the DE algorithm.
-Let's $\ddelta^{(t)} = \bbeta^{(t)} - \bbeta^*$ be the error of  iteration $t$ of \dc, i.e., the distance from the true parameter (not the optimization minimum, $\hbbe$).
-%The goal of this chapter is to show that the $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^t}{2}$ decreases exponentially fast it $t$, and converges to the upper bound of the statistical error $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}$ characterized in \eqref{eq:general}.
-We show that $\norm{\ddelta^{(t)}}{2}$ decreases exponentially fast in $t$ to the statistical error $\norm{\ddelta}{2} = \norm{\hbbe - \bbeta^*}{2}$.
-%In other word, we show that the optimization error $\norm{\hbbe - \bbeta^(t)}{2}$ linearly converges to zero.
-We first start with the required definitions for our analysis.
-
-\begin{definition}
-	\label{def:only}
-	We define the following positive constants as functions of step sizes $\mu_g > 0$: %, where for simplification we assume $\X_0 = \oomega$ and $\oomega_0 = \oomega$:
-%	\be
-%	\nr
-%	\rho_g(\mu_g) &=& \sup_{\u, \v \in \cB_g} \v^T \big(\I_g - \mu_g \X_g^T \X_g\big) \u, \quad g \in [G] \\ \nr
-%	\eta_g(\mu_g) &=& \mu_g \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \quad g \in [G] \\ \nr
-%	\phi_g(\mu_g) &=& \mu_g \sup_{\v \in \cB_g, \u \in \cB_0} -\v^T \X_g^T \X_g \u, \quad g \in [G]_\setminus
-%	\ee
-	\be
-	\nr
-	\forall g \in [G]&:& \rho_g(\mu_g) = \sup_{\u, \v \in \cB_g} \v^T \big(\I_g - \mu_g \X_g^T \X_g\big) \u,
-	\\ \nr
-	&&\eta_g(\mu_g) = \mu_g \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}},
-	\\ \nr
-	\forall g \in [G]_\setminus&:& \phi_g(\mu_g) = \mu_g \sup_{\v \in \cB_g, \u \in \cB_0} -\v^T \X_g^T \X_g \u,
-	\ee
-	where $\cB_g =  \cC_g \cap \ball$ is the intersection of the error cone and the unit ball.% and $\oomega_0 := \oomega$.
-\end{definition}
-In the following theorem, we establish a deterministic bound on iteration errors  $\norm{\ddelta_g^{(t)}}{2}$ which depends on constants defined in Definition \ref{def:only}.
-\begin{theorem}
-	\label{theo:iter}
-	For Algorithm \ref{alg2} initialized by $\bbeta ^{(1)} = \0$, we have the following deterministic bound for the error at iteration $t + 1$:
-	{\be
-	\label{eq:singleiter}
-	&&\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
-	\\ \nr
-	&&\leq \rho^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}}\norm{\bbeta ^*_g}{2}   + \frac{1 - \rho^t}{1 -  \rho}   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \eta_g \norm{\oomega_g}{2},
-	\ee}
-	where {\small$\rho \triangleq \max\left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g, \max_{g \in [G]} \left[\rho_g + \sqrt{\frac{n}{n_g}}  \frac{\mu_0}{\mu_g} \phi_g \right]  \right)$}.
-%	\be
-%	\label{eq:rhos}
-%	\rho = \max\left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g, \max_{g \in [G]} \left[\rho_g + \sqrt{\frac{n}{n_g}}  \frac{\mu_0}{\mu_g} \phi_g \right]  \right)
-%	\ee
-\end{theorem}
-
-
-The RHS of \eqref{eq:singleiter} consists of two terms.
-If we keep $\rho < 1$, the first term approaches zero fast, 
-%i.e., with linear rate, 
-and the second term determines the bound. %which depends on the sub-Gaussian noise $\oomega$, and therefore for noiseless case of $\y = \X \bbeta$ it becomes zero.
-In the following, we show that for specific choices of step sizes $\mu_g$s, the second term can be upper bounded using the analysis of Section \ref{sec:error}.
-More specifically, the first term corresponds to the optimization error which shrinks in every iteration while the second term is constant times the upper bound of the statistical error characterized in Corollary \ref{corr:calcub}.
-Therefore, if we keep $\rho$ below one, the estimation error of DE algorithm geometrically converges to the approximate statistical error bound. %and we get to $\hbbe$ exponentially fast.
-
-%i.e., $\norm{\hbbe - \bbeta^*}{2} = \norm{\ddelta}{2} =  \sqrt{\sum_{g=1}^{G} \norm{\ddelta_g}{2}^2} \leq \sum_{g=1}^{G} \norm{\ddelta_g}{2}$ where we characterized a scaled version of it as $\sum_{g=1}^{G} \sqrt{\frac{n_g}{n}}\norm{\ddelta_g}{2}$ in \eqref{eq:general}.
-One way for having $\rho < 1$ is to keep all arguments of $\max(\cdots)$  defining $\rho$ strictly below $1$. %, i.e., $\rho_g < 1/\theta_f $.
-To this end, we first establish high probability upper bound for $\rho_g$, $\eta_g$, and $\phi_g$ (in the Appendix \ref{twolems}) and then show that with enough number of samples and proper step sizes $\mu_g$, $\rho$ can be kept strictly below one with high probability. %In Section~\ref{sec:expds}, we empirically illustrate such geometric convergence.
-The high probability bounds for constants in Definition \ref{def:only} and the deterministic bound of Theorem \ref{theo:iter} leads to the following theorem which shows that for enough number of samples, of the same order as the statistical sample complexity of Theorem \ref{theo:re}, we can keep $\rho$ below one and have geometric convergence.
-
-
-
-
-
-%The following theorems uses Lemmas \ref{lemm:hpub} and \ref{lemm:mainlem} and shows for enough number of samples we can keep $\theta_f \rho$ below one.
-%Bounds on $\rho_g\left(\frac{1}{n_g}\right)$ and $\eta_g\left(\frac{1}{n_g}\right)$ suggest that with enough number of samples, learning rate of $\mu_g = \frac{1}{n_g}$ leads to a linear rate of convergence to a constant times the statistical error bound in \eqref{eq:singleiter}.
-%The following theorem elaborates the result.
-%Using Lemma \ref{lemm:hpub} and \ref{lemm:mainlem} bounds
-%the following theorem shows that for a specific choice of step-sizes as $\mu_g = \frac{1}{n_g}$, $\rho_{\max} < 1$ with high probability and error of each iteration $\norm{\ddelta^{(t+1)}}{2}$ reaches to a scaled upper bound of statistical error $\norm{\ddelta}{2}$ exponentially fast.
 \begin{theorem}
 	\label{theo:step}		
 	%Remember that $\theta_f = 1$ for the convex and  $\theta_f = 2$ for the non-convex case.
-	Let $\tau = C\sqrt{\log(G+1)} + b$ for $b > 0$ and $\omega_{0g} = \omega(\cA_0) + \omega(\cA_g)$. For the step sizes of:
-	\be
-	\nr
-%	&\theta_f = 1:&
-	\mu_0 = \frac{\min_{g \in [G]_\setminus} h_g(\tau)^{-2}}{4	n} ,
-%	\\ \nr
-	\forall \in [G]_\setminus: \mu_g =  \frac{h_g(\tau)^{-1}}{2\sqrt{n n_g}} 
-%	\\ \nr
-%	&\theta_f = 2:& \mu_0 = \frac{1}{4	n} \times \frac{1}{\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^2} , \mu_g = \frac{l\left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)^{-1}}{8\sqrt{nn_g}\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^{2}}
-	\ee
-	where $h_g(\tau) = \left(1 + c_{0g} \frac{\omega_{0g}+ \tau}{\sqrt{n_g}}\right)$
-	and sample complexities of $\forall g \in [G]: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2$,
-%	\be
-%	\nr
-%	%&\theta_f = 1:&
-%%	n > 2 c_0^2 \left(2 \omega(\cA_0) + \tau\right)^2, \forall g \in [G]_\setminus: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2
-%n > 2 c_0^2 \left(2 \omega(\cA_0) + \tau\right)^2, \quad \text{and} \quad \forall g \in [G]_\setminus: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2
-%%	\\ \nr
-%%	&\theta_f = 2:& n > 2 (1 - l)^{-2} c_0^2 \left(2 \omega(\cA_0) + \tau\right)^2, \forall g \in [G]_\setminus: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2
-%	\ee
-%	where $0 < l < 1$ is arbitrary,
-	updates of the Algorithm \ref{alg2} obey the following with high probability: %probability at least $ 1 - \upsilon \exp\left[\min_{g \in [G]}\left(-\min\left[\nu_g n_g - \log G, \gamma (\omega(\cA_g) + b)^2 , \frac{b^2}{\eta_g^2 k^2}\right]\right)\right] $:
+	Let $\tau = C\sqrt{\log(G+1)} + b$ for $b > 0$ and $\omega_{0g} = \omega(\cA_0) + \omega(\cA_g)$. For the step sizes of $\mu_0 = \Theta(\frac{1}{n})$ and $\mu_g = \Theta(\frac{1}{\sqrt{nn_g}})$ and sample complexities of $\forall g \in [G]: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2$, updates of the Algorithm \ref{alg2} obey the following with high probability: %probability at least $ 1 - \upsilon \exp\left[\min_{g \in [G]}\left(-\min\left[\nu_g n_g - \log G, \gamma (\omega(\cA_g) + b)^2 , \frac{b^2}{\eta_g^2 k^2}\right]\right)\right] $:
 	%where $\upsilon = \max(28, \sigma)$ and $\gamma = \min_{g \in [G] } \gamma_g$. 	
-	\be
+	{\small \be
 	\nr
 	&&\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
 	\leq r(\tau)^t \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\bbeta^*_g}{2}   \\ \nr
 	&+& \frac{(G+1) \sqrt{(2K^2 + 1)}}{\sqrt{n} (1 - r(\tau))}  \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + \tau \right),
-	\ee
+	\ee }
 	where $r(\tau) < 1$.% and $\epsilon = \max_{g \in [G]} \epsilon_g$, $\zeta = \max_{g \in [G]} \zeta_g$, $\gamma = \min_{g \in [G]} \gamma_g$.
 	
 \end{theorem}
@@ -142,11 +47,11 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{\infty}}{2}
 	\leq c \frac{\zeta k \max_{g \in [G]} \omega(\cA_g) + C \sqrt{\log (G+1)} +  b}{\sqrt{n} (1 - r(\tau))}
 	\ee}
-	where $c = (G+1) \sqrt{(2K^2 + 1)}$. 
+	which is a scaled variant of statistical error bound determined in Corollary \ref{corr:calcub}.
 \end{corollary}
-	It is instructive to compare RHS of \eqref{eq:scaled} with that of \eqref{eq:general}: $\kappa_{\min}$ defined in Theorem \ref{theo:re} corresponds to $(1 - r(\tau))$ % defined in Theorem \ref{theo:step}
-	and the extra $G+1$ factor corresponds to the sample condition number $\gamma = \max_{g \in [G] } \frac{n}{n_g}$.
-	Therefore, Corollary \ref{corr:show} shows that \dc{} converges to a scaled variant of statical error bound determined in Corollary \ref{corr:calcub}.
+%	It is instructive to compare RHS of \eqref{eq:scaled} with that of \eqref{eq:general}: $\kappa_{\min}$ defined in Theorem \ref{theo:re} corresponds to $(1 - r(\tau))$ % defined in Theorem \ref{theo:step}
+%	and the extra $G+1$ factor corresponds to the sample condition number $\gamma = \max_{g \in [G] } \frac{n}{n_g}$.
+%	Therefore, Corollary \ref{corr:show} shows that \dc{} converges to 
 %	The extra factor of $G+1$ can be dismissed if we have more samples and also take a more conservative step size of $\mu_g = \frac{1}{(G+1) n_g}$.
 %	Following proposition states this result.
 %
