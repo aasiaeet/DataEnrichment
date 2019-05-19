@@ -1,0 +1,80 @@
+% SIAM Article Template
+\documentclass[review,onefignum,onetabnum]{siamonline181217}
+
+% Information that is shared between the article and the supplement
+% (title and author information, macros, packages, etc.) goes into
+% ex_shared.tex. If there is no supplement, this file can be included
+% directly.
+
+\input{de_shared}
+
+% Optional PDF information
+\ifpdf
+\hypersetup{
+  pdftitle={Data Enrichment},
+  pdfauthor={A. Asiaee, S. Oymak, K. R. Coombes, and A. Banerjee}
+}
+\fi
+
+% The next statement enables references to information in the
+% supplement. See the xr-hyperref package for details.
+
+\externaldocument{de_supplement}
+
+% FundRef data to be entered by SIAM
+%<funding-group specific-use="FundRef">
+%<award-group>
+%<funding-source>
+%<named-content content-type="funder-name"> 
+%</named-content> 
+%<named-content content-type="funder-identifier"> 
+%</named-content>
+%</funding-source>
+%<award-id> </award-id>
+%</award-group>
+%</funding-group>
+\input{sec/notation}
+\begin{document}
+
+\maketitle
+
+% REQUIRED
+\input{sec/abstract}
+
+% REQUIRED
+\begin{keywords}
+  example, \LaTeX
+\end{keywords}
+
+% REQUIRED
+\begin{AMS}
+  68Q25, 68R10, 68U05
+\end{AMS}
+
+
+\input{sec/intro}
+
+\input{sec/rel}
+
+\input{sec/prob}
+
+\input{sec/re}
+
+\input{sec/bound}
+
+\input{sec/opt}
+
+\input{sec/exp}
+
+
+\appendix
+\input{sec/proofs}
+
+
+
+\section*{Acknowledgments}
+
+\bibliographystyle{siamplain}
+\bibliography{nips18}
+
+\end{document}

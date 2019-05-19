@@ -1,0 +1,496 @@
+% Samet notation start
+\newcommand{\Ic}{{\cal{I}}}
+\newcommand{\ratio}{\bar{\rho}}
+\newcommand{\lamin}{\lambda_{\min}}
+\newcommand{\tn}[1]{\|#1\|_{\ell_2}}
+\newcommand{\Gsm}{[G]_\setminus}
+\newcommand{\Gin}{G_{\cal{I}}}
+\newcommand{\rinc}{\psi_{\Ic}}
+% Samet notation end
+
+
+
+\newcommand{\specialcell}[2][c]{ \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\newcommand{\subg}{\text{Subg}}
+\newcommand{\sube}{\text{Sube}}
+
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\normlr}[2]{\left\|#1\right\|_{#2}}
+\newcommand{\normth}[2]{\vertiii{#1}_{#2}}
+\newcommand{\kl}{D_{\text{KL}}}
+\newcommand{\vl}{\text{Vol}}
+	
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+
+\newcommand{\htn}{\hat{\theta}_{\lambda_n}}
+\newcommand{\hdn}{\hat{\Delta}_n}
+
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+
+%% ========================================================
+\newcommand\B{\mathbf{B}}
+\newcommand\D{\mathbf{D}}
+\newcommand\F{\mathbf{F}}
+\newcommand\I{\mathbf{I}}
+\renewcommand\L{\mathbf{L}}
+\newcommand\M{\mathbf{M}}
+\newcommand\N{\mathbf{N}}
+\renewcommand\P{\mathbf{P}}
+\newcommand\Q{\mathbf{Q}}
+\newcommand\R{\mathbf{R}}
+\renewcommand\S{\mathbf{S}}
+\newcommand\V{\mathbf{V}}
+\newcommand\W{\mathbf{W}}
+\newcommand\X{\mathbf{X}}
+\newcommand\Y{\mathbf{Y}}
+\newcommand\Z{\mathbf{Z}}
+
+\newcommand\eI{\mathbb{I}}
+\newcommand\eS{\mathbb{S}}
+
+\newcommand\1{\mathbbm{1}}
+\newcommand\0{\mathbf{0}}
+
+\newenvironment{packed_enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+%% ========================================================
+%% Some useful commands. Note the dangerous \r command!
+%% ========================================================
+
+
+
+\newcommand{\bd}{\boldsymbol}
+\newcommand{\mf}{\mathbf}
+
+
+\newcommand{\g}{\mathbf{g}}
+
+\renewcommand{\a}{\mathbf{a}}
+\renewcommand{\b}{\mathbf{b}}
+\renewcommand{\c}{\mathbf{c}}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\f}{\mathbf{f}}
+\newcommand{\h}{\mathbf{h}}
+\renewcommand{\r}{\mathbf{r}} % since \r was already defined in altex
+\renewcommand{\u}{\mathbf{u}}
+\renewcommand{\v}{\mathbf{v}}
+\newcommand{\es}{\mathbf{s}}
+\newcommand{\w}{\mathbf{w}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\p}{\mathbf{p}}
+\newcommand{\q}{\mathbf{q}}
+
+
+
+%----------------------------------------
+%      THE ALTERNATIVES
+%----------------------------------------
+
+\newcommand{\tR}{{\tilde{R}}}
+
+%----------------------------------------
+%      THE SETS
+%----------------------------------------
+\newcommand{\cA}{{\cal A}}
+\newcommand{\cB}{{\cal B}}
+\newcommand{\cC}{{\cal C}}
+\newcommand{\cE}{{\cal E}}
+\newcommand{\cF}{{\cal F}}
+\newcommand{\cG}{{\cal G}}
+\newcommand{\cH}{{\cal H}}
+\newcommand{\cI}{{\cal I}}
+\newcommand{\cJ}{{\cal J}}
+\newcommand{\cK}{{\cal K}}
+\newcommand{\cL}{{\cal L}}
+\newcommand{\cM}{{\cal M}}
+\newcommand{\cN}{{\cal N}}
+\newcommand{\cP}{{\cal P}}
+\newcommand{\cQ}{{\cal Q}}
+\newcommand{\cS}{{\cal S}}
+\newcommand{\cT}{{\cal T}}
+\newcommand{\cU}{{\cal U}}
+\newcommand{\cV}{{\cal V}}
+\newcommand{\cW}{{\cal W}}
+\newcommand{\cX}{{\cal X}}
+\newcommand{\cY}{{\cal Y}}
+\newcommand{\cZ}{{\cal Z}}
+
+
+%--------------------------------------------
+%         THE VARIABLES & APPROXIMATES
+%--------------------------------------------
+
+% Bold variables for vectors, matrices
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\bM}{\mathbf{M}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bZ}{\mathbf{Z}}
+
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\hZ}{\hat{Z}}
+\newcommand{\hbZ}{\hat{\bZ}}
+\newcommand{\hz}{\hat{z}}
+
+\newcommand{\hU}{\hat{U}}
+\newcommand{\hV}{\hat{V}}
+\newcommand{\hu}{\hat{u}}
+\newcommand{\hv}{\hat{v}}
+\newcommand{\htth}{\hat{\ttheta}}
+\newcommand{\hbbe}{\hat{\bbeta}}
+\newcommand{\hdde}{\hat{\ddelta}}
+
+
+
+\newcommand{\pr}{\mathbb{P}}
+\newcommand{\ex}{\mathbb{E}}
+
+
+\newcommand{\hX}{\hat{X}}
+\newcommand{\hY}{\hat{Y}}
+\newcommand{\hatx}{{\hat{x}}}
+\newcommand{\haty}{{\hat{y}}}
+
+%---------MISC-----------------------------
+
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+\newcommand{\BNi}{\bB_N^{(i)}}
+\newcommand{\xai}{\x_i^{(a)}}
+\newcommand{\yai}{\bY_i^{(i)}}
+\newcommand{\Xai}{\bX_i^{(a)}}
+\newcommand{\Yai}{\bY_i^{(i)}}
+
+
+\newcommand{\m}{\boldsymbol{\mu}}
+\newcommand{\llambda}{\boldsymbol{\lambda}}
+\newcommand{\xx}{\boldsymbol{\chi}}
+\newcommand{\Th}{\boldsymbol{\theta}}
+\newcommand{\Eta}{\boldsymbol{\eta}}
+\newcommand{\oomega}{\boldsymbol{\omega}}
+\newcommand{\ppi}{\boldsymbol{\pi}}
+\newcommand{\pphi}{\boldsymbol{\phi}}
+\newcommand{\ggamma}{\boldsymbol{\gamma}}
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\aalpha}{\boldsymbol{\alpha}}
+\newcommand{\ttheta}{\boldsymbol{\theta}}
+\newcommand{\ddelta}{\boldsymbol{\delta}}
+\newcommand{\mmu}{\boldsymbol{\mu}}
+\newcommand{\DDelta}{\boldsymbol{\Delta}}
+\newcommand{\eepsilon}{\boldsymbol{\epsilon}}
+%\newcommand{\norm}[2]{\ensuremath \|#1\|_{#2}}
+\newcommand{\no}[1]{\norm{#1}{}}
+\newcommand{\myref}[1]{(\ref{#1})}
+\newcommand{\del}[2]{\frac{\partial #1}{\partial #2}}
+
+
+%----------------------------------------------
+%        NEW OPERATORS
+%----------------------------------------------
+\DeclareMathOperator*{\argmax}{\arg\!\max}
+\DeclareMathOperator*{\argmin}{\arg\!\min}
+%\DeclareMathOperator{\avg}{avg}
+%\DeclareMathOperator{\Int}{int}
+%\DeclareMathOperator{\cl}{cl}
+%\DeclareMathOperator{\bnd}{bd}
+%\DeclareMathOperator{\epi}{epi}
+%\DeclareMathOperator{\dom}{dom}
+%\DeclareMathOperator{\ri}{ri}
+%\DeclareMathOperator{\co}{co}
+%\DeclareMathOperator{\sgn}{sign}
+%\DeclareMathOperator{\supp}{supp}
+%\DeclareMathOperator{\discrete}{Discrete}
+%\DeclareMathOperator{\gam}{GAM}
+%\DeclareMathOperator{\uni}{Uniform}
+%\DeclareMathOperator{\dir}{Dir}
+%\DeclareMathOperator{\gaam}{GAM}
+%\DeclareMathOperator{\Beta}{Beta}
+%\DeclareMathOperator{\tr}{Tr}
+%\DeclareMathOperator{\cone}{cone}
+
+%---------------------------------------------
+% EQUATION, FIGURE, TABLE NUMBERS
+%---------------------------------------------
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+%\renewcommand{\thetable}{\thesection.\arabic{table}}
+%\numberwithin{equation}{section}
+
+
+
+%---------------------------------------------
+% THEOREMS, EXAMPLES ETC.
+%---------------------------------------------
+
+%\newcounter{exampleI}
+%\setcounter{exampleI}{1}
+%\renewcommand{\theexampleI}{\arabic{exampleI}}
+
+%{\theorembodyfont{\rmfamily} \theoremstyle{plain} \newtheorem{subexampleI}{Example}[exampleI]}
+%\renewcommand{\thesubexampleI}{\theexampleI.\Alph{subexampleI}}
+%
+%\newcounter{exampleII}
+%\setcounter{exampleII}{2}
+%\renewcommand{\theexampleII}{\arabic{exampleII}}
+%
+%{\theorembodyfont{\rmfamily} \theoremstyle{plain} \newtheorem{subexampleII}{Example}[exampleII]}
+%\renewcommand{\thesubexampleII}{\theexampleII.\Alph{subexampleII}}
+%
+%\newcounter{exampleIII}
+%\setcounter{exampleIII}{3}
+%\renewcommand{\theexampleIII}{\arabic{exampleIII}}
+%
+%{\theorembodyfont{\rmfamily} \theoremstyle{plain} \newtheorem{subexampleIII}{Example}[exampleIII]}
+%\renewcommand{\thesubexampleIII}{\theexampleIII.\Alph{subexampleIII}}
+%
+%
+%{\theorembodyfont{\rmfamily} \newtheorem{exm}{Example}}
+%{\theorembodyfont{\rmfamily} \newtheorem{defn}{Definition}}
+%%{\theorembodyfont{\rmfamily} \newtheorem{remark}{Remark}}
+%\newtheorem{theo}{Theorem}[section]
+
+%\newtheorem{lemm}{Lemma}
+%\newtheorem{corr}{Corollary}
+%\newtheorem{clm}{Claim}
+%\newcommand{\proof}{\noindent{\itshape Proof:}\hspace*{1em}}
+%\newcommand{\proofsketch}{\noindent{\itshape Proof Sketch:}\hspace*{1em}}
+%\newcommand{\qed}{\nolinebreak[1]~~~\hspace*{\fill} \rule{5pt}{5pt}\vspace*{\parskip}\vspace*{1ex}}
+
+
+\newcommand{\cx}{{\hat{x}}}
+\newcommand{\cy}{{\hat{y}}}
+\newcommand{\bp}{{\bar{p}}}
+\newcommand{\eqn}[1]{(\ref{eq:#1})}
+\newcommand {\commentout}[1] {}
+
+%------------------------------------------
+
+%%%%%%%%%%%Definitions and Macros
+
+\def\ints{{{\rm Z} \kern -.35em {\rm Z} }}  % ints
+\def\smallints{{{\rm Z} \kern -.3em {\rm Z} }}  % small ints
+\def\pints{{{\rm I} \kern -.15em {\rm N} }}      % pints
+\newcommand{\reals}{\mathbb R}
+\newcommand{\sphere}{\mathbb S^{p-1}}
+\newcommand{\ball}{\mathbb B^p}
+\newcommand{\integers}{\mathbb Z}
+
+\newcommand{\lapn}{\lessapprox_{\,n}}
+\newcommand{\gapn}{\gtrapprox_{\,n}}
+\newcommand{\apn}{\approx_n}
+
+%\def\reals{{{\rm I} \kern -.2em {\rm R} }} % reals
+\newcommand{\RR}{\mathbb R}
+\def\cplx{{{\rm I} \kern -.45em {\rm C} }}       % complex
+\def\l2{\rm {\mathcal L}^{2}(\reals)}            % l2
+
+\newcommand{\seqz}[2]{\mbox{$\{#1_{#2}\}$}_{#2 \in \smallints }}
+\newcommand{\seqn}[2]{\mbox{$\{#1_{#2}\}$}_{#2 \in \pints }}
+%\renewcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\abs}[1]{\left|#1\right|}
+
+
+%\newtheorem{problem}{Problem}
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{definition}[theorem]{Definition}
+
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{definition}{Definition}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{prop}{Proposition}
+%\newtheorem{corollary}{Corollary}
+%
+%
+%{\theoremstyle{definition} \newtheorem{example}{Example}}
+%{\theoremstyle{definition} \newtheorem{remark}{Remark}}
+%
+%%{\theorembodyfont{\upshape} \newtheorem{example}{Example}}
+%%{\theorembodyfont{\upshape} \newtheorem{remark}{Remark}}
+
+
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{claim}{Claim}[theorem]
+%\newtheorem{proposition}{Proposition}[section]
+
+%\newtheorem{nad}{Notation and Definitions}[section]
+%\newtheorem{notation}{Notation}[section]
+%\newtheorem{remark}[theorem]{Remark}
+
+%\newtheorem{example}{Example}
+%\newtheorem{conjecture}{Conjecture}
+%\newtheorem{algorithm}{Algorithm}
+%\newtheorem{exercise}{Exercise}
+%\newtheorem{step}{Step}
+
+\newcommand{\nr}{\nonumber}
+\newcommand{\be}{\begin{eqnarray}}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\beaa}{\begin{eqnarray*}}
+\newcommand{\eeaa}{\end{eqnarray*}}
+\newcommand{\bnad}{\begin{nad}}
+\newcommand{\enad}{\end{nad}}
+
+
+\newcommand{\gb}{\beta_{\infty}}
+\newcommand{\mgb}{\tilde{\beta}_{\infty}}
+\newcommand{\gbb}{\beta_{2}}
+\newcommand{\mgbb}{\tilde{\beta}_{2}}
+\newcommand{\Jf}{J_{\infty}}
+\newcommand{\mmJf}{\overline{J}_{\infty}}
+\newcommand{\mJf}{\tilde{J}_{\infty}}
+\newcommand{\Jff}{J_{2}}
+\newcommand{\mJff}{\tilde{J}_{2}}
+\newcommand{\Jc}{{\calJ_{\infty}}}
+\newcommand{\mJc}{{\tilde{\calJ}_{\infty}}}
+\newcommand{\Jcc}{{\calJ_{2}}}
+\newcommand{\ptq}{P_{3 \overline{Q}}}
+\newcommand{\pq}{P_{Q}}
+
+
+\newcommand{\di}{{\,\mathrm{d}}}
+\newcommand{\latop}[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
+
+
+%\newcommand{\Th}[1]{Theorem~\ref{#1}} % when starting a sentence
+%\renewcommand{\th}[1]{Theorem~\ref{#1}}
+%\newcommand{\ths}[2]{Theorems~\ref{#1} and~\ref{#2}}
+%\newcommand{\thst}[2]{Theorems~\ref{#1}-\ref{#2}}
+%\newcommand{\lem}[1]{Lemma~\ref{#1}}
+%\newcommand{\prop}[1]{Proposition~\ref{#1}}
+%\newcommand{\defin}[1]{Definition~\ref{#1}}
+%\newcommand{\eq}[1]{equation~(\ref{#1})}
+%\newcommand{\ineq}[1]{inequality~(\ref{#1})}
+%\newcommand{\Ineq}[1]{Inequality~(\ref{#1})}
+%\newcommand{\ineqs}[2]{inequalities~(\ref{#1}) and~(\ref{#2})}
+%\newcommand{\Eq}[1]{Equation~(\ref{#1})}
+%\newcommand{\eqs}[2]{equations~(\ref{#1}) and~(\ref{#2})}
+%\newcommand{\eqss}[3]{equations~(\ref{#1}), (\ref{#2}) and~(\ref{#3})}
+%\newcommand{\eqst}[2]{equations~(\ref{#1})-(\ref{#2})}
+%\newcommand{\sect}[1]{Section~\ref{#1}}
+%\newcommand{\subsect}[1]{Subsection~\ref{#1}}
+
+\newcommand{\lip}{\langle}
+\newcommand{\rip}{\rangle}
+\newcommand{\uu}{\underline}
+\newcommand{\oo}{\overline}
+\newcommand{\La}{\Lambda}
+\newcommand{\la}{\lambda}
+%\newcommand{\eps}{\epsilon}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\rmT}{{\rm T}}
+\newcommand{\rmW}{{\rm W}}
+\newcommand{\Ga}{\Gamma}
+
+\newcommand{\sign}{{\mbox{\rm sign}}}
+\newcommand{\ang}{{\mbox{\rm ang}}}
+%\newcommand{\supp}{{\mbox{\rm supp}}}
+\newcommand{\dist}{{\mbox{\rm dist}}}
+
+\newcommand{\nin}{\in\!\!\!\!\!/\,}
+
+\newcommand{\calA}{{\cal A}}
+\newcommand{\calB}{{\cal B}}
+\newcommand{\calC}{{\cal C}}
+\newcommand{\calD}{{\cal D}}
+\newcommand{\tcD}{{\tilde{\cal D}}}
+\newcommand{\calE}{{\cal E}}
+\newcommand{\calF}{{\cal F}}
+\newcommand{\calG}{{\cal G}}
+\newcommand{\calH}{{\cal H}}
+\newcommand{\calI}{{\cal I}}
+\newcommand{\calJ}{{\cal J}}
+\newcommand{\calK}{{\cal K}}
+\newcommand{\calL}{{\cal L}}
+\newcommand{\calM}{{\cal M}}
+\newcommand{\calN}{{\cal N}}
+\newcommand{\calO}{{\cal O}}
+\newcommand{\calP}{{\cal P}}
+\newcommand{\calQ}{{\cal Q}}
+\newcommand{\calR}{{\cal R}}
+\newcommand{\calS}{{\cal S}}
+\newcommand{\calT}{{\cal T}}
+\newcommand{\calU}{{\cal U}}
+\newcommand{\calV}{{\cal V}}
+\newcommand{\calW}{{\cal W}}
+\newcommand{\calX}{{\cal X}}
+\newcommand{\calY}{{\cal Y}}
+\newcommand{\calZ}{{\cal Z}}
+
+\newcommand{\RE}{{\cal R}e}
+%\newcommand{\IM}{{\cal I}m}
+
+
+\newcommand{\Prob}{{\rm Prob\,}}
+\newcommand{\diam}{{\rm diam\,}}
+%\renewcommand{\mod}{{\rm mod\,}}
+\newcommand{\sinc}{{\rm sinc\,}}
+\newcommand{\ctg}{{\rm ctg\,}}
+\newcommand{\ifff}{\mbox{\ if and only if\ }}
+%\newcommand{\proof}{\noindent {\bf Proof:\ }}
+
+%\renewcommand{\bar}{\overline}
+\renewcommand{\overline}{\bar}
+%\renewcommand{\tilde}{\widetilde}
+\renewcommand{\widetilde}{\tilde}
+%\renewcommand{\ell}{l}
+%\renewcommand{\hat}{\widehat}
+\renewcommand{\widehat}{\hat}
+
+
+\newcommand{\boldx}{{\bf x}}
+\newcommand{\boldX}{{\bf X}}
+\newcommand{\boldy}{{\bf y}}
+\newcommand{\indic}{\mathbbm{1}}
+\newcommand{\uux}{\uu{x}}
+\newcommand{\uuY}{\uu{Y}}
+
+\newcommand{\opt}{\rm{opt}}
+
+
+%fraction with round brackets
+\newcommand{\ffrac}[2]
+  {\left( \frac{#1}{#2} \right)}
+
+\newcommand{\one}{\frac{1}{n}\:}
+\newcommand{\half}{\frac{1}{2}\:}
+
+
+\newcommand{\BAMS}{{\em Bulletin of the Amer. Math. Soc.}}
+\newcommand{\TAMS}{{\em Transactions of the Amer. Math. Soc.}}
+\newcommand{\PAMS}{{\em Proceedings of the Amer. Math. Soc.}}
+\newcommand{\JAMS}{{\em Journal of the Amer. Math. Soc.}}
+\newcommand{\LNM}{{\em Lect. Notes in Math.}}
+\newcommand{\LNCS}{{\em Lect. Notes in Comp. Sci.}}
+\newcommand{\IV}{{\em Invent. Math.}}
+\newcommand{\JAM}{{\em J. Anal. Math.}}
+\newcommand{\Sc}{{\em Science}}
+
+
+\newcommand{\tD}{{\tilde{\D}}}
+
+\newcommand{\bcH}{\bar{\cH}} 
