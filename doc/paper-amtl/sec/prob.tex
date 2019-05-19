@@ -1,0 +1,101 @@
+\section{The Data Enrichment Estimator}
+\label{sec:esti}
+%Given $G$ group and $n_g$ samples in each one as $\{ \{\x_{gi}, y_{gi} \}_{i=1}^{n_g} \}_{g = 1}^G$, we can form the per group design matrix $\X_g \in \reals^{n_g \times p}$ and output vector $\y_g \in \reals ^{n_g}$.
+%The total number of samples is  $n = \sum_{g = 1}^{G} n_g$.
+%The data enriched model takes the following vector form:
+%\be
+%\label{eq:dirtymodel}
+%\y_g = \X_g (\bbeta _0^* + \bbeta _g^*) + \oomega_g,  \quad \forall g \in [G]_\setminus
+%\ee
+%where each row of $\X_g$ is $\x_{gi}^T$ and $\oomega_g^T = (\omega_{g1}, \dots, \omega_{gn_g})$ is the noise vector. %consists of i.i.d. centered unit-variance sub-Gaussian elements with $\normth{\omega_{gi}}{\psi_2} \leq K$.
+%Note that,
+%The common parameter among all groups is $\bbeta _0^*$ and the individual parameter of the group $g$ is $\bbeta _g^*$.
+%Beside a deterministic error bound presented in Section \ref{sec:deter} our other results are probabilistic.
+%We focus on independent isotropic sub-Gaussian random vectors $\x_{gi}$ where $\normth{\x_{gi}}{\psi_2} \leq k$ and $\ex \x_{gi}^T \x_{gi}  = \I_{p \times p}$.
+
+%\subsection{The Estimator}
+A compact form of our proposed DE estimator \eqref{eq:super} is:% optimization problem as: %:
+\be
+\label{eq:compact}
+\hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \forall g \in [G]:f_g(\bbeta_g ) \leq f_g(\bbeta^*_g),
+\ee
+where $\y  = (\y^T_1, \dots \y^T_G)^T \in \reals^n$,  $\bbeta  = ({\bbeta _0}^T, \dots, {\bbeta _G}^T)^T \in \reals^{(G+1)p}$ and
+{\small\be
+\label{eq:x}
+\X =
+\begin{pmatrix}
+	\X_1     & \X_1      & 0      	   & \cdots & 0 \\
+	\X_2     & 0       	 & \X_2        & \cdots & 0 \\
+	\vdots 	 & \vdots  	 & \ddots 	   & \cdots & \vdots  \\
+	\X_G     & 0       	 & \cdots 	   & \cdots & \X_G
+\end{pmatrix}
+\in \reals^{n \times (G+1)p}~.
+\ee}
+%For simplicity, during steps of the analysis we denote $\X = [\X_0 \enskip \D]$ which is the concatenation of $\X_0 \in \reals^{n \times p}$ that represents the \emph{whole} design matrix consisting of all data points as rows and $\D \in \reals^{n \times pG}$ which is the \emph{diagonal} part of the $\X$ where all $\X_g$s are on the diagonal.
+%Following this convention, we refer to total number of samples $n$ as $n_0$ in our analysis.
+%\ab{Give at least 2 specific examples, e.g., a sparse+sparse for vector estimation, and a low-rank + sparse for matrix estimation. And we want to carry these examples through
+%the technical results, e.g., see the Chen-Banerjee NIPS 2015 paper.}
+\begin{example}
+{\bf ($L_1$-norm)} When all parameters $\bbeta_g$s are $s_g$-sparse, i.e.,$|\text{supp}(\bbeta_{g}^*)| = s_g$ by using $l_1$-norm as the sparsity inducing function, DE \eqref{eq:compact} instantiates to the \emph{spare DE}:
+\be 
+\label{sde}
+\hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \forall g \in [G]: \norm{\bbeta_g}{1} \leq \norm{\bbeta^*_g}{1}.
+\ee 
+\end{example}
+%We call \eqref{sde} \emph{sparse DE } estimator and use it as the running example throughout the paper to illustrate outcomes of our analysis.
+%\subsection{Error Set and Deterministic Error Bound}
+%\label{sec:deter}
+%\ab{Unless we need a second subsection, drop this subsection heading -- its unusual to have one subsection in a section.}
+\vspace{-5mm}
+Consider the group-wise estimation error $\ddelta_g = \hbbe_g - \bbeta^*_g$.
+Since $\hbbe_g = \bbeta ^*_g + \ddelta_g$ is a feasible point of \eqref{eq:compact}, the error vector $\ddelta_g$ will belong to the following restricted error set:% which is the set of all descent directions at $\bbeta _g^*$ on $f_g(\cdot)$ :
+\be
+%\nr
+\cE_g = \left\{\ddelta_g | f_g(\bbeta _g^* + \ddelta_g) \leq f_g(\bbeta _g^*)\right\}, \quad g \in [G]~.
+\ee
+We denote the cone of the error set as $\cC_g \triangleq \text{Cone}(\cE_g)$ and the spherical cap corresponding to it as $\cA_g \triangleq \cC_g \cap \sphere$.
+%Subsequently, we define the following family of sets:
+%\be
+%\nr
+%\cH_l &=& \left\{ \ddelta = (\ddelta_0^T, \dots, \ddelta_G^T)^T \Big| \forall g \in [G]: \ddelta_g \in \cC_g, 0 < l \leq \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq 1 \right\}, %\label{setH}
+%\ee
+%where $0 < l < 1$ indexes the family.
+Consider the set $\cC = \{ \ddelta = (\ddelta_0^T, \dots, \ddelta_G^T)^T \Big| \ddelta_g \in \cC_g \}$, following two subsets of $\cC$ play key roles in our analysis:
+\be
+%\nr
+\cH  &\triangleq&  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}~, %\label{setH}
+\\ %\nr
+\bcH &\triangleq&  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}~. %\label{setH}
+\ee
+%Starting from the optimality of $\hbbe = \bbeta ^* + \ddelta$ as $\frac{1}{n}\norm{\y - \X \hbbe}{2}^2 \leq \frac{1}{n} \norm{\y - \X \bbeta ^*}{2}^2$, we have:
+%%\be
+%%\label{eq:optimality}
+%%\frac{1}{n}\norm{\X \ddelta}{2}^2 &\leq& \frac{1}{n}2\oomega^T \X\ddelta
+%%\ee
+%$\frac{1}{n}\norm{\X \ddelta}{2}^2 \leq \frac{1}{n}2\oomega^T \X\ddelta$
+%where $\oomega = [\oomega_1^T, \dots, \oomega_G^T]^T \in \reals^n$ is the vector of all noises.
+Using optimality of $\hbbe$, we can establish the following deterministic error bound.
+\begin{theorem}
+	\label{theo:deter}
+	For the proposed estimator \eqref{eq:compact}, assume there exist $0 < \kappa \leq \inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2$. Then, for the sample condition number $\gamma = \max_{g \in [G]_{\setminus}} \frac{n}{n_g}$, the following deterministic upper bounds holds:
+	\be
+	\nr
+	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq \frac{2{\gamma}\sup_{\u \in \bcH}\oomega^T \X \u}{n\kappa}~. %\nr	
+	\ee
+\end{theorem}
+
+%\ab{Adding a remark -- these will make it easier for the reader. This specific remark can be dropped as needed.}
+
+%\begin{remark}
+%Consider the setting where $n_g = \Theta(\frac{n}{G})$ so that each group has approximately $\frac{1}{G}$ fraction of the samples. Then, $\gamma = \Theta(G)$ and hence
+%\beq
+%\frac{1}{G} \sum_{g=0}^G \| \delta_g \|_2 \leq O( G^{1/2} ) \frac{\sup_{\u \in \bcH}\oomega^T \X \u}{n}~.
+%\eeq
+%\end{remark}
+
+%We define $\gamma_g = \norm{\ddelta_g}{2}$ and for $\ddelta \in \cH$ we have $\sum_{g = 0}^{G} \gamma_g = 1$.
+%We are interested in the following RE condition:
+%\begin{remark}
+%	As we show in the following, the lower bound $\kappa  < \inf_{\u \in \cC} \norm{\X \u}{2}^2 $, holds even for the larger set $\cC \supset \cA$, which is an interesting result.	On the other hand, if we work with the set $\cC$ in the upper bound, the bound becomes loose.
+%	Therefor, we focus on the set $\cA$ to get the tighter upper bound.
+%\end{remark}
