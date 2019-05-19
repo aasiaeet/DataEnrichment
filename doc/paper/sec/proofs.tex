@@ -36,12 +36,6 @@ In this Section we present detail proof for each theorem and proposition. To avo
 \end{proof}
 
 \subsection{Proof of Proposition \ref{prop:super}}
-\begin{prop}
-	\label{prop:super}
-	Assume observations distributed as defined in Definition \ref{def:obs} and pair-wise SC conditions are satisfied.  Consider each superposition model \eqref{eq:dirtymodel} in isolation; to recover the common parameter $\bbeta _0^*$ requires at least one group $i$ to have $n_i = O(\omega^2(\cA_0))$. 
-	To recover the rest of individual parameters, we need $\forall g \neq i: n_g = O(\omega^2(\cA_g))$ samples. 
-	%Recovering the individual parameter $\bbeta^*_g$ needs at least $n_g =  O((\max_{g \in [G]}\omega(\cA_g) + \sqrt{\log 2})^2)$ samples in the group.
-\end{prop}
 \begin{proof}
 	Consider only one group for regression in isolation. 
 	Note that $\y_g = \X_g (\bbeta _g^* + \bbeta _0^*) + \oomega_g$ is a superposition model and as shown in \cite{guba16} the sample complexity required for the RE condition and subsequently recovering $\bbeta _0^*$ and $\bbeta _g^*$ is $n_g  \geq c(\max_{g \in [G]}\omega(\cA_g) + \sqrt{\log 2})^2$.
@@ -536,62 +530,7 @@ Following lemma provides us with the bound on the expectation.
 %	\label{eq:sumrec}
 %	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2} &\leq& \theta_f \left(\rho \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}}  \norm{\ddelta_g^{(t)}}{2} + \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \eta_g(\mu_g) \norm{\oomega_g}{2}  \right)
 %	\ee
-%	where $\rho$ defined in \eqref{eq:rhos}.
-	To analysis convergence properties of \dc, we should upper bound the error of each iteration.% of the DE algorithm.
-	Let's $\ddelta^{(t)} = \bbeta^{(t)} - \bbeta^*$ be the error of  iteration $t$ of \dc, i.e., the distance from the true parameter (not the optimization minimum, $\hbbe$).
-	%The goal of this chapter is to show that the $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^t}{2}$ decreases exponentially fast it $t$, and converges to the upper bound of the statistical error $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}$ characterized in \eqref{eq:general}.
-	We show that $\norm{\ddelta^{(t)}}{2}$ decreases exponentially fast in $t$ to the statistical error $\norm{\ddelta}{2} = \norm{\hbbe - \bbeta^*}{2}$.
-	%In other word, we show that the optimization error $\norm{\hbbe - \bbeta^(t)}{2}$ linearly converges to zero.
-	We first start with the required definitions for our analysis.
-	
-	\begin{definition}
-		\label{def:only}
-		We define the following positive constants as functions of step sizes $\mu_g > 0$: %, where for simplification we assume $\X_0 = \oomega$ and $\oomega_0 = \oomega$:
-		%	\be
-		%	\nr
-		%	\rho_g(\mu_g) &=& \sup_{\u, \v \in \cB_g} \v^T \big(\I_g - \mu_g \X_g^T \X_g\big) \u, \quad g \in [G] \\ \nr
-		%	\eta_g(\mu_g) &=& \mu_g \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \quad g \in [G] \\ \nr
-		%	\phi_g(\mu_g) &=& \mu_g \sup_{\v \in \cB_g, \u \in \cB_0} -\v^T \X_g^T \X_g \u, \quad g \in [G]_\setminus
-		%	\ee
-		\be
-		\nr
-		\forall g \in [G]&:& \rho_g(\mu_g) = \sup_{\u, \v \in \cB_g} \v^T \big(\I_g - \mu_g \X_g^T \X_g\big) \u,
-		\\ \nr
-		&&\eta_g(\mu_g) = \mu_g \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}},
-		\\ \nr
-		\forall g \in [G]_\setminus&:& \phi_g(\mu_g) = \mu_g \sup_{\v \in \cB_g, \u \in \cB_0} -\v^T \X_g^T \X_g \u,
-		\ee
-		where $\cB_g =  \cC_g \cap \ball$ is the intersection of the error cone and the unit ball.% and $\oomega_0 := \oomega$.
-	\end{definition}
-	In the following theorem, we establish a deterministic bound on iteration errors  $\norm{\ddelta_g^{(t)}}{2}$ which depends on constants defined in Definition \ref{def:only}.
-	\begin{theorem}
-		\label{theo:iter}
-		For Algorithm \ref{alg2} initialized by $\bbeta ^{(1)} = \0$, we have the following deterministic bound for the error at iteration $t + 1$:
-		{\be
-			\label{eq:singleiter}
-			\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
-			&\leq& \rho^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}}\norm{\bbeta ^*_g}{2}   + \frac{1 - \rho^t}{1 -  \rho}   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \eta_g \norm{\oomega_g}{2},
-			\ee}
-		where {\small$\rho \triangleq \max\left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g, \max_{g \in [G]} \left[\rho_g + \sqrt{\frac{n}{n_g}}  \frac{\mu_0}{\mu_g} \phi_g \right]  \right)$}.
-		%	\be
-		%	\label{eq:rhos}
-		%	\rho = \max\left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g, \max_{g \in [G]} \left[\rho_g + \sqrt{\frac{n}{n_g}}  \frac{\mu_0}{\mu_g} \phi_g \right]  \right)
-		%	\ee
-	\end{theorem}
-	
-	
-	The RHS of \eqref{eq:singleiter} consists of two terms.
-	If we keep $\rho < 1$, the first term approaches zero fast, 
-	%i.e., with linear rate, 
-	and the second term determines the bound. %which depends on the sub-Gaussian noise $\oomega$, and therefore for noiseless case of $\y = \X \bbeta$ it becomes zero.
-	In the following, we show that for specific choices of step sizes $\mu_g$s, the second term can be upper bounded using the analysis of Section \ref{sec:error}.
-	More specifically, the first term corresponds to the optimization error which shrinks in every iteration while the second term is constant times the upper bound of the statistical error characterized in Corollary \ref{corr:calcub}.
-	Therefore, if we keep $\rho$ below one, the estimation error of DE algorithm geometrically converges to the approximate statistical error bound. %and we get to $\hbbe$ exponentially fast.
-	
-	%i.e., $\norm{\hbbe - \bbeta^*}{2} = \norm{\ddelta}{2} =  \sqrt{\sum_{g=1}^{G} \norm{\ddelta_g}{2}^2} \leq \sum_{g=1}^{G} \norm{\ddelta_g}{2}$ where we characterized a scaled version of it as $\sum_{g=1}^{G} \sqrt{\frac{n_g}{n}}\norm{\ddelta_g}{2}$ in \eqref{eq:general}.
-	One way for having $\rho < 1$ is to keep all arguments of $\max(\cdots)$  defining $\rho$ strictly below $1$. %, i.e., $\rho_g < 1/\theta_f $.
-	To this end, we first establish high probability upper bound for $\rho_g$, $\eta_g$, and $\phi_g$ (in the Appendix \ref{twolems}) and then show that with enough number of samples and proper step sizes $\mu_g$, $\rho$ can be kept strictly below one with high probability.
-	
+%	where $\rho$ defined in \eqref{eq:rhos}.	
 	In the following lemma we establish a recursive relation between errors of consecutive iterations which leads to a bound for the $t$th iteration. 
 	
 	\begin{lemma}
