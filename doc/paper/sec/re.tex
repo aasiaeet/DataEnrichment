@@ -1,0 +1,120 @@
+\section{Restricted Eigenvalue Condition}
+\label{sec:re}
+The main assumptions of Theorem \ref{theo:deter} is known as Restricted Eigenvalue (RE) condition in the literature of high dimensional statistics \cite{banerjee14, nrwy12, raskutti10}:
+$\inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2 \geq \kappa > 0.$
+%\be
+%\label{eq:recond}
+%\inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2 \geq \kappa > 0.
+%\ee
+The RE condition posits that the minimum eigenvalues of the matrix $\X^T \X$ in directions restricted to $\cH$ is strictly positive.
+In this section, we show that for the design matrix $\X$ defined in \eqref{eq:x}, the RE condition holds with high probability under a suitable geometric condition we call {\em Data EnRichment Incoherence Condition} (DERIC) and for enough number of samples.
+We precisely characterize total and per-group sample complexities required for successful parameter recovery.
+For the analysis, similar to existing work \cite{trop15, mend15, guba16}, we assume the design matrix to be isotropic sub-Gaussian.\footnote{Extension to an-isotropic sub-Gaussian case is straightforward by techniques developed in \cite{banerjee14, ruzh13}.}
+\begin{definition}
+	\label{def:obs}
+	We assume $\x_{gi}$ are i.i.d. random vectors from a non-degenerate zero-mean, isotropic sub-Gaussian distribution. In other words, $\ex [\x] = 0$, $\ex [\x^T \x] = \I_{p \times p}$, and $\normth{\x}{\psi_2} \leq k$.	
+As a consequence, $\exists \alpha > 0$ such that $\forall \u \in \sphere$ we have $ \ex|\langle \x, \u \rangle| \geq \alpha$. Further, we assume noise $\oomega_{gi} $ are i.i.d.
+zero-mean, unit-variance sub-Gaussian with $\normth{\omega_{gi}}{\psi_2} \leq K$.
+\end{definition}
+
+%\ab{Minor comment -- we are using variants of $k$ for different things, e.g., $k, K, \kappa$. While the notation is consistent, this can be a bit hard to follow. If possible, make the $\psi_2$ norms $c, C$.}
+
+Unlike standard high-dimensional statistical estimation, for RE condition to be true, parameters of the data enriched model \eqref{eq:dirtymodel} needs to satisfy a geometric condition under which trivial solutions such as $\ddelta_g=-\ddelta_0$ for all $g \in [G]_\setminus$ are avoided.
+To derive this condition, first note that each of the linear models in \eqref{eq:dirtymodel} is a superposition model \cite{guba16} or dirty statistical model \cite{yara13}. RE condition of individual superposition models can be established under the so-called Structural Coherence (SC) condition \cite{guba16, mctr13}. 
+\begin{definition}[Structural Coherence (SC) \cite{guba16, mctr13}] \label{scc}
+	Consider a superposition model of the form \eqref{eq:dirtymodel}. The SC condition requires for $\ddelta_0 \in \cC_0$ and {\em each} $\ddelta_g \in \cC_g$ there exist $\lambda > 0$ such that: $\norm{\ddelta_0 + \ddelta_g}{2} \geq  \lambda \left(\norm{\ddelta_0}{2} + \norm{\ddelta_g}{2} \right)$ and leads to the corresponding RE condition for superposition models.
+\end{definition}
+The SC condition on each individual problem fails to utilize the true coupling structure in the data enriched model, where $\bbeta^*_0$ is involved in all groups. In fact, below we show, using SC on each individual model leads to radically pessimistic estimates of the sample complexity for $\bbeta^*_0$ recovery.
+\begin{prop}
+	\label{prop:super}
+	Assume observations distributed as defined in Definition \ref{def:obs} and pair-wise SC conditions are satisfied.  Consider each superposition model \eqref{eq:dirtymodel} in isolation; to recover the common parameter $\bbeta _0^*$ requires at least one group $i$ to have $n_i = O(\omega^2(\cA_0))$. 
+	To recover the rest of individual parameters, we need $\forall g \neq i: n_g = O(\omega^2(\cA_g))$ samples. 
+	%Recovering the individual parameter $\bbeta^*_g$ needs at least $n_g =  O((\max_{g \in [G]}\omega(\cA_g) + \sqrt{\log 2})^2)$ samples in the group.
+\end{prop}
+In other words, by separate analysis of superposition estimators at least one problem needs to have sufficient samples for recovering the common parameter $\bbeta_0$ and therefore the common parameter recovery does not benefit from the pooled $n$ samples.
+But given the nature of coupling in the data enriched model, we hope to be able to get a better sample complexity specifically for the common parameter $\bbeta_0$.
+
+%
+%Therefore, we have a set of coupled superposition models, and the goal is to estimate their parameters.
+%%Another similar model is the one used in \cite{jrsr10}, but the authors are not emphasizing on a distinct common component.
+%%As mentioned in Section \ref{sec:introds} the data enriched model can be think of as a coupled set of superposition models.
+%The straightforward way to get the sample complexity for satisfying the RE condition is to use results from the superposition literature directly.
+%To this end, we need to introduce some preliminary concepts that both previous works and ours build upon.
+%
+%Secondly to establish the RE condition, shared signal should satisfy an incoherence condition under which we prevent trivial solutions such as $\ddelta_g=-\ddelta_0$ for all $g \in [G]_\setminus$.
+
+
+%In this work,
+Here, we introduce DERIC, a considerably weaker geometric condition compared to SC of \cite{guba16, mctr13}. 
+%The rigorous definition of DERIC is provided below.%  for a superposition signal $\ddelta = \ddelta_0 + \ddelta_g$ error cones of $\ddelta_0$ and $\ddelta_g$ should satisfy a condition known as structural coherence, defined below.
+\begin{definition}[Data EnRichment Incoherence Condition (DERIC)]  \label{incodef}
+	There exists a non-empty set $\cI\subseteq \Gsm$ of groups where for some scalars $0 < \ratio\leq 1$ and $\lamin>0$ the following holds:
+	\begin{enumerate}
+		\item $\sum_{i\in \cI} n_i\geq \lceil \ratio n\rceil$.
+		\item $\forall i \in \cI$, $\forall \ddelta_i \in \cC_i$, and $\ddelta_0\in\cC_0$: $\norm{\ddelta_i+\ddelta_0}{2}\geq \lamin (\norm{\ddelta_0}{2}+\norm{\ddelta_i}{2})$
+	\end{enumerate}
+	Observe that $0 < \lamin,\ratio\leq 1$ by definition.
+\end{definition}
+%\ab{why would $\bar{\rho}=0$ work? also, can $\cI$ be empty? pls update as needed} 
+
+%\ab{add a remark -- so the reader can follow what we are saying}
+
+%\ab{It will be great to have a Figure showing the difference between SC and DERIC.}
+
+\begin{remark}
+Clearly DERIC and SC conditions are satisfied if the error cones $\cC_g$ and $\cC_0$ does not have a ray in common, i.e., $\sup \langle \ddelta_0/\norm{\ddelta_0}{2}, \ddelta_g/\norm{\ddelta_g}{2} \rangle < 1$ \cite{trop15, guba16}, Figure \ref{fig:sc}. 
+%However, DERIC condition also allows for a large fraction of cones to intersect with $-\cC_0$.
+In particular, SC requires that none of the individual error cones $\cC_g$ intersect with the inverted error cone $-\cC_0$.
+Instead of this stringent geometric condition, DERIC allows $-\cC_0$ to intersect with an arbitrarily large fraction of the $\cC_g$ cones, Figure \ref{fig:deric}.
+As the number of intersections increases, our bound becomes looser.
+\end{remark}
+%In contrast, the existing SC condition \cite{guba16, mctr13} applied to 
+%\be 	\label{def:sc}
+%\norm{\ddelta_0 + \ddelta_g}{2} \geq  \lambda \left(\norm{\ddelta_0}{2} + \norm{\ddelta_g}{2} \right)
+%\ee
+
+%Secondly to establish the RE condition for a superposition signal $\ddelta = \ddelta_0 + \ddelta_g$ error cones of $\ddelta_0$ and $\ddelta_g$ should satisfy a condition known as structural coherence, defined below.
+%\begin{definition}%[Structural Coherence]
+%	For $\ddelta_0 \in \cC_0$ and $\ddelta_g \in \cC_g$ the Structural Coherence (SC) is satisfied if there exist $\lambda_g > 0$ such that:
+%	\be 	\label{def:sc}
+%	\norm{\ddelta_0 + \ddelta_g}{2} \geq \lambda_g \left(\norm{\ddelta_0}{2} + \norm{\ddelta_g}{2} \right)
+%	\ee
+%\end{definition}
+%It is known that SC condition is satisfied if the error cones $\cC_g$ and $\cC_0$ does not have a ray in common, i.e., $\sup \langle \ddelta_0/\norm{\ddelta_0}{2}, \ddelta_g/\norm{\ddelta_g}{2} \rangle < 1$ \cite{trop15, guba16}.
+%
+%%{\color{red}
+%%STRUCTRal coherence condition.
+%%Non-degenerate Sub-Gaussian and small ball method.
+%%Q function.
+%%Introduce $H_0g, A_0g$ and their relation and the lower bound that we use for the non-degenerate case.
+%%Start from the theorems and go back to lemmas.
+%%Define sub-Gaussian r.v.
+%%}
+%Now, we are ready to show that the state-of-the-art estimator of \cite{guba16} will lead to a considerably pessimistic sample complexity.
+
+
+%\ab{Not sure if I follow this. Assume $g=1$ has sufficient samples, i.e., $n_1 \geq c \omega^2(\cA_0)$. Then, the estimator would proceed in two steps: first, estimate $\beta_0,\beta_1$
+%from the first problem; then, use the estimated $\beta_0$ in the other problems to estimate $\beta_2,\ldots,\beta_G$. With such an estimator, we need $n_g \geq c \omega^2(\cA_g), g=2,\ldots,G$.
+%So only one problem needs to have sufficient samples.}
+ Using DERIC and the small ball method \cite{mend15}, a recent tool from empirical process theory in the following theorem, we get a better sample complexity required for satisfying the RE condition:
+\begin{theorem}
+	\label{theo:re}
+%	Let $\x_{gi}$s be iid, zero-mean, non-degenerate, sub-Gaussian random vector with $\ex [\x_{gi}^T \x_{gi}] = \I_{p \times p}$ and $\vertiii{\x_{gi}}_{\psi_2} \leq k$.
+	Let $\x_{gi}$s	be random vectors defined in Definition \ref{def:obs}.
+%	Assume that the pair-wise SC conditions of \eqref{def:sc} hold for $\cC_g$s.
+	Assume DERIC condition of Definition \ref{incodef} holds for error cones $\cC_g$s and $\rinc=\lamin\ratio/3$.
+	Then, for all $\ddelta \in \cH$, when we have enough number of samples as $\forall g \in [G]_{\setminus}: n_g \geq m_g = O(k^6 \alpha^{-6} \rinc^{-2} \omega(\cA_g)^2)$, with probability at least $1 - e^{-n \kappa_{\min}/4}$  we have:
+	%as characterized where $-\langle \oomega \ddelta_0 , \D \ddelta_{1:G} \rangle \leq \epsilon \norm{\oomega \ddelta_0}{2} \norm{\D \ddelta_{1:G}}{2}$, therefore we have the following:
+	\be
+	\nr
+	\inf_{\ddelta \in \cH} \frac{1}{\sqrt{n}} \norm{\X \ddelta}{2} &\geq& \frac{\kappa_{\min}}{2}
+	\ee
+	where $\kappa_{\min} = \min_{g\in [G]_\setminus} C \rinc \frac{\alpha^3}{k^2}  - \frac{2 c_g k \omega(\cA_g)}{\sqrt{n_g}}$ and $\kappa = \frac{\kappa_{\min}^2}{4}$ is the lower bound of the RE condition.
+\end{theorem}
+
+\begin{example}
+	{\bf ($L_1$-norm)} The Gaussian width of the spherical cap of a $p$-dimensional $s$-sparse vector is $\omega(\cA) = \Theta(\sqrt{s\log p})$ \cite{banerjee14, vershynin2018high}. Therefore, the number of samples per group and total required for satisfaction of the RE condition in the sparse DE estimator \eqref{sde} is $\forall g \in [G]: n_g \geq m_g = \Theta(s_g \log p)$. 
+\end{example}
+
+
+
