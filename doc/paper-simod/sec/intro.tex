@@ -1,46 +1,33 @@
-
 \section{Introduction}
-Over the past two decades, major advances have been made in estimating structured parameters, e.g., sparse, low-rank, etc., in high-dimensional small sample problems \cite{donoho2006compressed,candes2010power,friedman2008sparse}.
-Such estimators consider a suitable (semi) parametric model of the response: $y = \phi(\x,\bbeta^*) + \omega$ based on $n$ samples $\{(\x_i,y_i)\}_{i=1}^n$ and $\bbeta \in \reals^p$
-is the parameter of interest. The unique aspect of such high-dimensional setup is that the number of samples $n < p$, and the structure in $\bbeta^*$, e.g., sparsity, low-rank, makes
-the estimation possible \cite{tibshirani1996regression,candes2006robust,candes2009exact}. While the earlier developments in such high dimensional estimation problems had focused on parametric linear models, the results
-have been widely extended to non-linear models, e.g., generalized linear models \cite{negahban2009unified,bach2012optimization}, broad families of semi-parametric and single-index models \cite{plan2017high,boufounos20081}, non-convex models \cite{blumensath2009iterative,jain2013low}, etc.
+Over the past two decades, major advances have been made in estimating structured parameters, e.g., sparse, low-rank, etc., in high-dimensional small sample problems \cite{candes2010power, donoho2006compressed, friedman2008sparse}. Such estimators consider a suitable (semi) parametric model of the response: $y = \phi(\x,\bbeta^*) + w$ based on $n$ samples $\{(\x_i,y_i)\}_{i=1}^n$ and the parameter of interest, $\bbeta^* \in \reals^p$. The unique aspect of such high-dimensional regime of $n \ll p$ is that the structure of $\bbeta^*$ makes
+the estimation possible for large enough samples $n = m$ known as the sample complexity \cite{candes2009exact, candes2006robust, tibshirani1996regression}. While the earlier developments in such high-dimensional estimation problems had focused on parametric linear models, the results have been widely extended to non-linear models, e.g., generalized linear models \cite{bach2012optimization, negahban2009unified}, broad families of semi-parametric and single-index models \cite{boufounos20081, plan2017high}, non-convex models \cite{blumensath2009iterative,jain2013low}, etc.
 
-In several real world problems, the assumption that one global model parameter $\bbeta$ is suitable for the entire population is unrealistic.
-We consider the more general setting where the population consists of sub-populations (groups) which are similar is many aspects but are different in certain
-unique aspects. For example, in the context of anti-cancer drug sensitivity prediction where the goal is to predict responses of different tumor cells to a drug, using a same prediction model across cancer types (groups) ignores the unique properties of each group and leads to an uninterpretable global model. 
-%\ab{... a line on drug sensitivity of cancer cell lines ...}. 
-%
-%Consider the problem of predicting an outcome for a population which consists of sub-populations (groups) that are similar in some aspects but different in others. Focusing the exposition to linear models, 
-%
-In such a setting, one can assume a model for each group based on a group specific parameter $\bbeta^*_g$, i.e., $y = \phi(\x, \bbeta_g^*) + \omega$ for group $g$. 
-%where $g$ and $i$ index the group and samples therein respectively. 
-Such a modeling approach fails to leverage the similarities across the sub-populations, and can only be estimated when sufficient number of samples are available 
-for each group which is not the case in several problems, e.g., anti-cancer drug sensitivity prediction \cite{barretina2012cancer, iorio2016landscape1}.
-%
-%Besides, to efficiently estimate per group parameters $\bbeta^*_g$ one needs a suitably large number of samples for all group.
-%Alternatively, one can ignore the grouping information and build a global model by lumping together all of the samples from heterogeneous groups and fit a single linear model $y_i = \x_i^T \bbeta^* + \omega_i$. While any prediction procedure based on this assumption benefits from a larger number of samples, it fails to capture unique aspects of each group which may lead to poorer prediction accuracy and less interpretable estimated parameter.
+In several real world problems, the assumption that one global model parameter $\bbeta_0^*$ is suitable for the entire population is unrealistic.
+We consider the more general setting where the population consists of sub-populations (groups) which are similar is many aspects but have unique differences. For example, in the context of anti-cancer drug sensitivity prediction where the goal is to predict responses of different tumor cells to a drug, using a same prediction model across cancer types (groups) ignores the unique properties of each cancer and leads to an uninterpretable global model. Alternatively, in such a setting, one can assume a separate model for each group $g$ as $y = \phi(\x, \bbeta_g^*) + w$ based on a group specific parameter $\bbeta^*_g$. Such a modeling choice fails to leverage the similarities across the sub-populations, and can only be estimated when sufficient number of samples are available for each group which is not the case in several problems, e.g., anti-cancer drug sensitivity prediction \cite{barretina2012cancer, iorio2016landscape1}.
 
-In this paper, we consider the \emph{data enrichment} (DE) strategy recently suggested in the literature \cite{domu16, grti16,  olvi14, olvi15} for the above problem setup. 
-%\ab{I still like the `data sharing' name -- since it has been used in the literature, it will help a reader connect to the existing body of work.} 
-A data enriched model \emph{enriches} above models by taking their middle ground. It assumes that there is a \emph{common} parameter $\bbeta^*_0$ shared between all groups and \emph{individual} per-group parameters $\bbeta_g^*$ which characterize the deviation of group $g$, i.e.,
-%\be
-%\label{eq:dsl}
-%y_{gi} &=& \x_{gi}^T (\bbeta_0^* + \bbeta^*_g) + \omega_{gi}, \quad g \in \{1, \dots, G\}~,
-%\ee
+The middle ground model for such a scenario is the \emph{superposition} of common and individual parameters $\bbeta_0^* + \bbeta_g^*$ which has been of recent interest \cite{??, guba16}. Such a collection of \emph{coupled} superposition models is known by multiple names in the statistical machine learning community. It is a form of multi-task learning \cite{jrsr10, Zhang2017-rm} when we consider regression in each group as a task. It is also called data sharing \cite{grti16} since information contained in different groups is shared through the common parameter $\bbeta_0^*$. And finally, it has been called data enrichment \cite{Chen2015-fj} because we enrich our data set with pooling multiple samples from different but related sources. 
+
+Following the successful application of such a modeling scheme in recent years \cite{domu16, grti16,  olvi14, olvi15}, we consider the below \emph{data enrichment} (DE) model: 
 \be
 \label{eq:dsl}
-y_{gi} &=& \phi(\x_{gi}, (\bbeta_0^* + \bbeta^*_g)) + \omega_{gi}, \quad g \in \{1, \dots, G\}~,
+y_{gi} &=& \phi(\x_{gi}, (\bbeta_0^* + \bbeta^*_g)) + w_{gi}, \quad g \in \{1, \dots, G\}~,
 \ee
-where $g$ and $i$ index the group and samples respectively, Figure \ref{fig:cat}. 
-In \eqref{eq:dsl}, we have $G$ 
-models coupled by the common parameter $\bbeta^*_0$ which models similarities between all samples. Individual parameters $\bbeta_g$s capture unique aspects of each group.
-We specifically focus on the high-dimensional small sample regime for \eqref{eq:dsl} where the number of samples $n_g$ for each group is much smaller than the ambient 
+where $g$ and $i$ index the group and samples respectively. 
+\begin{figure}%[!b]
+	\centering
+	\includegraphics[scale=.45]{./img/concept.pdf}
+	\caption{A conceptual illustration of data enrichment model for learning representation of  cat species. The common parameter $\bbeta_0$ captures a \emph{generic cat} which consists of shared features among all cats.}
+	\label{fig:cat}		
+\end{figure}
+DE model \eqref{eq:dsl} assumes that there is a \emph{common} parameter $\bbeta^*_0$ shared between all groups which models similarities between all samples. And there are \emph{individual} per-group parameters $\bbeta_g^*$s each characterize the deviation of group $g$, Figure \ref{fig:cat}.% and capture unique aspects of each group.
+
+\paragraph{The setting} Our goal is to design an estimation procedure which consistently recovers all parameters of DE \eqref{eq:dsl} fast and with small number of samples.
+We specifically focus on the high-dimensional small sample regime where the number of samples $n_g$ for each group is much smaller than the ambient 
 dimensionality, i.e., $\forall g: n_g \ll p$. Similar to all other high-dimensional models, we assume that the parameters $\bbeta_g$ are structured, i.e., for suitable convex functions $f_g$'s, $f_g(\bbeta_g)$ is small.
 For example, when the structure is sparsity, $f_g$s are $L_1$-norms. Further, for the technical analysis and proofs,
 we focus on the case of linear models, i.e., $\phi(\x,\bbeta) = \x^T \bbeta$. The results
 seamlessly extend to more general non-linear models, e.g., generalized linear models, broad families of semi-parametric and single-index models, non-convex models, etc., using
-existing results, i.e., how models like Lasso have been extended to these settings (e.g.~employing ideas such as restricted strong convexity \cite{negahban2012restricted}). %{\color{red}{it is OK I think}}\ab{Is the last line correct? Lets check this.}
+existing results, i.e., how models like LASSO have been extended to these settings \cite{negahban2012restricted}. %(e.g.~employing ideas such as restricted strong convexity ). %{\color{red}{it is OK I think}}\ab{Is the last line correct? Lets check this.}
 
 %We call these set of models, \emph{``data sharing''} model \cite{grti16}.
 %In high dimensional regime, we assume that both common and individual parameters are structured, i.e., for suitable \emph{convex} functions $f_g$, $f_g(\bbeta^*_g)$s are small.
@@ -49,99 +36,50 @@ existing results, i.e., how models like Lasso have been extended to these settin
 %The common parameter $\bbeta^*_0$ captures the shared effect of features among groups.
 %the ``dense similarity'' and individual parameters capture ``slight difference'' between groups and hopefully common parameter estimation will benefit from all of the shared data.
 
-Note that the models in \eqref{eq:dsl} for each group is a superposition \cite{guba16, mctr13}, or dirty statistical model \cite{yara13}. %\ab{cite relevant paper(s) by McCoy-Tropp on convex de-mixing} Therefore, a {\em data-enriched}
-DE model is \emph{a system of coupled superposition models}.
-A related model is proposed by \cite{jrsr10} in the context of multi-task learning, where for each task $g$ the output is coming from $y_{gi} = \x_{gi}^T (\bbeta_{0g}^* + \bbeta^*_g) + \omega_{gi}$.
-As emphasized by the subscript of $\bbeta_{0g}^*$ the common parameters are different in every task but they share a same support (index of non-zero values), i.e., $\bbeta_{0i}^* \neq \bbeta_{0j}^*$ but $\text{supp}(\bbeta_{0i}^*) = \text{supp}(\bbeta_{0j}^*)$. 
-This setup requires every task to have enough samples to learn their own common parameters. In contrast, our model shares the common parameters and only requires that {\em{total dataset over all tasks}} is sufficiently large.
-%\ab{need a line on what Jalali et al.~show, and how our results are (qualitatively) different} 
-%\ab{we don't have a discussion on `related work' -- including hierarchical models, multi-task learning; should we have a sub-section on these, or otherwise discuss these related developments}
-%Also \cite{jrsr10} considers only the cases where function $f_g(\cdot)$ are $l_1$-norm.
-%At a high level, the DE model can be viewed as a
-%of hierarchical additive model \cite{hastie2017generalized,rigby2005generalized} {\color{red}{couldn't find good ref, we might want to remove this}}, where $\bbeta_0^*$ corresponds to the root and $\bbeta_g^*$ correspond to the refinements in the leaves. 
+\subsection{Related Work}
+In the context of \emph{Multi-Task Learning} (MTL), similar models have been proposed which have the general form of $y_{gi} = \x_{gi}^T (\bbeta_{1g}^* + \bbeta^*_{2g}) + w_{gi}$ where $\B_1 = [\bbeta_{11}, \dots, \bbeta_{1G}]$ and $\B_2 = [\bbeta_{21}, \dots, \bbeta_{2G}]$ are two parameter matrices \cite{Zhang2017-rm}. To capture the relation of tasks, different types of constraints are assumed for parameter matrices. For example, \cite{Chen2012-fb} assumes $\B_1$ and $\B_2$ are sparse and low rank respectively. In this parameter matrix decomposition framework for MLT, the most related work to ours is the Dirty Model (DM) proposed in \cite{jrsr10} where authors regularize the regression with $\norm{\B_1}{1, \infty}$ and $\norm{\B_2}{1,1}$ where norms are $p,q$-norms on \emph{rows} of matrices, i.e., $\norm{\cdot}{p,q} = \norm{(\norm{\cdot}{q}, \dots, \norm{\cdot}{q})}{p}$. 
 
+If in our DE model we pick all structure inducing functions $f_g$ to be $l_1$-norm, the resulting model is very similar to the DM where $\norm{\B_1}{1, \infty}$ induces similarity between tasks and $\norm{\B_2}{1,1}$ models their discrepancies. On the other hand, the degree of freedom of DM model is higher than DE because $\norm{\B_1}{1, \infty}$ regularizer enforces shared support of $\bbeta^*_{1g}$s, i.e., $\text{supp}(\bbeta_{1i}^*) = \text{supp}(\bbeta_{1j}^*)$ but allows $\bbeta_{1i}^* \neq \bbeta_{1j}^*$ while in DE we have a single common parameter $\bbeta_0^*$. So one would expect that DE estimators should have smaller sample complexity compared to their DM counterparts and our analysis confirm that our estimator is more data efficient than DM estimator of \cite{jrsr10}. Mainly, they require every task $i$ to have large enough samples to learn its own common parameters $\bbeta_i$ but since DE shares the common parameter it only requires the {\em{total dataset over all tasks}} to be sufficiently large.
 
-The DE model where $\bbeta_g$'s are sparse has recently gained attention because of its application in wide range of domains such as personalized medicine \cite{domu16}, sentiment analysis, banking strategy \cite{grti16}, single cell data analysis \cite{olvi15}, road safety \cite{olvi14}, and disease subtype analysis \cite{domu16}.
+The linear DE model where $\bbeta_g$'s are sparse has recently gained attention because of its application in wide range of domains such as personalized medicine \cite{domu16}, sentiment analysis, banking strategy \cite{grti16}, single cell data analysis \cite{olvi15}, road safety \cite{olvi14}, and disease subtype analysis \cite{domu16}.
 More generally, in any high-dimensional problem where the population consists of groups, data enrichment framework has the potential to boost the prediction accuracy and results in a more interpretable set of parameters.
 
-In spite of the recent surge in applying data enrichment framework to different domains, limited advances have been made in
-understanding the statistical and computational properties of suitable estimators for the data enriched model.
+\paragraph{Motivation} In spite of the recent surge in applying data enrichment framework to different domains, limited advances have been made in
+understanding the statistical and computational properties of suitable estimators for the DE model \eqref{eq:dsl}.
 In fact, non-asymptotic statistical properties, including sample complexity and statistical rates of convergence, of regularized estimators for the data enriched model is still an open question \cite{grti16, olvi14}.
-To the best of our knowledge, the only theoretical guarantee for data enrichment is provided in \cite{olvi15} where authors prove sparsistency of their proposed method under the stringent irrepresentability condition of the design matrix for recovering supports of common and individual parameters.
+To the best of our knowledge, the only theoretical guarantee for data enrichment is provided in \cite{olvi15} where authors prove sparsistency of their proposed method under the stringent irrepresentability condition of the design matrix for recovering \emph{supports} of common and individual parameters.
 %\ab{If they show support recovery, the condition may have been necessary -- maybe give them due credit, and show how much more the current results are, though we are doing norm consistency, not support recovery.}
-In contrast to \cite{olvi15} where the analysis is restricted to sparsity and $l_1$-norm, our estimator and \emph{norm consistency} analysis work for any structure induced by arbitrary convex functions. %has been investigated for the data enriched model. 
-Moreover, no computational results, such as rates of convergence of the optimization algorithms associated with proposed estimators, exist in the literature.
-%{\color{red} TODO: Emphasis that functions can be non-convex.}
-
-%\newlength\heightfiga\newlength\heightcapa
-%\newlength\heightfigb\newlength\heightcapb
-%\newlength\heightfigc\newlength\heightcapc
-%\newlength\heightfig
-%
-%\begin{figure*}
-%	%Definition of lengths
-%	\setlength\heightfiga{3cm}
-%	\setlength\heightfigb{3cm}
-%	\setlength\heightcapa{1\baselineskip}
-%	\setlength\heightcapb{2\baselineskip}
-%	%Do not change
-%	\setlength\heightcapc{\heightcapa}
-%	\setlength\heightfigc{\heightfiga+\heightfigb+\heightcapa}
-%	\setlength\heightfig{\heightfigc+\heightcapc}
-%	\begin{minipage}[b][\heightfig][t]{0.68\linewidth}
-%		\centering
-%		\includegraphics[height=\heightfigc]{./img/concept}
-%		\parbox[b][\heightcapc][t]{1.\linewidth}{\subcaption{Data Enrichment.}\label{subfig3}}
-%	\end{minipage}	\hfill
-%	\begin{minipage}[b][\heightfig][t]{0.3\linewidth}\centering
-%		\includegraphics[height=\heightfiga]{./img/sc.pdf}
-%		\parbox[b][\heightcapa][t]{1\linewidth}{\subcaption{SC}\label{subfig1}}
-%		\includegraphics[height=\heightfigb]{./img/deric.pdf}
-%		\parbox[b][\heightcapb][t]{1\linewidth}{\subcaption{DERIC}\label{subfig2}}
-%	\end{minipage}
-%	\caption{a) A conceptual illustration of data enrichment model for learning representation of  different cat species. The common parameter $\bbeta_0$ captures a \emph{generic cat} which consists of shared features among all cats. b) Our  c) Distribution of responses to Saracatinib. Note that some cell lines of both lung and blood cancers have responded to Saracatinib which makes it a good candidate for interpretability analysis.}
-%	\label{fig}
-%\end{figure*}
-
-\begin{figure}
-		\centering
-		\includegraphics[scale=.45]{./img/concept.pdf}
-		\caption{A conceptual illustration of data enrichment model for learning representation of  different cat species. The common parameter $\bbeta_0$ captures a \emph{generic cat} which consists of shared features among all cats.}
-		\label{fig:cat}		
-\end{figure}
-
+Existing support recovery guarantees \cite{olvi15}, sample complexity and $l_2$ consistency results \cite{jrsr10} of related MTL models are restricted to sparsity and $l_1$-norm, while our estimator and \emph{norm consistency} analysis work for \emph{any} structure induced by arbitrary convex functions $f_g$. 
+Moreover, no computational results, such as rates of convergence of the estimation procedures exist in the literature.
 
 
 %{\bf Contributions:}
 \subsection{Notation and Preliminaries}
 We denote sets by curly $\cV$, matrices by bold capital $\V$, random variables by capital $V$, and vectors by small bold $\v$ letters.
-We take $[G] = \{0, \dots, G\}$ and $[G]_\setminus = [G] \setminus \{0\}$.
-%\ab{Can we use $[G]= \{1,\ldots,G\}$ and use $G \cup \{0\}$ in places where we need to include $\{0\}$? The notation will be more explicit and easier to follow.} 
-
-Given $G$ groups and $n_g$ samples in each as $\{ \{\x_{gi}, y_{gi} \}_{i=1}^{n_g} \}_{g = 1}^G$, we can form the per group design matrix $\X_g \in \reals^{n_g \times p}$ and output vector $\y_g \in \reals ^{n_g}$.
-The total number of samples is  $n = \sum_{g = 1}^{G} n_g$.
-The data enriched model takes the following vector form:
-\be
-\label{eq:dirtymodel}
-\y_g = \X_g (\bbeta _0^* + \bbeta _g^*) + \oomega_g,  \quad \forall g \in [G]_\setminus
-\ee
-where each row of $\X_g$ is $\x_{gi}^T$ and $\oomega_g^T = (\omega_{g1}, \dots, \omega_{gn_g})$ is the noise vector.
+We take $[G] = \{1, \dots, G\}$ and $[G_+] = [G] \cup \{0\}$. Throughout the manuscript $c_i$ and $C_i$ denote positive absolute constants.
+%All $c_i$, $c$, and $C$ represent universal constants throughout the manuscript.
 % are indexed with either a single number as $\v(i)$ or an index set $\cA$ as $\v_{\cA}$.
 %Row $i$ of the matrix $\V$ is shown as $\v_i$ and $j$th element of the vector $\v$ is shown as $\v(j)$.
 %The $(i,j)$th element of the matrix $\V$ is shown in three ways: $\V_{ij}$, $\v_i(j)$, or $v_{ij}$.
-%Throughout the manuscript $c_i$ and $C_i$ are positive constants.
 %We name the sample covariance of any matrix $M$ by $S_M$ vs. the actual parameter $\Sigma_M$.
 
-%\noindent {\bf Sub-Gaussian (Sub-exponential) random variable and vector.}
+\paragraph{Sub-Gaussian random variable and vector}
 A random variable $V$ is sub-Gaussian if its moments satisfies $\forall p \geq 1: (\ex |V|^p )^{1/p} \leq K_2 \sqrt{p}$.
 The minimum value of $K_2$ is called the sub-Gaussian  norm of $V$, denoted by $\normth{V}{\psi_2}$ \cite{vers12}.
 A random vector $\v \in \reals^p$ is sub-Gaussian if the one-dimensional marginals $\langle \v, \u \rangle$ are sub-Gaussian random variables for all $\u \in \reals^p$. The sub-Gaussian norm of $\v$ is defined \cite{vers12} as $\normth{\v}{\psi_2} = \sup_{\u \in \sphere} \normth{\langle \v, \u \rangle}{\psi_2}$.
 %We abuse notation and use shorthand $\v \sim \subg(0, \Sigma_{\v}, K_{\v})$ for zero mean sub-Gaussian random vector with covariance $\Sigma_{\v}$ and sub-Gaussian norm of $K_{\v}$, although keeping in mind that no other moments, nor the exact form of the distribution function is known.
 For any set $\cV \in \reals^p$ the Gaussian width of the set $\cV$ is defined as $\omega(\cV) = \ex_\g \left[ \sup_{\u \in \cV} \langle \g, \u \rangle \right]$ \cite{vershynin2018high}, where the expectation is over $\g \sim N(\0, \I_{p \times p})$, a vector of independent zero-mean unit-variance Gaussian.
 
+Given $G$ groups and $n_g$ samples in each as $\{ \{\x_{gi}, y_{gi} \}_{i=1}^{n_g} \}_{g = 1}^G$, we can form the per group design matrix $\X_g \in \reals^{n_g \times p}$ and output vector $\y_g \in \reals ^{n_g}$.
+The total number of samples is  $n = \sum_{g = 1}^{G} n_g$ and the data enriched model takes the following vector form:
+\be
+\label{eq:dirtymodel}
+\y_g = \X_g (\bbeta _0^* + \bbeta _g^*) + \w_g,  \quad \forall g \in [G]
+\ee
+where each row of $\X_g$ is $\x_{gi}^T$ and $\w_g^T = (w_{g1}, \dots, w_{gn_g})$ is the noise vector.
 %We define the minimum and maximum eigenvalues of a matrix $\M$ restricted to the set $\cA \subseteq \eS^{p-1}$ as $\lambda_{\min}(\M|\cA) = \inf_{\u \in \cA} \u^T \M \u$, and $\lambda_{\max}(\M|\cA) = \sup_{\u \in \cA} \u^T \M \u$ respectively.
-%All $c_i$, $c$, and $C$ represent universal constants throughout the manuscript.
-%Set $[G] = \{0, \dots, G\}$ is the index set for both shared and individual components (in the setting of data enriched model \eqref{eq:dsl}) and $[G]_\setminus = [G] - \{ 0 \}$ represents only the individual ones.
+
+
 
 
 %\subsection{Contributions}
@@ -151,12 +89,11 @@ We propose the following Data Enrichment (DE) estimator $\hbbe$ for recovering t
 	\label{eq:super}
 	\hbbe = (\hbbe_0^T, \dots, \hbbe_G^T) \in \argmin_{\bbeta _0, \dots, \bbeta _G} \frac{1}{n} \sum_{g=1}^{G} \norm{\y_g - \X_g (\bbeta _0 + \bbeta _g)}{2}^2,
 	\\ \nr
-	\text{s.t.} \quad \forall g \in [G]:f_g(\bbeta _g) \leq f_g(\bbeta _g^*).
+	\text{s.t.} \quad \forall g \in [G] \cup \{0\}:f_g(\bbeta _g) \leq f_g(\bbeta _g^*).
 \ee}
 %We are investigating the conjecture that the pooled data from all groups will facilitate estimation of the common parameter $\bbeta_0^*$ in both samples complexity and error-bound rate regards.
 %In our work, we explicitly answer these questions as follows:
-\paragraph{{test}}
-We present several statistical and computational results for the DE estimator \eqref{eq:super} of the data enriched model:
+We present several statistical and computational results for the DE estimator \eqref{eq:super}:% of the data enriched model:
 \begin{itemize}[leftmargin = .4cm]
 	\item The DE estimator \eqref{eq:super} succeeds if a geometric condition that we call \emph{Data EnRichment Incoherence Condition} (DERIC) is satisfied, Figure \ref{fig:deric}. Compared to other known geometric conditions in the literature such as structural coherence \cite{guba16} and stable recovery conditions \cite{mctr13}, DERIC is a considerably weaker condition, Figure \ref{fig:sc}.
 	\item Assuming DERIC holds, we establish a high probability non-asymptotic bound on the weighted sum of parameter-wise estimation error, $\ddelta_g = \hbbe_g - \bbeta_g^*$ as:
@@ -198,11 +135,11 @@ We delineate our geometrically convergent algorithm, \dc{} in Section \ref{sec:o
 	~
 	\begin{subfigure}[t]{0.43\textwidth}
 		\includegraphics[width=\textwidth]{./img/deric.pdf}
-		\caption{Data EnRichment Incoherence Condition (DERIC). }
+		\caption{Data EnRichment Incoherence Condition (DERIC).}
 		\label{fig:deric}
 	\end{subfigure}
 	\squeezeup
-	\caption{a) State of the art condition for recovering common and individual parameters in superposition models where $\cC_g = \text{Cone}(\cE_g)$ are error cones and $\cE_g = \left\{\ddelta_g | f_g(\bbeta _g^* + \ddelta_g) \leq f_g(\bbeta _g^*)\right\}$ are the error sets for each parameter $\bbeta^*_g \in [G]$ \cite{guba16} b) Our more relaxed recovery condition which allows \emph{arbitrary non-zero fraction } of the error cones of individual parameters intersect with $-\cC_0$.}
+	\caption{a) State-of-the-art condition for recovering common and individual parameters in superposition models where $\cC_g = \text{Cone}(\cE_g)$ are error cones and $\cE_g = \left\{\ddelta_g | f_g(\bbeta _g^* + \ddelta_g) \leq f_g(\bbeta _g^*)\right\}$ are the error sets for each parameter $\bbeta^*_g \in [G]$ \cite{guba16}. b) Our more relaxed recovery condition which allows \emph{arbitrary non-zero fraction } of the error cones of individual parameters intersect with $-\cC_0$.}
 	\label{fig syn2}
 \end{figure}
 
