@@ -5,35 +5,7 @@
 In this Section we present detail proof for each theorem and proposition. To avoid cluttering, during our proofs, we state some needed results as lemmas and provide their proof in the next Section \ref{sec:lemmas}. 
 
 \subsection{Proof of Theorem \ref{theo:deter}}
-\begin{proof}
-	Starting from the optimality inequality, for the lower bound with the set $\cH$ we get:
-	\be 
-	\label{eq:tre} 
-	\frac{1}{n}\norm{\X \ddelta}{2}^2 &\geq& \frac{1}{n} \inf_{\u \in \cH} \norm{\X \u}{2}^2  \left(\sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} \right)^2 \\ \nr
-	&\geq& \kappa  \left(\sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} \right)^2  \nr
-	\\ \nr 
-	&\geq& \kappa  \left(\min_{g \in [G] } \frac{n_g}{n}\right) \left(\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \right)^2  
-	\ee 
-	where $0 < \kappa \leq \frac{1}{n}  \inf_{\u \in \cH} \norm{\X \u}{2}^2 $ is known as Restricted Eigenvalue (RE) condition. 
-	The upper bound will factorize as:
-	\be 
-	\label{eq:tub}
-	\frac{2}{n}\oomega^T \X\ddelta &\leq& \frac{2}{n} \sup_{\u \in \bcH} \oomega^T \X \u \left(\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \right) , \quad \u \in \cH \\ \nr 
-	\ee 
-	Putting together inequalities \eqref{eq:tre} and \eqref{eq:tub} completes the proof.% for the set $\cH$. 
-%	
-%	Now in the lower bound we use the set $\bcH$ and for the upper bound we keep the set $\cH$. 
-%	We have:
-%	\be 
-%	\nr 
-%	\kappa  \left(\sum_{g=0}^{G} \beta_g \norm{\ddelta_g}{2} \right)^2  \leq \frac{2}{n} \sup_{\u \in \cH} \oomega^T \X \u \left(\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \right),
-%	\ee 
-%	where $\beta_g = \frac{n_g}{n}$.
-%	Noting that $\left(\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \right) / \left(\sum_{g=0}^{G} \frac{n_g}{n} \norm{\ddelta_g}{2} \right) \leq G$ complete the proof for the set $\bcH$. 
-%	\be 
-%	\sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq \frac{2}{n\kappa} \sup_{\u \in \bcH} \oomega^T \X \u \frac{\left(\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \right) }{\left(\sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} \right) }
-%	\ee 
-\end{proof}
+---
 
 \subsection{Proof of Proposition \ref{prop:super}}
 \begin{proof}

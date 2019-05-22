@@ -1,6 +1,6 @@
 \section{Restricted Eigenvalue Condition}
 \label{sec:re}
-The main assumptions of Theorem \ref{theo:deter} is known as Restricted Eigenvalue (RE) condition in the literature of high dimensional statistics \cite{banerjee14, nrwy12, raskutti10}:
+The main assumptions of Theorem \ref{theo:deter} is known as Restricted Eigenvalue (RE) condition in the literature of high-dimensional statistics \cite{banerjee14, nrwy12, raskutti10}:
 $\inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2 \geq \kappa > 0.$
 %\be
 %\label{eq:recond}
@@ -9,17 +9,17 @@ $\inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2 \geq \kappa > 0.$
 The RE condition posits that the minimum eigenvalues of the matrix $\X^T \X$ in directions restricted to $\cH$ is strictly positive.
 In this section, we show that for the design matrix $\X$ defined in \eqref{eq:x}, the RE condition holds with high probability under a suitable geometric condition we call {\em Data EnRichment Incoherence Condition} (DERIC) and for enough number of samples.
 We precisely characterize total and per-group sample complexities required for successful parameter recovery.
-For the analysis, similar to existing work \cite{trop15, mend15, guba16}, we assume the design matrix to be isotropic sub-Gaussian.\footnote{Extension to an-isotropic sub-Gaussian case is straightforward by techniques developed in \cite{banerjee14, ruzh13}.}
+For the analysis, similar to existing work \cite{guba16, mend15, trop15}, we assume the design matrix to be isotropic sub-Gaussian.\footnote{Extension to an-isotropic sub-Gaussian case is straightforward by techniques developed in \cite{banerjee14, ruzh13}.}
 \begin{definition}
 	\label{def:obs}
-	We assume $\x_{gi}$ are i.i.d. random vectors from a non-degenerate zero-mean, isotropic sub-Gaussian distribution. In other words, $\ex [\x] = 0$, $\ex [\x^T \x] = \I_{p \times p}$, and $\normth{\x}{\psi_2} \leq k$.	
-As a consequence, $\exists \alpha > 0$ such that $\forall \u \in \sphere$ we have $ \ex|\langle \x, \u \rangle| \geq \alpha$. Further, we assume noise $\oomega_{gi} $ are i.i.d.
-zero-mean, unit-variance sub-Gaussian with $\normth{\omega_{gi}}{\psi_2} \leq K$.
+	We assume $\x_{gi}$ are i.i.d. random vectors from a non-degenerate zero-mean, isotropic sub-Gaussian distribution. In other words, $\ex [\x] = 0$, $\ex [\x^T \x] = \I_{p \times p}$, and $\normth{\x}{\psi_2} \leq k_x$.	
+As a consequence, $\exists \alpha > 0$ such that $\forall \u \in \sphere$ we have $ \ex|\langle \x, \u \rangle| \geq \alpha$. Further, we assume noise $\w_{gi} $ are i.i.d.
+zero-mean, unit-variance sub-Gaussian with $\normth{\w_{gi}}{\psi_2} \leq k_w$.
 \end{definition}
 
 %\ab{Minor comment -- we are using variants of $k$ for different things, e.g., $k, K, \kappa$. While the notation is consistent, this can be a bit hard to follow. If possible, make the $\psi_2$ norms $c, C$.}
 
-Unlike standard high-dimensional statistical estimation, for RE condition to be true, parameters of the data enriched model \eqref{eq:dirtymodel} needs to satisfy a geometric condition under which trivial solutions such as $\ddelta_g=-\ddelta_0$ for all $g \in [G]_\setminus$ are avoided.
+Unlike standard high-dimensional statistical estimation, for RE condition to be true, parameters of the data enriched model \eqref{eq:dirtymodel} needs to satisfy a geometric condition under which trivial solutions such as $\ddelta_g=-\ddelta_0$ for all $g \in [G]$ are avoided.
 To derive this condition, first note that each of the linear models in \eqref{eq:dirtymodel} is a superposition model \cite{guba16} or dirty statistical model \cite{yara13}. RE condition of individual superposition models can be established under the so-called Structural Coherence (SC) condition \cite{guba16, mctr13}. 
 \begin{definition}[Structural Coherence (SC) \cite{guba16, mctr13}] \label{scc}
 	Consider a superposition model of the form \eqref{eq:dirtymodel}. The SC condition requires for $\ddelta_0 \in \cC_0$ and {\em each} $\ddelta_g \in \cC_g$ there exist $\lambda > 0$ such that: $\norm{\ddelta_0 + \ddelta_g}{2} \geq  \lambda \left(\norm{\ddelta_0}{2} + \norm{\ddelta_g}{2} \right)$ and leads to the corresponding RE condition for superposition models.

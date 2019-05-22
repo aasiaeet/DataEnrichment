@@ -114,7 +114,7 @@ We present several statistical and computational results for the DE estimator \e
 %	\ee
 %	Observe that $l_2$-norm of the estimation error for the common parameter decays as $1/\sqrt{n}$, similar to the well-studied high dimensional regression case \cite{venkat12, banerjee14}.
 %	So the common parameter's estimator exploits all of the pooled data to reduce its error.
-	\item We also establish the sample complexity of the DE estimator for all parameters as $\forall g \in [G]: n_g = O(\omega(\cC_g \cap \sphere))^2$. We emphasize that our result proofs that the recovery of the common parameter $\bbeta_0$ by DE estimator benefits from \emph{all} of the $n$ pooled samples.
+	\item We also establish the sample complexity of the DE estimator for all parameters as $\forall g \in [G] \cup \{0\}: n_g = O(\omega(\cC_g \cap \sphere))^2$. We emphasize that our result proofs that the recovery of the common parameter $\bbeta_0$ by DE estimator \eqref{eq:super} benefits from \emph{all} of the $n$ pooled samples.
 	\item We present an efficient projected block gradient descent algorithm \emph{\dc}, to solve DE's objective \eqref{eq:super} which converges geometrically to the statistical error bound of \eqref{eq:errorsum}. To the best of our knowledge, this is the first rigorous computational result for the high-dimensional data-enriched regression.
 	\item We illustrate promising empirical performance of the model on synthetic data as well as on the problem of finding bio-markers associated with drug sensitivity of cell lines from different cancer types, where the support of estimated individual parameters $\text{supp}(\hbbe_g)$ for each cancer type $g$ represents a different set of bio-markers per cancer type.
 \end{itemize}

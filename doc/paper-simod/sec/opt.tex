@@ -11,9 +11,9 @@ We propose \emph{Data enrIChER} (\dc) a projected block gradient descent algorit
 		\STATE {\bfseries output:} $\hbbe$
 		\FOR{t = 1 \TO T}
 		\FOR{g=1 \TO G}
-		\STATE {\tiny $\bbeta _g^{(t+1)} = \Pi_{\Omega_{f_g}} \left(\bbeta _g^{(t)} + \mu_g \X_g^T \left(\y_g - \X_g \left(\bbeta _0^{(t)} + \bbeta _g^{(t)}\right) \right) \right)$}
+		\STATE { $\bbeta _g^{(t+1)} = \Pi_{\Omega_{f_g}} \left(\bbeta _g^{(t)} + \mu_g \X_g^T \left(\y_g - \X_g \left(\bbeta _0^{(t)} + \bbeta _g^{(t)}\right) \right) \right)$}
 		\ENDFOR
-		\STATE {\tiny $\bbeta _0^{(t+1)} = \Pi_{\Omega_{f_0}} \left(\bbeta _0^{(t)} + \mu_0 \X_0^T \left(\y - \X_0 \bbeta _0^{(t)} -
+		\STATE { $\bbeta _0^{(t+1)} = \Pi_{\Omega_{f_0}} \left(\bbeta _0^{(t)} + \mu_0 \X_0^T \left(\y - \X_0 \bbeta _0^{(t)} -
 		\begin{pmatrix}
 		\X_1 \bbeta _1^{(t)}      \\
 		\vdots 	 \\

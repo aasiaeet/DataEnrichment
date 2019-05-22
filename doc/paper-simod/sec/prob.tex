@@ -17,7 +17,7 @@
 A compact form of our proposed DE estimator \eqref{eq:super} is:% optimization problem as: %:
 \be
 \label{eq:compact}
-\hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \forall g \in [G]:f_g(\bbeta_g ) \leq f_g(\bbeta^*_g),
+\hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \quad \text{s.t. } \forall g \in [G] \cup \{0\}:f_g(\bbeta_g ) \leq f_g(\bbeta^*_g),
 \ee
 where $\y  = (\y^T_1, \dots \y^T_G)^T \in \reals^n$,  $\bbeta  = ({\bbeta _0}^T, \dots, {\bbeta _G}^T)^T \in \reals^{(G+1)p}$ and
 \be
@@ -41,57 +41,64 @@ where $\y  = (\y^T_1, \dots \y^T_G)^T \in \reals^n$,  $\bbeta  = ({\bbeta _0}^T,
 {\bf ($L_1$-norm)} When all parameters $\bbeta_g$s are $s_g$-sparse, i.e.,$|\text{supp}(\bbeta_{g}^*)| = s_g$ by using $l_1$-norm as the sparsity inducing function, our DE estimator of \eqref{eq:compact} becomes:
 \be 
 \label{sde}
-\hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \forall g \in [G]: \norm{\bbeta_g}{1} \leq \norm{\bbeta^*_g}{1}.
+\hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \quad \text{s.t. }  \forall g \in [G] \cup \{0\}: \norm{\bbeta_g}{1} \leq \norm{\bbeta^*_g}{1}.
 \ee 
 We call \eqref{sde} \emph{sparse DE } estimator and use it as the running example throughout the paper to illustrate outcomes of our analysis.
 \end{example}
-
-%\subsection{Error Set and Deterministic Error Bound}
-\label{sec:deter}
-%\ab{Unless we need a second subsection, drop this subsection heading -- its unusual to have one subsection in a section.}
-
 Consider the group-wise estimation error $\ddelta_g = \hbbe_g - \bbeta^*_g$.
 Since $\hbbe_g = \bbeta ^*_g + \ddelta_g$ is a feasible point of \eqref{eq:compact}, the error vector $\ddelta_g$ will belong to the following restricted error set:% which is the set of all descent directions at $\bbeta _g^*$ on $f_g(\cdot)$ :
 \be
 %\nr
-\cE_g = \left\{\ddelta_g | f_g(\bbeta _g^* + \ddelta_g) \leq f_g(\bbeta _g^*)\right\}, \quad g \in [G]~.
+\cE_g = \left\{\ddelta_g | f_g(\bbeta _g^* + \ddelta_g) \leq f_g(\bbeta _g^*)\right\}, \quad g \in [G] \cup \{0\}.
 \ee
 We denote the cone of the error set as $\cC_g \triangleq \text{Cone}(\cE_g)$ and the spherical cap corresponding to it as $\cA_g \triangleq \cC_g \cap \sphere$.
-%Subsequently, we define the following family of sets:
-%\be
-%\nr
-%\cH_l &=& \left\{ \ddelta = (\ddelta_0^T, \dots, \ddelta_G^T)^T \Big| \forall g \in [G]: \ddelta_g \in \cC_g, 0 < l \leq \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq 1 \right\}, %\label{setH}
-%\ee
-%where $0 < l < 1$ indexes the family.
 Consider the set $\cC = \{ \ddelta = (\ddelta_0^T, \dots, \ddelta_G^T)^T \Big| \ddelta_g \in \cC_g \}$, following two subsets of $\cC$ play key roles in our analysis:
+%\be
+%%\nr
+%\cH  &\triangleq&  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}~, %\label{setH}
+%\\ %\nr
+%\bcH &\triangleq&  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}~. %\label{setH}
+%\ee
 \be
 %\nr
-\cH  &\triangleq&  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}~, %\label{setH}
-\\ %\nr
-\bcH &\triangleq&  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}~. %\label{setH}
+\label{setH}
+\cH  \triangleq  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}~, 
+\quad 
+\bcH \triangleq  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}~. %\label{setH}
 \ee
-Starting from the optimality of $\hbbe = \bbeta ^* + \ddelta$ as $\frac{1}{n}\norm{\y - \X \hbbe}{2}^2 \leq \frac{1}{n} \norm{\y - \X \bbeta ^*}{2}^2$, we have:
-%\be
-%\label{eq:optimality}
-%\frac{1}{n}\norm{\X \ddelta}{2}^2 &\leq& \frac{1}{n}2\oomega^T \X\ddelta
-%\ee
-$\frac{1}{n}\norm{\X \ddelta}{2}^2 \leq \frac{1}{n}2\oomega^T \X\ddelta$
-where $\oomega = [\oomega_1^T, \dots, \oomega_G^T]^T \in \reals^n$ is the vector of all noises.
+Starting from the optimality of $\hbbe = \bbeta ^* + \ddelta$ as $\frac{1}{n}\norm{\y - \X \hbbe}{2}^2 \leq \frac{1}{n} \norm{\y - \X \bbeta ^*}{2}^2$, we have: $\frac{1}{n}\norm{\X \ddelta}{2}^2 \leq \frac{1}{n}2\w^T \X\ddelta$ where $\w = [\w_1^T, \dots, \w_G^T]^T \in \reals^n$ is the vector of all noises.
 Using this basic inequality, we can establish the following deterministic error bound.
 \begin{theorem}
 	\label{theo:deter}
-	For the proposed estimator \eqref{eq:compact}, assume there exist $0 < \kappa \leq \inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2$. Then, for the sample condition number $\gamma = \max_{g \in [G]_{\setminus}} \frac{n}{n_g}$, the following deterministic upper bounds holds:
+	For the DE estimator \eqref{eq:compact}, assume there exist $0 < \kappa \leq \inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2$. Then, for the sample condition number $\gamma = \max_{g \in [G]} \frac{n}{n_g}$, the following deterministic upper bounds holds:
 	\be
 	\nr
 	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq \frac{2{\gamma}\sup_{\u \in \bcH}\oomega^T \X \u}{n\kappa}~. %\nr	
 	\ee
 \end{theorem}
-
-%\ab{Adding a remark -- these will make it easier for the reader. This specific remark can be dropped as needed.}
+\begin{proof}
+	We lower bound the LHS and upper bound the RHS of the optimality inequality $\frac{1}{n}\norm{\X \ddelta}{2}^2 \leq \frac{1}{n}2\w^T \X\ddelta$ using the definition of the sets $\cH$ and $\bcH$ respectively. 
+	Starting with the lower bound using the definition of set $\cH$ \eqref{setH} we have:
+	\be 
+	\label{eq:tre} 
+	\frac{1}{n}\norm{\X \ddelta}{2}^2 &\geq& \frac{1}{n} \inf_{\u \in \cH} \norm{\X \u}{2}^2  \left(\sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} \right)^2 \\ \nr
+	&\geq& \kappa  \left(\sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} \right)^2  \nr
+	\\ \nr 
+	&\geq& \kappa  \left(\min_{g \in [G] } \frac{n_g}{n}\right) \left(\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \right)^2  
+	\ee 
+	where $0 < \kappa \leq \frac{1}{n}  \inf_{\u \in \cH} \norm{\X \u}{2}^2 $ is known as Restricted Eigenvalue (RE) condition. 
+	The upper bound factorizes as:
+	\be 
+	\label{eq:tub}
+	\frac{2}{n}\w^T \X\ddelta &\leq& \frac{2}{n} \sup_{\u \in \bcH} \w^T \X \u \left(\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \right) , \quad \u \in \cH \\ \nr 
+	\ee 
+	Putting together inequalities \eqref{eq:tre} and \eqref{eq:tub} completes the proof. 
+\end{proof}
 
 \begin{remark}
 Consider the setting where $n_g = \Theta(\frac{n}{G})$ so that each group has approximately $\frac{1}{G}$ fraction of the samples. Then, $\gamma = \Theta(G)$ and hence
 \beq
+\nr 
 \frac{1}{G} \sum_{g=0}^G \| \delta_g \|_2 \leq O( G^{1/2} ) \frac{\sup_{\u \in \bcH}\oomega^T \X \u}{n}~.
 \eeq
 \end{remark}
