@@ -17,13 +17,23 @@ As a consequence, $\exists \alpha > 0$ such that $\forall \u \in \sphere$ we hav
 zero-mean, unit-variance sub-Gaussian with $\normth{\w_{gi}}{\psi_2} \leq k_w$.
 \end{definition}
 
-%\ab{Minor comment -- we are using variants of $k$ for different things, e.g., $k, K, \kappa$. While the notation is consistent, this can be a bit hard to follow. If possible, make the $\psi_2$ norms $c, C$.}
+\subsection{Geometric Condition of Recovery}
+Unlike standard high-dimensional statistical estimation, for RE condition to be true, parameters of superposition models need to satisfy geometric conditions which limits the interaction of parameters with each other to make sure that recovery is possible. In this section, we elaborate our sufficient geometric condition for recovery and compare it with state-of-the-art condition for recovery of superposition models. 
 
-Unlike standard high-dimensional statistical estimation, for RE condition to be true, parameters of the data enriched model \eqref{eq:dirtymodel} needs to satisfy a geometric condition under which trivial solutions such as $\ddelta_g=-\ddelta_0$ for all $g \in [G]$ are avoided.
-To derive this condition, first note that each of the linear models in \eqref{eq:dirtymodel} is a superposition model \cite{guba16} or dirty statistical model \cite{yara13}. RE condition of individual superposition models can be established under the so-called Structural Coherence (SC) condition \cite{guba16, mctr13}. 
+To intuitively illustrate the necessity of such a geometric condition, consider the simplest superposition model i.e., $\bbeta^*_0 + \bbeta^*_g$. Without any restriction on parameter interactions, any estimates such that $\hbbe_0 + \hbbe_g = \bbeta^*_0 + \bbeta^*_g$ are valid ones. To avoid such trivial solutions two error cones need to satisfy $\ddelta_g \neq -\ddelta_0$. In general, the RE condition of individual superposition models can be established under the so-called Structural Coherence (SC) condition \cite{guba16, mctr13} which is the generalization of this idea for superposition of multiple parameters as $\sum_{g = 0}^{G} \bbeta^*_g$.
+ 
 \begin{definition}[Structural Coherence (SC) \cite{guba16, mctr13}] \label{scc}
-	Consider a superposition model of the form \eqref{eq:dirtymodel}. The SC condition requires for $\ddelta_0 \in \cC_0$ and {\em each} $\ddelta_g \in \cC_g$ there exist $\lambda > 0$ such that: $\norm{\ddelta_0 + \ddelta_g}{2} \geq  \lambda \left(\norm{\ddelta_0}{2} + \norm{\ddelta_g}{2} \right)$ and leads to the corresponding RE condition for superposition models.
+	Consider a superposition model of the form $y = \x^T \sum_{g = 0}^{G} \bbeta^*_g + w$. The SC condition requires that
+	\be 
+	\forall \ddelta_g \in \cC_g, \exists \lambda \quad  \text{s.t.}  \quad \norm{\sum_{g = 0}^{G} \ddelta_g}{2} \geq  \lambda \sum_{g = 0}^{G}  \norm{\ddelta_g}{2},
+	\ee  
+	and leads to the corresponding RE condition for the superposition model.
 \end{definition}
+
+\begin{remark}
+	Note that the SC conditions is satisfied if none of the individual error cones $\cC_g$ intersect with the inverted error cone $-\cC_0$, i.e., $\forall g, \alpha_g < 1$ where $\alpha_g = \sup \langle \ddelta_0/\norm{\ddelta_0}{2}, \ddelta_g/\norm{\ddelta_g}{2} \rangle$ \cite{guba16, trop15}, Figure \ref{fig:sc}. 
+\end{remark}
+
 The SC condition on each individual problem fails to utilize the true coupling structure in the data enriched model, where $\bbeta^*_0$ is involved in all groups. In fact, below we show, using SC on each individual model leads to radically pessimistic estimates of the sample complexity for $\bbeta^*_0$ recovery.
 \begin{prop}
 	\label{prop:super}
@@ -96,6 +106,8 @@ As the number of intersections increases, our bound becomes looser.
 %\ab{Not sure if I follow this. Assume $g=1$ has sufficient samples, i.e., $n_1 \geq c \omega^2(\cA_0)$. Then, the estimator would proceed in two steps: first, estimate $\beta_0,\beta_1$
 %from the first problem; then, use the estimated $\beta_0$ in the other problems to estimate $\beta_2,\ldots,\beta_G$. With such an estimator, we need $n_g \geq c \omega^2(\cA_g), g=2,\ldots,G$.
 %So only one problem needs to have sufficient samples.}
+
+\subsection{Sample Complexity}
  Using DERIC and the small ball method \cite{mend15}, a recent tool from empirical process theory in the following theorem, we get a better sample complexity required for satisfying the RE condition:
 \begin{theorem}
 	\label{theo:re}
