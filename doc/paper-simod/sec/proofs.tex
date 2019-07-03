@@ -2,543 +2,13 @@
 \onecolumn
 \section{Proofs of Theorems}
 \label{sec:dsproofs}
-In this Section we present detail proof for each theorem and proposition. To avoid cluttering, during our proofs, we state some needed results as lemmas and provide their proof in the next Section \ref{sec:lemmas}. 
-
-\subsection{Proof of Theorem \ref{theo:deter}}
----
-
+Here, we present proofs for theorem and proposition. %To avoid cluttering, during our proofs, we state some needed results as lemmas and provide their proof in the next Section \ref{sec:lemmas}. 
 \subsection{Proof of Proposition \ref{prop:super}}
 \begin{proof}
 	Consider only one group for regression in isolation. 
-	Note that $\y_g = \X_g (\bbeta _g^* + \bbeta _0^*) + \oomega_g$ is a superposition model and as shown in \cite{guba16} the sample complexity required for the RE condition and subsequently recovering $\bbeta _0^*$ and $\bbeta _g^*$ is $n_g  \geq c(\max_{g \in [G]}\omega(\cA_g) + \sqrt{\log 2})^2$.
+	Note that $\y_g = \X_g (\bbeta _g^* + \bbeta _0^*) + \oomega_g$ is a superposition model and as shown in \cite{guba16} the sample complexity required for the RE condition and subsequently recovering $\bbeta _0^*$ and $\bbeta _g^*$ is $n_g  \geq c(\max(\omega(\cA_0), \omega(\cA_g) ) + \sqrt{\log 2})^2$.
 \end{proof} 
-
-%\subsection{Proof of Lemma \ref{lemm:secTerm}}
-%\begin{definition}[Data sharing incoherence condition]  \label{incodef}For some scalars $0\leq \ratio\leq 1$ and $\lamin>0$ the following holds. There exists a set $\Gin\subset \Gsm$ such that
-%	\begin{itemize}
-%		\item $\sum_{i\in \Gin} n_i\geq \lceil \ratio n\rceil$.
-%		\item For all $i\in \Gin$, and for all $\ddelta_i\in\cC_i,\ddelta_0\in\cC_0$, we have that
-%		\[
-%		\tn{\ddelta_i+\ddelta_0}\geq \lamin (\tn{\ddelta_0}+\tn{\ddelta_i}).
-%		\]
-%	\end{itemize}
-%	Observe that $0\leq \lamin,\ratio\leq 1$ by definition.
-%\end{definition}
-
-%\begin{lemma} \label{incolem} Suppose Definition \ref{incodef} holds. Then, for any $\ddelta_i\in \cC_i$ for $0\leq i\leq G$, we have that
-%\[
-%\sum_{i=1}^G \tn{\ddelta_0+\ddelta_i}\geq\frac{\ratio\lamin}{3} (G\tn{\ddelta_0}+\sum_{i=1}^G\tn{\ddelta_i}).
-%\]
-%\end{lemma}
-%\begin{proof} We split $\Gsm-\Gin$ into two groups $G_1,G_2$. $G_1$ consists of $\ddelta_i$'s with $\tn{\ddelta_i}\geq 2\tn{\ddelta_0}$ and $G_2=\Gsm-\Gin-G_1$. We use the bounds
-%\[
-%\tn{\ddelta_0+\ddelta_i}\geq \begin{cases}\tn{\ddelta_i}/2~\text{if}~i\in G_1\\0~\text{if}~i\in G_2\\\lamin(\tn{\ddelta_i}+\tn{\ddelta_0})~\text{if}~i\in \Gin\end{cases}
-%\]
-%This implies
-%\[
-%\sum_{i=1}^G \tn{\ddelta_0+\ddelta_i}\geq \sum_{i\in G_1}\frac{1}{2}\tn{\ddelta_i}+\lamin\sum_{i\in \Gin} (\tn{\ddelta_i}+\tn{\ddelta_0}).
-%\]
-%We know that over $G_2$, $\tn{\ddelta_i}\leq 2\tn{\ddelta_0}$ which implies $\sum_{i\in G_2}\tn{\ddelta_i}\leq 2|G_2|\tn{\ddelta_0}\leq 2G\tn{\ddelta_0}$. Set $\rinc=\min\{1/2,\lamin\ratio/3\}=\lamin\ratio/3$. Let $S_j=\sum_{i\in G_j}\tn{\ddelta_i}$ for $j=1,2,\Ic$. Using $1/2\geq \rinc$ and $\lamin\geq \rinc$, we write
-%\begin{align}
-%\sum_{i=1}^G \tn{\ddelta_0+\ddelta_i}&\geq \rinc S_1+\lamin\sum_{i\in \Gin} (\tn{\ddelta_i}+\tn{\ddelta_0})\\
-%&\geq \rinc S_1+\rinc S_2-2\rinc G\tn{\ddelta_0}+|\Gin|\lamin \tn{\ddelta_0}+\lamin S_{\Ic}\\
-%&\geq \rinc (S_1+S_2+S_3)+ (|\Gin|\lamin-2\rinc G)\tn{\ddelta_0}.
-%\end{align}
-%Now, observe that, by Assumption \ref{incodef}, $|\Gin|\geq \ratio |G|$ which implies 
-%\[
-%|\Gin|\lamin-2\rinc G\geq (\ratio\lamin -2\rinc)|G|\geq \rinc |G|.
-%\]
-%Combining all, we obtain
-%\[
-%\sum_{i=1}^G \tn{\ddelta_0+\ddelta_i}\geq \rinc(|G|\tn{\ddelta_0}+\sum_{i=1}^G \tn{\ddelta_i}).
-%\]
-%\end{proof}
-
-
-
-%\begin{proof}
-%	\be 
-%	\nr
-%	\inf_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} Q_{2\lambda_g \xi_g}(\ddelta_{0g})
-%	&=& \inf_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} \pr(|\langle \x, \ddelta_{0} + \ddelta_{g} \rangle| \geq 2\lambda_g \xi_g)
-%	\\ \nr 
-%	&=& \inf_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} \pr(\norm{\ddelta_{0} + \ddelta_{g}}{2} |\langle \x, \frac{\ddelta_{0} + \ddelta_{g}}{\norm{\ddelta_{0} + \ddelta_{g}}{2}} \rangle| \geq 2\lambda_g \xi_g)
-%	\\ \nr 
-%	\text{(Individual SC conditions)}  &\geq& \inf_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} \pr(\lambda_g (\norm{\ddelta_{0}}{2} + \norm{\ddelta_{g}}{2}) |\langle \x, \frac{\ddelta_{0} + \ddelta_{g}}{\norm{\ddelta_{0} + \ddelta_{g}}{2}} \rangle| \geq 2\lambda_g \xi_g)
-%	\\ \nr 
-%	&\geq& \inf_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} \pr((\norm{\ddelta_{0}}{2} + \sqrt{\frac{n_g}{n}} \norm{\ddelta_{g}}{2}) |\langle \x, \frac{\ddelta_{0} + \ddelta_{g}}{\norm{\ddelta_{0} + \ddelta_{g}}{2}} \rangle| \geq 2 \xi_g)
-%	\\ \nr
-%	\text{(i)} &\geq& \inf_{\u \in \cA_{0g}} \pr\left(|\langle \x, \u \rangle| \geq 2 \xi\right)
-%	\\ \nr 
-%	&=& \inf_{\u\in \cA_{0g}} Q_{2\xi}(\u; \cA_{0g}) 
-%	\ee 
-%	where in (i) we set $\xi_g = \xi \min_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g}  (\norm{\ddelta_0}{2} + \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2})$ for some $\xi > 0$	and $\cA_{0g} = \{\ddelta_0 + \ddelta_g | \ddelta_0 \in \cC_0, \ddelta_g \in \cC_g, \norm{\ddelta_0 + \ddelta_g}{2} = 1\}$.
-%	Note that our choice of $\xi_g$ will not affect the upper bound of the second term $t_2(\X)$ of \eqref{eq:long}, for more on this refer to the proof of Lemma \ref{lemm:secTerm} in Section \ref{sec:proofSecTerm}.
-%\end{proof}
-
-%\subsection{Proof of Lemma \ref{lemm:secTerm}}
-
-%
-\subsection{Proof of Theorem \ref{theo:re}}
-
-Let's simplify the LHS of the RE condition:% \eqref{eq:recond}: 
-\be 
-\nr 
-\frac{1}{\sqrt{n}} \norm{\X \ddelta}{2} 
-%&=& \frac{1}{\sqrt{n}} \normlr{\begin{pmatrix}
-%		\X_1 (\ddelta_0 + \ddelta_1) \\
-%		\X_2 (\ddelta_0 + \ddelta_2) \\ 
-%		\vdots  \\
-%		\X_G (\ddelta_0 + \ddelta_G)
-%\end{pmatrix}}{2} 
-%\\ \nr 
-&=& \left(\frac{1}{n} \sum_{g=1}^{G} \sum_{i=1}^{n_g} |\langle \x_{gi}, \ddelta_0 + \ddelta_g \rangle|^2\right)^{\frac{1}{2}}
-\\ \nr
-%\text{(Lyapunov's Inequality)} 
-&\geq& \frac{1}{n} \sum_{g=1}^{G} \sum_{i=1}^{n_g} |\langle \x_{gi}, \ddelta_0 + \ddelta_g \rangle| 
-\\ \nr 
-&\geq& \frac{1}{{n}} \sum_{g=1}^{G} \xi\norm{\ddelta_0+\ddelta_g}{2}  \sum_{i=1}^{n_g} \indic \left(|\langle \x_{gi}, \ddelta_0 + \ddelta_g \rangle| \geq \xi\norm{\ddelta_0+\ddelta_g}{2}\right),
-\ee 
-where the first inequality is due to Lyapunov's inequality.
-To avoid cluttering we denote $\ddelta_{0g} = \ddelta_0 + \ddelta_g$ where $\ddelta_0 \in \cC_0$ and $\ddelta_g \in \cC_g$.
-Now we add and subtract the corresponding per-group marginal tail function, $Q_{\xi_g}(\ddelta_{0g}) = \pr(|\langle \x, , \ddelta_{0g} \rangle| > \xi_g)$ where $\xi_g > 0$. 
-Let $\xi_g=\norm{\ddelta_{0g}}{2}\xi$ then the LHS of the RE condition reduces to: 
-%Argument $\cH$ emphasizes that $\ddelta_{0g} = \ddelta_{0} + \ddelta_{g}$ has summands from components of $\ddelta = (\ddelta_0^T, \dots, \ddelta_G^T)^T$  where $\ddelta \in \cH$. 
-%To simplify the notation, we drop $\cH$ from the marginal tail function and specify it only when it is not from the context:
-%{\small
-%\be
-%\nr 
-%&&\frac{1}{\sqrt{n}} \norm{\X \ddelta}{2} %\geq \frac{1}{n} \sum_{g=1}^{G} \lambda_g \xi_g  \sum_{i=1}^{n_g} \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \lambda_g \xi_g) 
-%%\\ \nr
-%\geq \frac{1}{n} \sum_{g=1}^{G} n_g \xi_g  \lambda_g Q_{2\lambda_g \xi_g}(\ddelta_{0g}; \cH) -
-%\\ \nr	
-%&& \frac{1}{n} \sum_{g=1}^{G} \xi_g  \lambda_g \sum_{i=1}^{n_g} \left[Q_{2\lambda_g \xi_g}(\ddelta_{0g}; \cH)  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \lambda_g \xi_g)  \right]
-%\\ \nr
-%\ee
-%} 
-%\be
-%	\label{eq:long}
-%	\inf_{\ddelta \in \cH} \frac{1}{\sqrt{n}} \norm{\X \ddelta}{2}
-%	&\geq& \sum_{g=1}^{G}  \frac{n_g}{n} \lambda_g \xi_g \inf_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} Q_{2\lambda_g \xi_g}(\ddelta_{0g}) 
-%	\\ \nr 
-%	&-&	\sup_{\forall g: \ddelta_g \in \cC_g} \frac{1}{n} \sum_{g=1}^{G} \lambda_g \xi_g  \sum_{i=1}^{n_g} \left[Q_{2\lambda_g \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \lambda_g  \xi_g)  \right]
-%\ee 
-\be 
-\label{eq:long}
-\inf_{\ddelta \in \cH} \frac{1}{\sqrt{n}} \norm{\X \ddelta}{2}
-&\geq& \inf_{\ddelta\in \cH}\sum_{g=1}^{G}  \frac{n_g}{n}  \xi_g  Q_{2 \xi_g}(\ddelta_{0g}) 
-\\ \nr 
-&-&	\sup_{\ddelta\in \cH} \frac{1}{n} \sum_{g=1}^{G}  \xi_g  \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq   \xi_g)  \right]
-\\ \nr 
-&=& t_1(\X)-t_2(\X)
-\ee 
-%where the constraint of $\sup$ is changed because $\cH \subseteq \cup_{g \in [G]} \cC_g$.
-For the ease of exposition we have written the LHS of \eqref{eq:long}  as the difference of two terms, i.e., $t_1(\X) - t_2(\X)$ and in the followings we lower bound the first term $t_1$ and upper bound the second term $t_2$. 
-
-
-\subsubsection{Lower Bounding the First Term}
-Our main result is the following lemma which uses the DERIC condition of the Definition \ref{incodef} and provides a lower bound for the first term $t_1(\X)$:
-\begin{lemma}
-	\label{lemm:shareInc} 
-	%Recall the definition of $t_1(\X)$ from \eqref{eq:long}. 
-	Suppose DERIC holds. Let $\rinc=\frac{\lamin\ratio}{3}$. For any $\ddelta \in \cH$, we have: % Given $\{\ddelta_i\}_{i=0}^G$, picking $\eps_i=$, we have that
-	\be 
-	\label{eq:rhs}
-	\sum_{g=1}^G\frac{n_g}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g}) \geq \rinc\xi \frac{(\alpha - 2\xi)^2}{4ck^2}\left(\norm{\ddelta_0}{2}+\sum_{g=1}^n \frac{n_g}{n}\norm{\ddelta_g}{2}\right),
-	\ee 	
-	which implies that $t_1(\X)=\inf_{\ddelta\in \cH} \sum_{g=1}^G\frac{n_G}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g})$ satisfies the same RHS bound of \eqref{eq:rhs}.
-\end{lemma}
-
-%\begin{proof}[Proof of Lemma \ref{lemm:secTerm}] Recall $\xi_g=\xi\tn{\ddelta_0+\ddelta_g}$. Using Lemma \ref{paley}, we have $Q_{2\xi_g}(\ddelta_{0g})\geq \frac{(\alpha - 2\xi)^2}{4cK^2}$.
-%	Hence, $f(\ddelta)$ obeys
-%	\[
-%	f(\ddelta)\geq \xi \frac{(\alpha - 2\xi)^2}{4cK^2}\sum_{g=1}^G\frac{n_G}{n}(\tn{\ddelta_0+\ddelta_g}) .
-%	\]
-%	To lower bound this in terms of $n\ddelta_0+\sum_{i=1}^n n_i\tn{\ddelta_i}$, we apply Lemma \ref{incolem main} to find
-%	\[
-%	\sum_{i=1}^Gn_i \tn{\ddelta_0+\ddelta_i}\geq \rinc(n\tn{\ddelta_0}+\sum_{i=1}^G n_i\tn{\ddelta_i}).
-%	\]
-%	which concludes the proof.
-%\end{proof}
-
-\subsubsection{Upper Bounding the Second Term}
-
-%\begin{lemma}
-%	\label{lemm:play}
-%	For the random vector $\x$ of Definition \ref{def:obs}, we have the following lower bound for the marginal tail function:
-%	{
-%	\be
-%	\label{eq:inf}
-%	\inf_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} Q_{2\lambda_g \xi_g}(\ddelta_{0g}) \geq \inf_{\u\in \cA_{0g}} Q_{2\xi}(\u) \geq \frac{(\alpha - 2\xi)^2}{4ck^2}
-%	\ee
-%    }
-%	where $\cA_{0g} = \{\ddelta_0 + \ddelta_g | \ddelta_0 \in \cC_0, \ddelta_g \in \cC_g, \norm{\ddelta_0 + \ddelta_g}{2} = 1\}$ and we set $\xi_g = \xi \min_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g}  (\norm{\ddelta_0}{2} + \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2})$ for some $\xi > 0$. 
-%\end{lemma}
-%Note that our choice of $\xi_g$ will not affect the upper bound of the second term $t_2(\X)$, for more on this refer to the Proof on Lemma \ref{lemm:secTerm} on Section \ref{sec:proofSecTerm}.
-
-
-Let's focus on the second term, i.e., $t_2(\X)$. 
-First we want to show that the second term satisfies the bounded difference property defined in Section 3.2. of \cite{boucheron13}.  
-In other words, by changing each of $\x_{gi}$ the value of $t_2(\X)$ at most change by one. 
-First, we rewrite $t_2$ as follows:
-%\be 
-%\nr 
-%%\sup_{\ddelta \in \cH} \frac{1}{n} \sum_{g=1}^{G}  \xi_g  \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq   \xi_g)  \right]
-%t_2\left(\x_1, \dots, \x_i, \dots, \x_n \right) = \sup_{\ddelta \in \cH} \sum_{g=1}^{G} \frac{n_g}{n}  \xi_g \frac{1}{n_g} \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq   \xi_g)  \right]
-%\ee 
-\be 
-\nr 
-\label{eq:ah}
-%\sup_{\ddelta \in \cH} \frac{1}{n} \sum_{g=1}^{G}  \xi_g  \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq   \xi_g)  \right]
-h\left(\x_{11}, \dots, \x_{jk}, \dots, \x_{Gn_G} \right) = t_2\left(\x_{11}, \dots, \x_{jk}, \dots, \x_{Gn_G} \right) = \sup_{\ddelta \in \cH} g\left(\x_{11}, \dots, \x_{jk}, \dots, \x_{Gn_G} \right) 
-\ee 
-where $g\left(\x_{11}, \dots, \x_{jk}, \dots, \x_{Gn_G} \right) =  \sum_{g=1}^{G}  \frac{\xi_g}{n} \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq   \xi_g)  \right]$.
-%where $j$ is the index of the sample when we put all of the groups together, more specifically, $j(g,i) = \sum_{l=1}^{g-1} n_l + i$. 
-To avoid cluttering let's $\cX = \{ \x_{11}, \dots, \x_{jk}, \dots, \x_{Gn_G}  \}$.
-We want to show that $t_2$ has the bounded difference property, meaning:
-\be 
-\nr 
-\sup_{\cX, \x_{jk}'} |h\left(\x_{11}, \dots, \x_{jk}, \dots, \x_{Gn_G} \right)  - h\left(\x_{11}, \dots, \x_{jk}', \dots, \x_{Gn_G}\right)|  \leq c_i
-\ee 
-for some constant $c_i$. 
-Note that for bounded functions $f, g: \cX \rightarrow \reals$, we have $|\sup_{\cX} f - \sup_{\cX} g| \leq \sup_{\cX} |f - g|$. 
-Therefore:
-\be 
-\nr 
-&& \sup_{\cX, \x_{jk}'} |h\left(\x_{11}, \dots, \x_{jk}, \dots, \x_{Gn_G} \right)  - h\left(\x_{11}, \dots, \x_{jk}', \dots, \x_{Gn_G}\right)|
-\\ \nr 
-&\leq& \sup_{\cX, \x_{jk}'} \sup_{\ddelta \in \cH} \big|g\left(\x_{11}, \dots, \x_{jk}, \dots, \x_{Gn_G} \right) - g\left(\x_{11}, \dots, \x_{jk}', \dots, \x_{Gn_G} \right) \big|
-\\ \nr 
-&\leq& \sup_{\cX, \x_{jk}'} \sup_{\ddelta \in \cH} \sup_{ \x_{jk},  \x_{jk}'} \frac{\xi_j}{n} \left(\indic (|\langle \x_{jk}', \ddelta_{0j}\rangle| \geq   \xi_j)  - \indic (|\langle \x_{jk}, \ddelta_{0j} \rangle| \geq   \xi_j) \right) 
-\\ \nr 
-&\leq& \sup_{\cX, \x_{jk}'} \sup_{\ddelta \in \cH} \frac{\xi_j}{n} 
-\\ \nr 
-&=& \frac{\xi}{n} \sup_{\ddelta \in \cH} {\norm{\ddelta_0 + \ddelta_g}{2}}
-\\ \nr 
-&=& \frac{\xi}{n} \sup_{\ddelta \in \cH} \norm{\ddelta_0}{2} + \norm{\ddelta_g}{2}
-\\ \nr 
-(\ddelta \in \cH) &=& \xi \left(\frac{1}{n} + \frac{1}{{n_g}}\right) 
-\\ \nr 
-&\leq&  \frac{2\xi}{n}
-\ee 
-Note that for $\ddelta \in \cH$ we have $\norm{\ddelta_0}{2} + \frac{n_g}{n}\norm{\ddelta_g}{2} \leq 1$ which results in $\norm{\ddelta_0}{2} \leq 1$ and $\norm{\ddelta_g}{2} \leq \frac{n}{n_g}$. 
-Now, we can invoke the bounded difference inequality from Theorem 6.2 of \cite{boucheron13} which says that with probability at least $1 - e^{-\tau^2/2}$ we have: $t_2(\X) \leq \ex t_2(\X) + \frac{\tau}{\sqrt{n}}$. 
-
-
-Having this concentration bound, it is enough to bound the expectation of the second term. 
-Following lemma provides us with the bound on the expectation.
-\begin{lemma}
-	\label{lemm:secTerm}
-	For the random vector $\x$ of Definition \ref{def:obs}, we have the following bound:
-	\be 
-	\nr 
-	\frac{2}{n} \ex \sup_{\ddelta_{[G]}} \sum_{g=1}^{G} \xi_g \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right]
-	\leq \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} c_g k \omega(\cA_g) \norm{\ddelta_{g}}{2}
-	\ee 
-\end{lemma}
-
-
-%Therefore with probability at least $1 - e^{-\frac{\tau^2}{2}}$ we have: $h_g(\X) \leq \ex h_g(\X) + \frac{\tau }{\sqrt{n_g}}$ \cite{boucheron13}. 
-%Having this concentration bound, it is enough to bound the expectation of the second term. 
-%Following lemma provides us with the bound on the expectation.
-%\begin{lemma}
-%	\label{lemm:secTerm}
-%	For the random vector $\x$ of Definition \ref{def:obs}, we have the following bound:
-%	\be 
-%	\nr 
-%	\frac{\xi_g }{n_g} \ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right]
-%	\leq \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} c_g k \omega(\cA_g) \norm{\ddelta_{g}}{2}
-%	\ee 
-%\end{lemma}
-%
-%\begin{proof}\renewcommand{\qedsymbol}{} 
-%	\label{sec:proofSecTerm2}
-%	Consider the following soft indicator function which we use in our derivation:
-%	\be
-%	\nr  
-%	\psi_a (s) = 
-%	\begin{cases}
-%		0, & |s| \leq a \\
-%		(|s| - a)/a, & a \leq |s| \leq 2 a \\ 
-%		1, & 2a < |s| 
-%	\end{cases}
-%	\ee 
-%	Now:
-%	\be 	
-%	\nr 
-%	&&\ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g}  \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right]
-%	\\ \nr 
-%	&=& \ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g}  \sum_{i=1}^{n_g} \left[\ex \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq 2\xi_g )   - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right] 
-%	\\ \nr 
-%	&\leq& 
-%	\ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} \sum_{i=1}^{n_g} \left[\ex \psi_{\xi_g }(\langle \x, \ddelta_{0g} \rangle)   - \psi_{\xi_g }(\langle \x_{gi}, \ddelta_{0g} \rangle)   \right] 
-%	\\ \nr  
-%	&\leq& 
-%	2 \ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g}  \sum_{i=1}^{n_g} \epsilon_{gi} \psi_{\xi_g }(\langle \x_{gi}, \ddelta_{0g} \rangle)
-%	\\ \nr 
-%	&\leq& 
-%	\frac{2}{\xi_g} \ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{0g} \rangle
-%	\ee  
-%	where $\epsilon_{gi}$ are iid copies of Rademacher random variable which are independent of every other random variables and themselves.
-%	Now we add back $\frac{1}{n_g}$ and $\xi_g$ and expand $\ddelta_{0g} = \ddelta_{0} + \ddelta_{g}$:
-%	\be 
-%	\nr 
-%	\frac{2}{n_g} \ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g}  \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{0g} \rangle
-%	&=& \frac{2}{n_g} \ex \sup_{\ddelta_0 \in \cC_0} \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{0} \rangle
-%	+ \frac{2}{n_g} \ex \sup_{\ddelta_g \in \cC_g} \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{g} \rangle
-%	\\ \nr 
-%	&=& \frac{2}{\sqrt{n_g}} \ex \sup_{\ddelta_0 \in \cC_0}  \langle \frac{1}{\sqrt{n_g}} \sum_{i=1}^{n_g} \epsilon_{gi} \x_{gi}, \ddelta_{0} \rangle
-%	+ \frac{2}{\sqrt{n_g}} \ex \sup_{\ddelta_g \in \cC_g}   \langle \frac{1}{\sqrt{n_g}} \sum_{i=1}^{n_g} \epsilon_{gi} \x_{gi}, \ddelta_{g} \rangle
-%	\\ \nr 
-%	(\h_{g} := \frac{1}{\sqrt{n_g}} \sum_{i=1}^{n_g} \epsilon_{gi} \x_{gi}) &=& \frac{2}{\sqrt{n_g}} \ex \sup_{\ddelta_0 \in \cC_0}  \langle \h_g, \ddelta_{0} \rangle
-%	+ \frac{2}{\sqrt{n_g}} \ex \sup_{\ddelta_g \in \cC_g}   \langle \h_g, \ddelta_{g} \rangle
-%	\\ \nr 
-%	&=& \frac{2}{\sqrt{n_g}} \ex \sup_{\ddelta_0 \in \cC_0}  \langle \h_g, \ddelta_{0} \rangle
-%	+ \frac{2}{\sqrt{n_g}} \ex \sup_{\ddelta_g \in \cC_g}   \langle \h_g, \ddelta_{g} \rangle
-%	\\ \nr 
-%	(\cA_g \in \cC_g \cap \sphere) &\leq& \frac{2}{\sqrt{n}} \ex \sup_{\ddelta_{[G]} \in \cA_{[G]}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \langle \h_{g}, \ddelta_{g} \rangle \norm{\ddelta_{g}}{2}
-%	\\ \nr 
-%	&\leq& \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \ex_{\h_{g}} \sup_{\ddelta_g \in \cA_g}  \langle \h_{g}, \ddelta_{g} \rangle \norm{\ddelta_{g}}{2}
-%	\\ \nr 
-%	&\leq& \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} c_g k \omega(\cA_g) \norm{\ddelta_{g}}{2}
-%	\ee
-%	Note that the $\h_{gi}$ is a sub-Gaussian random vector which let us bound the $\ex \sup$ using the Gaussian width \cite{trop15} in the last step. 
-%\end{proof}
-
-
-
-\subsubsection{Continuing the Proof of Theorem \ref{theo:re}}
-	Set $n_0=n$. Putting back bounds of $t_1(\X)$ and $t_2(\X)$ together from Lemma \ref{lemm:shareInc} and \ref{lemm:secTerm}, with probability at least $1 - e^{-\frac{\tau^2}{2}}$ we have:
-	\be
-		\nr 
-		\inf_{\ddelta \in \cH} \frac{1}{\sqrt{n}} \norm{\X \ddelta}{2}
-		&\geq& \sum_{g=0}^{G}  \frac{n_g}{n} \rinc \xi \norm{\ddelta_g}{2} \frac{(\alpha - 2\xi)^2}{4ck^2}
-		- \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} c_g k \omega(\cA_g) \norm{\ddelta_{g}}{2} - \frac{\tau }{\sqrt{n}}
-		\\ \nr
-		\left(q = \frac{(\alpha - 2\xi)^2}{4ck^2}\right) 
-		&=&\sum_{g=0}^{G}  \frac{n_g}{n} \rinc \xi \norm{\ddelta_g}{2} q
-		- \frac{2c}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} k \omega(\cA_g) \norm{\ddelta_{g}}{2} - \frac{\tau }{\sqrt{n}}
-		\\ \nr
-		&=&n^{-1}\sum_{g=0}^{G} n_g \norm{\ddelta_{g}}{2} ( \rinc \xi  q-2ck\frac{\omega(\cA_g)}{\sqrt{n_g}})-\frac{\tau}{\sqrt{n}}
-		\\ \nr
-		(\kappa_g = \rinc \xi q  - \frac{2 c k \omega(\cA_g)}{\sqrt{n_g}}) &=& \sum_{g=0}^{G} \frac{n_g}{n} \norm{\ddelta_g}{2} \kappa_g  - \frac{\tau}{\sqrt{n}}
-		\\ \nr
-		&\geq& \kappa_{\min}\sum_{g=0}^{G} \frac{n_g}{n} \norm{\ddelta_g}{2}  - \frac{\tau}{\sqrt{n}}
-		\\ \nr
-		%(n_g \geq 1) &\geq& \kappa_{\min} \sqrt{\frac{1}{n}} \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} - \frac{\tau}{\sqrt{n}}
-		%\\ \nr
-		(\ddelta \in \cH) &=& \kappa_{\min}  - \frac{\tau}{\sqrt{n}} %= \kappa 
-	\ee
-	where $\kappa_{\min} = \argmin_{g\in [G]} \kappa_g$. 
-	Note that all $\kappa_g$s should be bounded away from zero.
-	To this end we need the follow sample complexities:
-	\be 
-	%	\nr 
-	%	\left(\frac{2c K}{\xi q \sum_{g=1}^{G}  \frac{n_g}{n} \rinc} \right)^2 \omega(\cA_0)^2 
-	%	&\leq& 
-	%	\left(\frac{2c K}{\lambda_{\min} \xi q} \right)^2 \omega(\cA_0)^2 
-	%	\\ \nr 
-	%	&\leq& n 
-	%	\\ \nr 
-	\forall g \in [G]: \quad \left(\frac{2 c k }{\rinc \xi q}\right)^2 \omega(\cA_g)^2 &\leq& n_g 
-	\ee 
-	Taking $\xi = \frac{\alpha}{6}$ we can simplify the sample complexities to the followings:
-	\be 
-	%	\nr 
-	%	\left(\frac{C_0 K^3 }{\lambda_{\min} \alpha^3} \right)^2 \omega(\cA_0)^2 
-	%	&\leq& n 
-	%	\\ \nr 
-	\forall g \in [G]: \quad \left(\frac{C k^3 }{\rinc \alpha^3}\right)^2 \omega(\cA_g)^2 &\leq& n_g 
-	\ee 
-	Finally, to conclude, we take $\tau = \sqrt{n} \kappa_{\min}/2$. 
-	\qed 
-
-
-
-
-%\subsection{Proof of Theorem \ref{theo:ub} with $\frac{n_g}{n}$}
-%\begin{proof}	
-%	%First we provide an upper bound for the expectation of $2\oomega^T \X\ddelta$ and in the next step we should concentration around the mean by large deviation bound. 
-%From now on, to avoid cluttering the notation assume $\oomega = \oomega_0$.
-%We massage the equation as follows:
-%\be 
-%\nr 
-%\oomega^T \X\ddelta &=& \sum_{g=0}^{G} \langle \X_g^T \oomega_g,  \ddelta_g \rangle 
-%= \sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}} \rangle {\frac{n}{n_g}} \norm{\oomega_g}{2} \nr
-%%(\forall g: \u_g \in \cC_g \cap \sphere) &=& \norm{\ddelta_0}{2} \langle \X_0^T \frac{\oomega}{\norm{\oomega}{2}}, \u_0 \rangle \norm{\oomega}{2} + \sum_{g=1}^{G} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \u_g \rangle \norm{\oomega_g}{2} \\ \nr
-%\ee	
-%
-%
-%Assume $b_g = \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}}  \rangle {\frac{n}{n_g}} \norm{\oomega_g}{2}$ and $a_g = {\frac{n_g}{n}} \norm{\ddelta_g}{2}$. 
-%Then the above term is the inner product of two vectors $\a = (a_0, \dots, a_G)$ and $\b = (b_0, \dots, b_G)$ for which we have:
-%\be 
-%\nr 
-%%\sup_{\a \in \cH_l} \a^T \b  &\leq& \sup_{\a \in \cH_0} \a^T \b 
-%%\\ \nr
-%\sup_{\a \in \cH} \a^T \b 
-%&=&\sup_{\norm{\a}{1} = 1} \a^T \b \\ \nr
-%\text{(definition of the dual norm)} &\leq& \norm{\b}{\infty} \\ \nr 
-%&=& \max_{g \in [G]} b_g \nr  
-%\ee 
-%%where $\cH_0 \supset \cH_l$ defines as:
-%%\be 
-%%\nr 
-%%\cH_0 &=& \left\{ \ddelta = (\ddelta_0^{(t)} , \dots, \ddelta_g^{(t)})^T \Big| \forall g \in [G]: \ddelta_g \in \cC_g, \sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq 1 \right\}, %\label{setH}
-%%\ee 
-%Now we can go back to the original form:
-%\be 
-%%\label{eq:maxex}
-%\sup_{\ddelta \in \cH}\oomega^T \X\ddelta
-%&\leq& \max_{g \in [G]} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}}  \rangle {\frac{n}{n_g}} \norm{\oomega_g}{2} \\ 
-%\nr 
-%&\leq& \max_{g \in [G]} {\frac{n}{n_g}} \norm{\oomega_g}{2} \sup_{\u_g \in \cC_g \cap \sphere} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \u_g \rangle 
-%\ee 
-%
-%To avoid cluttering we name $h_g(\oomega_g, \X_g) =  \norm{\oomega_g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \u_g \rangle $ and $e_g(\tau) =  \sqrt{(2K^2 + 1)n_g} \left(\upsilon_g C_gk \omega(\cA_g) + \epsilon_g \sqrt{\log G} + \tau \right)$.
-%Then from \eqref{eq:maxex}, we have: {\color{red} This step won't work.
-%\be
-%\nr  
-%\pr \left(\frac{2}{n} \sup_{\ddelta \in \cH} \oomega^T \X\ddelta >  \frac{2}{n} \max_{g \in [G]} \sqrt{\frac{n}{n_g}} e_g(\tau) \right) 
-%&\leq& \pr \left(\frac{2}{n} \sup_{\ddelta \in \cH} \oomega^T \X\ddelta >  \frac{2}{n} \max_{g \in [G]} {\frac{n}{n_g}} e_g(\tau) \right) 
-%\\ \nr 
-%&\leq& \pr \left(\frac{2}{n} \max_{g \in [G]} {\frac{n}{n_g}} h_g(\oomega_g, \X_g) > \frac{2}{n} \max_{g \in [G]} {\frac{n}{n_g}} e_g(\tau) \right) 
-%\ee }
-%To simplify the notation, we drop arguments of $h_g$ for now. 
-%From the union bound we have:
-%\be
-%\nr 
-%\pr \left(\frac{2}{n} \max_{g \in [G]} {\frac{n}{n_g}} h_g >  \frac{2}{n} \max_{g \in [G]} {\frac{n}{n_g}} e_g(\tau) \right)  
-%&\leq& \sum_{g=0}^{G} \pr \left(h_g >  \max_{g \in [G]}  e_g(\tau) \right)  \\ 
-%\nr 
-%&\leq& \sum_{g=0}^{G} \pr \left( h_g >  e_g(\tau) \right)  \\ 
-%\nr 	
-%&\leq& G \max_{g \in [G]} \pr \left(h_g > e_g(\tau) \right) \\ 
-%\nr 
-%&\leq& \sigma \exp\left(-\min_{g \in [G]}\left[\nu_g  n_g - \log G, \frac{\tau^2}{\eta_g^2 k^2}\right]\right) 
-%\ee 
-%where $\sigma = \max_{g \in [G]} \sigma_g$. 	 
-%\end{proof} 
-
-
-\subsection{Proof of Theorem \ref{theo:ub}}
-\begin{proof}	
-	%First we provide an upper bound for the expectation of $2\oomega^T \X\ddelta$ and in the next step we should concentration around the mean by large deviation bound. 
-	From now on, to avoid cluttering the notation assume $\oomega = \oomega_0$.
-	We massage the equation as follows:
-	\be 
-	\nr 
-	\oomega^T \X\ddelta &=& \sum_{g=0}^{G} \langle \X_g^T \oomega_g,  \ddelta_g \rangle 
-	= \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}} \rangle \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} \nr
-	%(\forall g: \u_g \in \cC_g \cap \sphere) &=& \norm{\ddelta_0}{2} \langle \X_0^T \frac{\oomega}{\norm{\oomega}{2}}, \u_0 \rangle \norm{\oomega}{2} + \sum_{g=1}^{G} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \u_g \rangle \norm{\oomega_g}{2} \\ \nr
-	\ee	
-
-
-	Assume $b_g = \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}}  \rangle \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2}$ and $a_g = \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}$. 
-	Then the above term is the inner product of two vectors $\a = (a_0, \dots, a_G)$ and $\b = (b_0, \dots, b_G)$ for which we have:
-	\be 
-	\nr 
-	%\sup_{\a \in \cH_l} \a^T \b  &\leq& \sup_{\a \in \cH_0} \a^T \b 
-	%\\ \nr
-	\sup_{\a \in \cH} \a^T \b 
-	&=&\sup_{\norm{\a}{1} = 1} \a^T \b \\ \nr
-	\text{(definition of the dual norm)} &\leq& \norm{\b}{\infty} \\ \nr 
-	&=& \max_{g \in [G]} b_g \nr  
-	\ee 
-	%where $\cH_0 \supset \cH_l$ defines as:
-	%\be 
-	%\nr 
-	%\cH_0 &=& \left\{ \ddelta = (\ddelta_0^{(t)} , \dots, \ddelta_g^{(t)})^T \Big| \forall g \in [G]: \ddelta_g \in \cC_g, \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq 1 \right\}, %\label{setH}
-	%\ee 
-	Now we can go back to the original form:
-	\be 
-	\label{eq:maxex}
-	\sup_{\ddelta \in \cH}\oomega^T \X\ddelta
-	&\leq& \max_{g \in [G]} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}}  \rangle \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} \\ 
-	\nr 
-	&\leq& \max_{g \in [G]} \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} \sup_{\u_g \in \cC_g \cap \sphere} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \u_g \rangle 
-	\ee 
-	
-	To avoid cluttering we name $h_g(\oomega_g, \X_g) =  \norm{\oomega_g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \u_g \rangle $ and $e_g(\tau) =  \sqrt{(2K^2 + 1)n_g} \left(\upsilon_g C_gk \omega(\cA_g) + \epsilon_g \sqrt{\log G} + \tau \right)$.
-	Then from \eqref{eq:maxex}, we have:
-	\be
-	\nr  
-	\pr \left(\frac{2}{n} \sup_{\ddelta \in \cH} \oomega^T \X\ddelta >  \frac{2}{n} \max_{g \in [G]} \sqrt{\frac{n}{n_g}} e_g(\tau) \right) 
-	&\leq& \pr \left(\frac{2}{n} \max_{g \in [G]} \sqrt{\frac{n}{n_g}} h_g(\oomega_g, \X_g) > \frac{2}{n} \max_{g \in [G]} \sqrt{\frac{n}{n_g}} e_g(\tau) \right) 
-	\ee 
-	To simplify the notation, we drop arguments of $h_g$ for now. 
-	From the union bound we have:
-	\be
-	\nr 
-	\pr \left(\frac{2}{n} \max_{g \in [G]} \sqrt{\frac{n}{n_g}} h_g >  \frac{2}{n} \max_{g \in [G]} \sqrt{\frac{n}{n_g}} e_g(\tau) \right)  
-	&\leq& \sum_{g=0}^{G} \pr \left(h_g >  \max_{g \in [G]}  e_g(\tau) \right)  \\ 
-	\nr 
-	&\leq& \sum_{g=0}^{G} \pr \left( h_g >  e_g(\tau) \right)  \\ 
-	\nr 	
-	&\leq& (G+1) \max_{g \in [G]} \pr \left(h_g > e_g(\tau) \right) \\ 
-	\nr 
-	&\leq& \sigma \exp\left(-\min_{g \in [G]}\left[\nu_g  n_g - \log (G+1), \frac{\tau^2}{\eta_g^2 k^2}\right]\right) 
-	\ee 
-	where $\sigma = \max_{g \in [G]} \sigma_g$ and the last inequality is a result of the following lemma:
-	\begin{lemma}
-		\label{lemm:mainlem}
-		For $\x_{gi}$ and $\omega_{gi}$ defined in Definition \ref{def:obs} and $\tau > 0$, with probability at least $1 - \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu_g n_g - \log (G+1), \frac{\tau^2}{\eta_g^2 k^2}\right]\right)$ we have:
-		\be
-			\sqrt{\frac{n}{n_g}} \norm{\oomega _g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\oomega _g}{\norm{\oomega _g}{2}}, \u_g \rangle 
-			&\leq&
-			\sqrt{(2K^2 + 1)n} \left(\zeta_g k \omega(\cA_g) + \epsilon_g \sqrt{\log (G+1)} +  \tau \right), \nr
-		\ee
-		where $\sigma_g, \eta_g, \zeta_g$ and $\epsilon_g$ are group dependent constants.
-	\end{lemma}	
-\end{proof} 
-
-
-
-
-\subsection{Proof of Theorem \ref{theo:iter}}
-\begin{proof}
-	%Also for simplicity of the notation let  $\oomega_0 = \oomega$. 
-%	From we have:
-%	\be 
-%	\label{eq:sumrec}
-%	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2} &\leq& \theta_f \left(\rho \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}}  \norm{\ddelta_g^{(t)}}{2} + \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \eta_g(\mu_g) \norm{\oomega_g}{2}  \right)
-%	\ee
-%	where $\rho$ defined in \eqref{eq:rhos}.	
-	In the following lemma we establish a recursive relation between errors of consecutive iterations which leads to a bound for the $t$th iteration. 
-	
-	\begin{lemma}
-		\label{lem:recurse}
-		We have the following recursive dependency between the error of $t+1$th iteration and $t$th iteration of DE:
-		\be 
-		\nr 
-		\norm{\ddelta_g^{(t+1)}}{2} &\leq&   \left(\rho_g(\mu_g)\norm{\ddelta_g^{(t)}}{2}   +  \xi_g(\mu_g) \norm{\oomega_g}{2} + \phi_g(\mu_g) \norm{\ddelta_0^{(t)}}{2} \right)
-		\\ \nr 
-		\norm{\ddelta_0^{(t+1)}}{2} &\leq&   \left(\rho_0(\mu_0) \norm{\ddelta_0^{(t)}}{2} + \xi_0(\mu_0) \norm{\oomega_0}{2} + \mu_0 \sum_{g=1}^{G}  \frac{\phi_g(\mu_g)}{\mu_g} \norm{\ddelta_g^{(t)}}{2}  \right)
-		\ee 
-		%	where $\theta_f = 1$ for convex $f$ and $\theta_f = 2$ for the non-convex case. 
-	\end{lemma}
-	By recursively applying the result of Lemma \ref{lem:recurse}, we get the following deterministic bound which depends on constants defined in Definition \ref{def:only}: 
-	
-%	We recursively apply Lemma \ref{lem:recurse}  and write the total error as:
-	{\small
-		\be 
-		\nr 
-		b_{t+1} = \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2} 
-		&\leq&  \left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g\right)  \norm{\ddelta_0^{(t)}}{2} + \sum_{g=1}^{G} \left(\sqrt{\frac{n_g}{n}} \rho_g + \mu_0 \frac{\phi_g}{\mu_g} \right) \norm{\ddelta_g^{(t)}}{2} + \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}}  \xi_g \norm{\oomega_g}{2} 
-		\\ \label{eq:complicated}
-		&\leq&  \rho \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t)}}{2} + \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}}  \xi_g \norm{\oomega_g}{2} 
-		\ee}
-	
-	where $	\rho = \max\left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g, \max_{g \in [G]} \left[\rho_g + \sqrt{\frac{n}{n_g}}  \frac{\mu_0}{\mu_g} \phi_g \right]  \right)$. We have:
-	\be
-	\nr  
-	b_{t+1}
-	&\leq&  \rho b_{t} +  \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} \\ \nr 
-	&\leq& ( \rho)^2 b_{t-1}  + ( \rho + 1)  \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} \\ \nr
-	&\leq& ( \rho)^t b_1  + \left(\sum_{i = 0}^{t-1} ( \rho)^i \right)   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} \\ \nr 
-	&=& ( \rho)^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}} \norm{\bbeta ^1_g  - \bbeta ^*_g}{2}  + \left(\sum_{i = 0}^{t-1} ( \rho)^i \right)     \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} \\ \nr 
-	(\bbeta ^1  = 0) &\leq& ( \rho)^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}} \norm{\bbeta ^*_g}{2}   + \frac{1 - ( \rho)^t}{1 -  \rho}   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} \nr 
-	\ee
-\end{proof}
+%\subsection{Proof of Theorem \ref{theo:iter}}
 
 %\begin{lemma}
 %	\label{lemm:simp}
@@ -744,282 +214,118 @@ Following lemma provides us with the bound on the expectation.
 
 \subsection{Proof of Theorem \ref{theo:step}}
 \label{twolems}
-\begin{proof}
-	First we need following two lemmas which are proved separately in the following sections. 
-	
-	\begin{lemma}
-		\label{lemm:hpub}
-		Consider $a_g \geq 1$, with probability at least $1 - 6\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2  \right)$ the following upper bound holds:
-		\be 
-		\rho_g\left(\frac{1}{a_g n_g}\right) \leq \frac{1}{2}  \left[\left(1 - \frac{1}{a_g} \right) + \sqrt{2} c_g\frac{2 \omega(\cA_g) + \tau}{a_g \sqrt{n_g}} \right]
-		\ee
-	\end{lemma}
-	
-	
-	
-	\begin{lemma}
-		\label{lemm:phi}
-		Consider $a_g \geq 1$, with probability at least $1 - 4\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2 \right)$ the following upper bound holds:
-		\be 
-		\phi_g\left(\frac{1}{a_g n_g}\right) \leq \frac{1}{a_g}  \left(1 + c_{0g}\frac{\omega(\cA_g) + \omega(\cA_0) + 2 \tau}{\sqrt{n_g}} \right)
-		\ee
-	\end{lemma}
-	Note that Lemma \ref{lemm:mainlem} readily provides a high probability upper bound for $\eta_g(1/(a_g n_g))$ as $\sqrt{(2K^2 + 1)} \left(\zeta_g k \omega(\cA_g) + \epsilon_g \sqrt{\log G} +  \tau \right)/(a_g \sqrt{n_g})$.
-	%Finally we establish a high probability upper bound for $\phi_g$s in the following lemma. 
-	
-	Starting from the deterministic form of the bound in Theorem \ref{theo:iter} and putting in the step sizes as $\mu_g = \frac{1}{n_g a_g}$:
-	\be 
-	\label{eq:deterOpt}
-	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
-	\leq ( \rho)^t \sum_{g=0}^{G}\norm{\bbeta ^*_g}{2}   + \frac{1 - ( \rho)^t}{1 -  \rho}   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \eta_g\left(\frac{1}{n_g a_g}\right) \norm{\oomega_g}{2},  
-	\ee 
-	where 
-	\be
-	\label{eq:rhoss}
-	\rho(a_0, \cdots, a_G) = \max\left(\rho_0\left(\frac{1}{n a_0}\right) + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g\left(\frac{1}{n_g a_g}\right), \max_{g \in [G]} \rho_g\left(\frac{1}{n_g a_g}\right) + \sqrt{\frac{n}{n_g}} \frac{\mu_0}{\mu_g}\phi_g\left(\frac{1}{n_g a_g}\right)\right)
-	\ee
-	
-	
-	Remember the following two results to upper bound $\rho_g$s  and $\phi_g$s from Lemmas \ref{lemm:hpub} and \ref{lemm:phi}: 
-	\be 
-	\nr 
-	\rho_g\left(\frac{1}{a_g n_g}\right) &\leq& \frac{1}{2}  \left[\left(1 - \frac{1}{a_g} \right) + \sqrt{2} c_g\frac{2 \omega(\cA_g) + \tau}{a_g \sqrt{n_g}} \right], \quad \text{w.p.} \quad 1 - 6\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2  \right)
-	\\ \nr 
-	\phi_g\left(\frac{1}{a_g n_g}\right) &\leq& \frac{1}{a_g}  \left(1 + c_{0g}\frac{\omega_{0g} + \tau}{\sqrt{n_g}} \right), \quad \text{w.p.} \quad 1 - 4\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2  \right)
-	\ee  
-	
-	First we want to keep $\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g$ of \eqref{eq:rhoss} strictly below $1$. 
-	\be 
-	\nr 
-	\rho_0\left(\frac{1}{a_0 n}\right) + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g\left(\frac{1}{a_g n_g}\right) 
-	&\leq&  \frac{1}{2}  \left[\left(1 - \frac{1}{a_0} \right) + \sqrt{2} c_0\frac{2 \omega_0 + \tau}{a_0 \sqrt{n}} \right] 
-	\\ \nr 
-	&+& \frac{1}{2} \sum_{g=1}^{G} \frac{2}{a_g}  \sqrt{\frac{n_g}{n}} \left(1 + c_{0g}\frac{\omega_{0g} + \tau}{\sqrt{n_g}} \right)
-	\ee 
-	Remember that $a_g \geq 1$ was arbitrary. So we pick it as $a_g = 2\sqrt{\frac{n}{n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)/b_g$ where $b_g \leq 2  \sqrt{\frac{n}{n_g}} \left(1 + c_{0g}\frac{\omega_{0g} + \tau}{\sqrt{n_g}} \right)$ (because we need $a_g \geq 1$) and the condition becomes:
-	\be 
-	\nr 
-	\rho_0\left(\frac{1}{a_0 n}\right) + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g\left(\frac{1}{a_g n_g}\right) 
-	&\leq&  \frac{1}{2}  \left[\left(1 - \frac{1}{a_0} \right) + \sqrt{2} c_0\frac{2 \omega(\cA_0) + \tau}{a_0 \sqrt{n}} \right] + \frac{1}{2} \sum_{g=1}^{G} \frac{n_g}{n} b_g
-	\leq 1
-	\ee  
-	We want to upper bound the RHS by $1/\theta_f$ which will determine the sample complexity for the shared component:
-	\be 
-	\label{eq:boring}
-	\sqrt{2} c_0\frac{2 \omega(\cA_0) + \tau}{ \sqrt{n}} 
-	\leq a_0 \left( 1 - \sum_{g=1}^{G} \frac{n_g}{n} b_g\right) + 1 % -  \frac{1}{G} \sum_{g=1}^{G} b_g^{-1}\right]
-	\ee 
-	Note that any lower bound on the RHS of \eqref{eq:boring} will lead to the correct sample complexity for which the coefficient of $\norm{\ddelta_{0}^{(t)}}{2}$ (determined in \eqref{eq:rhoss}) will be below one. 
-	%For $\theta_f = 1$ the upper bound becomes $a_0 \left( 1 - \sum_{g=1}^{G} \frac{n_g}{n} b_g\right) + 1$ and 
-	Since $a_0 \geq 1$ we can ignore the first term by assuming $\max_{g \in [G]_\setminus} b_g \leq 1$ and the condition becomes:
-	\be 
-	\nr 
-	%&\theta_f = 1:& 
-	&&n > 2 c_0^2(2 \omega(\cA_0) + \tau)^2, \forall g \in [G]_\setminus: a_g = 2b_g^{-1}\sqrt{\frac{n}{n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right),  
-	\\ \nr 
-	&&a_0 \geq 1,  0 < b_g \leq 2  \sqrt{\frac{n}{n_g}} \left(1 + c_{0g}\frac{\omega_{0g} + \tau}{\sqrt{n_g}} \right), \max_{g \in [G]_\setminus} b_g \leq 1, 
-	\ee 
-	which can be simplified to:
-	\be 
-	\label{eq:cvx}
-	%&\theta_f = 1:& 
-	&&n > 2 c_0^2(2 \omega(\cA_0) + \tau)^2, a_0 \geq 1,  
-	\\ \nr 
-	&& \forall g \in [G]_\setminus: a_g = 2b_g^{-1}\sqrt{\frac{n}{n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right) ,  0 < b_g \leq 1 
-	\ee 
-%	For $\theta_f = 2$ the upper bound of \eqref{eq:boring} becomes:
-%	\be 
-%	\sqrt{2} c_0\frac{2 \omega(\cA_0) + \tau}{ \sqrt{n}} 
-%	\leq 1 - a_0\sum_{g=1}^{G} \frac{n_g}{n} b_g
-%	\ee 
-%	To keep the upper bound positive, we need the $0 < a_0 \sum_{g=1}^{G} \frac{n_g}{n} b_g < 1$, then the condition becomes:
-%	\be 
-%	\label{eq:ncvx}
-%	&\theta_f = 2:& n > 2 c_0^2 \left(\frac{(2 \omega(\cA_0) + \tau)}{1 - a_0 \sum_{g=1}^{G} \frac{n_g}{n} b_g}\right)^2 , a_0 \geq 1, 0 < a_0 \sum_{g=1}^{G} \frac{n_g}{n} b_g < 1, 
-%	\\ \nr
-%	&&\forall g \in [G]_\setminus: a_g = 2b_g^{-1}\sqrt{\frac{n}{n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right),  0 < b_g \leq 2  \sqrt{\frac{n}{n_g}} \left(1 + c_{0g}\frac{\omega_{0g} + \tau}{\sqrt{n_g}} \right)
-%	\ee 
-%	
-%	\be 
-%	\label{eq:boring}
-%	\sqrt{2} c_0\frac{2 \omega(\cA_0) + \tau}{ \sqrt{n}} 
-%	\leq a_0 \left[\left( \frac{2}{\theta_f} - 1\right) + \frac{1}{a_0}  -  \frac{1}{G} \sum_{g=1}^{G} b_g^{-1}\right]
-%	\ee 
-%
-%	Since $a_0 \geq 1$ we replace $a_0$ and $1/a_0$ by one and zero respectively:
-%	\be 
-%	\label{eq:boring}
-%	\sqrt{2} c_0\frac{2 \omega(\cA_0) + \tau}{ \sqrt{n}} 
-%	\leq \left( \frac{2}{\theta_f} - 1\right) -  \frac{1}{G} \sum_{g=1}^{G} b_g^{-1}
-%	\ee 	
 
-	 
-	Secondly, we want to bound all of $\rho_g + \mu_0 \sqrt{\frac{n}{n_g}} \frac{\phi_g}{\mu_g}$ terms of \eqref{eq:rhoss} for $\mu_g = \frac{1}{a_g n_g}$ by 1: 
-	\be 
-	\rho_g\left(\frac{1}{n_g a_g}\right) +  \sqrt{\frac{n}{n_g}} \frac{\mu_0}{\mu_g}\phi_g\left(\frac{1}{n_g a_g}\right)
-	&=& \rho_g\left(\frac{1}{n_g a_g}\right) +  \sqrt{\frac{n_g}{n}} \frac{a_g}{a_0}\phi_g\left(\frac{1}{n_g a_g}\right)
-	\\ \nr
-	&=& 	 \frac{1}{2} \Bigg[\left[\left(1 - \frac{1}{a_g} \right) + \sqrt{2} c_g\frac{2 \omega_g + \tau}{a_g \sqrt{n_g}} \right]  
-	\\ \nr 
-	&+&  \frac{2}{a_0}  \sqrt{\frac{n_g}{n}} \left(1 + c_{0g}\frac{\omega_{0g} + \tau}{\sqrt{n_g}} \right)\Bigg] 
-	\\ \nr 
-	&\leq& 1
-	\ee 
-	The condition becomes: 	
-	\be 
-	\sqrt{2} c_g\frac{2 \omega_g + \tau}{\sqrt{n_g}} \leq a_g + 1 - \sqrt{\frac{n_g}{n}} \frac{2a_g}{a_0} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)
-	\ee 
-	Remember that we chose $a_g = 2b_g^{-1}\sqrt{\frac{n}{n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)$. % for both convex \eqref{eq:cvx} and non-convex \eqref{eq:ncvx} cases where we had different condition for $\epsilon$ in each cases.
-	We substitute the value of $a_g$ by keeping in mind the constraints for the $b_g$ and the condition reduces to: 
-	\be 
-	\label{eq:branch}
-	\sqrt{2} c_g\frac{2 \omega_g + \tau}{d_g} \leq \sqrt{n_g} , \quad d_g := a_g + 1 - \frac{4}{b_g a_0} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^2
-	\ee 
-	for $d_g > 0$. 
-%	\subsection{Convex Case}
-	Note that any positive lower bound of the $d_g$ will satisfy the condition in \eqref{eq:branch} and the result is a valid sample complexity. 
-%	Consider the convex case where $\theta_f = 1$,
-	In the following we show that $d_g > 1$.% for both convex and non-convex cases. 
-	We have $a_0 \geq 1$ condition from \eqref{eq:cvx}, so we take $a_0 = 4	\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^2$ and look for a lower bound for $d_g$:
-	\be 
-	d_g
-	&\geq& a_g + 1 - {b_g}^{-1} 
-	\\ \nr 
-	(a_g \enskip \text{from} \enskip \eqref{eq:cvx})&=& 2b_g^{-1}\sqrt{\frac{n}{n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right) + 1 - {b_g}^{-1} 
-	\\ \label{bracket}
-	&=& 1 + b_g^{-1}\left[2 \sqrt{\frac{n}{n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right) - 1\right]
-%	\\ \nr 
-%	&\geq& 1
-	\ee 
-	The term inside of the last bracket \eqref{bracket} is always positive and therefore a lower bound is one, i.e., $d_g \geq 1$.
-	From the condition \eqref{eq:branch} we get the following sample complexity:% for the convex case:
-	\be 
-	n_g > 2c_g^2(2 \omega_g + \tau)^2 
-	\ee 
-	Now we need to determine $b_g$ from previous conditions \eqref{eq:cvx}, knowing that $a_0 = 4	\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^2$. 
-	We have $ 0 < b_g \leq 1$ in  \eqref{eq:cvx} and we take the largest step by setting $b_g = 1$. 
-			
-
-	Here we summarize the setting under which we have the linear convergence:
-	\be 
-	\nr 
-	&&n > 2 c_0^2 \left(2 \omega(\cA_0) + \tau\right)^2, \forall g \in [G]_\setminus: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2
-	\\ \label{eq:aas}
-	&&a_0 = 4\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^2 , a_g = 2\sqrt{\frac{n}{n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)
-	\\ \nr 
-	&& \mu_0 = \frac{1}{4	n} \times \frac{1}{\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^2} , \mu_g =  \frac{1}{2\sqrt{n n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} \right)^{-1}
-	\ee 
-	
 %	\frac{1}{2}  \left[\left(1 - \frac{1}{a_g} \right) + \sqrt{2} c_g\frac{2 \omega(\cA_g) + \tau}{a_g \sqrt{n_g}} \right], \quad \text{w.p.} \quad 1 - 6\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2  \right)
 %	\\ \nr 
 %	\phi_g\left(\frac{1}{a_g n_g}\right) &\leq& \frac{1}{a_g}  \left(1 + c_{0g}\frac{\omega_{0g} + \tau}{\sqrt{n_g}} \right), \quad \text{w.p.} \quad 1 - 4\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2  \right)
 %	
 	Now we rewrite the same analysis using the tail bounds for the coefficients to clarify the probabilities. 	
-	To simplify the notation, let $r_{g1} = \frac{1}{2}  \left[\left(1 - \frac{1}{a_g} \right) + \sqrt{2} c_g\frac{2 \omega(\cA_g) + \tau}{a_g \sqrt{n_g}} \right]$ and $r_{g2} = \frac{1}{a_g}  \left(1 + c_{0g}\frac{\omega_{0g} + \tau}{\sqrt{n_g}} \right)$ and $r_0(\tau) = r_{01}  + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} r_{g2}$ and $r_g(\tau) =  r_{g1}+ \sqrt{\frac{n_g}{n}} \frac{a_g}{a_0} r_{g2}, \forall g \in [G]_\setminus$, and $r(\tau) =  \max_{g \in [G] }r_g$. All of which are computed using $a_g$s specified in \eqref{eq:aas}. Basically $r$ is an instantiation of an upper bound of the $\rho$ defined in \eqref{eq:rhoss} using $a_g$s in \eqref{eq:aas}.
-%	The iteration error bound can be written as:
-%	\be 
-%	\nr 
-%	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
-%	&\leq& r^t \sum_{g=0}^{G}\norm{\bbeta ^*_g}{2}   + \frac{\theta_f}{1 - r}  \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g\left(\frac{1}{n_g}\right) \norm{\oomega_g}{2}
-%	\\ \nr 
-%	\text{(Lemma \ref{lemm:mainlem})} 
-%	&\leq& r^t \sum_{g=0}^{G}\norm{\bbeta ^*_g}{2}   + \frac{\theta_f}{1 - r}  \sum_{g=0}^{G} \frac{1}{a_g} \sqrt{\frac{n_g}{n}} \sqrt{(2K^2 + 1)}/\sqrt{n_g}\left(\zeta_g k \omega(\cA_g) + \epsilon_g \sqrt{\log G} +  \tau \right)
-%	\\ \nr 
-%	(a_g \geq 1) &\leq& r^t \sum_{g=0}^{G}\norm{\bbeta ^*_g}{2}   + \frac{\theta_f\sqrt{(2K^2 + 1)}}{(1 - r)\sqrt{n}}  \sum_{g=0}^{G} \left(\zeta_g k \omega(\cA_g) + \epsilon_g \sqrt{\log G} +  \tau \right)
-%	\\ \nr 
-%	&\leq& r^t \sum_{g=0}^{G}\norm{\bbeta ^*_g}{2}   + \frac{(G+1)\theta_f\sqrt{(2K^2 + 1)}}{(1 - r)\sqrt{n}}  \max_{g \in [G]}\left(\zeta_g k \omega(\cA_g) + \epsilon_g \sqrt{\log G} +  \tau \right)
-%	\\ \nr 
-%	&\leq& r^t \sum_{g=0}^{G}\norm{\bbeta ^*_g}{2}   + \frac{(G+1)\theta_f\sqrt{(2K^2 + 1)}}{(1 - r)\sqrt{n}} \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + \epsilon \sqrt{\log G} +  \tau \right)
-%	\ee  
-%	where the second inequality holds with probability at least $1 - 6\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2  \right)$, $\zeta = \max_{g \in [G]} \zeta_g$, and $\epsilon = \max_{g \in [G]} \epsilon_{g}$.
-
-
-	We are interested to upper bound the following probability:
-	\be 
-	\nr 
-	&& \pr \left(\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2} \geq  r(\tau)^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}} \norm{\bbeta ^*_g}{2}   + \frac{(G+1)\sqrt{(2K^2 + 1)}}{(1 - r(\tau))\sqrt{n}} \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + \tau\right) \right)
+	To simplify the notation, we define the following functions of $\tau$:
+	{\small\be \nr 
+	r_{g1}(\tau) &\triangleq& \frac{1}{2}  \left[\left(1 - \frac{1}{a_g} \right) + \sqrt{2} c_g\frac{2 \omega(\cA_g) + \tau}{a_g \sqrt{n_g}} \right],~\forall g \in [G_+]
+	\\ \nr 
+	r_{g2}(\tau) &\triangleq& \frac{1}{a_g}  \left(1 + c_{0g}\frac{\omega(\cA_0)+\omega(\cA_g) + \tau}{\sqrt{n_g}} \right),~\forall g \in [G]
+	\\ \nr
+	r_0(\tau) &\triangleq& r_{01}(\tau)  + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} r_{g2}(\tau)
+	\\ \nr 
+	r_g(\tau) &\triangleq&  r_{g1}(\tau)+ \sqrt{\frac{n_g}{n}} \frac{a_g}{a_0} r_{g2}(\tau),~\forall g \in [G]
+	\\ \nr 
+	r(\tau) &\triangleq&  \max_{g \in [G_+] }r_g(\tau)
+	\ee}  
+	All of which are computed using $a_g$s specified in the proof sketch of Section \ref{proofsketch}. Basically $r(\tau)$ is an instantiation of an high probability upper bound of the $\rho$ defined in Theorem \ref{theo:iter}.
+	We are interested in upper bounding the following probability:
+	{\small \be 
+	\label{part1} 
+	&& \pr \left(\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2} \geq  r(\tau)^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}} \norm{\bbeta ^*_g}{2}   + \frac{C (G+1)\sqrt{(2k_w^2 + 1)k_x^2}}{(1 - r(\tau))\sqrt{n}} (\max_{g \in [G_+]} \omega(\cA_g) + \tau) \right)
 	\\ \nr 
 	&\leq& 
-	\pr \Bigg(( \rho)^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}}\norm{\bbeta ^*_g}{2}   + \frac{1 - ( \rho)^t}{1 -  \rho}   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \eta_g\left(\frac{1}{n_g a_g}\right) \norm{\oomega_g}{2}
+	\pr \Bigg(\rho^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}}\norm{\bbeta ^*_g}{2}   + \frac{1 - \rho^t}{1 -  \rho}   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \eta_g\left(\mu_g\right) \norm{\w_g}{2} \geq 
 	\\ \nr 
-	&\geq& r(\tau)^t \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}}\norm{\bbeta ^*_g}{2}   + \frac{(G+1)\sqrt{(2K^2 + 1)}}{(1 - r(\tau))\sqrt{n}} \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + \tau\right) \Bigg) 
+	&&\medskip \quad r(\tau)^t \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}}\norm{\bbeta ^*_g}{2}   + \frac{C(G+1)\sqrt{(2k_w^2 + 1)k_x^2}}{(1 - r(\tau))\sqrt{n}} (\max_{g \in [G_+]} \omega(\cA_g) + \tau) \Bigg) 
 	\\ \nr 
 	&\leq&  \pr \left( \rho \geq r(\tau) \right)
-	\\ \label{eq:bigbound} 
-	&+& \pr \left( \frac{1}{1 -  \rho}  \sum_{g=0}^{G} \sqrt{n_g} \eta_g\left(\frac{1}{n_g a_g}\right) \norm{\oomega_g}{2} 
-	\geq \frac{(G+1)\sqrt{(2K^2 + 1)}}{(1 - r(\tau))} \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + \tau\right) \right)
-	\ee
-	where the first inequality comes from the deterministic bound of \eqref{eq:deterOpt},
-	We first focus on bounding the first term $\pr \left( \rho \geq r(\tau) \right)$:
+%	\\ \nr %\label{eq:bigbound} 
+	+ \pr \left( \frac{1}{1 -  \rho}  \sum_{g=0}^{G} \sqrt{n_g} \eta_g\left(\mu_g\right) \norm{\w_g}{2} 
+	\geq \frac{C(G+1)\sqrt{(2k_w^2 + 1)k_x^2}}{(1 - r(\tau))} (\max_{g \in [G_+]} \omega(\cA_g) + \tau) \right)
+	\ee}
+	where the first inequality comes from the deterministic bound of Theorem \ref{theo:iter} and the second one is based on the law of total probability.	We first focus on bounding the first term $\pr \left( \rho \geq r(\tau) \right)$:
 	\be
 	\nr 	
-	&& \pr \left( \rho \geq r(\tau) \right)	
+	\pr \left( \rho \geq r(\tau) \right)	
+	&=& \pr \left( \max\left(\rho_0\left(\mu_0\right) + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g\left(\mu_g\right), \max_{g \in [G]} \rho_g\left(\mu_g\right) + \sqrt{\frac{n}{n_g}} \frac{\mu_0}{\mu_g}\phi_g\left(\mu_g\right)\right) \geq \max_{g \in [G_+] } r(\tau)  \right) 
 	\\ \nr 
-	&=& \pr \left( \max\left(\rho_0\left(\frac{1}{n a_0}\right) + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g\left(\frac{1}{n_g a_g}\right), \max_{g \in [G]} \rho_g\left(\frac{1}{n_g a_g}\right) + \sqrt{\frac{n}{n_g}} \frac{\mu_0}{\mu_g}\phi_g\left(\frac{1}{n_g a_g}\right)\right) \geq \max_{g \in [G] } r(\tau)  \right) 
+	(\text{Union Bound}) &\leq& \pr \left(\rho_0\left(\mu_0 \right) + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g\left(\mu_g\right) \geq r_0  \right)   + \sum_{g=1}^{G} \pr \left( \rho_g\left(\mu_g\right) + \sqrt{\frac{n}{n_g}} \frac{\mu_0}{\mu_g}\phi_g\left(\mu_g\right) \geq r_g  \right)
 	\\ \nr 
-	&\leq& \pr \left(\rho_0\left(\frac{1}{n a_0} \right) + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g\left(\frac{1}{n_g a_g}\right) \geq r_0  \right)   + \sum_{g=1}^{G} \pr \left( \rho_g\left(\frac{1}{n_g a_g}\right) + \sqrt{\frac{n}{n_g}} \frac{\mu_0}{\mu_g}\phi_g\left(\frac{1}{n_g a_g}\right) \geq r_g  \right)
+	&\leq& \pr \left(\rho_0\left(\mu_0 \right) \geq r_{01} \right) + \sum_{g=1}^{G} \pr\left( \phi_g\left(\mu_g\right) \geq r_{g2}  \right)   + \sum_{g=1}^{G} \left[\pr \left( \rho_g\left(\mu_g\right) \geq r_{g1} \right) + \pr \left(\phi_g\left(\mu_g\right) \geq r_{g2}  \right)\right]
 	\\ \nr 
-	&\leq& \pr \left(\rho_0\left(\frac{1}{n a_0} \right) \geq r_{01} \right) + \sum_{g=1}^{G} \pr\left( \phi_g\left(\frac{1}{n_g a_g}\right) \geq r_{g2}  \right)   + \sum_{g=1}^{G} \left[\pr \left( \rho_g\left(\frac{1}{n_g a_g}\right) \geq r_{g1} \right) + \pr \left(\phi_g\left(\frac{1}{n_g a_g}\right) \geq r_{g2}  \right)\right]
-	\\ \nr 
-	&\leq& \sum_{g=0}^{G} \pr \left( \rho_g\left(\frac{1}{n_g a_g}\right) \geq r_{g1} \right)  + 2\sum_{g=1}^{G} \pr\left( \phi_g\left(\frac{1}{n_g a_g}\right) \geq r_{g2}  \right)   
+	&\leq& \sum_{g=0}^{G} \pr \left( \rho_g\left(\mu_g\right) \geq r_{g1} \right)  + 2\sum_{g=1}^{G} \pr\left( \phi_g\left(\mu_g\right) \geq r_{g2}  \right)   
 	\\ \nr 	
 	&\leq& \sum_{g=0}^{G} 6\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2  \right)  + 2\sum_{g=1}^{G} 4\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2  \right)      
 	\\ \nr 	
-	&\leq& 6(G+1)\exp\left( -\gamma \min_{g \in [G]} (\omega(\cA_g) + \tau)^2  \right)  + 8 G \exp\left( -\gamma \min_{g \in [G]_\setminus} (\omega(\cA_g) + \tau)^2  \right)      
+	(\gamma = \min_{g \in [G_+]} \gamma_g) &\leq& 6(G+1)\exp\left( -\gamma \min_{g \in [G_+]} (\omega(\cA_g) + \tau)^2  \right)  + 8 G \exp\left( -\gamma \min_{g \in [G]} (\omega(\cA_g) + \tau)^2  \right)      
 	\\ \label{eq:part1}
-	&\leq& 14 (G+1)\exp\left( -\gamma \min_{g \in [G]} (\omega(\cA_g) + \tau)^2  \right)  
+	&\leq& 14 (G+1)\exp\left( -\gamma \min_{g \in [G_+]} (\omega(\cA_g) + \tau)^2  \right)  
 	\ee	
 	Now we focus on bounding the second term:
 	\be
 	\nr 	
-	&& \pr \left( \frac{1}{1 - \rho}  \sum_{g=0}^{G} \sqrt{n_g} \eta_g\left(\frac{1}{n_g a_g}\right) \norm{\oomega_g}{2} 
-	\geq \frac{(G+1)\sqrt{(2K^2 + 1)}}{(1 - r(\tau))} \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + \tau\right) \right)
+	&& \pr \left( \frac{1}{1 - \rho}  \sum_{g=0}^{G} \sqrt{n_g} \eta_g\left(\mu_g \right) \norm{\w_g}{2} 
+	\geq \frac{C(G+1)\sqrt{(2k_w^2 + 1)k_x^2}}{(1 - r(\tau))} (\max_{g \in [G_+]} \omega(\cA_g) + \tau) \right)
 	\\ \nr 
-	&\leq& \pr \left( \frac{1}{1 - \rho}  \sum_{g=0}^{G} \sqrt{n_g} \eta_g\left(\frac{1}{n_g a_g}\right) \norm{\oomega_g}{2} 
-	\geq \frac{1}{(1 - r(\tau))} \sum_{g=0}^{G} \sqrt{(2K^2 + 1)} \left(\zeta_g k \omega(\cA_g) + \tau\right) \right) 
+	&\leq& \pr \left( \frac{1}{1 - \rho}  \sum_{g=0}^{G} \sqrt{n_g} \eta_g\left(\mu_g \right) \norm{\w_g}{2} 
+	\geq \frac{C}{(1 - r(\tau))} \sum_{g=0}^{G} \sqrt{(2k_w^2 + 1)k_x^2} (\max_{g \in [G_+]} \omega(\cA_g) + \tau) \right) 
 	\\ \nr 
-	&\leq& \pr \left( \sum_{g=0}^{G} \sqrt{n_g} \eta_g\left(\frac{1}{n_g a_g}\right) \norm{\oomega_g}{2} \geq \sum_{g=0}^{G} \sqrt{(2K^2 + 1)} \left(\zeta_g k \omega(\cA_g) + \tau\right) \right) 
+	&\leq& \pr \left( \sum_{g=0}^{G} \sqrt{n_g} \eta_g\left(\mu_g \right) \norm{\w_g}{2} \geq \sum_{g=0}^{G} c_g \sqrt{(2k_w^2 + 1)k_x^2} (\max_{g \in [G_+]} \omega(\cA_g) + \tau) \right) 
 	+ \pr \left( \rho \geq r(\tau) \right)	
 	\\ \label{eq:part2}
-	&\leq& \sum_{g=0}^{G} \pr \left(   \sqrt{n_g} \eta_g\left(\frac{1}{n_g a_g}\right) \norm{\oomega_g}{2} \geq \sqrt{(2K^2 + 1)} \left(\zeta_g k \omega(\cA_g) + \tau\right) \right) 
+	&\leq& \sum_{g=0}^{G} \pr \left(   \sqrt{n_g} \eta_g\left(\mu_g \right) \norm{\w_g}{2} \geq c_g \sqrt{(2k_w^2 + 1)k_x^2} (\max_{g \in [G_+]} \omega(\cA_g) + \tau) \right) 
 	+ \pr \left( \rho \geq r(\tau) \right)		
 	\ee
-	Focusing on the summand of the first term, remember from Definition \ref{def:only} that $\eta_g(\mu_g) = \frac{1}{a_g n_g} \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \quad g \in [G]$ and $a_g \geq 1$: 
+	Focusing on the first term, since $\eta_g(\frac{1}{a_g n_g}) = \frac{1}{a_g n_g} \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \forall g \in [G]$: 
 	\be
 	\label{eq:part3}
-	\pr \left( \norm{\oomega_g}{2} \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}   \geq a_g \sqrt{(2K^2 + 1)n_g} \left(\zeta_g k \omega(\cA_g) + \tau \right) \right) 
-	\leq \sigma_g \exp\left(-\min\left[\nu_g n_g, \frac{\tau^2}{\eta_g^2 k^2}\right]\right)
+	&&\pr \left( \norm{\w_g}{2} \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\w_g}{\norm{\w_g}{2}}   \geq a_g c_g \sqrt{(2k_w^2 + 1)k_x^2 n_g} (\max_{g \in [G_+]} \omega(\cA_g) + \tau)  \right) 
+	\\ \nr 
+	(a_g \geq 1)&\leq& \pr \left( \norm{\w_g}{2} \sup_{\v \in \cB_g} \v^T \X_g^T \frac{\w_g}{\norm{\w_g}{2}}   \geq c_g \sqrt{(2k_w^2 + 1)k_x^2 n_g} (\max_{g \in [G_+]} \omega(\cA_g) + \tau)  \right) 
+	\\ \nr 
+	(\eqref{eq:widthbound} \text{ and } \eqref{eq:omeggg})&\leq& 2\exp(-\nu n_g) + \pi_g \exp(-\tau^2) 
+	\\ \nr 
+	(\sigma_g = \max(\pi_g, 2)) &\leq& \sigma_g \exp(- \min (\nu n_g, \tau^2) )
 	\ee 
 	where we used the intermediate form of Lemma \ref{lemm:mainlem} for  $\tau > 0$.
-	Putting all of the bounds \eqref{eq:part1}, \eqref{eq:part2}, and \eqref{eq:part3} back into the \eqref{eq:bigbound}:
+	Putting all of the bounds \eqref{eq:part1}, \eqref{eq:part2}, and \eqref{eq:part3} back as the upper bound of \eqref{part1}:
 	
 	\be 
 	\nr 
-	&& \sigma_g (G+1) \exp\left(-\min_{g \in [G]} \left(\min\left[\nu_g n_g, \frac{\tau^2}{\eta_g^2 k^2}\right]\right) \right)
-	+ 28 (G+1)\exp\left( -\gamma \min_{g \in [G]} (\omega(\cA_g) + \tau)^2  \right) 
+	(\pi = \max_{g \in [G] } \pi_g)
+	&\leq&2(G+1)\exp(-\nu \min_{g \in [G]} n_g) + \pi (G+1) \exp(-\tau^2) + 
 	\\ \nr 
-	&\leq& \upsilon  \exp\left[\min_{g \in [G]}\left(-\min\left[\nu_g n_g - \log G, \gamma (\omega(\cA_g) + t)^2 , \frac{t^2}{\eta_g^2 k^2}\right]\right)\right] 
+	\quad && 28 (G+1)\exp\left( -\gamma \min_{g \in [G_+]} (\omega(\cA_g) + \tau)^2  \right)
+	\\ \nr 	
+	(\upsilon  = \max(28, \pi), \zeta  = \min(1, \gamma) )
+	&\leq&2\exp(-\nu \min_{g \in [G]} n_g + \log(G+1)) + \upsilon (G+1) \exp(-\zeta \tau^2) 
+	\\ \nr 
+	(\tau = t + \sqrt{\log(G+1)}/\zeta)
+	&\leq&2\exp(-\nu \min_{g \in [G]} n_g + \log(G+1)) + \upsilon \exp(-\zeta t^2) 
+	\\ \nr 
+	(\sigma = \max(2, \upsilon))
+	&\leq& \sigma \exp(- \min(\nu \min_{g \in [G]} n_g - \log(G+1), \zeta t^2) )
 	\ee	
-	where $\upsilon = \max(28, \sigma)$ and $\gamma = \min_{g \in [G] } \gamma_g$ and $\tau = t + \max(\epsilon,\gamma^{-1/2}) \sqrt{\log(G+1)} $ where $\epsilon = k\max_{g \in [G]} \eta_g $. 
-	Note that  $\tau = t + C\sqrt{\log (G+1)}$ increases the sample complexities to the followings:
+ 	Note that setting $\tau = t + \sqrt{\log(G+1)}/\zeta$ increases the sample complexities to the followings:
 	\be 
 	\nr 
-	n > 2 c_0^2 \left(2 \omega(\cA_0) + C\sqrt{\log (G+1)} + t\right)^2, \forall g \in [G]_\setminus: n_g \geq 2c_g^2 (2 \omega(\cA_g) + C\sqrt{\log (G+1)}  + t)^2
-%	\\ \nr 
-%	&\theta_f = 2:& n > 2 (1 - l)^{-2} c_0^2 \left(2 \omega(\cA_0) + C\sqrt{\log G}  + t\right)^2, \forall g \in [G]_\setminus: n_g \geq 2c_g^2 (2 \omega(\cA_g) + C\sqrt{\log G}  + t)^2
+	n > 2 c_0^2 \left(2 \omega(\cA_0) + \sqrt{\log (G+1)}/\zeta + t\right)^2, \forall g \in [G]: n_g \geq 2c_g^2 (2 \omega(\cA_g) + C\sqrt{\log (G+1)}/\zeta  + t)^2
 	\ee 
-	and it also affects step sizes as follows:
-	\be
+	And it also affects step sizes as follows:
+	{\small\be
 	\nr  
-	\mu_0 = \frac{1}{4	n} \times \min_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+C\sqrt{\log (G+1)}  + t}{\sqrt{n_g}}\right)^{-2} , \mu_g =  \frac{1}{2\sqrt{n n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ C\sqrt{\log (G+1)}  + t}{\sqrt{n_g}} \right)^{-1}
-%	\\ \nr 
-%	&\theta_f = 2:& \mu_0 = \frac{1}{4	n} \times \frac{1}{\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+C\sqrt{\log G} + t}{\sqrt{n_g}}\right)^2} , \mu_g = \frac{l\left(1 + c_{0g}\frac{\omega_{0g}+ C\sqrt{\log G}+ t}{\sqrt{n_g}} \right)^{-1}}{8\sqrt{nn_g}\max_{g \in [G]_\setminus} \left(1 + c_{0g} \frac{\omega_{0g}+C\sqrt{\log G}+ t}{\sqrt{n_g}}\right)^{2}} 
-	\ee 
+	\mu_0 = \frac{1}{4	n} \times \min_{g \in [G]} \left(1 + c_{0g} \frac{\omega_{0g}+\sqrt{\log (G+1)}/\zeta  + t}{\sqrt{n_g}}\right)^{-2} , \mu_g =  \frac{1}{2\sqrt{n n_g}} \left(1 + c_{0g}\frac{\omega_{0g}+ \sqrt{\log (G+1)}/\zeta  + t}{\sqrt{n_g}} \right)^{-1}
+	\ee }
 	
 	
 		
 
-\end{proof} 
+
 
 
 
@@ -1035,17 +341,17 @@ Here, we present proofs of each lemma used during the proofs of theorems in Sect
 	So we can rewrite the LHS of \eqref{eq:rhs} as:
 	\be 
 	\nr 
-	\sum_{g=1}^G\frac{n_g}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g}) = \sum_{g=1}^G\frac{n_g}{n}\norm{\ddelta_{0} +  \ddelta_{g}}{2}\xi Q_{2\xi}(\u)
+	\sum_{g=1}^G\frac{n_g}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g}) = \sum_{g=1}^G\frac{n_g}{n}\norm{\ddelta_{0} +  \ddelta_{g}}{2}\xi Q_{2\xi}(\u), \quad \u \in \sphere
 	\ee 
 	With this observation, the lower bound of the Lemma \ref{lemm:shareInc} is a direct consequence of the following two results: 
 	\begin{lemma}\label{paley} Let $\u$ be any unit length vector and suppose $\x$ obeys Definiton \ref{def:obs}. Then for any $\u$, we have
 		\be 
-		Q_{2\xi}(\u) \geq \frac{(\alpha - 2\xi)^2}{4ck^2}.
+		Q_{2\xi}(\u) \geq \frac{(\alpha - 2\xi)^2}{4ck_x^2}.
 		\ee 	
 	\end{lemma}
 	\begin{lemma} \label{incolem main} Suppose Definition \ref{incodef} holds. Then, we have: 
 		\be 
-		\sum_{i=1}^G n_i\norm{\ddelta_0+\ddelta_i}{2}\geq\frac{\ratio\lamin}{3} \left(Gn\norm{\ddelta_0}{2}+\sum_{i=1}^Gn_i\norm{\ddelta_i}{2}\right), \quad \forall i \in [G]: \ddelta_i\in \cC_i.
+		\sum_{g=1}^G \frac{n_g}{n} \norm{\ddelta_0+\ddelta_g}{2}\geq\frac{\ratio\lamin}{3} \left( G\norm{\ddelta_0}{2} + \sum_{g=1}^G \frac{n_g}{n} \norm{\ddelta_g}{2} \right), \quad \forall g \in [G_+]: \ddelta_g \in \cC_g.
 		\ee 
 	\end{lemma}	
 \end{proof}
@@ -1065,125 +371,134 @@ Here, we present proofs of each lemma used during the proofs of theorems in Sect
 		1, & 2a < |s| 
 	\end{cases}
 	\ee 
-	Now:
+	\begin{figure}[th!]
+		\centering
+		\includegraphics[width=.6\textwidth]{./img/funcs.pdf}				
+		\caption{$\indic(|s|> 2a) \leq \psi_a (s) \leq \indic(|s|>a)$}
+		\label{funcs}
+	\end{figure}
+
+	Now using the definition of the marginal tail function we have:
 	\be 	
 	\nr 
-	&&\ex \sup_{\ddelta_{[G]}} \sum_{g=1}^{G} \xi_g  \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right]
+	\ex \sup_{\ddelta \in \cH} \sum_{g=1}^{G} \xi_g  \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right]
+	&=& \ex \sup_{\ddelta \in \cH} \sum_{g=1}^{G} \xi_g  \sum_{i=1}^{n_g} \left[\ex \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq 2\xi_g )   - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right] 
 	\\ \nr 
-	&=& \ex \sup_{\ddelta_{[G]}} \sum_{g=1}^{G} \xi_g  \sum_{i=1}^{n_g} \left[\ex \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq 2\xi_g )   - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right] 
-	\\ \nr 
-	&\leq& 
-	\ex \sup_{\ddelta_{[G]}} \sum_{g=1}^{G} \xi_g  \sum_{i=1}^{n_g} \left[\ex \psi_{\xi_g }(\langle \x, \ddelta_{0g} \rangle)   - \psi_{\xi_g }(\langle \x_{gi}, \ddelta_{0g} \rangle)   \right] 
+	(\text{Figure \ref{funcs}}) &\leq& 
+	\ex \sup_{\ddelta \in \cH} \sum_{g=1}^{G} \xi_g  \sum_{i=1}^{n_g} \left[\ex \psi_{\xi_g }(\langle \x, \ddelta_{0g} \rangle)   - \psi_{\xi_g }(\langle \x_{gi}, \ddelta_{0g} \rangle)   \right] 
 	\\ \nr  
-	&\leq& 
-	2 \ex \sup_{\ddelta_{[G]}} \sum_{g=1}^{G} \xi_g  \sum_{i=1}^{n_g} \epsilon_{gi} \psi_{\xi_g }(\langle \x_{gi}, \ddelta_{0g} \rangle)
+	(\text{Symmetrization \cite{Vaart1996-zl}}) &\leq& 
+	2 \ex \sup_{\ddelta \in \cH} \sum_{g=1}^{G} \xi_g  \sum_{i=1}^{n_g} \epsilon_{gi} \psi_{\xi_g }(\langle \x_{gi}, \ddelta_{0g} \rangle)
 	\\ \nr 
-	&\leq& 
-	2 \ex \sup_{\ddelta_{[G]}} \sum_{g=1}^{G} \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{0g} \rangle
+	(\text{Rademacher comparison principle \cite{Ledoux1991-ix}}) &\leq& 
+	2 \ex \sup_{\ddelta \in \cH} \sum_{g=1}^{G} \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{0g} \rangle
 	\ee  
 	where $\epsilon_{gi}$ are iid copies of Rademacher random variable which are independent of every other random variables and themselves.
-	Now we add back $\frac{1}{n}$ and expand $\ddelta_{0g} = \ddelta_{0} + \ddelta_{g}$:
+
+	Now we add back $\frac{1}{n}$ and expand $\ddelta_{0g} = \ddelta_{0} + \ddelta_{g}$. Also, we substitute $\ddelta \in \cH$ constraint with $\ddelta \in \cC$ because $\cH \subseteq \cC$ where $\cC = \{ \ddelta = (\ddelta_0^T, \dots, \ddelta_G^T)^T \Big| \ddelta_g \in \cC_g \}$. 
 	\be 
 	\nr 
-	\frac{2}{n} \ex \sup_{\ddelta_{[G]} \in \cC_{[G]}} \sum_{g=1}^{G} \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{0g} \rangle
+	\frac{2}{n} \ex \sup_{\ddelta \in \cC} \sum_{g=1}^{G} \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{0g} \rangle
 	&=& \frac{2}{n} \ex \sup_{\ddelta_0 \in \cC_0} \sum_{i=1}^{n} \epsilon_{i} \langle \x_{i}, \ddelta_{0} \rangle
-	+ \frac{2}{n} \ex \sup_{\ddelta_{[G]\setminus} \in \cC_{[G]\setminus}} \sum_{g=1}^{G} \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{g} \rangle
+	+ \frac{2}{n} \ex \sup_{\forall g \in [G]: \ddelta_g \in \cC_g} \sum_{g=1}^{G} \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{g} \rangle
 	\\ \nr 
 	&=&
 	\frac{2}{\sqrt{n}} \ex \sup_{\ddelta_0 \in \cC_0} \sum_{i=1}^{n} \langle \frac{1}{\sqrt{n}} \epsilon_{i} \x_{i}, \ddelta_{0} \rangle
 	+ \frac{2}{\sqrt{n}} \ex \sup_{\ddelta_{[G]\setminus} \in \cC_{[G]\setminus}} \sum_{g=1}^{G}  \sqrt{\frac{n_g}{n}} \sum_{i=1}^{n_g} \langle \frac{1}{\sqrt{n_g}} \epsilon_{gi} \x_{gi}, \ddelta_{g} \rangle
 	\\ \nr 
-	(n_0 := n, \epsilon_{0i} := \epsilon_0, \x_{0i} := \x_i) &=& \frac{2}{\sqrt{n}} \ex \sup_{\ddelta_{[G]} \in \cC_{[G]}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \sum_{i=1}^{n_g} \langle \frac{1}{\sqrt{n_g}} \epsilon_{gi} \x_{gi}, \ddelta_{g} \rangle
+	(n_0 := n, \epsilon_{0i} := \epsilon_0, \x_{0i} := \x_i) &=& \frac{2}{\sqrt{n}} \ex \sup_{\forall g \in [G_+]: \ddelta_g \in \cC_g} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \sum_{i=1}^{n_g} \langle \frac{1}{\sqrt{n_g}} \epsilon_{gi} \x_{gi}, \ddelta_{g} \rangle
 	\\ \nr 
-	(\h_{g} := \frac{1}{\sqrt{n_g}} \sum_{i=1}^{n_g} \epsilon_{gi} \x_{gi}) &=& \frac{2}{\sqrt{n}} \ex \sup_{\ddelta_{[G]} \in \cC_{[G]}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}}  \langle \h_{g}, \ddelta_{g} \rangle
+	(\h_{g} := \frac{1}{\sqrt{n_g}} \sum_{i=1}^{n_g} \epsilon_{gi} \x_{gi}) &=& \frac{2}{\sqrt{n}} \ex \sup_{\forall g \in [G_+]: \ddelta_g \in \cC_g} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}}  \langle \h_{g}, \ddelta_{g} \rangle
 	\\ \nr 
-	(\cA_g \in \cC_g \cap \sphere) &\leq& \frac{2}{\sqrt{n}} \ex \sup_{\ddelta_{[G]} \in \cA_{[G]}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \langle \h_{g}, \ddelta_{g} \rangle \norm{\ddelta_{g}}{2}
+	(\u_g \in \ddelta_g/\norm{\ddelta_g}{2}, \cA_g \in \cC_g \cap \sphere) &\leq& \frac{2}{\sqrt{n}} \ex \sup_{\forall g \in [G_+]: \u_g \in \cA_{g}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \langle \h_{g}, \u_{g} \rangle \norm{\ddelta_{g}}{2}
 	\\ \nr 
-	&\leq& \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \ex_{\h_{g}} \sup_{\ddelta_g \in \cA_g}  \langle \h_{g}, \ddelta_{g} \rangle \norm{\ddelta_{g}}{2}
+	(\sup \sum < \sum \sup) &\leq& \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \ex_{\h_{g}} \sup_{\u_g \in \cA_g}  \langle \h_{g}, \u_{g} \rangle \norm{\ddelta_{g}}{2}
 	\\ \nr 
-	&\leq& \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} c_g k \omega(\cA_g) \norm{\ddelta_{g}}{2}
+	&\leq& \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} c_g k_x \omega(\cA_g) \norm{\ddelta_{g}}{2}
 	\ee
 	Note that the $\h_{gi}$ is a sub-Gaussian random vector which let us bound the $\ex \sup$ using the Gaussian width \cite{trop15} in the last step. 
 \end{proof}
 
 \subsection{Proof of Lemma \ref{lemm:mainlem}}
 \begin{proof} 
-	To avoid cluttering let $h_g(\oomega_g, \X_g) = \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \u_g \rangle $, $e_g = \zeta_g k \omega(\cA_g) + \epsilon_g\sqrt{\log G} + \tau$, where $s_g = \sqrt{\frac{n}{n_g}}\sqrt{(2K^2 + 1)n_g}$.
+	To avoid cluttering let $h_g(\w_g, \X_g) \triangleq \norm{\w_g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \u_g \rangle $ be a random quantity and $e_g(\tau) \triangleq c_g k_x (\omega(\cA_g)+\sqrt{\log (G+1)} + \tau)$, and $s_g \triangleq \sqrt{(2k_w^2 + 1)n_g}$ constants. From the law of total probability, we have:	
 	\be
-	\label{eq:twoterms}
-	\pr\left( h_g(\oomega_g , \X_g) >  e_g s_g \right) 
-	&=& \pr \left( h_g(\oomega_g , \X_g) >  e_g s_g \Big| \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} > s_g \right) \pr\left(\sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} > s_g\right) \\ 
+	\nr 
+	\pr\left( h_g(\w_g , \X_g) >  s_g e_g(\tau) \right) 
+	&=& \pr \left( h_g(\w_g , \X_g) >  s_g e_g(\tau) \Big| \norm{\w_g}{2} > s_g \right) \pr\left(\norm{\w_g}{2} > s_g\right) \\ 
 	\nr
-	&+& \pr \left( h_g(\oomega_g , \X_g) >  e_g s_g \Big| \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} < s_g \right) \pr\left(\sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} < s_g\right) \\ 
+	&+& \pr \left( h_g(\w_g , \X_g) >  s_g e_g(\tau) \Big| \norm{\w_g}{2} < s_g \right) \pr\left(\norm{\w_g}{2} < s_g\right) \\ 
 	\nr 
-	&\leq& \pr\left(\sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} > s_g \right) + \pr \left( h_g(\oomega_g , \X_g) >  e_g s_g \Big| \sqrt{\frac{n}{n_g}} \norm{\oomega_g}{2} < s_g \right) \\
+	&\leq& \pr\left(\norm{\w_g}{2} > s_g \right) + \pr \left( \norm{\w_g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \u_g \rangle >  s_g e_g(\tau) \Big| \norm{\w_g}{2} < s_g \right) \\
 	\nr 
-	&\leq& \pr\left(\norm{\oomega_g}{2} > \sqrt{(2K^2 + 1)n_g}\right) + \pr \left( \sup_{\u_g \in \cC_g \cap \sphere} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \u_g \rangle >  e_g  \right) \\
-	\nr 
-	&\leq& \pr\left(\norm{\oomega_g}{2} > \sqrt{(2K^2 + 1)n_g}\right) + \sup_{\v \in \sphere}\pr \left( \sup_{\u_g \in \cC_g \cap \sphere} \langle \X_g^T \v , \u_g \rangle >  e_g  \right)
+	&\leq& \pr\left(\norm{\w_g}{2} > \sqrt{(2k_w^2 + 1)n_g}\right) + \pr \left( \sup_{\u_g \in \cC_g \cap \sphere} \langle \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \u_g \rangle >  e_g(\tau)  \right) \\
+	\label{eq:twoterms} 
+	&\leq& \pr\left(\norm{\w_g}{2} > \sqrt{(2k_w^2 + 1)n_g}\right) + \sup_{\v \in \sphere}\pr \left( \sup_{\u_g \in \cC_g \cap \sphere} \langle \X_g^T \v , \u_g \rangle >  e_g(\tau)  \right)
 	\ee 
 	Let's focus on the first term. 
-	Since $\oomega_g$ consists of i.i.d. centered unit-variance sub-Gaussian elements with $\normth{\omega_{gi}}{\psi_2} < K$, $\omega_{gi}^2$ is sub-exponential with $\normth{\omega_{gi}}{\psi_1} < 2K^2$. 
-	Let's apply the Bernstein’s inequality to $\norm{\oomega_g}{2}^2 = \sum_{i=1}^{n_g} \omega_{gi}^2$:
+	Since $\w_g$ consists of i.i.d. centered unit-variance sub-Gaussian elements with $\normth{w_{gi}}{\psi_2} < k_w$, $w_{gi}^2$ is sub-exponential with $\normth{\w_{gi}}{\psi_1} < 2k_w^2$. 
+	Let's apply the Bernstein’s inequality \cite{boucheron13} to $\norm{\w_g}{2}^2 = \sum_{i=1}^{n_g} \w_{gi}^2$:
 	\be 
 	\nr 
-	\pr\left( \big| \norm{\oomega_g}{2}^2  - \ex\norm{\oomega_g}{2}^2  \big|  > \tau \right) \leq 
-	2 \exp\left(-\nu_g  \min\left[\frac{\tau^2}{4K^4n_g}, \frac{\tau }{2K^2}\right]\right) 
+	\pr\left( \big| \norm{\w_g}{2}^2  - \ex\norm{\w_g}{2}^2  \big|  > \tau \right) \leq 
+	2 \exp\left(-\nu  \min\left[\frac{\tau^2}{4k_w^4n_g}, \frac{\tau }{2k_w^2}\right]\right) 
 	\ee
-	We also know that $\ex \norm{\omega_g}{2}^2 \leq n_g$ \cite{banerjee14} which gives us:
+	We also know that $\ex \norm{\w_g}{2}^2 \leq n_g$ \cite{vershynin2018high} which gives us:
 	\be
 	\nr 
-	\pr\left( \norm{\oomega_g}{2}  > \sqrt{n_g + \tau } \right) \leq 
-	2 \exp\left(-\nu_g  \min\left[\frac{\tau^2}{4K^4n_g}, \frac{\tau }{2K^2}\right]\right)
+	\pr\left( \norm{\w_g}{2}  > \sqrt{n_g + \tau } \right) \leq 
+	2 \exp\left(-\nu  \min\left[\frac{\tau^2}{4k_w^4n_g}, \frac{\tau }{2k_w^2}\right]\right)
 	\ee	
-	%	Now substitute $\tau = t + \epsilon_g \log G$, where $\epsilon_g \geq 2K^2  \max(\sqrt{\frac{n_g}{\nu_g}}, \frac{1}{\nu_g})$. 
-	%	\be
-	%	\pr\left( \norm{\oomega_g}{2}  > \sqrt{n_g + t + \epsilon_g\log G } \right) 
-	%	&\leq& 2 \exp\left(-\nu_g  \min\left[\frac{(t + \epsilon_g\log G)^2}{4K^4n_g}, \frac{(t + \epsilon_g\log G) }{2K^2}\right]\right) \\ 
-	%	\nr 
-	%	&\leq&2 \exp\left(- \min\left[\frac{(t^2 + \epsilon_g^2 \log G)}{4K^4n_g/\nu_g }, \frac{(t + \epsilon_g\log G) }{2K^2/\nu_g }\right]\right) \\ 
-	%	\nr 
-	%	&\leq&2 \exp\left(\log G - \nu_g \min\left[\frac{t^2}{4K^4n_g}, \frac{t}{2K^2}\right]\right) \\
-	%	\nr 
-	%	&\leq& \frac{2}{G}\exp\left(-\nu_g \min\left[\frac{t^2}{4K^4n_g}, \frac{t}{2K^2}\right]\right)  
-	%	\ee 
-	Finally, we set $\tau = 2K^2 n_g$:
+	Finally, we set $\tau = 2k_w^2 n_g$:
 	\be
 	\nr 
-	%\label{eq:omeggg}
-	\pr\left( \norm{\oomega_g}{2}  > \sqrt{(2K^2 + 1)n_g } \right) 
-	&\leq& 2\exp\left(-\nu_g n_g \right) = \frac{2}{(G+1)} \exp\left(-\nu_g n_g + \log (G+1)\right)
+	\label{eq:omeggg}
+	\pr\left( \norm{\oomega_g}{2}  > \sqrt{(2k_w^2 + 1)n_g } \right) 
+	&\leq& 2\exp\left(-\nu n_g \right) = \frac{2}{(G+1)} \exp\left(-\nu n_g + \log (G+1)\right)
 	\ee 
+%	Finally, we set $\tau = 2k_w^2 (n_g + \frac{\log(G+1)}{\nu_g})$:
+%	\be
+%	\nr 
+%	%\label{eq:omeggg}
+%	&&\pr\left( \norm{\oomega_g}{2}  > \sqrt{(2k_w^2 + 1) (n_g + \frac{\log(G+1)}{\nu_g}) } \right) 
+%	\leq 2\exp\left(-\nu_g \min\left[\frac{\left(n_g + \frac{\log(G+1)}{\nu_g}\right)^2}{n_g}, \left(n_g + \frac{\log(G+1)}{\nu_g}\right) \right] \right) 
+%	\\ \nr
+%	&\leq& 2\exp\left(-\nu_g \min\left[(n_g + \frac{2\log(G+1)}{v_g} + \frac{\log^2(G+1)}{\nu_g^2 n_g}), (n_g + \frac{\log(G+1)}{\nu_g}) \right] \right) 
+%	\\ \nr
+%	&\leq& 2\exp\left(-\nu_g n_g - \log(G+1) \right) 
+%	\\ \nr
+%	&=& \frac{2}{(G+1)} \exp\left(-\nu_g n_g \right)
+%	\ee 
+
 	Now we upper bound the second term of \eqref{eq:twoterms}.
-	Given any fixed $\v \in \sphere$, $\X_g \v$ is a sub-Gaussian random vector with $\normth{\X_g^T \v}{\psi_2} \leq C_gk$ \cite{banerjee14}. 
+	Given any fixed $\v \in \sphere$, $\X_g \v$ is a sub-Gaussian random vector with $\normth{\X_g^T \v}{\psi_2} \leq C_gk_x$ \cite{banerjee14}. 
 	From Theorem 9 of \cite{banerjee14} for any $\v \in \sphere$ we have:
 	\be 
-	%	\label{eq:widthbound}
-	\nr 
-	\pr \left( \sup_{\u_g \in \cA_g} \langle \X_g^T \v , \u_g \rangle >  \upsilon_g C_gk \omega(\cA_g) + t  \right)
-	\leq \pi_g \exp \left( - \left( \frac{t}{\theta_g C_g k \phi_g}\right)^2 \right)
+	\label{eq:widthbound}
+	\pr \left( \sup_{\u_g \in \cA_g} \langle \X_g^T \v , \u_g \rangle >  \upsilon_g C_gk_x \omega(\cA_g) + t  \right)
+	\leq \pi_g \exp \left( - \left( \frac{t}{\theta_g C_g k_x \phi_g}\right)^2 \right)
 	\ee 	
 	where $\phi_g = \sup_{\u_g \in \cA_g} \norm{\u_g}{2}$ and in our problem $\phi_g = 1$. 
-	We now substitute $t = \tau + \epsilon_g \sqrt{\log (G+1)}$ where $\epsilon_g = \theta_g C_g k$.
+	To simplify we take $c_g  = C_g \max(\upsilon_g, \theta_g)$ and then substitute $t = c_g k_x (\tau + \sqrt{\log (G+1)})$:
 	\be 
 	\nr 
-	\pr \left( \sup_{\u_g \in \cA_g} \langle \X_g^T \v , \u_g \rangle >  \upsilon_g C_gk \omega(\cA_g) + \epsilon_g \sqrt{\log (G+1)} + \tau \right)
-	&\leq& \pi_g \exp \left( - \left( \frac{\tau + \epsilon_g \sqrt{\log (G+1)}}{\epsilon_g }\right)^2 \right) \\ 
+	\pr \left( \sup_{\u_g \in \cA_g} \langle \X_g^T \v , \u_g \rangle >  c_gk_x \left(\omega(\cA_g) + \sqrt{\log (G+1)} + \tau\right) \right)
+	&\leq& \pi_g \exp \left( - \left( \tau + \sqrt{\log (G+1)} \right)^2 \right) \\ 
 	\nr 
-	&\leq& \pi_g \exp \left( - \log G - \left( \frac{\tau}{\theta_g C_g k}\right)^2 \right) \\ 
+	&\leq& \pi_g \exp \left( - \log (G+1) - \tau^2 \right) \\ 
 	\nr 
-	&\leq& \frac{\pi_g}{(G+1)} \exp \left( - \left( \frac{\tau}{\theta_g C_g k} \right)^2 \right) 
+	&\leq& \frac{\pi_g}{(G+1)} \exp (-\tau^2)
 	\ee 	
 	Now we put back results to the original inequality \eqref{eq:twoterms}:
 	\be 
 	\nr
-	&& \pr\left( h_g(\oomega_g , \X_g) >  \sqrt{\frac{n}{n_g}} \sqrt{(2K^2 + 1)n_g} \times \left(\upsilon_g C_gk \omega(\cA_g) + \epsilon_g \sqrt{\log (G+1)} +  \tau \right) \right) 
+	&& \pr\left( h_g(\w_g , \X_g) >  \sqrt{(2k_w^2 + 1)n_g} \times c_g k_x \left(\omega(\cA_g)+\sqrt{\log (G+1)} + \tau\right) \right) 
 	\\ \nr 
-	&\leq&  \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu_g  n_g - \log (G+1), \frac{\tau^2}{\theta_g^2 C_g^2 k^2}\right]\right) \\ 
+	&\leq& \frac{2}{(G+1)} \exp\left(-\nu n_g + \log (G+1)\right) + \frac{\pi_g}{(G+1)} \exp\left(-\tau^2\right) \\ 
 	\nr 
-	&\leq& \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu_g  n_g - \log (G+1), \frac{\tau^2}{\eta_g^2 k^2}\right]\right) 
+	&\leq& \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu  n_g - \log (G+1), \tau^2\right]\right) 
 	\ee 
-	where $\sigma_g = \pi_g + 2$, $\zeta_g = \upsilon_g C_g$, $\eta_g = \theta_g C_g$. %, and $\epsilon_g = \max(\eta_g k, 2K^2  \max(\sqrt{\frac{n_g}{\nu_g}}, \frac{1}{\nu_g}))$.\qed 
+	where $\sigma_g = \pi_g + 2$.
 \end{proof}
 
 \subsection{Proof of Lemma \ref{lem:recurse}}
@@ -1273,10 +588,6 @@ The statement of Lemma \ref{lem:gennips} characterizes the distortion in the Euc
 (1 -  \alpha) \norm{\u_g}{2}^2 \leq \frac{1}{n_g}\norm{\X_g\u_g}{2}^2 \leq (1 + \alpha) \norm{\u_g}{2}^2
 \ee 
 where $\alpha = c_g \frac{\omega(\cA_g)}{\sqrt{n_g}}$.
-
-
-
-
 Now the proof for Lemma \ref{lemm:hpub}: 
 \begin{proof}
 	First we upper bound each of the coefficients $\forall  g \in [G]$:
@@ -1406,49 +717,50 @@ Now the proof for Lemma \ref{lemm:hpub}:
 
 \subsection{Proof of Lemma \ref{paley}}
 \begin{proof}
-	To obtain lower bound, we use the Paley--Zygmund inequality for the zero-mean, non-degenerate ($0 < \alpha \leq \ex |\langle \x, \u \rangle|, \u \in \sphere$) sub-Gaussian random vector $\x$ with $\normth{\x}{\psi_2} \leq k$ \cite{trop15}. 
+	To obtain lower bound, we use the Paley--Zygmund inequality for the zero-mean, non-degenerate ($0 < \alpha \leq \ex |\langle \x, \u \rangle|, \u \in \sphere$) sub-Gaussian random vector $\x$ with $\normth{\x}{\psi_2} \leq k_x$ \cite{trop15}. 
 	\be 
 	\nr 
-	Q_{2\xi}(\u)  \geq \frac{(\alpha - 2\xi)^2}{4ck^2}.
+	Q_{2\xi}(\u)  \geq \frac{(\alpha - 2\xi)^2}{4ck_x^2}.
 	\ee 	
 \end{proof}	
 
 \subsection{Proof of Lemma \ref{incolem main}}
 \begin{proof}
-	We split $\Gsm-\cI$ into two groups $\cJ,\cK$. $\cJ$ consists of $\ddelta_i$'s with $\norm{\ddelta_i}{2}\geq 2\norm{\ddelta_0}{2}$ and $\cK=\Gsm-\cI-\cJ$. We use the bounds
-	\be 
-	\norm{\ddelta_0+\ddelta_i}{2}\geq 
+	We split $[G]-\cI$ into two groups $\cJ,\cK$. $\cJ$ consists of $\ddelta_g$'s with $\norm{\ddelta_g}{2}\geq 2\norm{\ddelta_0}{2}$ and $\cK=[G]-\cI-\cJ$. We use the bounds
+	\[
+	\norm{\ddelta_0+\ddelta_g}{2}\geq 
 	\begin{cases}
-		\lamin(\norm{\ddelta_i}{2}+\norm{\ddelta_0}{2}) &\text{if}~i\in \cI
+		\lamin(\norm{\ddelta_g}{2}+\norm{\ddelta_0}{2}) &\text{if}~g\in \cI
 		\\ 
-		\norm{\ddelta_i}{2}/2 &\text{if}~i\in \cJ
+		\norm{\ddelta_g}{2}/2 &\text{if}~g\in \cJ
 		\\
-		0 &\text{if}~i\in \cK			
+		0 &\text{if}~g\in \cK			
 	\end{cases}
-	\ee 
+	\] 
 	This implies
 	\[
-	\sum_{i=1}^G n_i\norm{\ddelta_0+\ddelta_i}{2}\geq \sum_{i\in \cJ}\frac{n_i}{2}\norm{\ddelta_i}{2}+\lamin\sum_{i\in \cI} n_i (\norm{\ddelta_i}{2}+\norm{\ddelta_0}{2}).
+	\sum_{g=1}^G n_g\norm{\ddelta_0+\ddelta_g}{2}\geq \sum_{g\in \cJ}\frac{n_g}{2}\norm{\ddelta_g}{2}+\lamin\sum_{g\in \cI} n_g (\norm{\ddelta_g}{2}+\norm{\ddelta_0}{2}).
 	\]
-	Let $S_\cS=\sum_{i\in \cS}n_i\norm{\ddelta_i}{2}$ for $\cS=\cI,\cJ,\cK$.
-	We know that over $\cK$, $\norm{\ddelta_i}{2}\leq 2\norm{\ddelta_0}{2}$ which implies $S_\cK = \sum_{i\in \cK}n_i\norm{\ddelta_i}{2}\leq 2\sum_{i\in \cK}n_i\norm{\ddelta_0}{2}\leq 2n\norm{\ddelta_0}{2}$. Set $\rinc=\min\{1/2,\lamin\ratio/3\}=\lamin\ratio/3$.  Using $1/2\geq \rinc$, we write:
+	Let $S_\cS=\sum_{g\in \cS}n_g\norm{\ddelta_g}{2}$ for $\cS=\cI,\cJ,\cK$.
+	We know that over $\cK$, $\norm{\ddelta_g}{2}\leq 2\norm{\ddelta_0}{2}$ which implies $S_\cK = \sum_{g\in \cK}n_g\norm{\ddelta_g}{2}\leq 2\sum_{g\in \cK}n_g\norm{\ddelta_0}{2}\leq 2n\norm{\ddelta_0}{2}$. Set $\rinc=\min\{1/2,\lamin\ratio/3\}$. %=\lamin\ratio/3$.  
+	Using $1/2\geq \rinc$, we write:
 	\be 
 	\nr 
-	\sum_{i=1}^G n_i\norm{\ddelta_0+\ddelta_i}{2}
-	&\geq& \rinc S_\cJ +\lamin\sum_{i\in \cI}n_i (\norm{\ddelta_i}{2}+\norm{\ddelta_0}{2})
+	\sum_{g=1}^G n_g\norm{\ddelta_0+\ddelta_g}{2}
+	&\geq& \rinc S_\cJ +\lamin\sum_{g\in \cI}n_g (\norm{\ddelta_g}{2}+\norm{\ddelta_0}{2})
 	\\ \nr 
-	(S_\cK \leq 2n\norm{\ddelta_0}{2}) &\geq& \rinc S_\cJ +\rinc S_\cK - 2\rinc n\norm{\ddelta_0}{2}+\left(\sum_{i\in \cI} n_i\right)\lamin \norm{\ddelta_0}{2}+\lamin S_{\Ic}
+	(S_\cK \leq 2n\norm{\ddelta_0}{2}) &\geq& \rinc S_\cJ +\rinc S_\cK - 2\rinc n\norm{\ddelta_0}{2}+\left(\sum_{g\in \cI} n_g\right)\lamin \norm{\ddelta_0}{2}+\lamin S_{\Ic}
 	\\ \nr 
-	(\lamin\geq \rinc) &\geq& \rinc (S_\cI + S_\cJ + S_\cK)+ \left(\left(\sum_{i\in \cI} n_i\right)\lamin-2\rinc n\right)\norm{\ddelta_0}{2}.
+	(\lamin\geq \rinc) &\geq& \rinc (S_\cI + S_\cJ + S_\cK)+ \left(\left(\sum_{g\in \cI} n_g\right)\lamin-2\rinc n\right)\norm{\ddelta_0}{2}.
 	\ee 
-	Now, observe that, assumption of the Definition \ref{incodef}, $\sum_{i\in \cI} n_i \geq \ratio n$ implies:
+	Now, observe that, assumption of the Definition \ref{incodef}, $\sum_{g\in \cI} n_g \geq \ratio n$ implies:
 	\be 
 	\nr 
-	\left(\sum_{i\in \cI} n_i\right)\lamin-2\rinc n\geq (\ratio\lamin -2\rinc)n\geq \rinc n.
+	\left(\sum_{g\in \cI} n_g\right)\lamin-2\rinc n\geq (\ratio\lamin -2\rinc)n\geq \rinc n.
 	\ee 
 	Combining all, we obtain:
 	\be 
 	\nr 
-	\sum_{i=1}^Gn_i \norm{\ddelta_0+\ddelta_i}{2} \geq \rinc (S_\cI + S_\cJ + S_\cK + \norm{\ddelta_0}{2}) = \rinc(n\norm{\ddelta_0}{2} +\sum_{i=1}^G n_i\norm{\ddelta_i}{2}).
+	\sum_{g=1}^Gn_g \norm{\ddelta_0+\ddelta_g}{2} \geq \rinc (S_\cI + S_\cJ + S_\cK + \norm{\ddelta_0}{2}) = \rinc(n\norm{\ddelta_0}{2} +\sum_{g=1}^G n_g\norm{\ddelta_g}{2}).
 	\ee 
 \end{proof}
