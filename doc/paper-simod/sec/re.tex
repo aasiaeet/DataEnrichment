@@ -1,13 +1,13 @@
 \section{Restricted Eigenvalue Condition}
 \label{sec:re}
-The main assumptions of Theorem \ref{theo:deter} is known as Restricted Eigenvalue (RE) condition in the literature of high-dimensional statistics \cite{banerjee14, nrwy12, raskutti10}:
+The main assumptions of \cref{theo:deter} is known as Restricted Eigenvalue (RE) condition in the literature of high-dimensional statistics \cite{banerjee14, nrwy12, raskutti10}:
 $\inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2 \geq \kappa > 0.$
 %\be
 %\label{eq:recond}
 %\inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2 \geq \kappa > 0.
 %\ee
 The RE condition posits that the minimum eigenvalues of the matrix $\X^T \X$ in directions restricted to $\cH$ is strictly positive.
-In this section, we show that for the design matrix $\X$ defined in \eqref{eq:x}, the RE condition holds with high probability under a suitable geometric condition we call {\em Data EnRichment Incoherence Condition} (DERIC) and for enough number of samples.
+In this section, we show that for the design matrix $\X$ defined in \cref{eq:x}, the RE condition holds with high probability under a suitable geometric condition we call {\em Data EnRichment Incoherence Condition} (DERIC) and for enough number of samples.
 We precisely characterize total and per-group sample complexities required for successful parameter recovery.
 For the analysis, similar to existing work \cite{guba16, mend15, trop15}, we assume the design matrix to be isotropic sub-Gaussian.\footnote{Extension to an-isotropic sub-Gaussian case is straightforward by techniques developed in \cite{banerjee14, ruzh13}.}
 \begin{definition}
@@ -32,10 +32,10 @@ To intuitively illustrate the necessity of such a geometric condition, consider 
 \end{definition}
 
 \begin{remark}
-	Note that the SC condition is satisfied if none of the individual error cones $\cC_g$ intersect with the inverted error cone $-\cC_0$ \cite{guba16, trop15}, i.e., $\forall g, \alpha_g > 0$ in Figure \ref{fig:sc} where 
+	Note that the SC condition is satisfied if none of the individual error cones $\cC_g$ intersect with the inverted error cone $-\cC_0$ \cite{guba16, trop15}, i.e., $\forall g, \theta_g > 0$ in \cref{fig:sc} where 
 	\be 
 	\nr 
-	\cos(\alpha_g) = \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} -\langle \ddelta_0/\norm{\ddelta_0}{2}, \ddelta_g/\norm{\ddelta_g}{2} \rangle.
+	\cos(\theta_g) = \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} -\langle \ddelta_0/\norm{\ddelta_0}{2}, \ddelta_g/\norm{\ddelta_g}{2} \rangle.
 	\ee
 \end{remark}
 Next, we introduce DERIC, a considerably weaker geometric condition compared to SC which leads to recovery of all parameters in the data enriched model. 
@@ -54,14 +54,14 @@ Next, we introduce DERIC, a considerably weaker geometric condition compared to 
 %\ab{It will be great to have a Figure showing the difference between SC and DERIC.}
 
 \begin{remark}
-Comparing to the SC conditions, DERIC holds even if only one of the $\cC_g$s does not intersect with $-\cC_0$. More specifically, DERIC holds if $\exists g, \alpha_g > 0$ in Figure \ref{fig:deric}. Therefore, instead of SC stringent geometric condition, DERIC allows $-\cC_0$ to intersect with an arbitrarily large fraction of the $\cC_g$ cones and as the number of intersections increases, our final error bound becomes looser.
+Comparing to the SC conditions, DERIC holds even if only one of the $\cC_g$s does not intersect with $-\cC_0$. More specifically, DERIC holds if $\exists g, \theta_g > 0$ in \cref{fig:deric}. Therefore, instead of SC stringent geometric condition, DERIC allows $-\cC_0$ to intersect with an arbitrarily large fraction of the $\cC_g$ cones and as the number of intersections increases, our final error bound becomes looser.
 \end{remark}
 
 \subsection{Sample Complexity}
-An alternative to our DE estimator \eqref{eq:super} may be based on $G$ \emph{isolated} superposition model $\y_g = \X_g (\bbeta _0^* + \bbeta _g^*) + \w_g$ each with two components. Now, if SC holds for at least one of the superposition models, i.e., $\exists g, -\cC_0 \cap \cC_g = \emptyset$, one can recover $\hbbe_0$ and plug it in to the remaining $G-1$ superposition estimators to estimate the corresponding $\hbbe_g$s. We call such an estimator, \emph{plugin superposition} estimator. For such a trivial (based on existing literature) estimator, it seems that DERIC has no advantage over SC. But the downfall of such estimator is that it fails to utilize the true coupling structure in the data enriched model, where $\bbeta^*_0$ is involved in all groups. In fact, below we show, the above combination of superposition and plug-in estimators using SC leads to a pessimistic estimates of the sample complexity for $\bbeta^*_0$ recovery.
+An alternative to our DE estimator \cref{eq:super} may be based on $G$ \emph{isolated} superposition model $\y_g = \X_g (\bbeta _0^* + \bbeta _g^*) + \w_g$ each with two components. Now, if SC holds for at least one of the superposition models, i.e., $\exists g, -\cC_0 \cap \cC_g = \emptyset$, one can recover $\hbbe_0$ and plug it in to the remaining $G-1$ superposition estimators to estimate the corresponding $\hbbe_g$s. We call such an estimator, \emph{plugin superposition} estimator. For such a trivial (based on existing literature) estimator, it seems that DERIC has no advantage over SC. But the downfall of such estimator is that it fails to utilize the true coupling structure in the data enriched model, where $\bbeta^*_0$ is involved in all groups. In fact, below we show, the above combination of superposition and plug-in estimators using SC leads to a pessimistic estimates of the sample complexity for $\bbeta^*_0$ recovery.
 \begin{prop}
 	\label{prop:super}
-	Assume observations distributed as defined in Definition \ref{def:obs} and pair-wise SC conditions are satisfied.  Consider each superposition model \eqref{eq:dirtymodel} in isolation; to recover the common parameter $\bbeta _0^*$ plugin superposition requires at least one group $i$ to have $n_i = O(\max(\omega^2(\cA_0), \omega^2(\cA_i)))$. 
+	Assume observations distributed as defined in \cref{def:obs} and pair-wise SC conditions are satisfied.  Consider each superposition model \cref{eq:dirtymodel} in isolation; to recover the common parameter $\bbeta _0^*$ plugin superposition requires at least one group $i$ to have $n_i = O(\max(\omega^2(\cA_0), \omega^2(\cA_i)))$. 
 	To recover the rest of individual parameters, it needs $\forall g \neq i: n_g = O(\omega^2(\cA_g))$ samples. 
 \end{prop}
 In other words, by separate analysis of superposition estimators at least one problem needs to have sufficient samples for recovering the common parameter $\bbeta_0$ and therefore the common parameter recovery does not benefit from the pooled $n$ samples.
@@ -69,8 +69,8 @@ But given the nature of coupling in the data enriched model, we hope to be able 
 Using DERIC and the small ball method \cite{mend15}, a tool from empirical process theory in the following theorem, we get a better sample complexity required for satisfying the RE condition:
 \begin{theorem}
 	\label{theo:re}
-	Let $\x_{gi}$s	be random vectors defined in Definition \ref{def:obs}.
-	Assume DERIC condition of Definition \ref{incodef} holds for error cones $\cC_g$s and $\rinc=\min\{1/2, \lamin\ratio/3\}$.
+	Let $\x_{gi}$s	be random vectors defined in \cref{def:obs}.
+	Assume DERIC condition of \cref{incodef} holds for error cones $\cC_g$s and $\rinc=\min\{1/2, \lamin\ratio/3\}$.
 	Then, for all $\ddelta \in \cH$, when we have enough number of samples as $\forall g \in [G_+]: n_g \geq m_g = O(k_x^6 \alpha^{-6} \rinc^{-2} \omega(\cA_g)^2)$, with probability at least $1 - e^{-n \kappa_{\min}/4}$  we have:
 	\be
 	\nr
@@ -80,12 +80,12 @@ Using DERIC and the small ball method \cite{mend15}, a tool from empirical proce
 \end{theorem}
 
 \begin{remark}
-	Note that $\kappa = \frac{\kappa_{\min}^2}{4}$ is the lower bound of the RE condition of Theorem \ref{theo:deter}, i.e., $0 < \kappa \leq \inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2$ and is determined by the group with the worst individual RE condition. 
+	Note that $\kappa = \frac{\kappa_{\min}^2}{4}$ is the lower bound of the RE condition of \cref{theo:deter}, i.e., $0 < \kappa \leq \inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2$ and is determined by the group with the worst individual RE condition. 
 \end{remark}
 
 \begin{example}
-	{\bf ($L_1$-norm)} The Gaussian width of the spherical cap of a $p$-dimensional $s$-sparse vector is $\omega(\cA) = \Theta(\sqrt{s\log p})$ \cite{banerjee14, vershynin2018high}. Therefore, the number of samples per group and total required for satisfaction of the RE condition in the sparse DE estimator \eqref{sde} is $\forall g \in [G]: n_g \geq m_g = \Theta(s_g \log p)$. 
-	Table \ref{compare} compares sample complexities of sparse-DE estimator with three baselines: plugin superposition estimator of Proposition \ref{prop:super}, G Independent LASSO (GI-LASSO), and Jalali's Dirty Statistical Model (DSM) \cite{jrsr10}. Note that GI-LASSO does not recover the common parameter and DSM needs all groups have same number of samples. 
+	{\bf ($l_1$-norm)} The Gaussian width of the spherical cap of a $p$-dimensional $s$-sparse vector is $\omega(\cA) = \Theta(\sqrt{s\log p})$ \cite{banerjee14, vershynin2018high}. Therefore, the number of samples per group and total required for satisfaction of the RE condition in the sparse DE estimator \cref{exm:sde} is $\forall g \in [G]: n_g \geq m_g = \Theta(s_g \log p)$. 
+	\Cref{compare} compares sample complexities of sparse-DE estimator with three baselines: plugin superposition estimator of \cref{prop:super}, G Independent LASSO (GI-LASSO), and Jalali's Dirty Statistical Model (DSM) \cite{jrsr10}. Note that GI-LASSO does not recover the common parameter and DSM needs all groups have same number of samples. 
 \end{example}
 
 \begin{table}[]
@@ -95,15 +95,15 @@ Using DERIC and the small ball method \cite{mend15}, a tool from empirical proce
 		& \textbf{GI-LASSO} & \textbf{Dirty Stat. Model}                      & \textbf{Plugin Superposition}                                                                                                           & \textbf{Sparse DE} \\ \hline
 		\multicolumn{1}{|l|}{\textbf{$m_g$}} & $s_{0g} \log p$   & $G \max_{g \in [G]} s_{0g} \log(p)$ & \begin{tabular}[c]{@{}c@{}}$\exists i \in [G]: \max(s_0, s_i) \log p$ \\ $\forall g \neq i: s_{g} \log p$\end{tabular} & $s_{g} \log p$     \\ \hline
 	\end{tabular}
-	\caption{Comparison of the order of per group number of samples (sample complexities) of various methods for recovering sparse DE parameters. Let $s_{0g} = |\text{support}(\bbeta^*_0 + \bbeta^*_g)|$ be the superimposed support where $s_0, s_g \leq s_{0g} \leq \max(s_0, s_g)$.}
+	\caption{Comparison of the order of per group number of samples (sample complexities) of various methods for recovering sparse DE parameters. Let $s_{0g} = |\text{support}(\bbeta^*_0 + \bbeta^*_g)|$ be the superimposed support where $s_0, s_g \leq \max(s_0, s_g) \leq s_{0g}$.}
 	\label{compare}
 \end{table}
 
 %Sparse plus low rank example and sample complexity comparison table. 
 
 
-\subsection{Proof of Theorem \ref{theo:re}}
-Let's simplify the LHS of the RE condition:% \eqref{eq:recond}: 
+\subsection{Proof of \cref{theo:re}}
+Let's simplify the LHS of the RE condition:% \cref{eq:recond}: 
 \be 
 \nr 
 \frac{1}{\sqrt{n}} \norm{\X \ddelta}{2} 
@@ -119,31 +119,33 @@ Let's simplify the LHS of the RE condition:% \eqref{eq:recond}:
 where to avoid cluttering we denoted $\ddelta_{0g} = \ddelta_0 + \ddelta_g$ and $\xi_g = \xi \norm{\ddelta_{0g}}{2} > 0$.
 %where $\ddelta_0 \in \cC_0$ and $\ddelta_g \in \cC_g$.
 Now we add and subtract the corresponding per-group marginal tail function, $Q_{\xi_g}(\ddelta_{0g}) = \pr(|\langle \x, , \ddelta_{0g} \rangle| > \xi_g)$ and take $\inf$: 
-\be 
+\bea 
 \nr
 \inf_{\ddelta \in \cH} \frac{1}{\sqrt{n}} \norm{\X \ddelta}{2}
-&\geq& \inf_{\ddelta\in \cH}\sum_{g=1}^{G}  \frac{n_g}{n}  \xi_g  Q_{2 \xi_g}(\ddelta_{0g}) 
+&\geq \inf_{\ddelta\in \cH}\sum_{g=1}^{G}  \frac{n_g}{n}  \xi_g  Q_{2 \xi_g}(\ddelta_{0g}) 
 -	\sup_{\ddelta\in \cH} \frac{1}{n} \sum_{g=1}^{G}  \xi_g  \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq   \xi_g)  \right]
 \\ \label{eq:long}
-&=& t_1(\X)-t_2(\X)
-\ee 
-For the ease of exposition we consider the LHS of \eqref{eq:long}  as the difference of two terms, i.e., $t_1(\X) - t_2(\X)$ and in the followings we lower bound the first term $t_1$ and upper bound the second term $t_2$. 
+&= t_1(\X)-t_2(\X) 
+\eea 
+For the ease of exposition we consider the LHS of \cref{eq:long}  as the difference of two terms, i.e., $t_1(\X) - t_2(\X)$ and in the followings we lower bound the first term $t_1$ and upper bound the second term $t_2$. 
 
 \subsubsection{Lower Bounding the First Term}
-Our main result is the following lemma which uses the DERIC condition of the Definition \ref{incodef} and provides a lower bound for the first term $t_1(\X)$:
+Our main result is the following lemma which uses the DERIC condition of the \cref{incodef} and provides a lower bound for the first term $t_1(\X)$:
 \begin{lemma}
 	\label{lemm:shareInc} 
 	Suppose DERIC holds. Let $\rinc=\frac{\lamin\ratio}{3}$. For any $\ddelta \in \cH$, we have: 
-	\be 
+	\beq 
 	\label{eq:rhs}
 	\sum_{g=1}^G\frac{n_g}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g}) \geq \rinc\xi \frac{(\alpha - 2\xi)^2}{4ck_x^2}\sum_{g=0}^n \frac{n_g}{n}\norm{\ddelta_g}{2},
-	\ee 	
+	\eeq 	
 \end{lemma}
-Lemma \ref{lemm:shareInc} implies that $t_1(\X)=\inf_{\ddelta\in \cH} \sum_{g=1}^G\frac{n_G}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g})$ satisfies the same RHS bound of \eqref{eq:rhs}.
+\cref{lemm:shareInc} implies that $t_1(\X)$
+%$t_1(\X)=\inf_{\ddelta\in \cH} \sum_{g=1}^G\frac{n_G}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g})$ 
+is lower bounded by the same RHS bound of \cref{eq:rhs}.
 
 \subsubsection{Upper Bounding the Second Term}
 First we show $t_2(\X)$ satisfies the bounded difference property defined in Section 3.2. of \cite{boucheron13}, i.e., by changing each of $\x_{gi}$ the value of $t_2(\X)$ at most change by one. 
-We rewrite $t_2$ as $t_2(\X) = \sup_{\ddelta \in \cH} g_\delta(\X)$ where $g_\delta\left(\X \right)$ is the argument of $\sup$ in \eqref{eq:long}.
+We rewrite $t_2$ as $t_2(\X) = \sup_{\ddelta \in \cH} g_\delta(\X)$ where $g_\delta\left(\X \right)$ is the argument of $\sup$ in \cref{eq:long}.
 Now we denote the design matrix resulted from replacement of $k$th sample from $j$th group $\x_{jk}$ with another sample $\x'_{jk}$ by $\X'_{jk}$. Then our goal is to show $\forall j \in [G], k \in [n_j], \sup_{\X, \x_{jk}'} |t_2\left(\X \right)  - t_2(\X'_{jk} )|  \leq c_i$ for some constant $c_i$. 
 Note that for bounded functions $f, g: \cX \rightarrow \reals$, we have $|\sup_{\cX} f - \sup_{\cX} g| \leq \sup_{\cX} |f - g|$. 
 Therefore:
@@ -159,16 +161,16 @@ Therefore:
 \\ \nr 
 &\leq& \frac{\xi}{n} \sup_{j} \sup_{\ddelta \in \cH} \norm{\ddelta_0}{2} + \norm{\ddelta_j}{2}
 \\ \nr 
-(\ddelta \in \cH) &=& \xi \left(\frac{1}{n} + \frac{1}{{n_j}}\right) 
+(\ddelta \in \cH) &\leq& \xi \left(\frac{1}{n} + \frac{1}{{n_j}}\right) 
 %\\ \nr 
 \leq  \frac{2\xi}{n}
 \ee 
-Note that for $\ddelta \in \cH$ we have $\norm{\ddelta_0}{2} + \frac{n_g}{n}\norm{\ddelta_g}{2} \leq 1$ which results in $\norm{\ddelta_0}{2} \leq 1$ and $\norm{\ddelta_g}{2} \leq \frac{n}{n_g}$. 
+Note that for $\ddelta \in \cH$ we have $\norm{\ddelta_0}{2} + \frac{n_g}{n}\norm{\ddelta_g}{2} \leq 1$ which results in $\norm{\ddelta_0}{2} \leq 1$ and $\norm{\ddelta_g}{2} \leq \frac{n}{n_g}$ which justifies the last inequality. 
 Now, we can invoke the bounded difference inequality from Theorem 6.2 of \cite{boucheron13} which says that with probability at least $1 - e^{-\tau^2/2}$ we have: $t_2(\X) \leq \ex t_2(\X) + \frac{\tau}{\sqrt{n}}$. 
 Having this concentration bound, it is enough to bound the expectation of $t_2(\X)$ using the following lemma:
 \begin{lemma}
 	\label{lemm:secTerm}
-	For the random vector $\x$ of Definition \ref{def:obs}, we have the following bound:
+	For the random vector $\x$ of \cref{def:obs}, we have the following bound:
 	\be 
 	\nr 
 	\frac{2}{n} \ex \sup_{\ddelta \in \cH} \sum_{g=1}^{G} \xi_g \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right]
@@ -176,76 +178,9 @@ Having this concentration bound, it is enough to bound the expectation of $t_2(\
 	\ee 
 \end{lemma}
 
+\subsubsection{Continuing the Proof of \cref{theo:re}}
+Define $q \triangleq \frac{(\alpha - 2\xi)^2}{4ck^2}$. Putting back bounds of $t_1(\X)$ and $t_2(\X)$ together from \cref{lemm:shareInc,lemm:secTerm}, with probability at least $1 - e^{-\frac{\tau^2}{2}}$ we have:
 
-%Therefore with probability at least $1 - e^{-\frac{\tau^2}{2}}$ we have: $h_g(\X) \leq \ex h_g(\X) + \frac{\tau }{\sqrt{n_g}}$ \cite{boucheron13}. 
-%Having this concentration bound, it is enough to bound the expectation of the second term. 
-%Following lemma provides us with the bound on the expectation.
-%\begin{lemma}
-%	\label{lemm:secTerm}
-%	For the random vector $\x$ of Definition \ref{def:obs}, we have the following bound:
-%	\be 
-%	\nr 
-%	\frac{\xi_g }{n_g} \ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right]
-%	\leq \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} c_g k \omega(\cA_g) \norm{\ddelta_{g}}{2}
-%	\ee 
-%\end{lemma}
-%
-%\begin{proof}\renewcommand{\qedsymbol}{} 
-%	\label{sec:proofSecTerm2}
-%	Consider the following soft indicator function which we use in our derivation:
-%	\be
-%	\nr  
-%	\psi_a (s) = 
-%	\begin{cases}
-%		0, & |s| \leq a \\
-%		(|s| - a)/a, & a \leq |s| \leq 2 a \\ 
-%		1, & 2a < |s| 
-%	\end{cases}
-%	\ee 
-%	Now:
-%	\be 	
-%	\nr 
-%	&&\ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g}  \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right]
-%	\\ \nr 
-%	&=& \ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g}  \sum_{i=1}^{n_g} \left[\ex \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq 2\xi_g )   - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right] 
-%	\\ \nr 
-%	&\leq& 
-%	\ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} \sum_{i=1}^{n_g} \left[\ex \psi_{\xi_g }(\langle \x, \ddelta_{0g} \rangle)   - \psi_{\xi_g }(\langle \x_{gi}, \ddelta_{0g} \rangle)   \right] 
-%	\\ \nr  
-%	&\leq& 
-%	2 \ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g}  \sum_{i=1}^{n_g} \epsilon_{gi} \psi_{\xi_g }(\langle \x_{gi}, \ddelta_{0g} \rangle)
-%	\\ \nr 
-%	&\leq& 
-%	\frac{2}{\xi_g} \ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{0g} \rangle
-%	\ee  
-%	where $\epsilon_{gi}$ are iid copies of Rademacher random variable which are independent of every other random variables and themselves.
-%	Now we add back $\frac{1}{n_g}$ and $\xi_g$ and expand $\ddelta_{0g} = \ddelta_{0} + \ddelta_{g}$:
-%	\be 
-%	\nr 
-%	\frac{2}{n_g} \ex \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g}  \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{0g} \rangle
-%	&=& \frac{2}{n_g} \ex \sup_{\ddelta_0 \in \cC_0} \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{0} \rangle
-%	+ \frac{2}{n_g} \ex \sup_{\ddelta_g \in \cC_g} \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{g} \rangle
-%	\\ \nr 
-%	&=& \frac{2}{\sqrt{n_g}} \ex \sup_{\ddelta_0 \in \cC_0}  \langle \frac{1}{\sqrt{n_g}} \sum_{i=1}^{n_g} \epsilon_{gi} \x_{gi}, \ddelta_{0} \rangle
-%	+ \frac{2}{\sqrt{n_g}} \ex \sup_{\ddelta_g \in \cC_g}   \langle \frac{1}{\sqrt{n_g}} \sum_{i=1}^{n_g} \epsilon_{gi} \x_{gi}, \ddelta_{g} \rangle
-%	\\ \nr 
-%	(\h_{g} := \frac{1}{\sqrt{n_g}} \sum_{i=1}^{n_g} \epsilon_{gi} \x_{gi}) &=& \frac{2}{\sqrt{n_g}} \ex \sup_{\ddelta_0 \in \cC_0}  \langle \h_g, \ddelta_{0} \rangle
-%	+ \frac{2}{\sqrt{n_g}} \ex \sup_{\ddelta_g \in \cC_g}   \langle \h_g, \ddelta_{g} \rangle
-%	\\ \nr 
-%	&=& \frac{2}{\sqrt{n_g}} \ex \sup_{\ddelta_0 \in \cC_0}  \langle \h_g, \ddelta_{0} \rangle
-%	+ \frac{2}{\sqrt{n_g}} \ex \sup_{\ddelta_g \in \cC_g}   \langle \h_g, \ddelta_{g} \rangle
-%	\\ \nr 
-%	(\cA_g \in \cC_g \cap \sphere) &\leq& \frac{2}{\sqrt{n}} \ex \sup_{\ddelta_{[G]} \in \cA_{[G]}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \langle \h_{g}, \ddelta_{g} \rangle \norm{\ddelta_{g}}{2}
-%	\\ \nr 
-%	&\leq& \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \ex_{\h_{g}} \sup_{\ddelta_g \in \cA_g}  \langle \h_{g}, \ddelta_{g} \rangle \norm{\ddelta_{g}}{2}
-%	\\ \nr 
-%	&\leq& \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} c_g k \omega(\cA_g) \norm{\ddelta_{g}}{2}
-%	\ee
-%	Note that the $\h_{gi}$ is a sub-Gaussian random vector which let us bound the $\ex \sup$ using the Gaussian width \cite{trop15} in the last step. 
-%\end{proof}
-
-\subsubsection{Continuing the Proof of Theorem \ref{theo:re}}
-Define $q \triangleq \frac{(\alpha - 2\xi)^2}{4ck^2}$. Putting back bounds of $t_1(\X)$ and $t_2(\X)$ together from Lemma \ref{lemm:shareInc} and \ref{lemm:secTerm}, with probability at least $1 - e^{-\frac{\tau^2}{2}}$ we have:
 \be
 \nr 
 \inf_{\ddelta \in \cH} \frac{1}{\sqrt{n}} \norm{\X \ddelta}{2}
@@ -267,19 +202,16 @@ Define $q \triangleq \frac{(\alpha - 2\xi)^2}{4ck^2}$. Putting back bounds of $t
 \ee
 where $\kappa_{\min} = \min_{g\in [G]} \kappa_g$. To conclude the proof, take $\tau = \sqrt{n} \kappa_{\min}/2$. 
 
-Note that all $\kappa_g$s should be bounded away from zero.
+To satisfy the RE condition all $\kappa_g$s should be bounded away from zero.
 To this end we need the following sample complexities $\forall g \in [G_+]: \left(\frac{2 c_g k }{\rinc \xi q}\right)^2 \omega(\cA_g)^2 \leq n_g $ where by taking $\xi = \frac{\alpha}{6}$ simplifies to:
 \be 
-%	\nr 
-%	\left(\frac{C_0 K^3 }{\lambda_{\min} \alpha^3} \right)^2 \omega(\cA_0)^2 
-%	&\leq& n 
-%	\\ \nr 
+\nr 
 \forall g \in [G_+]: \quad O\left(k^6 \rinc^{-2} \alpha^{-6} \omega(\cA_g)^2\right) &\leq& n_g 
 \ee 
 
 
 
-%\subsection{Proof of Theorem \ref{theo:ub} with $\frac{n_g}{n}$}
+%\subsection{Proof of Theorem \cref{theo:ub} with $\frac{n_g}{n}$}
 %\begin{proof}	
 %	%First we provide an upper bound for the expectation of $2\oomega^T \X\ddelta$ and in the next step we should concentration around the mean by large deviation bound. 
 %From now on, to avoid cluttering the notation assume $\oomega = \oomega_0$.
@@ -318,7 +250,7 @@ To this end we need the following sample complexities $\forall g \in [G_+]: \lef
 %\ee 
 %
 %To avoid cluttering we name $h_g(\oomega_g, \X_g) =  \norm{\oomega_g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\oomega_g}{\norm{\oomega_g}{2}}, \u_g \rangle $ and $e_g(\tau) =  \sqrt{(2K^2 + 1)n_g} \left(\upsilon_g C_gk \omega(\cA_g) + \epsilon_g \sqrt{\log G} + \tau \right)$.
-%Then from \eqref{eq:maxex}, we have: {\color{red} This step won't work.
+%Then from \cref{eq:maxex}, we have: {\color{red} This step won't work.
 %\be
 %\nr  
 %\pr \left(\frac{2}{n} \sup_{\ddelta \in \cH} \oomega^T \X\ddelta >  \frac{2}{n} \max_{g \in [G]} \sqrt{\frac{n}{n_g}} e_g(\tau) \right) 

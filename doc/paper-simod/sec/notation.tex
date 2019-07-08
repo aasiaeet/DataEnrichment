@@ -201,7 +201,7 @@
 \newcommand{\eepsilon}{\boldsymbol{\epsilon}}
 %\newcommand{\norm}[2]{\ensuremath \|#1\|_{#2}}
 \newcommand{\no}[1]{\norm{#1}{}}
-\newcommand{\myref}[1]{(\ref{#1})}
+\newcommand{\myref}[1]{(\cref{#1})}
 \newcommand{\del}[2]{\frac{\partial #1}{\partial #2}}
 
 
@@ -282,7 +282,7 @@
 \newcommand{\cx}{{\hat{x}}}
 \newcommand{\cy}{{\hat{y}}}
 \newcommand{\bp}{{\bar{p}}}
-\newcommand{\eqn}[1]{(\ref{eq:#1})}
+\newcommand{\eqn}[1]{(\cref{eq:#1})}
 \newcommand {\commentout}[1] {}
 
 %------------------------------------------
@@ -347,8 +347,12 @@
 \newcommand{\nr}{\nonumber}
 \newcommand{\be}{\begin{eqnarray}}
 \newcommand{\ee}{\end{eqnarray}}
-\newcommand{\bea}{\begin{eqnarray}}
-\newcommand{\eea}{\end{eqnarray}}
+%\newcommand{\bea}{\begin{align}}
+%\newcommand{\eea}{\end{align}}
+
+\def\bea#1\eea{\begin{align}#1\end{align}}
+
+
 \newcommand{\beaa}{\begin{eqnarray*}}
 \newcommand{\eeaa}{\end{eqnarray*}}
 \newcommand{\bnad}{\begin{nad}}
@@ -375,21 +379,21 @@
 \newcommand{\latop}[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
 
 
-%\newcommand{\Th}[1]{Theorem~\ref{#1}} % when starting a sentence
-%\renewcommand{\th}[1]{Theorem~\ref{#1}}
-%\newcommand{\ths}[2]{Theorems~\ref{#1} and~\ref{#2}}
-%\newcommand{\thst}[2]{Theorems~\ref{#1}-\ref{#2}}
-%\newcommand{\lem}[1]{Lemma~\ref{#1}}
-%\newcommand{\prop}[1]{Proposition~\ref{#1}}
-%\newcommand{\defin}[1]{Definition~\ref{#1}}
-%\newcommand{\eq}[1]{equation~(\ref{#1})}
-%\newcommand{\ineq}[1]{inequality~(\ref{#1})}
-%\newcommand{\Ineq}[1]{Inequality~(\ref{#1})}
-%\newcommand{\ineqs}[2]{inequalities~(\ref{#1}) and~(\ref{#2})}
-%\newcommand{\Eq}[1]{Equation~(\ref{#1})}
-%\newcommand{\eqs}[2]{equations~(\ref{#1}) and~(\ref{#2})}
-%\newcommand{\eqss}[3]{equations~(\ref{#1}), (\ref{#2}) and~(\ref{#3})}
-%\newcommand{\eqst}[2]{equations~(\ref{#1})-(\ref{#2})}
+%\newcommand{\Th}[1]{Theorem~\cref{#1}} % when starting a sentence
+%\renewcommand{\th}[1]{Theorem~\cref{#1}}
+%\newcommand{\ths}[2]{Theorems~\cref{#1} and~\cref{#2}}
+%\newcommand{\thst}[2]{Theorems~\cref{#1}-\cref{#2}}
+%\newcommand{\lem}[1]{Lemma~\cref{#1}}
+%\newcommand{\prop}[1]{Proposition~\cref{#1}}
+%\newcommand{\defin}[1]{Definition~\cref{#1}}
+%\newcommand{\eq}[1]{equation~(\cref{#1})}
+%\newcommand{\ineq}[1]{inequality~(\cref{#1})}
+%\newcommand{\Ineq}[1]{Inequality~(\cref{#1})}
+%\newcommand{\ineqs}[2]{inequalities~(\cref{#1}) and~(\cref{#2})}
+%\newcommand{\Eq}[1]{Equation~(\cref{#1})}
+%\newcommand{\eqs}[2]{equations~(\cref{#1}) and~(\cref{#2})}
+%\newcommand{\eqss}[3]{equations~(\cref{#1}), (\cref{#2}) and~(\cref{#3})}
+%\newcommand{\eqst}[2]{equations~(\cref{#1})-(\cref{#2})}
 %\newcommand{\sect}[1]{Section~\ref{#1}}
 %\newcommand{\subsect}[1]{Subsection~\ref{#1}}
 

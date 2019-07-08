@@ -1,7 +1,7 @@
 
 \section{Estimation Algorithm}
 \label{sec:opt}
-We propose \emph{Data enrIChER} (\dc) a projected block gradient descent algorithm, Algorithm \ref{alg2}, where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq d_g\}$ where $d_g = f_g(\bbeta_g^*)$ and is dropped to avoid cluttering. In practice, $d_g$ can be determined by cross-validation.
+We propose \emph{Data enrIChER} (\dc) a projected block gradient descent algorithm, \cref{alg2}, where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq d_g\}$ where $d_g = f_g(\bbeta_g^*)$ and is dropped to avoid cluttering. In practice, $d_g$ can be determined by cross-validation.
 
 \begin{algorithm}[t]
 	\caption{  \dc }
@@ -45,10 +45,10 @@ Let's $\ddelta^{(t)} = \bbeta^{(t)} - \bbeta^*$ be the error of  iteration $t$ o
 	\ee
 	where $\cB_g =  \cC_g \cap \ball$ is the intersection of the error cone and the unit ball.% and $\oomega_0 := \oomega$.
 \end{definition}
-In the following theorem, we establish a deterministic bound on iteration errors  $\norm{\ddelta_g^{(t)}}{2}$ which depends on constants defined in Definition \ref{def:only} where to simplify the notation we drop $\mu_g$ arguments. 
+In the following theorem, we establish a deterministic bound on iteration errors  $\norm{\ddelta_g^{(t)}}{2}$ which depends on constants defined in \cref{def:only} where to simplify the notation we drop $\mu_g$ arguments. 
 \begin{theorem}
 	\label{theo:iter}
-	For Algorithm \ref{alg2} initialized by $\bbeta ^{(1)} = \0$, we have the following deterministic bound for the error at iteration $t + 1$:
+	For \cref{alg2} initialized by $\bbeta ^{(1)} = \0$, we have the following deterministic bound for the error at iteration $t + 1$:
 	{\be
 %	\label{eq:singleiter}
 	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
@@ -70,59 +70,59 @@ In the following theorem, we establish a deterministic bound on iteration errors
 		\norm{\ddelta_0^{(t+1)}}{2} &\leq&   \left(\rho_0(\mu_0) \norm{\ddelta_0^{(t)}}{2} + \xi_0(\mu_0) \norm{\oomega_0}{2} + \mu_0 \sum_{g=1}^{G}  \frac{\phi_g(\mu_g)}{\mu_g} \norm{\ddelta_g^{(t)}}{2}  \right)
 		\ee 
 	\end{lemma}
-	By recursively applying the result of Lemma \ref{lem:recurse}, we get the following deterministic bound which depends on constants defined in Definition \ref{def:only}: 	
-	\be 
+	By recursively applying results of \cref{lem:recurse}, we get the following deterministic bound which depends on constants defined in \cref{def:only}: 	
+	{\small\be 
 	\nr 
 	b_{t+1} = \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2} 
 	&\leq&  \left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g\right)  \norm{\ddelta_0^{(t)}}{2} + \sum_{g=1}^{G} \left(\sqrt{\frac{n_g}{n}} \rho_g + \mu_0 \frac{\phi_g}{\mu_g} \right) \norm{\ddelta_g^{(t)}}{2} + \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}}  \xi_g \norm{\oomega_g}{2} 
 %	\\ \label{eq:complicated}
 	\\ \nr
 	&\leq&  \rho \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t)}}{2} + \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}}  \xi_g \norm{\oomega_g}{2} 
-	\ee	
+	\ee	}
 	where $	\rho = \max\left(\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g, \max_{g \in [G]} \left[\rho_g + \sqrt{\frac{n}{n_g}}  \frac{\mu_0}{\mu_g} \phi_g \right]  \right)$. We have:
-	\be
+	\bea
 	\nr  
 	b_{t+1}
-	&\leq&  \rho b_{t} +  \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} \\ \nr 
-	&\leq& ( \rho)^2 b_{t-1}  + ( \rho + 1)  \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} \\ \nr
-	&\leq& ( \rho)^t b_1  + \left(\sum_{i = 0}^{t-1} ( \rho)^i \right)   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} \\ \nr 
-	&=& ( \rho)^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}} \norm{\bbeta ^1_g  - \bbeta ^*_g}{2}  + \left(\sum_{i = 0}^{t-1} ( \rho)^i \right)     \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} \\ \label{eq:singleiter} 
-	(\bbeta ^1  = 0) &\leq& ( \rho)^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}} \norm{\bbeta ^*_g}{2}   + \frac{1 - ( \rho)^t}{1 -  \rho}   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} 
-	\ee	
+	&\leq  \rho b_{t} +  \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} \\ \nr 
+	&\leq \rho^2 b_{t-1}  + ( \rho + 1)  \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} \\ \nr
+	&\leq \rho^t b_1  + \left(\sum_{i = 0}^{t-1} \rho^i \right)   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} \\ \nr 
+	&= \rho^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}} \norm{\bbeta ^1_g  - \bbeta ^*_g}{2}  + \left(\sum_{i = 0}^{t-1} \rho^i \right)     \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} \\ \label{eq:singleiter} 
+	(\bbeta ^1  = 0) &\leq \rho^t \sum_{g=0}^{G}\sqrt{\frac{n_g}{n}} \norm{\bbeta ^*_g}{2}   + \frac{1 - \rho^t}{1 -  \rho}   \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \xi_g \norm{\oomega_g}{2} 
+	\eea
 	
 \end{proof}
 
 
 
-The RHS of \eqref{eq:singleiter} consists of two terms.
+The RHS of \cref{eq:singleiter} consists of two terms.
 If we keep $\rho < 1$, the first term approaches zero fast, and the second term determines the bound. 
-In the following, we show that for specific choices of step sizes $\mu_g$s we can keep $\rho < 1$ with high probability and the second term can be upper bounded using the analysis of Section \ref{sec:error}.
-More specifically, the first term corresponds to the optimization error which shrinks in every iteration while the second term is of the same order of the upper bound of the statistical error characterized in Theorem \ref{theo:calcub}.
+In the following, we show that for specific choices of step sizes $\mu_g$s we can keep $\rho < 1$ with high probability and the second term can be upper bounded using the analysis of \cref{sec:error}.
+More specifically, the first term corresponds to the optimization error which shrinks in every iteration while the second term is of the same order of the upper bound of the statistical error characterized in \cref{theo:calcub}.
 
 One way for having $\rho < 1$ is to keep all arguments of $\max(\cdots)$  defining $\rho$ strictly below $1$. %, i.e., $\rho_g < 1/\theta_f $.
-To this end, we first establish high probability upper bound for $\rho_g$, $\eta_g$, and $\phi_g$ (in the Appendix \ref{twolems}) and then show that with enough number of samples and proper step sizes $\mu_g$, $\rho$ can be kept strictly below one with high probability. %In Section~\ref{sec:expds}, we empirically illustrate such geometric convergence.
-The high probability bounds for constants in Definition \ref{def:only} and the deterministic bound of Theorem \ref{theo:iter} leads to the following theorem which shows that for enough number of samples, of the same order as the statistical sample complexity of Theorem \ref{theo:re}, we can keep $\rho$ below one and have geometric convergence.
+To this end, we first establish high probability upper bound for $\rho_g$, $\eta_g$, and $\phi_g$ (in the \cref{twolems}) and then show that with enough number of samples and proper step sizes $\mu_g$, $\rho$ can be kept strictly below one with high probability. %In Section~\cref{sec:expds}, we empirically illustrate such geometric convergence.
+The high probability bounds for constants in \cref{def:only} and the deterministic bound of \cref{theo:iter} leads to the following theorem which shows that for enough number of samples, of the same order as the statistical sample complexity of  \cref{theo:re}, we can keep $\rho$ below one and have geometric convergence.
 
 
 
 
 
-%The following theorems uses Lemmas \ref{lemm:hpub} and \ref{lemm:mainlem} and shows for enough number of samples we can keep $\theta_f \rho$ below one.
-%Bounds on $\rho_g\left(\frac{1}{n_g}\right)$ and $\eta_g\left(\frac{1}{n_g}\right)$ suggest that with enough number of samples, learning rate of $\mu_g = \frac{1}{n_g}$ leads to a linear rate of convergence to a constant times the statistical error bound in \eqref{eq:singleiter}.
+%The following theorems uses Lemmas \cref{lemm:hpub} and \cref{lemm:mainlem} and shows for enough number of samples we can keep $\theta_f \rho$ below one.
+%Bounds on $\rho_g\left(\frac{1}{n_g}\right)$ and $\eta_g\left(\frac{1}{n_g}\right)$ suggest that with enough number of samples, learning rate of $\mu_g = \frac{1}{n_g}$ leads to a linear rate of convergence to a constant times the statistical error bound in \cref{eq:singleiter}.
 %The following theorem elaborates the result.
-%Using Lemma \ref{lemm:hpub} and \ref{lemm:mainlem} bounds
+%Using Lemma \cref{lemm:hpub} and \cref{lemm:mainlem} bounds
 %the following theorem shows that for a specific choice of step-sizes as $\mu_g = \frac{1}{n_g}$, $\rho_{\max} < 1$ with high probability and error of each iteration $\norm{\ddelta^{(t+1)}}{2}$ reaches to a scaled upper bound of statistical error $\norm{\ddelta}{2}$ exponentially fast.
 \begin{theorem}
 	\label{theo:step}		
-	Let $\tau = \sqrt{\log(G+1)}/\zeta + t$ for $t > 0$. For the step sizes of:
+	Let $\tau = \sqrt{\log(G+1)}/\zeta + \epsilon$ for $\epsilon, \zeta > 0$. For the step sizes of:
 	\be
 	\nr
 	\mu_0 = \frac{\min_{g \in [G]} h_g(\tau)^{-2}}{4	n} ,
 	\forall \in [G]: \mu_g =  \frac{h_g(\tau)^{-1}}{2\sqrt{n n_g}} 
 	\ee
-	where $h_g(\tau) = \left(1 + c_{0g} \frac{\omega(\cA_g) + \omega(\cA_0) + \tau}{\sqrt{n_g}}\right)$
-	and sample complexities of $\forall g \in [G]: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2$,
-	with probability at least $ 1 - \sigma \exp(- \min(\nu \min_{g \in [G]} n_g - \log(G+1), \zeta t^2) )$ updates of Algorithm \ref{alg2} obey the following:	
+	where $h_g(\tau) = \left(1 + c_{0g} \frac{\omega(\cA_g) + \omega(\cA_0) + 2\tau}{\sqrt{n_g}}\right)$
+	and sample complexities of $\forall g \in [G_+]: n_g \geq C_g (\omega(\cA_g) + \tau)^2$,
+	with probability at least $ 1 - \sigma \exp(- \min(\nu \min_{g \in [G]} n_g - \log(G+1), \zeta \epsilon^2) )$ updates of \cref{alg2} obey the following:	
 	\be
 	\nr
 	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{(t+1)}}{2}
@@ -137,54 +137,54 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 \begin{corollary}
 	\label{corr:show}
 	For enough number of samples, iterations of DE algorithm with step sizes $\mu_0 = \Theta(\frac{1}{n})$ and $\mu_g =  \Theta(\frac{1}{\sqrt{n n_g}})$ geometrically converges to the following with high probability:
-	{\small\be
+	{\small\beq
 	\label{eq:scaled}
 	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{\infty}}{2}
-	\leq c \frac{\max_{g \in [G_+]} \omega(\cA_g) + \sqrt{\log (G+1)}/\zeta +  t}{\sqrt{n} (1 - r(\tau))}
-	\ee}
+	\leq c \frac{\max_{g \in [G_+]} \omega(\cA_g) + \sqrt{\log (G+1)}/\zeta +  \theta}{\sqrt{n} (1 - r(\tau))}
+	\eeq}
 	where $c = C(G+1)\sqrt{(2k_w^2 + 1)k_x^2}$. 
 \end{corollary}
-	It is instructive to compare RHS of \eqref{eq:scaled} with that of \eqref{eq:general}: $\kappa_{\min}$ defined in Theorem \ref{theo:re} corresponds to $(1 - r(\tau))$ % defined in Theorem \ref{theo:step}
+	It is instructive to compare RHS of \cref{eq:scaled} with that of \cref{eq:general}: $\kappa_{\min}$ defined in Theorem \cref{theo:re} corresponds to $(1 - r(\tau))$ % defined in Theorem \cref{theo:step}
 	and the extra $G+1$ factor corresponds to the sample condition number $\gamma = \max_{g \in [G] } \frac{n}{n_g}$.
-	Therefore, Corollary \ref{corr:show} shows that with the number of samples in the order of sample complexity determined in Theorem \ref{theo:re} \dc{} converges to the statistical error bound determined in Theorem \ref{theo:calcub}.
+	Therefore, \cref{corr:show} shows that with the number of samples in the order of sample complexity determined in \cref{theo:re} \dc{} converges to the statistical error bound determined in \cref{theo:calcub}.
 	
-\section{Proof Sketch of Theorem \ref{theo:step}}
+\subsection{Proof Sketch of \cref{theo:step}}
 \label{proofsketch}
-	We want to determine $r(\tau) < 1$ such that $\rho < r(\tau)$ with high probability. Here, we provide a proof sketch using the below probabilistic bounds of Lemma \ref{lemm:hpub} while ignoring the probabilities in finding $r(\tau)$. The full probabilistic proof is provided in Appendix ?. 		
-	First we need the following lemma to upper bound constants of Definition \ref{def:only}: 
+	We want to determine $r(\tau) < 1$ such that $\rho < r(\tau)$ with high probability. Here, we provide a proof sketch using the below probabilistic bounds on constants of \cref{def:only} while ignoring detailed computation of subsequent probabilities in finding $r(\tau)$. The full probabilistic proof is provided in \cref{twolems}. 		
+	First we need the following lemma to upper bound constants of \cref{def:only}: 
 	
 	\begin{lemma}
 		\label{lemm:hpub}
 		Consider $a_g \geq 1$ the following upper bounds hold:
 		\be 
 		\nr 
-		\rho_g\left(\frac{1}{a_g n_g}\right) &\leq& \frac{1}{2}  \left[\left(1 - \frac{1}{a_g} \right) + \sqrt{2} c_g\frac{2 \omega_g + \tau}{a_g \sqrt{n_g}} \right], \quad \text{w.p. at least} \quad 1 - 6\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2  \right)
+		\rho_g\left(\frac{1}{a_g n_g}\right) &\leq& \frac{1}{2}  \left[\left(1 - \frac{1}{a_g} \right) + \sqrt{2} c_g\frac{2 \omega_g + \tau}{a_g \sqrt{n_g}} \right], \quad \text{w.p. at least} \quad 1 - 2\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2  \right)
 		\\ \nr 
 		\eta_g\left(\frac{1}{a_g n_g}\right) &\leq& \frac{c_g k_x (\omega_g + \tau)}{a_g n_g}, \quad \text{w.p. at least} \quad 1 - \pi_g \exp\left( -\tau^2 \right)
 		\\ \nr 
-		\phi_g\left(\frac{1}{a_g n_g}\right) &\leq& \frac{1}{a_g}  \left(1 + c_{0g}\frac{\omega_{0g} + \tau}{\sqrt{n_g}} \right), \quad \text{w.p. at least} \quad 1 - 4\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2  \right)
+		\phi_g\left(\frac{1}{a_g n_g}\right) &\leq& \frac{1}{a_g}  \left(1 + c_{0g}\frac{\omega_{0g} + 2\tau}{\sqrt{n_g}} \right), \quad \text{w.p. at least} \quad 1 - 2\exp\left( -\gamma_g (\omega(\cA_g) + \tau)^2  \right)
 		\ee  
 		where $\omega_g = \omega(\cA_g)$ and $\omega_{0g} = \omega(\cA_g) + \omega(\cA_0)$.
 	\end{lemma}	
-	To keep $\rho < 1$ in the deterministic bound of Theorem \ref{theo:iter} with the step sizes $\mu_g = \frac{1}{n_g a_g}$ we need the following conditions:
+	To keep $\rho < 1$ in the deterministic bound of \cref{theo:iter} with the step sizes $\mu_g = \frac{1}{n_g a_g}$ we need to find the number of samples which satisfy the following conditions:
 	
 	\begin{itemize}
-		\item Condition 1: $\rho_0\left(\frac{1}{n a_0}\right) + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g\left(\frac{1}{n_g a_g}\right) < 1$
-		\item Condition 2: $\forall g \in [G]: \rho_g\left(\frac{1}{n_g a_g}\right) + \sqrt{\frac{n}{n_g}} \frac{\mu_0}{\mu_g}\phi_g\left(\frac{1}{n_g a_g}\right) < 1$
+		\item Condition 1: $\rho_0\left(\mu_0\right) + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g\left(\mu_g\right) < 1$
+		\item Condition 2: $\forall g \in [G]: \rho_g\left(\mu_g\right) + \sqrt{\frac{n}{n_g}} \frac{\mu_0}{\mu_g}\phi_g\left(\mu_g\right) < 1$
 	\end{itemize}
-	where according to the step sizes determine in the Theorem $a_0 \triangleq (4n\max_{g \in [G]}(1 + c_{0g}\frac{\omega_{0g} + \tau}{\sqrt{n_g}})^{2})^{-1}$ and $a_g \triangleq (2 \sqrt{n / n_g}(1 + c_{0g}\frac{\omega_{0g} + \tau}{\sqrt{n_g}}))^{-1}$.
+	where according to the step sizes determine in the Theorem $a_0 \triangleq (4n\max_{g \in [G]}(1 + c_{0g}\frac{\omega_{0g} + 2\tau}{\sqrt{n_g}})^{2})^{-1}$ and $a_g \triangleq (2 \sqrt{n / n_g}(1 + c_{0g}\frac{\omega_{0g} + 2\tau}{\sqrt{n_g}}))^{-1}$.
 	Condition 1 requires $\rho_0 + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g$ to be strictly below $1$ which is equivalent to: 
 	\be 
 	\nr 
 	\rho_0\left(\mu_0\right) + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} \phi_g\left(\mu_g\right) 
 	&\leq&  \frac{1}{2}  \left[\left(1 - \frac{1}{a_0} \right) + \sqrt{2} c_0\frac{2 \omega_0 + \tau}{a_0 \sqrt{n}} \right] 
-	+ \frac{1}{2} \sum_{g=1}^{G} \frac{2}{a_g}  \sqrt{\frac{n_g}{n}} \left(1 + c_{0g}\frac{\omega_{0g} + \tau}{\sqrt{n_g}} \right)
+	+ \frac{1}{2} \sum_{g=1}^{G} \frac{2}{a_g}  \sqrt{\frac{n_g}{n}} \left(1 + c_{0g}\frac{\omega_{0g} + 2\tau}{\sqrt{n_g}} \right)
 	\\ \nr 
 	(\text{Substitute } a_g) &=& \frac{1}{2}  \left[\left(1 - \frac{1}{a_0} \right) + \sqrt{2} c_0\frac{2 \omega_0 + \tau}{a_0 \sqrt{n}} \right] + \frac{1}{2} \sum_{g=1}^{G} \frac{n_g}{n} 
 	\\ \nr 
 	&=& \frac{1}{2}  \left[\left(2 - \frac{1}{a_0} \right) + \sqrt{2} c_0\frac{2 \omega_0 + \tau}{a_0 \sqrt{n}} \right]  < 1
 	\ee 
-	So Condition 1 reduces to $n > 2 c_0^2 (2\omega(\cA_0) + \tau)^2$. 
+	So Condition 1 reduces to $n > 8 c_0^2 (\omega(\cA_0) + \tau)^2$. 
 	
 	Secondly in Condition 2, we want to bound all of $\rho_g + \mu_0 \sqrt{\frac{n}{n_g}} \frac{\phi_g}{\mu_g}$ terms for $\mu_g = \frac{1}{a_g n_g}$ by 1: 
 	\be 
@@ -193,139 +193,21 @@ The high probability bounds for constants in Definition \ref{def:only} and the d
 	&=& \rho_g\left(\frac{1}{n_g a_g}\right) +  \sqrt{\frac{n_g}{n}} \frac{a_g}{a_0}\phi_g\left(\frac{1}{n_g a_g}\right)
 	\\ \nr
 	&=& 	 \frac{1}{2} \Bigg[\left[\left(1 - \frac{1}{a_g} \right) + \sqrt{2} c_g\frac{2 \omega_g + \tau}{a_g \sqrt{n_g}} \right]  
-	+  \frac{2}{a_0}  \sqrt{\frac{n_g}{n}} \left(1 + c_{0g}\frac{\omega_{0g} + \tau}{\sqrt{n_g}} \right)\Bigg] 
+	+  \frac{2}{a_0}  \sqrt{\frac{n_g}{n}} \left(1 + c_{0g}\frac{\omega_{0g} + 2\tau}{\sqrt{n_g}} \right)\Bigg] 
 	\\ \nr 
 	&\leq& 1
 	\ee 
 	Condition 2 becomes: 	
-	\be 
+	\be \nr 
 	\sqrt{2} c_g\frac{2 \omega_g + \tau}{\sqrt{n_g}} 
-	&\leq& 1 + a_g - \sqrt{\frac{n_g}{n}} \frac{2a_g}{a_0} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)
+	&\leq& 1 + a_g - \sqrt{\frac{n_g}{n}} \frac{2a_g}{a_0} \left(1 + c_{0g} \frac{\omega_{0g}+2\tau}{\sqrt{n_g}}\right)
 	\\ \nr 
 %	(a_g = 2\sqrt{\frac{n}{n_g}} (1 + c_{0g}\frac{\omega_{0g}+ \tau}{\sqrt{n_g}} ))
 	(\text{Substitute } a_g)
-	&=& 1 + a_g - \frac{4}{a_0} \left(1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}}\right)^2
+	&=& 1 + a_g - \frac{4}{a_0} \left(1 + c_{0g} \frac{\omega_{0g}+2\tau}{\sqrt{n_g}}\right)^2
 	\\ \nr 
 %	(a_0 = 4	\max_{g \in [G]} (1 + c_{0g} \frac{\omega_{0g}+\tau}{\sqrt{n_g}})^2)
 	(\text{Substitute } a_0)
 	&\leq& 1 + a_g 
 	\ee 
-	So the sample complexity should be $\sqrt{n_g} > \frac{\sqrt{2} c_g(2 \omega_g + \tau)}{1+a_g}$ and since $a_g > 1$, the final per group sample complexity should be $n_g > 2c_g (2\omega(\cA_g) + \tau)^2$.	
-	
-	
-	
-%	The extra factor of $G+1$ can be dismissed if we have more samples and also take a more conservative step size of $\mu_g = \frac{1}{(G+1) n_g}$.
-%	Following proposition states this result.
-%
-%\begin{prop}
-%	\label{prop:2}
-%	For per group step size of $\mu_g = \frac{1}{(G+1) n_g}$ and common parameter step size of $\mu_0 = \frac{1}{(G+1) n}$ when per group and total number of samples are large enough, i.e., $n_g \geq 4 \theta_f^2 c_g^2(\omega(\cA_g) + \tau)^2$ we have the following for DE with probability at least $ 1 - \upsilon \exp\left\{-\min_{g \in [G]} \left(\min\left[\nu_g n_g - \log G, -\gamma_g (\omega(\cA_g) + t)^2, \frac{t^2}{\eta_g^2 k^2}\right]\right) \right\}$:
-%	\be
-%	\nr
-%	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{\infty}}{2}
-%	\leq C \theta_f \frac{\zeta k \max_{g \in [G]} \omega(\cA_g) + \epsilon \sqrt{\log G} +  \tau}{\sqrt{n} (1 - r)}  ,
-%	\ee
-%	where $C = \sqrt{(2K^2 + 1)}$.
-%\end{prop}
-%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Samet Part Begins %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Convergence with minimal samples using mild learning rates}
-%
-%\begin{lemma} \label{spectral lem}Suppose $n_g\geq CK^4\omega^2(\cA_g)$ for all $g$. For all $\X_i\in\R^{n_i\times p_i}$ (after scaling by $1/\sqrt{n}$) and $\ddelta\in \cC_i$, with probability $1-\sum_{g=0}^G\exp(-cn_i)$, we have that
-%	\[
-%	\tn{\X_i\ddelta_i}\leq 2\sqrt{n_i/n}\tn{\ddelta_i},~\|\X_i\|\leq (\sqrt{n_i/n}+C'K^2\sqrt{p_i/n}),~\tn{\X_i^T\X_i\ddelta_i}^2\leq \Lambda_i.
-%	\]
-%	where $\Lambda_i=4(n_i/n)(\sqrt{n_i/n}+C'K^2\sqrt{p_i/n})^2$.
-%\end{lemma}
-%\begin{proof} These are fairly standard results. For instance, the reader is referred to Theorem $1.1$ of Liaw et al. \cite{liaw2017simple} or \cite{oymak2015isometric}.
-%\end{proof}
-%The next theorem provides our main result on convergence with near optimal sample complexity where $n_g\geq C\omega^2(\cA_g)$ per group. We assumed a noiseless model to have a cleaner presentation which keeps the result more insightful.
-%\begin{theorem} Consider the modified DE algorithm where line 7 uses $\beta_g^{(t)}$ instead of $\beta_g^{(t+1)}$. Assume sample sizes $n_i$ are set same as in Theorem \ref{theo:re}. Set $\kappa=\kappa_{\min}^2/4$. Let $r_g=G n_g/n$ and $r_0=1$. Set learning rates to be $\mu_g=\mu$ for $g\geq 1$ and $\mu_0=G^{-2}\mu$ where
-%	\begin{align}
-%	\mu=c{\kappa}\min_{1\leq g\leq G}\{\frac{1}{G\max\{1,K^4p_g/n_g\}},\frac{1}{\max\{1,K^4p_0/n\}} \}\label{learning rate rule}
-%	\end{align}
-%	Define distance metric as
-%	\[
-%	{\bf{d}}(\ddelta)=G^2\tn{\ddelta_0}^2+\sum_{g=1}^G \tn{\ddelta_g}^2.
-%	\]
-%	With probability $1-\sum_{g=0}^G\exp(-cn_i)-\exp(-\kappa n/2)$, for all $t\geq 0$, we have that
-%	\[
-%	{\bf{d}}(\ddelta^{(t+1)})\leq (1-\kappa\mu\min_{1\leq g\leq G}\frac{n_g^2}{n^2}){\bf{d}}(\ddelta^{(t)}).
-%	%G^3\tn{\ddelta_0}^2+\sum_{g=1}^G  \tn{\ddelta_g^{(t+1)}}^2\leq (1-\rho) (G^3\tn{\ddelta_0}^2+\sum_{g=1}^G \tn{\ddelta_g^{(t)}}^2).
-%	\]
-%\end{theorem}
-%Assuming groups are of the same size and $\alpha=p_g/n_g$ is a constant, rate of convergence $\rho$ simplifies to
-%\[
-%\rho\sim1-\frac{1}{G^3\max\{1,\alpha\}}
-%\]
-%This means that, compared to traditional least squares regression, we are losing a factor of $G^3$ in terms of convergence rate. Additionally, we converge not directly in $\ell_2$ distance but rather scaled $\ell_2$ distance where contribution of $\ddelta_0$ is heavier than the rest.
-%\begin{proof}
-%	DE iterations imply that
-%	\[
-%	\ddelta_g^{t+1}=\Pi_g(\ddelta_g-\mu \X_g^T\X_g(\ddelta_0^t+\ddelta_g^t))
-%	\]
-%	\[
-%	\ddelta_0^{t+1}=\Pi_0(\ddelta_0-\mu_0 \sum_{g=1}^G\X_g^T\X_g(\ddelta_0^t+\ddelta_g^t))
-%	\]
-%	which implies $\tn{\ddelta_g^{t+1}}\leq \tn{\ddelta_g-\mu \X_g^T\X_g(\ddelta_0^t+\ddelta_g^t)}$. On the other hand, setting $\mu_0=C^{-1}G\mu$
-%	\[
-%	\tn{\ddelta_g-\mu \X_g^T\X_g(\ddelta_0^t+\ddelta_g^t)}^2=\tn{\ddelta_g}^2-2\mu \ddelta_g^T\X_g^T\X_g(\ddelta_0+\ddelta_t)+\mu^2\tn{\X_g^T\X_g(\ddelta_0^t+\ddelta_g^t)}^2
-%	\]
-%	\[
-%	 C\tn{\ddelta_0^{t+1}}^2=C\tn{\ddelta_0}^2-2G\mu\sum_g\ddelta_0^T\X_g^T\X_g(\ddelta_0+\ddelta_t)+C^{-1}G^2\mu^2\tn{\sum_{g=1}^G\X_g^T\X_g(\ddelta_0+\ddelta_t)}^2.
-%	\]
-%	We will study the linear combination $C\tn{\ddelta_0}^2+\sum_{g=1}^G \tn{\ddelta_g^{t+1}}^2$. where the $\ddelta_0$ component is scaled by $C$. Denote terms without $\mu$ multiplier by $S_0$, with $\mu$ multiplier by $S_1$ and with $\mu^2$ multiplier by $S_2$.
-%	%Also pick $C_g=n_g^2$.
-%	Scaling $\ddelta_0$ component by $C$ and summing over all, we find
-%	\begin{align}
-%	S_0+S_1&=C\tn{\ddelta_0}^2+\sum_{g=1}^G \tn{\ddelta_g}^2-2\sum_{g=1}^G \mu (\ddelta_0+\ddelta_t)^T\X_g^T\X_g(\ddelta_0+\ddelta_t)\\
-%	&=C\tn{\ddelta_0}^2+\sum_{g=1}^G \tn{\ddelta_g}^2-\sum_{g=0}^G \mu (\ddelta_0+\ddelta_t)^T\X_g^T\X_g(\ddelta_0+\ddelta_t)\\
-%	&\geq C\tn{\ddelta_0}^2+\sum_{g=1}^G \tn{\ddelta_g}^2-\mu \kappa(\sum_{g=0}^G \frac{n_g}{n}\tn{\ddelta_g})^2
-%	\end{align}
-%	where we applied Theorem \ref{theo:re}. Next, observe that
-%	\begin{align}
-%	&\tn{\X_g^T\X_g(\ddelta_0^t+\ddelta_g^t)}^2\leq 2(\tn{\X_g^T\X_g\ddelta_0^t}^2+\tn{\X_g^T\X_g\ddelta_g^t}^2).\\
-%	&\tn{\sum_{g=1}^G\X_g^T\X_g(\ddelta_0+\ddelta_t)}^2\leq 2(\tn{\X_0^T\X_0\ddelta_0}^2+\tn{\sum_{g=1}^G\X_g^T\X_g\ddelta_t}^2)\leq 2(\tn{\X_0^T\X_0\ddelta_0}^2+G\sum_{g=1}^G\tn{\X_g^T\X_g\ddelta_t}^2)
-%	\end{align}
-%	Hence, summing over the $\mu^2$ terms and using $\mu_0=C^{-1}G\mu$, for $g\geq 1$, and assuming $C\leq G^2$, we have
-%	\begin{align}
-%	S_2&\leq 2\mu^2((1+G^3C^{-1})\sum_{g=1}^G\tn{\X_g^T\X_g\ddelta_t}^2+(1+G^2C^{-1})\tn{\X_0^T\X_0\ddelta_0}^2)\\
-%	&\leq4\mu^2G^2C^{-1}(G\sum_{g=1}^G\tn{\X_g^T\X_g\ddelta_t}^2+\tn{\X_0^T\X_0\ddelta_0}^2)
-%	\end{align}
-%	Applying Lemma \ref{spectral lem}, coefficient of $\tn{\delta_g^{(t+1)}}^2$ and $\tn{\delta_0^{(t+1)}}^2$, within the sum $S_0+S_1+S_2$, are given by% and setting $\gamma_1=\sum_{g=1}^G\tn{\X_g^T\X_g\ddelta_t}^2
-%	\begin{align}
-%	&\tn{\delta_g^{(t+1)}}^2\leq \tn{\delta_g^t}^2(1-\mu \kappa \frac{n_g^2}{n^2}+4\mu^2G^3C^{-1}\Lambda_g).\\
-%	&C\tn{\delta_0^{(t+1)}}^2\leq C\tn{\delta_0^t}^2(1-C^{-1}\mu \kappa +4\mu^2G^2C^{-2}\Lambda_0).
-%	\end{align}
-%	This implies picking the step size
-%	\[
-%	\mu=\frac{\kappa}{8} \min\{\frac{Cn_g^2}{n^2G^3\Lambda_g},\frac{C}{G^2\Lambda_0}\}).
-%	\]
-%	Observing $\Lambda_g=c'n^{-2}n_g^2\max\{1,K^4p_g/n_g\}$, this yields% and setting $C=G^2$
-%	\[
-%	\mu=cC{\kappa}\min_{1\leq g\leq G}\{\frac{1}{G^3\max\{1,K^4p_g/n_g\}},\frac{1}{G^2\max\{1,K^4p_0/n\}} \}
-%	\]
-%	%Let $r_g=Gn_g/n$.
-%	Substituting these and setting $C=G^2$ we conclude with \eqref{learning rate rule} and we obtain the worst-case convergence rate (over all $\ddelta_i$ components) of
-%	%\[
-%	%\rho=1-\frac{\kappa^2}{8} \min\{\frac{Cn_g^4}{n^4G^3\Lambda_g},\frac{1}{G^2\Lambda_0} \}=1-\frac{\kappa^2}{8} \min\{\frac{Cr_g^4}{G^7\Lambda_g},\frac{1}{G^2\Lambda_0} \}.
-%	%\]
-%	%
-%	%and implies the rate of convergence of
-%	\[
-%	\rho=1-\kappa \mu \min_{1\leq g\leq G}\{\frac{n_g^2}{n^2},C^{-1} \}= 1-\kappa\mu\min_{1\leq g\leq G}\frac{n_g^2}{n^2},
-%	%\rho=1-C^{-1}\kappa \mu \min_{1\leq g\leq G}\{\frac{Cn_g^2}{n^2},1 \}= 1-c\frac{\kappa^2}{G^2} \min_{1\leq g\leq G}r_g^2 \min_{1\leq g\leq G}\{\frac{1}{G\max\{1,K^4p_g/n_g\}},\frac{1}{\max\{1,K^4p_0/n\}} \}
-%	\]
-%	where we used $\min_{1\leq g\leq G}\{\frac{n_g^2}{n^2}\}\leq 1/G^2$. This concludes the proof.
-%	%and observing $\rho=1-\kappa\mu/G^2$
-%	
-%	%Similarly, applying standard eigenvalue bounds $\|\X_g^T\X_g\|\leq \Lambda_g=(\sqrt{n_g}+CK^2\sqrt{p_g})^2$ with probability $1-\exp(-p_g)$.
-%\end{proof}
-%%Checking $\ell_2$ vs $\ell_2^2$ condition: (using Cauchy-Schwarz)
-%%\[
-%%(G+1)\sum_{g=0}^G\frac{n_g^2}{n^2}\tn{\ddelta_g}^2\geq (\sum_{g=0}^G\frac{n_g}{n}\tn{\ddelta_g})^2\implies \left(\sqrt{\sum_{g=0}^G\frac{n_g^2}{n^2}\tn{\ddelta_g}^2}=\sqrt{1/(G+1)}\implies \sum_{g=0}^G\frac{n_g}{n}\tn{\ddelta_g}\geq 1\right)
-%%\]
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Samet Part Ends %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Cost of projection}
-%{\color{red} TODO: Explain different methods to compute projection onto different norm balls.} 
+	So the sample complexity should be $\sqrt{n_g} > \frac{\sqrt{2} c_g(2 \omega_g + 2\tau)}{1+a_g}$ and since $a_g > 1$, the final per group sample complexity should be $n_g > 8c_g (\omega(\cA_g) + \tau)^2$.	
