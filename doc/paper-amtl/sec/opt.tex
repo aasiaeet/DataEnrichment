@@ -1,9 +1,9 @@
 \section{Estimation Algorithm}
 \label{sec:opt}
-We propose \emph{Data enrIChER} (\dc) a projected block gradient descent algorithm, Algorithm \ref{alg2}, where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq f_g(\bbeta_g^*)\}$.% and is dropped to avoid cluttering. In practice, $d_g$ can be determined by cross-validation.
+We propose \emph{Data enrIChER} (\dc) a projected block gradient descent algorithm, Algorithm \cref{alg2}, where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq f_g(\bbeta_g^*)\}$.% and is dropped to avoid cluttering. In practice, $d_g$ can be determined by cross-validation.
 To analysis convergence properties of \dc, we should upper bound the error of each iteration.% of the DE algorithm.
 Let's $\ddelta^{(t)} = \bbeta^{(t)} - \bbeta^*$ be the error of  iteration $t$ of \dc, i.e., the distance from the true parameter (not the optimization minimum, $\hbbe$).
-%The goal of this chapter is to show that the $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^t}{2}$ decreases exponentially fast it $t$, and converges to the upper bound of the statistical error $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}$ characterized in \eqref{eq:general}.
+%The goal of this chapter is to show that the $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^t}{2}$ decreases exponentially fast it $t$, and converges to the upper bound of the statistical error $\sum_{g = 1}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}$ characterized in \cref{eq:general}.
 We show that $\norm{\ddelta^{(t)}}{2}$ decreases exponentially fast in $t$ to the statistical error $\norm{\ddelta}{2} = \norm{\hbbe - \bbeta^*}{2}$.
 \begin{algorithm}[t]
 	\caption{  \dc }
@@ -27,7 +27,7 @@ We show that $\norm{\ddelta^{(t)}}{2}$ decreases exponentially fast in $t$ to th
 \begin{theorem}
 	\label{theo:step}		
 	%Remember that $\theta_f = 1$ for the convex and  $\theta_f = 2$ for the non-convex case.
-	Let $\tau = C\sqrt{\log(G+1)} + b$ for $b > 0$ and $\omega_{0g} = \omega(\cA_0) + \omega(\cA_g)$. For the step sizes of $\mu_0 = \Theta(\frac{1}{n})$ and $\mu_g = \Theta(\frac{1}{\sqrt{nn_g}})$ and sample complexities of $\forall g \in [G]: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2$, updates of the Algorithm \ref{alg2} obey the following with high probability: %probability at least $ 1 - \upsilon \exp\left[\min_{g \in [G]}\left(-\min\left[\nu_g n_g - \log G, \gamma (\omega(\cA_g) + b)^2 , \frac{b^2}{\eta_g^2 k^2}\right]\right)\right] $:
+	Let $\tau = C\sqrt{\log(G+1)} + b$ for $b > 0$ and $\omega_{0g} = \omega(\cA_0) + \omega(\cA_g)$. For the step sizes of $\mu_0 = \Theta(\frac{1}{n})$ and $\mu_g = \Theta(\frac{1}{\sqrt{nn_g}})$ and sample complexities of $\forall g \in [G]: n_g \geq 2c_g^2 (2 \omega(\cA_g) + \tau)^2$, updates of the Algorithm \cref{alg2} obey the following with high probability: %probability at least $ 1 - \upsilon \exp\left[\min_{g \in [G]}\left(-\min\left[\nu_g n_g - \log G, \gamma (\omega(\cA_g) + b)^2 , \frac{b^2}{\eta_g^2 k^2}\right]\right)\right] $:
 	%where $\upsilon = \max(28, \sigma)$ and $\gamma = \min_{g \in [G] } \gamma_g$. 	
 	{\small \be
 	\nr
@@ -47,123 +47,5 @@ We show that $\norm{\ddelta^{(t)}}{2}$ decreases exponentially fast in $t$ to th
 	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{\infty}}{2}
 	\leq c \frac{\zeta k \max_{g \in [G]} \omega(\cA_g) + C \sqrt{\log (G+1)} +  b}{\sqrt{n} (1 - r(\tau))}
 	\ee}
-	which is a scaled variant of statistical error bound determined in Corollary \ref{corr:calcub}.
+	which is a scaled variant of statistical error bound determined in Corollary \cref{corr:calcub}.
 \end{corollary}
-%	It is instructive to compare RHS of \eqref{eq:scaled} with that of \eqref{eq:general}: $\kappa_{\min}$ defined in Theorem \ref{theo:re} corresponds to $(1 - r(\tau))$ % defined in Theorem \ref{theo:step}
-%	and the extra $G+1$ factor corresponds to the sample condition number $\gamma = \max_{g \in [G] } \frac{n}{n_g}$.
-%	Therefore, Corollary \ref{corr:show} shows that \dc{} converges to 
-%	The extra factor of $G+1$ can be dismissed if we have more samples and also take a more conservative step size of $\mu_g = \frac{1}{(G+1) n_g}$.
-%	Following proposition states this result.
-%
-%\begin{prop}
-%	\label{prop:2}
-%	For per group step size of $\mu_g = \frac{1}{(G+1) n_g}$ and common parameter step size of $\mu_0 = \frac{1}{(G+1) n}$ when per group and total number of samples are large enough, i.e., $n_g \geq 4 \theta_f^2 c_g^2(\omega(\cA_g) + \tau)^2$ we have the following for DE with probability at least $ 1 - \upsilon \exp\left\{-\min_{g \in [G]} \left(\min\left[\nu_g n_g - \log G, -\gamma_g (\omega(\cA_g) + t)^2, \frac{t^2}{\eta_g^2 k^2}\right]\right) \right\}$:
-%	\be
-%	\nr
-%	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{\infty}}{2}
-%	\leq C \theta_f \frac{\zeta k \max_{g \in [G]} \omega(\cA_g) + \epsilon \sqrt{\log G} +  \tau}{\sqrt{n} (1 - r)}  ,
-%	\ee
-%	where $C = \sqrt{(2K^2 + 1)}$.
-%\end{prop}
-%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Samet Part Begins %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Convergence with minimal samples using mild learning rates}
-%
-%\begin{lemma} \label{spectral lem}Suppose $n_g\geq CK^4\omega^2(\cA_g)$ for all $g$. For all $\X_i\in\R^{n_i\times p_i}$ (after scaling by $1/\sqrt{n}$) and $\ddelta\in \cC_i$, with probability $1-\sum_{g=0}^G\exp(-cn_i)$, we have that
-%	\[
-%	\tn{\X_i\ddelta_i}\leq 2\sqrt{n_i/n}\tn{\ddelta_i},~\|\X_i\|\leq (\sqrt{n_i/n}+C'K^2\sqrt{p_i/n}),~\tn{\X_i^T\X_i\ddelta_i}^2\leq \Lambda_i.
-%	\]
-%	where $\Lambda_i=4(n_i/n)(\sqrt{n_i/n}+C'K^2\sqrt{p_i/n})^2$.
-%\end{lemma}
-%\begin{proof} These are fairly standard results. For instance, the reader is referred to Theorem $1.1$ of Liaw et al. \cite{liaw2017simple} or \cite{oymak2015isometric}.
-%\end{proof}
-%The next theorem provides our main result on convergence with near optimal sample complexity where $n_g\geq C\omega^2(\cA_g)$ per group. We assumed a noiseless model to have a cleaner presentation which keeps the result more insightful.
-%\begin{theorem} Consider the modified DE algorithm where line 7 uses $\beta_g^{(t)}$ instead of $\beta_g^{(t+1)}$. Assume sample sizes $n_i$ are set same as in Theorem \ref{theo:re}. Set $\kappa=\kappa_{\min}^2/4$. Let $r_g=G n_g/n$ and $r_0=1$. Set learning rates to be $\mu_g=\mu$ for $g\geq 1$ and $\mu_0=G^{-2}\mu$ where
-%	\begin{align}
-%	\mu=c{\kappa}\min_{1\leq g\leq G}\{\frac{1}{G\max\{1,K^4p_g/n_g\}},\frac{1}{\max\{1,K^4p_0/n\}} \}\label{learning rate rule}
-%	\end{align}
-%	Define distance metric as
-%	\[
-%	{\bf{d}}(\ddelta)=G^2\tn{\ddelta_0}^2+\sum_{g=1}^G \tn{\ddelta_g}^2.
-%	\]
-%	With probability $1-\sum_{g=0}^G\exp(-cn_i)-\exp(-\kappa n/2)$, for all $t\geq 0$, we have that
-%	\[
-%	{\bf{d}}(\ddelta^{(t+1)})\leq (1-\kappa\mu\min_{1\leq g\leq G}\frac{n_g^2}{n^2}){\bf{d}}(\ddelta^{(t)}).
-%	%G^3\tn{\ddelta_0}^2+\sum_{g=1}^G  \tn{\ddelta_g^{(t+1)}}^2\leq (1-\rho) (G^3\tn{\ddelta_0}^2+\sum_{g=1}^G \tn{\ddelta_g^{(t)}}^2).
-%	\]
-%\end{theorem}
-%Assuming groups are of the same size and $\alpha=p_g/n_g$ is a constant, rate of convergence $\rho$ simplifies to
-%\[
-%\rho\sim1-\frac{1}{G^3\max\{1,\alpha\}}
-%\]
-%This means that, compared to traditional least squares regression, we are losing a factor of $G^3$ in terms of convergence rate. Additionally, we converge not directly in $\ell_2$ distance but rather scaled $\ell_2$ distance where contribution of $\ddelta_0$ is heavier than the rest.
-%\begin{proof}
-%	DE iterations imply that
-%	\[
-%	\ddelta_g^{t+1}=\Pi_g(\ddelta_g-\mu \X_g^T\X_g(\ddelta_0^t+\ddelta_g^t))
-%	\]
-%	\[
-%	\ddelta_0^{t+1}=\Pi_0(\ddelta_0-\mu_0 \sum_{g=1}^G\X_g^T\X_g(\ddelta_0^t+\ddelta_g^t))
-%	\]
-%	which implies $\tn{\ddelta_g^{t+1}}\leq \tn{\ddelta_g-\mu \X_g^T\X_g(\ddelta_0^t+\ddelta_g^t)}$. On the other hand, setting $\mu_0=C^{-1}G\mu$
-%	\[
-%	\tn{\ddelta_g-\mu \X_g^T\X_g(\ddelta_0^t+\ddelta_g^t)}^2=\tn{\ddelta_g}^2-2\mu \ddelta_g^T\X_g^T\X_g(\ddelta_0+\ddelta_t)+\mu^2\tn{\X_g^T\X_g(\ddelta_0^t+\ddelta_g^t)}^2
-%	\]
-%	\[
-%	 C\tn{\ddelta_0^{t+1}}^2=C\tn{\ddelta_0}^2-2G\mu\sum_g\ddelta_0^T\X_g^T\X_g(\ddelta_0+\ddelta_t)+C^{-1}G^2\mu^2\tn{\sum_{g=1}^G\X_g^T\X_g(\ddelta_0+\ddelta_t)}^2.
-%	\]
-%	We will study the linear combination $C\tn{\ddelta_0}^2+\sum_{g=1}^G \tn{\ddelta_g^{t+1}}^2$. where the $\ddelta_0$ component is scaled by $C$. Denote terms without $\mu$ multiplier by $S_0$, with $\mu$ multiplier by $S_1$ and with $\mu^2$ multiplier by $S_2$.
-%	%Also pick $C_g=n_g^2$.
-%	Scaling $\ddelta_0$ component by $C$ and summing over all, we find
-%	\begin{align}
-%	S_0+S_1&=C\tn{\ddelta_0}^2+\sum_{g=1}^G \tn{\ddelta_g}^2-2\sum_{g=1}^G \mu (\ddelta_0+\ddelta_t)^T\X_g^T\X_g(\ddelta_0+\ddelta_t)\\
-%	&=C\tn{\ddelta_0}^2+\sum_{g=1}^G \tn{\ddelta_g}^2-\sum_{g=0}^G \mu (\ddelta_0+\ddelta_t)^T\X_g^T\X_g(\ddelta_0+\ddelta_t)\\
-%	&\geq C\tn{\ddelta_0}^2+\sum_{g=1}^G \tn{\ddelta_g}^2-\mu \kappa(\sum_{g=0}^G \frac{n_g}{n}\tn{\ddelta_g})^2
-%	\end{align}
-%	where we applied Theorem \ref{theo:re}. Next, observe that
-%	\begin{align}
-%	&\tn{\X_g^T\X_g(\ddelta_0^t+\ddelta_g^t)}^2\leq 2(\tn{\X_g^T\X_g\ddelta_0^t}^2+\tn{\X_g^T\X_g\ddelta_g^t}^2).\\
-%	&\tn{\sum_{g=1}^G\X_g^T\X_g(\ddelta_0+\ddelta_t)}^2\leq 2(\tn{\X_0^T\X_0\ddelta_0}^2+\tn{\sum_{g=1}^G\X_g^T\X_g\ddelta_t}^2)\leq 2(\tn{\X_0^T\X_0\ddelta_0}^2+G\sum_{g=1}^G\tn{\X_g^T\X_g\ddelta_t}^2)
-%	\end{align}
-%	Hence, summing over the $\mu^2$ terms and using $\mu_0=C^{-1}G\mu$, for $g\geq 1$, and assuming $C\leq G^2$, we have
-%	\begin{align}
-%	S_2&\leq 2\mu^2((1+G^3C^{-1})\sum_{g=1}^G\tn{\X_g^T\X_g\ddelta_t}^2+(1+G^2C^{-1})\tn{\X_0^T\X_0\ddelta_0}^2)\\
-%	&\leq4\mu^2G^2C^{-1}(G\sum_{g=1}^G\tn{\X_g^T\X_g\ddelta_t}^2+\tn{\X_0^T\X_0\ddelta_0}^2)
-%	\end{align}
-%	Applying Lemma \ref{spectral lem}, coefficient of $\tn{\delta_g^{(t+1)}}^2$ and $\tn{\delta_0^{(t+1)}}^2$, within the sum $S_0+S_1+S_2$, are given by% and setting $\gamma_1=\sum_{g=1}^G\tn{\X_g^T\X_g\ddelta_t}^2
-%	\begin{align}
-%	&\tn{\delta_g^{(t+1)}}^2\leq \tn{\delta_g^t}^2(1-\mu \kappa \frac{n_g^2}{n^2}+4\mu^2G^3C^{-1}\Lambda_g).\\
-%	&C\tn{\delta_0^{(t+1)}}^2\leq C\tn{\delta_0^t}^2(1-C^{-1}\mu \kappa +4\mu^2G^2C^{-2}\Lambda_0).
-%	\end{align}
-%	This implies picking the step size
-%	\[
-%	\mu=\frac{\kappa}{8} \min\{\frac{Cn_g^2}{n^2G^3\Lambda_g},\frac{C}{G^2\Lambda_0}\}).
-%	\]
-%	Observing $\Lambda_g=c'n^{-2}n_g^2\max\{1,K^4p_g/n_g\}$, this yields% and setting $C=G^2$
-%	\[
-%	\mu=cC{\kappa}\min_{1\leq g\leq G}\{\frac{1}{G^3\max\{1,K^4p_g/n_g\}},\frac{1}{G^2\max\{1,K^4p_0/n\}} \}
-%	\]
-%	%Let $r_g=Gn_g/n$.
-%	Substituting these and setting $C=G^2$ we conclude with \eqref{learning rate rule} and we obtain the worst-case convergence rate (over all $\ddelta_i$ components) of
-%	%\[
-%	%\rho=1-\frac{\kappa^2}{8} \min\{\frac{Cn_g^4}{n^4G^3\Lambda_g},\frac{1}{G^2\Lambda_0} \}=1-\frac{\kappa^2}{8} \min\{\frac{Cr_g^4}{G^7\Lambda_g},\frac{1}{G^2\Lambda_0} \}.
-%	%\]
-%	%
-%	%and implies the rate of convergence of
-%	\[
-%	\rho=1-\kappa \mu \min_{1\leq g\leq G}\{\frac{n_g^2}{n^2},C^{-1} \}= 1-\kappa\mu\min_{1\leq g\leq G}\frac{n_g^2}{n^2},
-%	%\rho=1-C^{-1}\kappa \mu \min_{1\leq g\leq G}\{\frac{Cn_g^2}{n^2},1 \}= 1-c\frac{\kappa^2}{G^2} \min_{1\leq g\leq G}r_g^2 \min_{1\leq g\leq G}\{\frac{1}{G\max\{1,K^4p_g/n_g\}},\frac{1}{\max\{1,K^4p_0/n\}} \}
-%	\]
-%	where we used $\min_{1\leq g\leq G}\{\frac{n_g^2}{n^2}\}\leq 1/G^2$. This concludes the proof.
-%	%and observing $\rho=1-\kappa\mu/G^2$
-%	
-%	%Similarly, applying standard eigenvalue bounds $\|\X_g^T\X_g\|\leq \Lambda_g=(\sqrt{n_g}+CK^2\sqrt{p_g})^2$ with probability $1-\exp(-p_g)$.
-%\end{proof}
-%%Checking $\ell_2$ vs $\ell_2^2$ condition: (using Cauchy-Schwarz)
-%%\[
-%%(G+1)\sum_{g=0}^G\frac{n_g^2}{n^2}\tn{\ddelta_g}^2\geq (\sum_{g=0}^G\frac{n_g}{n}\tn{\ddelta_g})^2\implies \left(\sqrt{\sum_{g=0}^G\frac{n_g^2}{n^2}\tn{\ddelta_g}^2}=\sqrt{1/(G+1)}\implies \sum_{g=0}^G\frac{n_g}{n}\tn{\ddelta_g}\geq 1\right)
-%%\]
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Samet Part Ends %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Cost of projection}
-%{\color{red} TODO: Explain different methods to compute projection onto different norm balls.} 
