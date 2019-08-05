@@ -1,20 +1,6 @@
-\section{The Data Enrichment Estimator}
+\section{The Data Shared Estimator}
 \label{sec:esti}
-%Given $G$ group and $n_g$ samples in each one as $\{ \{\x_{gi}, y_{gi} \}_{i=1}^{n_g} \}_{g = 1}^G$, we can form the per group design matrix $\X_g \in \reals^{n_g \times p}$ and output vector $\y_g \in \reals ^{n_g}$.
-%The total number of samples is  $n = \sum_{g = 1}^{G} n_g$.
-%The data enriched model takes the following vector form:
-%\be
-%\label{eq:dirtymodel}
-%\y_g = \X_g (\bbeta _0^* + \bbeta _g^*) + \oomega_g,  \quad \forall g \in [G]_\setminus
-%\ee
-%where each row of $\X_g$ is $\x_{gi}^T$ and $\oomega_g^T = (\omega_{g1}, \dots, \omega_{gn_g})$ is the noise vector. %consists of i.i.d. centered unit-variance sub-Gaussian elements with $\normth{\omega_{gi}}{\psi_2} \leq K$.
-%Note that,
-%The common parameter among all groups is $\bbeta _0^*$ and the individual parameter of the group $g$ is $\bbeta _g^*$.
-%Beside a deterministic error bound presented in Section \cref{sec:deter} our other results are probabilistic.
-%We focus on independent isotropic sub-Gaussian random vectors $\x_{gi}$ where $\normth{\x_{gi}}{\psi_2} \leq k$ and $\ex \x_{gi}^T \x_{gi}  = \I_{p \times p}$.
-
-%\subsection{The Estimator}
-A compact form of our proposed DE estimator \cref{eq:super} is:% optimization problem as: %:
+A compact form of our proposed DS estimator \cref{eq:super} is:% optimization problem as: %:
 \beq
 \label{eq:compact}
 \hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \quad \text{s.t. } \forall g \in [G_+]:f_g(\bbeta_g ) \leq f_g(\bbeta^*_g),
@@ -31,18 +17,15 @@ where $\y  = (\y^T_1, \dots \y^T_G)^T \in \reals^n$,  $\bbeta  = ({\bbeta _0}^T,
 \end{pmatrix}
 \in \reals^{n \times (G+1)p}~.
 \eeq
-%For simplicity, during steps of the analysis we denote $\X = [\X_0 \enskip \D]$ which is the concatenation of $\X_0 \in \reals^{n \times p}$ that represents the \emph{whole} design matrix consisting of all data points as rows and $\D \in \reals^{n \times pG}$ which is the \emph{diagonal} part of the $\X$ where all $\X_g$s are on the diagonal.
-%Following this convention, we refer to total number of samples $n$ as $n_0$ in our analysis.
-
 %\ab{Give at least 2 specific examples, e.g., a sparse+sparse for vector estimation, and a low-rank + sparse for matrix estimation. And we want to carry these examples through
 %the technical results, e.g., see the Chen-Banerjee NIPS 2015 paper.}
 
 \begin{example} \label{exm:sde}
-{\bf ($l_1$-norm)} When all parameters $\bbeta_g$s are $s_g$-sparse, i.e.,$|\text{supp}(\bbeta_{g}^*)| = s_g$ by using $l_1$-norm as the sparsity inducing function, our DE estimator of \cref{eq:compact} becomes:
+{\bf ($l_1$-norm)} When all parameters $\bbeta_g$s are $s_g$-sparse, i.e.,$|\text{supp}(\bbeta_{g}^*)| = s_g$ by using $l_1$-norm as the sparsity inducing function, our DS estimator of \cref{eq:compact} becomes:
 \be 
 \hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \quad \text{s.t. }  \forall g \in [G_+]: \norm{\bbeta_g}{1} \leq \norm{\bbeta^*_g}{1}.
 \ee 
-We call \cref{exm:sde} \emph{sparse DE } estimator and use it as the running example throughout the paper to illustrate outcomes of our analysis.
+We call \cref{exm:sde} \emph{sparse DS} estimator and use it as the running example throughout the paper to illustrate outcomes of our analysis.% \hfill {\color{header1} \qedsymbol}
 \end{example}
 Consider the group-wise estimation error $\ddelta_g = \hbbe_g - \bbeta^*_g$.
 Since $\hbbe_g = \bbeta ^*_g + \ddelta_g$ is a feasible point of \cref{eq:compact}, the error vector $\ddelta_g$ will belong to the following restricted error set:% which is the set of all descent directions at $\bbeta _g^*$ on $f_g(\cdot)$ :
@@ -69,7 +52,7 @@ Starting from the optimality of $\hbbe = \bbeta ^* + \ddelta$ as $\frac{1}{n}\no
 Using this basic inequality, we can establish the following deterministic error bound.
 \begin{theorem}
 	\label{theo:deter}
-	For the DE estimator \cref{eq:compact}, assume there exist $0 < \kappa \leq \inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2$. Then, for the sample condition number $\gamma = \max_{g \in [G]} \frac{n}{n_g}$, the following deterministic upper bounds holds:
+	For the DS estimator \cref{eq:compact}, assume there exist $0 < \kappa \leq \inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2$. Then, for the sample condition number $\gamma = \max_{g \in [G]} \frac{n}{n_g}$, the following deterministic upper bounds holds:
 	\be
 	\nr
 	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq \frac{2{\gamma}\sup_{\u \in \bcH}\w^T \X \u}{n\kappa}~. %\nr	
@@ -106,6 +89,7 @@ Using this basic inequality, we can establish the following deterministic error 
 \end{proof}
 
 \begin{remark}
+	\label{rem1}
 Consider the setting where $n_g = \Theta(\frac{n}{G})$ so that each group has approximately $\frac{1}{G}$ fraction of the samples. Then, $\gamma = \Theta(G)$ and hence
 \beq
 \nr 

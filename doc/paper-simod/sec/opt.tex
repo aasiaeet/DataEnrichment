@@ -1,7 +1,7 @@
 
 \section{Estimation Algorithm}
 \label{sec:opt}
-We propose \emph{Data enrIChER} (\dc) a projected block gradient descent algorithm, \cref{alg2}, where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq d_g\}$ where $d_g = f_g(\bbeta_g^*)$ and is dropped to avoid cluttering. In practice, $d_g$ can be determined by cross-validation.
+We propose \emph{DAta SHarER} (\dc) a projected block gradient descent algorithm, \cref{alg2}, where $\Pi_{\Omega_{f_g}}$ is the Euclidean projection onto the set $\Omega_{f_g}(d_g) = \{f_g(\bbeta) \leq d_g\}$ where $d_g = f_g(\bbeta_g^*)$ and is dropped to avoid cluttering. %In practice, $d_g$ can be determined by cross-validation.
 
 \begin{algorithm}[t]
 	\caption{  \dc }
@@ -130,13 +130,13 @@ The high probability bounds for constants in \cref{def:only} and the determinist
 %	+ \frac{(G+1) \sqrt{(2K^2 + 1)}}{\sqrt{n} (1 - r(\tau))}  \left(\zeta k \max_{g \in [G]} \omega(\cA_g) + \tau \right),
 	+ \frac{C(G+1)\sqrt{(2k_w^2 + 1)k_x^2}}{\sqrt{n}(1 - r(\tau))} \left(\max_{g \in [G_+]} \omega(\cA_g) + \tau \right)
 	\ee
-	where $r(\tau) < 1$ and $\upsilon, \zeta$, and $\sigma$ are constants.
+	where $r(\tau) < 1$ is a constant depending on $\tau$ defined in \eqref{rtau} and $\upsilon, \zeta$, and $\sigma$ are constants.
 	
 \end{theorem}
 
 \begin{corollary}
 	\label{corr:show}
-	For enough number of samples, iterations of DE algorithm with step sizes $\mu_0 = \Theta(\frac{1}{n})$ and $\mu_g =  \Theta(\frac{1}{\sqrt{n n_g}})$ geometrically converges to the following with high probability:
+	For enough number of samples, iterations of DS algorithm with step sizes $\mu_0 = \Theta(\frac{1}{n})$ and $\mu_g =  \Theta(\frac{1}{\sqrt{n n_g}})$ geometrically converges to the following with high probability:
 	{\small\beq
 	\label{eq:scaled}
 	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g^{\infty}}{2}
@@ -210,4 +210,4 @@ The high probability bounds for constants in \cref{def:only} and the determinist
 	(\text{Substitute } a_0)
 	&\leq& 1 + a_g 
 	\ee 
-	So the sample complexity should be $\sqrt{n_g} > \frac{\sqrt{2} c_g(2 \omega_g + 2\tau)}{1+a_g}$ and since $a_g > 1$, the final per group sample complexity should be $n_g > 8c_g (\omega(\cA_g) + \tau)^2$.	
+	So the sample complexity should be $\sqrt{n_g} > \frac{\sqrt{2} c_g(2 \omega_g + 2\tau)}{1+a_g}$ and since $a_g > 1$, the final per group sample complexity should be $n_g > 8c_g (\omega(\cA_g) + \tau)^2$.	\hfill {\color{header1} \qedsymbol}

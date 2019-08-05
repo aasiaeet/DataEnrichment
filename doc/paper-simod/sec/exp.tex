@@ -2,28 +2,28 @@
 	\centering
 	\begin{subfigure}[b]{0.2175\textwidth}
 		\includegraphics[width=\textwidth]{./img/betag_converge_G10_p100.pdf}				
-		\caption{}\label{fig syn1a}
+		\caption{$n_g = 60$, $\w = 0$}\label{fig syn1a}
 	\end{subfigure} ~
 	\begin{subfigure}[b]{0.2175\textwidth}
 		\includegraphics[width=\textwidth]{./img/betag_converge_noise_G10_p100.pdf}				
-		\caption{}\label{fig syn1b}
+		\caption{$n_g = 60$, $\w_1 \neq 0$}\label{fig syn1b}
 	\end{subfigure}
 	%			\label{fig syn1}
 	\begin{subfigure}[b]{0.2175\textwidth}
 		\includegraphics[width=\textwidth]{./img/betag_converge_G10_p100_fast.pdf}
-		\caption{} \label{fig syn2a}
+		\caption{$n_g = 150$, $\w = 0$} \label{fig syn2a}
 	\end{subfigure} ~
 	\begin{subfigure}[b]{0.2175\textwidth}
 		\includegraphics[width=\textwidth]{./img/betag_converge_G100_p1000_shrink.pdf}
-		\caption{}\label{fig syn2b}
+		\caption{$n_g = 150$, $\w = 0$}\label{fig syn2b}
 	\end{subfigure}
 	\squeezeup
-	\caption{a) Noiseless fast convergence. b) Noise on the first group does not impact other groups as much. c) Increasing sample size improves rate of convergence. d) Our algorithm convergences fast even with a large number of groups $G=100$.}
+	\caption{In (a), (b), and (c)  experiments $p = 100$, $G = 10$, $\forall g \in [G]: s_g = 10$, and $s_0 = p$. For (d) $p = 1000$, $G = 100$, $\forall g \in [G]: s_g = 10$, and $s_0 = 100$. (a) Noiseless fast convergence. (b) Noise on the first group does not impact other groups as much. (c) Increasing sample size improves rate of convergence. (d) \dc\ convergences fast even with a large number of groups $G=100$.}
 	\label{fig syn12}
 \end{figure}
-\section{Synthetic Experiments}
+\section{Experiments on Synthetic Data}
 \label{sec:expds}
-We considered sparsity based simulations with varying $G$ and sparsity levels. In our first set of simulations, we set $p=100$, $G=10$ and sparsity of the individual parameters to be $s=10$. We generated a dense $\bbeta_0$ with $\|\bbeta_0\|=p$ and did not impose any constraint. Iterates $\{\bbeta^{(t)}_g\}_{g=1}^G$ are obtained by projection onto the $\ell_1$ ball $\|\bbeta_g\|_1$. Nonzero entries of $\bbeta_g$ are generated with ${\cal{N}}(0,1)$ and nonzero supports are picked uniformly at random. Inspired from our theoretical step size choices, in all experiments, we used simplified learning rates of $\frac{1}{n}$ for $\bbeta_0$ and $\frac{1}{\sqrt{nn_g}}$ for $\bbeta_g$, $g \in [G]_\setminus$. Observe that, cones of the individual parameters intersect with that of $\bbeta_0$ hence this setup actually violates DERIC (which requires an arbitrarily small constant fraction of groups to be non-intersecting). Our intuition is that the individual parameters are mostly incoherent with each other and the existence of a nonzero perturbation over $\bbeta_g$'s that keeps all measurements intact is unlikely. Remarkably, experimental results still show successful learning of all parameters from small amount of samples. We picked $n_g=60$ for each group. Hence, in total, we have $11p=1100$ unknowns, $200=G\times 10+100$ degrees of freedom and $G\times 60=600$ samples. In all figures, we study the normalized squared error $\frac{\|\bbeta^{(t)}_g-\bbeta_g\|_2^2}{\|\bbeta_g\|_2^2}$ and average $10$ independent realization for each curve. \cref{fig syn1a} shows the estimation performance as a function of iteration number $t$. While each group might behave slightly different, we do observe that all parameters are linear converging to ground truth.% is evident from the linear slope of the $y$-axis.
+We considered sparsity based simulations with varying $G$ and sparsity levels. In our first set of simulations, we set $p=100$, $G=10$ and sparsity of the individual parameters to be $s=10$. We generated a dense $\bbeta_0$ with $\|\bbeta_0\|=p$ and did not impose any constraint. Iterates $\{\bbeta^{(t)}_g\}_{g=1}^G$ are obtained by projection onto the $\ell_1$ ball $\|\bbeta_g\|_1$. Nonzero entries of $\bbeta_g$ are generated with ${\cal{N}}(0,1)$ and nonzero supports are picked uniformly at random. Inspired from our theoretical step size choices, in all experiments, we used simplified learning rates of $\frac{1}{n}$ for $\bbeta_0$ and $\frac{1}{\sqrt{nn_g}}$ for $\bbeta_g$, $g \in [G]$. Observe that, cones of the individual parameters intersect with that of $\bbeta_0$ hence this setup actually violates \ds\ (which requires an arbitrarily small constant fraction of groups to be non-intersecting). Our intuition is that the individual parameters are mostly incoherent with each other and the existence of a nonzero perturbation over $\bbeta_g$'s that keeps all measurements intact is unlikely. Remarkably, experimental results still show successful learning of all parameters from small amount of samples. We picked $n_g=60$ for each group. Hence, in total, we have $11p=1100$ unknowns, $200=G\times 10+100$ degrees of freedom and $G\times 60=600$ samples. In all figures, we study the normalized squared error $\frac{\|\bbeta^{(t)}_g-\bbeta_g\|_2^2}{\|\bbeta_g\|_2^2}$ and average $10$ independent realization for each curve. \cref{fig syn1a} shows the estimation performance as a function of iteration number $t$. While each group might behave slightly different, we do observe that all parameters are linear converging to ground truth.% is evident from the linear slope of the $y$-axis.
 	
 In \cref{fig syn1b}, we test the noise robustness of our algorithm. We add a ${\cal{N}}(0,1)$ noise to the $n_1=60$ measurements of the first group \emph{only}. The other groups are left untouched. While all parameters suffer nonzero estimation error, we observe that, the global parameter $\bbeta_0$ and noise-free groups $\{\bbeta_g\}_{g=2}^G$ have substantially less estimation error. This implies that noise in one group mostly affects itself rather than the global estimation. In \cref{fig syn2a}, we increased the sample size to $n_g=150$ per group. We observe that, in comparison to \cref{fig syn1a}, rate of convergence receives a boost from the additional samples as predicted by our theory.
 	

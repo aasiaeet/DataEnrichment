@@ -1,13 +1,13 @@
 \section{Restricted Eigenvalue Condition}
 \label{sec:re}
-The main assumptions of \cref{theo:deter} is known as Restricted Eigenvalue (RE) condition in the literature of high-dimensional statistics \cite{banerjee14, nrwy12, raskutti10}:
+The main assumption of \cref{theo:deter} is known as Restricted Eigenvalue (RE) condition in the literature of high-dimensional statistics \cite{banerjee14, nrwy12, raskutti10}:
 $\inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2 \geq \kappa > 0.$
 %\be
 %\label{eq:recond}
 %\inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2 \geq \kappa > 0.
 %\ee
 The RE condition posits that the minimum eigenvalues of the matrix $\X^T \X$ in directions restricted to $\cH$ is strictly positive.
-In this section, we show that for the design matrix $\X$ defined in \cref{eq:x}, the RE condition holds with high probability under a suitable geometric condition we call {\em Data EnRichment Incoherence Condition} (DERIC) and for enough number of samples.
+In this section, we show that for the design matrix $\X$ defined in \cref{eq:x}, the RE condition holds with high probability under a suitable geometric condition we call {\em DAta SHaring Incoherence conditioN} (\ds) and for enough number of samples.
 We precisely characterize total and per-group sample complexities required for successful parameter recovery.
 For the analysis, similar to existing work \cite{guba16, mend15, trop15}, we assume the design matrix to be isotropic sub-Gaussian.\footnote{Extension to an-isotropic sub-Gaussian case is straightforward by techniques developed in \cite{banerjee14, ruzh13}.}
 \begin{definition}
@@ -17,18 +17,18 @@ As a consequence, $\exists \alpha > 0$ such that $\forall \u \in \sphere$ we hav
 zero-mean, unit-variance sub-Gaussian with $\normth{\w_{gi}}{\psi_2} \leq k_w$.
 \end{definition}
 
-\subsection{Geometric Condition of Recovery}
-Unlike standard high-dimensional statistical estimation, for RE condition to be true, parameters of superposition models need to satisfy geometric conditions which limits the interaction of parameters with each other to make sure that recovery is possible. In this section, we elaborate our sufficient geometric condition for recovery and compare it with state-of-the-art condition for recovery of superposition models. 
+\subsection{Geometric Condition for Recovery}
+Unlike standard high-dimensional statistical estimation, for RE condition to be true, parameters of superposition models need to satisfy geometric conditions which limits the interaction of the error cones of parameters with each other to make sure that recovery is possible. In this section, we elaborate our sufficient geometric condition for recovery and compare it with state-of-the-art condition for recovery of superposition models. 
 
-To intuitively illustrate the necessity of such a geometric condition, consider the simplest superposition model i.e., $\bbeta^*_0 + \bbeta^*_g$. Without any restriction on parameter interactions, any estimates such that $\hbbe_0 + \hbbe_g = \bbeta^*_0 + \bbeta^*_g$ are valid ones. To avoid such trivial solutions two error cones need to satisfy $\ddelta_g \neq -\ddelta_0$. In general, the RE condition of individual superposition models can be established under the so-called Structural Coherence (SC) condition \cite{guba16, mctr13} which is the generalization of this idea for superposition of multiple parameters as $\sum_{g = 0}^{G} \bbeta^*_g$.
+To intuitively illustrate the necessity of such a geometric condition, consider the simplest superposition model i.e., $\bbeta^*_0 + \bbeta^*_g$. Without any restriction on interactions of error cones, any estimates such that $\hbbe_0 + \hbbe_g = \bbeta^*_0 + \bbeta^*_g$ are valid ones. To avoid such trivial solutions two error cones need to satisfy $\ddelta_g \neq -\ddelta_0$. In general, the RE condition of individual superposition models can be established under the so-called Structural Coherence (SC) condition \cite{guba16, mctr13} which is the generalization of this idea for superposition of multiple parameters as $\sum_{g = 0}^{G} \bbeta^*_g$.
  
 \begin{definition}[Structural Coherence (SC) \cite{guba16, mctr13}] \label{scc}
 	Consider a superposition model of the form $y = \x^T \sum_{g = 0}^{G} \bbeta^*_g + w$. The SC condition requires that
-	\be 
-	\nr 
-	\forall \ddelta_g \in \cC_g, \exists \lambda \quad  \text{s.t.}  \quad \norm{\sum_{g = 0}^{G} \ddelta_g}{2} \geq  \lambda \sum_{g = 0}^{G}  \norm{\ddelta_g}{2},
-	\ee  
-	and leads to the corresponding RE condition for the superposition model.
+%	\be 
+%	\nr 
+$	\forall \ddelta_g \in \cC_g, \exists \lambda \text{ s.t. }  \norm{\sum_{g = 0}^{G} \ddelta_g}{2} \geq  \lambda \sum_{g = 0}^{G}  \norm{\ddelta_g}{2}$,
+%	\ee  
+	and leads to the RE condition $\frac{1}{\sqrt{n}}\norm{\X \sum_{g = 1}^{G} \ddelta_g}{2} \geq \kappa \sum_{g=1}^{G} \norm{\ddelta_g}{2}$.
 \end{definition}
 
 \begin{remark}
@@ -38,8 +38,8 @@ To intuitively illustrate the necessity of such a geometric condition, consider 
 	\cos(\theta_g) = \sup_{\ddelta_0 \in \cC_0, \ddelta_g \in \cC_g} -\langle \ddelta_0/\norm{\ddelta_0}{2}, \ddelta_g/\norm{\ddelta_g}{2} \rangle.
 	\ee
 \end{remark}
-Next, we introduce DERIC, a considerably weaker geometric condition compared to SC which leads to recovery of all parameters in the data enriched model. 
-\begin{definition}[Data EnRichment Incoherence Condition (DERIC)]  \label{incodef}
+Next, we introduce \ds, a considerably weaker geometric condition compared to SC which leads to recovery of all parameters in the data sharing model. 
+\begin{definition}[DAta SHaring Incoherence conditioN (\ds)]  \label{incodef}
 	There exists a non-empty set $\cI\subseteq [G]$ of groups where for some scalars $0 < \ratio\leq 1$ and $\lamin>0$ the following holds:
 	\begin{enumerate}
 		\item $\sum_{g\in \cI} n_g\geq \lceil \ratio n\rceil$.
@@ -51,26 +51,26 @@ Next, we introduce DERIC, a considerably weaker geometric condition compared to 
 
 %\ab{add a remark -- so the reader can follow what we are saying}
 
-%\ab{It will be great to have a Figure showing the difference between SC and DERIC.}
+%\ab{It will be great to have a Figure showing the difference between SC and \ds.}
 
 \begin{remark}
-Comparing to the SC conditions, DERIC holds even if only one of the $\cC_g$s does not intersect with $-\cC_0$. More specifically, DERIC holds if $\exists g, \theta_g > 0$ in \cref{fig:deric}. Therefore, instead of SC stringent geometric condition, DERIC allows $-\cC_0$ to intersect with an arbitrarily large fraction of the $\cC_g$ cones and as the number of intersections increases, our final error bound becomes looser.
+	\ds\ is a refinement of SC for the specific problem of data sharing, i.e., system of coupled superposition model each with two components. \ds\ holds even if only one of the $\cC_g$s does not intersect with $-\cC_0$. More specifically, \ds\ holds if $\exists g, \theta_g > 0$ in \cref{fig:DASHIN} which allows $-\cC_0$ to intersect with an arbitrarily large fraction of the $\cC_g$ cones and as the number of intersections increases, our final error bound becomes looser.
 \end{remark}
 
 \subsection{Sample Complexity}
-An alternative to our DE estimator \cref{eq:super} may be based on $G$ \emph{isolated} superposition model $\y_g = \X_g (\bbeta _0^* + \bbeta _g^*) + \w_g$ each with two components. Now, if SC holds for at least one of the superposition models, i.e., $\exists g, -\cC_0 \cap \cC_g = \emptyset$, one can recover $\hbbe_0$ and plug it in to the remaining $G-1$ superposition estimators to estimate the corresponding $\hbbe_g$s. We call such an estimator, \emph{plugin superposition} estimator. For such a trivial (based on existing literature) estimator, it seems that DERIC has no advantage over SC. But the downfall of such estimator is that it fails to utilize the true coupling structure in the data enriched model, where $\bbeta^*_0$ is involved in all groups. In fact, below we show, the above combination of superposition and plug-in estimators using SC leads to a pessimistic estimates of the sample complexity for $\bbeta^*_0$ recovery.
+An alternative to our DS estimator \cref{eq:super} may be based on $G$ \emph{isolated} superposition model $\y_g = \X_g (\bbeta _0^* + \bbeta _g^*) + \w_g$ each with two components. Now, if SC holds for at least one of the superposition models, i.e., $\exists g, -\cC_0 \cap \cC_g = \{0 \}$, one can recover $\hbbe_0$ and plug it in to the remaining $G-1$ superposition estimators to estimate the corresponding $\hbbe_g$s. We call such an estimator, \emph{plugin superposition} estimator for which it seems that \ds\ has no advantage over SC. But the disadvantage of plugin superposition estimator is that it fails to utilize the true coupling structure in the data sharing model, where $\bbeta^*_0$ is involved in all groups. In fact, below we show that the plugin superposition estimator under SC condition leads to a pessimistic sample complexity for $\bbeta^*_0$ recovery.
 \begin{prop}
 	\label{prop:super}
 	Assume observations distributed as defined in \cref{def:obs} and pair-wise SC conditions are satisfied.  Consider each superposition model \cref{eq:dirtymodel} in isolation; to recover the common parameter $\bbeta _0^*$ plugin superposition requires at least one group $i$ to have $n_i = O(\max(\omega^2(\cA_0), \omega^2(\cA_i)))$. 
 	To recover the rest of individual parameters, it needs $\forall g \neq i: n_g = O(\omega^2(\cA_g))$ samples. 
 \end{prop}
 In other words, by separate analysis of superposition estimators at least one problem needs to have sufficient samples for recovering the common parameter $\bbeta_0$ and therefore the common parameter recovery does not benefit from the pooled $n$ samples.
-But given the nature of coupling in the data enriched model, we hope to be able to get a better sample complexity specifically for the common parameter $\bbeta_0$.
-Using DERIC and the small ball method \cite{mend15}, a tool from empirical process theory in the following theorem, we get a better sample complexity required for satisfying the RE condition:
+But given the nature of coupling in the data sharing model, we hope to be able to get a better sample complexity specifically for the common parameter $\bbeta_0$.
+Using \ds\ and the small ball method \cite{mend15}, a tool from empirical process theory in the following theorem, we get a better sample complexity required for satisfying the RE condition:
 \begin{theorem}
 	\label{theo:re}
 	Let $\x_{gi}$s	be random vectors defined in \cref{def:obs}.
-	Assume DERIC condition of \cref{incodef} holds for error cones $\cC_g$s and $\rinc=\min\{1/2, \lamin\ratio/3\}$.
+	Assume \ds\ condition of \cref{incodef} holds for error cones $\cC_g$s and $\rinc=\min\{1/2, \lamin\ratio/3\}$.
 	Then, for all $\ddelta \in \cH$, when we have enough number of samples as $\forall g \in [G_+]: n_g \geq m_g = O(k_x^6 \alpha^{-6} \rinc^{-2} \omega(\cA_g)^2)$, with probability at least $1 - e^{-n \kappa_{\min}/4}$  we have:
 	\be
 	\nr
@@ -84,18 +84,18 @@ Using DERIC and the small ball method \cite{mend15}, a tool from empirical proce
 \end{remark}
 
 \begin{example}
-	{\bf ($l_1$-norm)} The Gaussian width of the spherical cap of a $p$-dimensional $s$-sparse vector is $\omega(\cA) = \Theta(\sqrt{s\log p})$ \cite{banerjee14, vershynin2018high}. Therefore, the number of samples per group and total required for satisfaction of the RE condition in the sparse DE estimator \cref{exm:sde} is $\forall g \in [G]: n_g \geq m_g = \Theta(s_g \log p)$. 
-	\Cref{compare} compares sample complexities of sparse-DE estimator with three baselines: plugin superposition estimator of \cref{prop:super}, G Independent LASSO (GI-LASSO), and Jalali's Dirty Statistical Model (DSM) \cite{jrsr10}. Note that GI-LASSO does not recover the common parameter and DSM needs all groups have same number of samples. 
+	{\bf ($l_1$-norm)} The Gaussian width of the spherical cap of a $p$-dimensional $s$-sparse vector is $\omega(\cA) = \Theta(\sqrt{s\log p})$ \cite{banerjee14, vershynin2018high}. Therefore, the number of samples per group and total required for satisfaction of the RE condition in the sparse DS estimator \cref{exm:sde} is $\forall g \in [G]: n_g \geq m_g = \Theta(s_g \log p)$. 
+	\Cref{compare} compares sample complexities of the sparse DS estimator with three baselines: plugin superposition estimator of \cref{prop:super}, G Independent LASSO (GI-LASSO), and Jalali's Dirty Statistical Model (DSM) \cite{jrsr10}. Note that GI-LASSO does not recover the common parameter and DSM needs all groups have same number of samples. %\hfill {\color{header1} \qedsymbol}
 \end{example}
 
 \begin{table}[]
 	\centering
 	\begin{tabular}{l|c|c|c|c|}
 		\cline{2-5}
-		& \textbf{GI-LASSO} & \textbf{Dirty Stat. Model}                      & \textbf{Plugin Superposition}                                                                                                           & \textbf{Sparse DE} \\ \hline
+		& \textbf{GI-LASSO} & \textbf{Dirty Stat. Model}                      & \textbf{Plugin Superposition}                                                                                                           & \textbf{Sparse DS} \\ \hline
 		\multicolumn{1}{|l|}{\textbf{$m_g$}} & $s_{0g} \log p$   & $G \max_{g \in [G]} s_{0g} \log(p)$ & \begin{tabular}[c]{@{}c@{}}$\exists i \in [G]: \max(s_0, s_i) \log p$ \\ $\forall g \neq i: s_{g} \log p$\end{tabular} & $s_{g} \log p$     \\ \hline
 	\end{tabular}
-	\caption{Comparison of the order of per group number of samples (sample complexities) of various methods for recovering sparse DE parameters. Let $s_{0g} = |\text{support}(\bbeta^*_0 + \bbeta^*_g)|$ be the superimposed support where $s_0, s_g \leq \max(s_0, s_g) \leq s_{0g}$.}
+	\caption{Comparison of the order of per group number of samples (sample complexities) of various methods for recovering sparse DS parameters. Let $s_{0g} = |\text{support}(\bbeta^*_0 + \bbeta^*_g)|$ be the superimposed support where $s_0, s_g \leq \max(s_0, s_g) \leq s_{0g}$.}
 	\label{compare}
 \end{table}
 
@@ -130,10 +130,10 @@ Now we add and subtract the corresponding per-group marginal tail function, $Q_{
 For the ease of exposition we consider the LHS of \cref{eq:long}  as the difference of two terms, i.e., $t_1(\X) - t_2(\X)$ and in the followings we lower bound the first term $t_1$ and upper bound the second term $t_2$. 
 
 \subsubsection{Lower Bounding the First Term}
-Our main result is the following lemma which uses the DERIC condition of the \cref{incodef} and provides a lower bound for the first term $t_1(\X)$:
+Our main result is the following lemma which uses the \ds\ condition of the \cref{incodef} and provides a lower bound for the first term $t_1(\X)$:
 \begin{lemma}
 	\label{lemm:shareInc} 
-	Suppose DERIC holds. Let $\rinc=\frac{\lamin\ratio}{3}$. For any $\ddelta \in \cH$, we have: 
+	Suppose \ds\ holds. Let $\rinc=\frac{\lamin\ratio}{3}$. For any $\ddelta \in \cH$, we have: 
 	\beq 
 	\label{eq:rhs}
 	\sum_{g=1}^G\frac{n_g}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g}) \geq \rinc\xi \frac{(\alpha - 2\xi)^2}{4ck_x^2}\sum_{g=0}^n \frac{n_g}{n}\norm{\ddelta_g}{2},
@@ -203,13 +203,7 @@ Define $q \triangleq \frac{(\alpha - 2\xi)^2}{4ck^2}$. Putting back bounds of $t
 where $\kappa_{\min} = \min_{g\in [G]} \kappa_g$. To conclude the proof, take $\tau = \sqrt{n} \kappa_{\min}/2$. 
 
 To satisfy the RE condition all $\kappa_g$s should be bounded away from zero.
-To this end we need the following sample complexities $\forall g \in [G_+]: \left(\frac{2 c_g k }{\rinc \xi q}\right)^2 \omega(\cA_g)^2 \leq n_g $ where by taking $\xi = \frac{\alpha}{6}$ simplifies to:
-\be 
-\nr 
-\forall g \in [G_+]: \quad O\left(k^6 \rinc^{-2} \alpha^{-6} \omega(\cA_g)^2\right) &\leq& n_g 
-\ee 
-
-
+To this end we need the following sample complexities $\forall g \in [G_+]: \left(\frac{2 c_g k }{\rinc \xi q}\right)^2 \omega(\cA_g)^2 \leq n_g $ where by taking $\xi = \frac{\alpha}{6}$ simplifies to: $\forall g \in [G_+]: O\left(k^6 \rinc^{-2} \alpha^{-6} \omega(\cA_g)^2\right) \leq n_g$ \hfill {\color{header1} \qedsymbol}
 
 %\subsection{Proof of Theorem \cref{theo:ub} with $\frac{n_g}{n}$}
 %\begin{proof}	

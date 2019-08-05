@@ -29,12 +29,21 @@ In this section, we present our main statistical result which is a non-asymptoti
 \end{corollary}
 
 \begin{example}
-	{\bf ($l_1$-norm)} For sparse DE estimator of \cref{exm:sde}, results of \cref{theo:re,theo:calcub} translates to the following: For enough number of samples as $\forall g \in [G_+]: n_g \geq m_g = O(s_g \log p)$, the upper bound of error simplifies to:
+	For the balanced sample condition number $\gamma = \Theta(G)$ discussed in \cref{rem1} we have the following error bound for all parameters:
+	\be 
+		\forall g \in [G_+]: \quad \norm{\ddelta_g}{2} =  O\left(G^{3/2} \frac{\max_{g \in [G_+]}  \omega(\cA_g) + \sqrt{\log (G+1)} }{\sqrt{n}}\right)
+	\ee 
+	where the upper bound of error scales as $\frac{1}{\sqrt{n}}$ for all parameters. %\hfill {\color{header1} \qedsymbol}
+\end{example}
+
+
+\begin{example}
+	{\bf ($l_1$-norm)} For the sparse DS estimator of \cref{exm:sde}, results of \cref{theo:re,theo:calcub} translates to the following: For enough number of samples as $\forall g \in [G_+]: n_g \geq m_g = O(s_g \log p)$, the upper bound of error simplifies to:
 	\be
-	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}	= O \left(\gamma \sqrt{\frac{(\max_{g \in [G_+]}  s_g)\log p}{n}}\right) 
+	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}	= O \left(\gamma \sqrt{\frac{(\max_{g \in [G_+]}  s_g)\log p}{n}}\right) ,
 	\ee 
 	Therefore, individual errors are bounded as $\norm{\ddelta_g}{2}	= O (\gamma \sqrt{(\max_{g \in [G]}  s_g)\log p/n_g})$
-	which is slightly worse than $O(\sqrt{s_g\log p/n_g})$, the well-known error bound for recovering an $s_g$-sparse vector from $n_g$ observations using LASSO or similar estimators \cite{banerjee14, bickel2009simultaneous, candes2007dantzig, venkat12, chatterjee2014generalized}. 
+	which is slightly worse than $O(\sqrt{s_g\log p/n_g})$, the well-known error bound for recovering an $s_g$-sparse vector from $n_g$ observations using LASSO or similar estimators \cite{banerjee14, bickel2009simultaneous, candes2007dantzig, venkat12, chatterjee2014generalized}. %\hfill {\color{header1} \qedsymbol}
 \end{example}
 
 \subsection{Proof of \cref{theo:calcub}}
@@ -91,7 +100,7 @@ where the last inequality is the result of the following lemma:
 	\ee
 	where $\sigma_g, \nu$ and $c_g$ are constants.
 \end{lemma}	
-The proof completes by replacing $\max_{g \in [G]} \sqrt{\frac{n}{n_g}} e_g(\tau)$ as the upper bound of $\sup_{\ddelta \in \cH} \w^T \X\ddelta$ and $\kappa^2_{\min}/4$ as the lower bound of $\kappa$ (from \cref{theo:re}) both into the deterministic bound of \cref{theo:deter} .
+The proof completes by replacing $\max_{g \in [G]} \sqrt{\frac{n}{n_g}} e_g(\tau)$ as the upper bound of $\sup_{\ddelta \in \cH} \w^T \X\ddelta$ and $\kappa^2_{\min}/4$ as the lower bound of $\kappa$ (from \cref{theo:re}) both into the bound of \cref{theo:deter} . \hfill {\color{header1} \qedsymbol}
 
 
 
@@ -101,7 +110,7 @@ The proof completes by replacing $\max_{g \in [G]} \sqrt{\frac{n}{n_g}} e_g(\tau
 %	Following are some remarks comparing our results with the state-of-the-art.
 %\begin{remark}
 %	Corollary \cref{corr:single} states $\forall \in [G]_\setminus: \norm{\ddelta_g}{2} \leq O((\max_{g \in [G]} \omega(\cA_g) + \sqrt{\log (G+1)})/\sqrt{n_g})$ while sharp error bound for the single regression with $\bbeta_g^*$ is $\norm{\ddelta_g}{2} \leq O(\omega(\cA_g)/\sqrt{n_g})$.
-%	So by solving a more complicated data enriched model we only pay a price of $\big(\max_{g \in [G]} \omega(\cA_g) - \omega(\cA_g) + \sqrt{\log (G+1)}\big)/ \sqrt{n_g}$ in estimation error while the order of the sample complexity $m_g$ stays the same.
+%	So by solving a more complicated data sharing model we only pay a price of $\big(\max_{g \in [G]} \omega(\cA_g) - \omega(\cA_g) + \sqrt{\log (G+1)}\big)/ \sqrt{n_g}$ in estimation error while the order of the sample complexity $m_g$ stays the same.
 %\end{remark}
 %
 %\begin{remark}

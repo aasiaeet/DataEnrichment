@@ -21,7 +21,7 @@ Here, we present proof of \cref{prop:super} and  full proof for \cref{theo:step}
 	r_0(\tau) &\triangleq& r_{01}(\tau)  + \sum_{g=1}^{G} \sqrt{\frac{n_g}{n}} r_{g2}(\tau)
 	\\ \nr 
 	r_g(\tau) &\triangleq&  r_{g1}(\tau)+ \sqrt{\frac{n_g}{n}} \frac{a_g}{a_0} r_{g2}(\tau),~\forall g \in [G]
-	\\ \nr 
+	\\ \label{rtau} 
 	r(\tau) &\triangleq&  \max_{g \in [G_+] }r_g(\tau)
 	\ee
 	All of which are computed using $a_g$s specified in the proof sketch of \cref{proofsketch}. Basically $r(\tau)$ is an instantiation of an high probability upper bound of the $\rho$ defined in \cref{theo:iter}.
@@ -85,7 +85,7 @@ Here, we present proof of \cref{prop:super} and  full proof for \cref{theo:step}
 	(\cref{eq:omeggg} \text{ and } \cref{eq:widthbound})\leq& 2\exp(-\nu n_g) + \pi_g \exp(-\tau^2) 
 	\\ \nr 
 	(\sigma_g = \max(\pi_g, 2)) \leq& \sigma_g \exp(- \min (\nu n_g, \tau^2) )
-	\eea 
+	\eea	 
 	where we used the intermediate form of \cref{lemm:mainlem} for  $\tau > 0$.
 	Putting all of the bounds \cref{eq:part1}, \cref{eq:part2}, and \cref{eq:part3} back as the upper bound of \cref{part1}:
 	
