@@ -1,0 +1,107 @@
+% SIAM Shared Information Template
+% This is information that is shared between the main document and any
+% supplement. If no supplement is required, then this information can
+% be included directly in the main document.
+
+%%% Amir commands begin %%%
+\usepackage{microtype}
+\usepackage{wrapfig}
+\usepackage{stfloats}
+\usepackage{moresize}
+\usepackage{graphicx}
+%\usepackage{subfigure}
+\usepackage{booktabs} % for professional tables
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+%\usepackage[draft]{hyperref}
+\usepackage{makecell}
+\usepackage{url}
+\usepackage{caption,subcaption}
+\usepackage{array}
+\usepackage[rflt]{floatflt}
+\usepackage{epsfig,times,graphicx,color}
+\usepackage{amsmath}
+\usepackage{amssymb, amsopn,algorithm,algorithmic,float,bbm,bm,enumerate,color,multirow}
+\usepackage{rotating}
+\usepackage{array}
+%\usepackage{slashbox}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{xspace}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs} % for professional tables
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{enumitem}
+\usepackage{calc}
+
+\newcommand{\squeezeup}{\vspace{-2.5mm}}
+\newcommand{\ab}[1] {{\bf (Arindam Says: #1)}}
+\newcommand{\dc}{{\sc Dasher}}
+\def \ds{{\sc Dashin}}
+%%% Amir commands end %%%
+
+
+% Packages and macros go here
+\usepackage{lipsum}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{algorithmic}
+\ifpdf
+  \DeclareGraphicsExtensions{.eps,.pdf,.png,.jpg}
+\else
+  \DeclareGraphicsExtensions{.eps}
+\fi
+
+% Prevent itemized lists from running into the left margin inside theorems and proofs
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=.5in}
+\setlist[itemize]{leftmargin=.5in}
+
+% Add a serial/Oxford comma by default.
+\newcommand{\creflastconjunction}{, and~}
+
+% Used for creating new theorem and remark environments
+\newsiamremark{remark}{Remark}
+\newsiamremark{example}{Example}
+\newsiamremark{hypothesis}{Hypothesis}
+\crefname{hypothesis}{Hypothesis}{Hypotheses}
+\newsiamthm{prop}{Proposition}
+\newsiamthm{claim}{Claim}
+
+% Sets running headers as well as PDF title and authors
+\headers{Data Sharing}{A. Asiaee, S. Oymak, K. R. Coombes, and A. Banerjee}
+
+% Title. If the supplement option is on, then "Supplementary Material"
+% is automatically inserted before the title.
+\title{High Dimensional Data Sharing: \\ Multi-Task Learning with Theoretical Guarantee \thanks{Submitted to the editors August 2, 2019.
+\funding{This work was funded by -.}}}
+
+% Authors: full names plus addresses.
+\author{Amir Asiaee\thanks{Mathematical Biosciences Institute, The Ohio State University, Columbus, OH
+  (\email{asiaeetaheri.1@osu.edu}).}
+\and Samet Oymak\thanks{Department of Electrical and Computer Engineering, UC Riverside, Riverside, CA
+  (\email{oymak@ece.ucr.edu}).}
+\and Kevin R. Coombes\thanks{Departments of Biomedical Informatics, The Ohio State University, Columbus, OH
+	(\email{coombes.3@osu.edu}).}
+\and Arindam Banerjee\thanks{Department of Computer Science and Engineering, University of Minnesota, Minneapolis, MN
+	(\email{banerjee@cs.umn.edu}).}
+}
+
+
+\usepackage{amsopn}
+\DeclareMathOperator{\diag}{diag}
+
+\input{sec/notation}
+%%% Local Variables: 
+%%% mode:latex
+%%% TeX-master: "ex_article"
+%%% End: 
