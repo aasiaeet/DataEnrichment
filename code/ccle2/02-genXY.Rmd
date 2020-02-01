@@ -1,0 +1,143 @@
+---
+title: "Reading All Data"
+author: "Amir Asiaee"
+date: "12 July 2019"
+output:
+  html_document:
+    toc: true
+    theme: yeti
+    highlight: kate
+---
+  
+```{r setup, include=FALSE, results="hide"}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r mycss, results="asis", echo=FALSE}
+cat('
+<style type="text/css">
+b, strong {color: red; }
+i, em {color: blue; }
+.defn {color: purple; }
+.para {color: purple;
+      font-weight: bold;
+}
+.figure { text-align: center; }
+.caption { font-weight: bold; }
+</style>
+')
+```
+# This report is deprecated. Go to files starting with 4.
+
+# Executive Summary
+## Background
+The **overall** goal of this project is to run DICER on CCLE data. 
+
+The **immediate** goal of this report is to read in the saved clean data into separate file for each cancer and generate $(X_g, y_g)$ pairs. We do this in two ways:
+
+- Groups are representing cancer type. 
+- Groups are sub-types. 
+
+## Methods
+
+### Input Data
+We are using outputs of `01-readingData.Rmd` saved in `paths$clean`. 
+
+### Output Data 
+
+
+### Statistics
+
+## Results
+
+## Conclusion
+
+
+# Setting up Basics
+
+First we prepare the paths for the data. 
+```{r paths}
+rm(list = ls())
+source("00-paths.R")
+```
+
+# Loading Data
+```{r load}
+sapply(c("alterations","clDef","doseResponse","expressions","rppa"), function(fileName) load(file.path(paths$clean, paste(fileName, ".RData", sep="")), envir = parent.env(environment())))
+```
+
+# Forming (X, y): Groups are Cancers
+```{r formCancerGroups}
+library(Polychrome)
+colset <- palette36.colors(36)
+allType <- unique(defs$tcgaId) 
+allType <- sort(allType[!is.na(allType) & allType != "UNABLE TO CLASSIFY"])
+
+drugs <- doseResponse$compound
+for(drug in unique(drugs)){
+  if(!file.exists(file=file.path(paths$clean, paste("xy_", drug, ".Rda", sep="")))){
+    # Filtering celllines with missing dr output.  
+    ccleNames <- doseResponse$clName[doseResponse$compound == drug]
+    ccleNames <- intersect(row.names(alterations), ccleNames)
+    ccleNames <- intersect(row.names(expressions), ccleNames)
+    ccleNames <- intersect(row.names(rppa), ccleNames)
+    
+    ##################################
+    # Setting cancer types. 
+    ##################################
+    type <- defs$tcgaId[defs$clName %in% ccleNames]
+    ccleNames <- ccleNames[!is.na(type) & type != "UNABLE TO CLASSIFY"]
+    type <- type[!is.na(type) & type != "UNABLE TO CLASSIFY"]
+    barplot(table(type), las=2, cex.names=.5, col = colset[allType %in% type], main = drug)
+    
+    xExpression <- expressions[ccleNames,]
+    xAlteration <- alterations[ccleNames,]
+    xRppa <- rppa[ccleNames,]
+    
+    ###################################
+    #Bind x parts to make the input
+    ###################################
+    X <- merge(as.data.frame(xAlteration), as.data.frame(xExpression), by='row.names', sort=TRUE)
+    #Clean up the mess of merge for the next merge!
+    row.names(X) <- X$Row.names
+    X$Row.names <- NULL
+    
+    X <- merge(X, as.data.frame(xExpression), by='row.names', sort=TRUE)
+    row.names(X) <- X$Row.names
+    X$Row.names <- NULL
+        
+    X <- merge(X, as.data.frame(xRppa), by='row.names', sort=TRUE)
+    row.names(X) <- X$Row.names
+    X$Row.names <- NULL
+    
+    ###################################
+    #Extract y
+    ###################################
+    yIC50 <- doseResponse$ic50[doseResponse$compound == drug & doseResponse$clName %in% ccleNames]
+    names(yIC50) <- doseResponse$clName[doseResponse$compound == drug & doseResponse$clName %in% ccleNames]
+    yActArea <- doseResponse$actArea[doseResponse$compound == drug & doseResponse$clName %in% ccleNames]
+    names(yActArea) <- doseResponse$clName[doseResponse$compound == drug & doseResponse$clName %in% ccleNames]
+    
+    
+    save(X, yIC50, yActArea, type, file=file.path(paths$clean, paste("xy_", drug, ".RData", sep="")))
+    
+    print(paste("Drug", drug, "is processed."))
+  }
+  else{
+    load(file=file.path(paths$clean, paste("xy_", drug, ".Rda", sep="")))
+    barplot(table(type), las=2, cex.names=.5, col = colset[allType %in% type], main = drug)
+    print(paste("Drug", drug, "is loaded."))
+  }
+}
+```
+
+# Forming (X, y): Groups are Sub-types
+
+```{r}
+
+```
+
+# Appendix
+This analysis was performed in this environment:
+```{r si}
+sessionInfo()
+```

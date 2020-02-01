@@ -1,0 +1,163 @@
+---
+title: "Reading All Data"
+author: "Amir Asiaee"
+date: "12 July 2019"
+output:
+  html_document:
+    toc: true
+    theme: yeti
+    highlight: kate
+---
+  
+```{r setup, include=FALSE, results="hide"}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r mycss, results="asis", echo=FALSE}
+cat('
+<style type="text/css">
+b, strong {color: red; }
+i, em {color: blue; }
+.defn {color: purple; }
+.para {color: purple;
+      font-weight: bold;
+}
+.figure { text-align: center; }
+.caption { font-weight: bold; }
+</style>
+')
+```
+# This report is deprecated. Go to files starting with 4.
+
+# Executive Summary
+## Background
+The **overall** goal of this project is to run DICER on CCLE data. 
+
+The **immediate** goal of this report is to read in the data files and save them as `.Rda` files. 
+
+## Methods
+
+### Input Data
+All downloaded from BroadInstitute website: https://portals.broadinstitute.org/ccle/data
+
+### Output Data 
+
+
+### Statistics
+
+## Results
+
+## Conclusion
+
+
+# Setting up Basics
+
+First we prepare the paths for the data. 
+```{r paths}
+rm(list = ls())
+source("00-paths.R")
+```
+
+# Gene Expression 
+
+We have downloaded the expression data from https://data.broadinstitute.org/ccle_legacy_data/mRNA_expression/CCLE_Expression_Entrez_2012-09-29.gct and saved it in the `paths$raw` folder. Since I could not find and easy way of reading `gtc` or `gtcx` files, I finally gave up and opened the files in Microsoft Excel and saved them as CSV. 
+```{r expression}
+fileName <- file.path(paths$clean,"expressions.RData")
+if (!file.exists(fileName)) {
+  expressions <- read.csv(file.path(paths$raw,"CCLE_Expression_Entrez_2012-09-29.csv"), skip = 2, header = T,  check.names =  FALSE, stringsAsFactors = F)
+  indNoNameGenes <- which(expressions$Description == "")
+  expressions$Description[indNoNameGenes] <- expressions$Name[indNoNameGenes] #These are 87 genes without name, so we set their name <- their id
+  expressions$Name <- NULL
+  # Still three prblematic genes remain
+  print(expressions$Description[which(duplicated(expressions$Description))])
+  # Both of these two are interpreted as march: Mar-1 and Mar-2
+  expressions$Description[11579] <- "MARCH2"
+  expressions$Description[14057] <- "MARCH1"
+  # I found another name for this form of TTL
+  expressions$Description[14027] <- "LINC00598"
+  # Now all row names are unique.
+  row.names(expressions) <- expressions$Description
+  expressions$Description <- NULL
+  # expressions <- scale(t(expressions))
+  expressions <- t(expressions)
+  save(expressions, file = fileName)
+}else{
+  load(fileName)
+}
+```
+Note that by manually checking the data we figured out that `MARCH1` and `MARCH2` data have been replaced in excel with datas and `Mar-1` and `Mar-2` were both interpreted as `Mar` and resulting in duplicates. Finally, we had two `TTL` which we replace one of them with its another name. Now we check the format and dimension of the data plus the gene information: 
+```{r expCheck}
+dim(expressions)
+print("Sample of sample names:")
+row.names(expressions)[sample.int(dim(expressions)[1], 20)]
+print("Sample of gene names:")
+colnames(expressions)[sample.int(dim(expressions)[2], 20)]
+```
+
+# Dose Response 
+We have downloaded the dose response data from https://data.broadinstitute.org/ccle/CCLE_DepMap_18q3_maf_20180718.txt and saved it in the `paths$raw` folder. 
+```{r dr}
+fileName <- file.path(paths$clean,"doseResponse.RData")
+if (!file.exists(fileName)) {
+  doseResponse <- read.csv(file.path(paths$raw,"CCLE_NP24.2009_Drug_data_2015.02.24.csv", sep=""), check.names =  FALSE, header = T, stringsAsFactors = F)
+  doseResponse <- doseResponse[,c("Compound", "CCLE Cell Line Name","IC50 (uM)", "ActArea")]
+  colnames(doseResponse) <- c("compound", "clName", "ic50", "actArea")
+  save(doseResponse, file=fileName)
+} else{
+  load(fileName)
+}
+```
+We are selecting two types of responses for now: IC50 and activity above dose response curve. 
+
+# Mutation and Copy Number
+We have downloaded the mutation data from https://data.broadinstitute.org/ccle_legacy_data/binary_calls_for_copy_number_and_mutation_data/CCLE_MUT_CNA_AMP_DEL_binary_Revealer.gct and saved it in the `paths$raw` folder. This is a binary value file which has the combination of mutation and copy number changes as binary values. For CNV it separates deletion and amplification. Instead of using non-binary CNV files, we use this file for now.
+```{r mut}
+fileName <- file.path(paths$clean,"alterations.RData")
+if (!file.exists(fileName)) {
+  alterations <- read.csv(file.path(paths$raw,"CCLE_MUT_CNA_AMP_DEL_binary_Revealer.csv", sep=""), skip = 2, header = T,  check.names =  FALSE, stringsAsFactors = F)
+  which(alterations$Name != alterations$Description)
+  alterations$Name <- NULL
+  row.names(alterations) <- alterations$Description
+  alterations$Description <- NULL
+  alterations <- t(alterations)
+  save(alterations, file = fileName)
+}else{
+  load(fileName)
+}
+
+```
+
+# Cell Line Definitions
+```{r def}
+fileName <- file.path(paths$clean,"clDef.RData")
+if (!file.exists(fileName)) {
+  defs <- read.csv(file.path(paths$raw,"Cell_lines_annotations_20181226.csv", sep=""),  check.names =  FALSE, stringsAsFactors = F)
+  # This is to deal with the problematic UNICODE character.
+  colnames(defs)[1] <-  "CCLE_ID"
+  defs <- defs[, c("CCLE_ID", "PATHOLOGIST_ANNOTATION", "tcga_code")]
+  colnames(defs) <- c("clName", "ccleId", "tcgaId")
+  save(defs, file = fileName) 
+}else{
+  load(fileName)
+}
+```
+
+# RPPA
+```{r rppa}
+fileName <- file.path(paths$clean,"rppa.RData")
+if (!file.exists(fileName)) {
+  rppa <- read.table(file.path(paths$raw,"CCLE_RNAseq_rsem_genes_tpm_20180929.txt", sep=""), header = T,  check.names =  FALSE, stringsAsFactors = F)
+  rppa$transcript_ids <- NULL
+  row.names(rppa) <- rppa$gene_id
+  rppa$gene_id <- NULL
+  rppa <- t(rppa)
+  save(rppa, file = fileName) 
+}else{
+  load(fileName)
+}
+```
+
+# Appendix
+This analysis was performed in this environment:
+```{r si}
+sessionInfo()
+```

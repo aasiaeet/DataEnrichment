@@ -1,0 +1,29 @@
+<html>
+
+<!-- Template file for SIAM Supplementary Materials index.
+     Replace all-caps strings below by appropriate text. -->
+
+<body>
+
+<p><b>Index of Supplementary Materials</b></p>
+
+<p>Title of paper: <i>High Dimensional Data Sharing: Multi-Task Learning with Theoretical Guarantee</i></p>
+
+<p>Authors: <i>Amir Asiaee, Samet Oymak, Kevin R. Coombes, and Arindam Banerjee</i></p>
+
+
+<!-- Repeat the lines below as many times as needed. -->
+
+<p>File: <a href="de_supplement">de_supplement</a></p>  <!-- same name twice -->
+
+<p>Type: PDF </p>
+
+<p>Contents: Detailed proofs of lemmas used in the main text to prove the theorems of the paper </p>
+
+<p>Justification: Most of the proof techniques of the supplement are known in the literature, so we have dropped them from the main text to avoid cluttering and to respect the suggested 20-page limit. But to have a self-contained publication, we have included all of the details of lemmas' proofs in the supplement file. </p>
+
+<!-- Repeat the lines above as many times as needed. -->
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2018/W32TeX)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: de_article.aux
+The style file: siamplain.bst
+Database file #1: nips18.bib
+Warning--empty journal in mctr13
+Warning--empty journal in olvi14
+Warning--empty journal in olvi15
+Warning--empty journal in Zhang2017-rm
+You've used 45 entries,
+            2244 wiz_defined-function locations,
+            810 strings with 12052 characters,
+and the built_in function-call counts, 19499 in all, are:
+= -- 1778
+> -- 847
+< -- 0
++ -- 338
+- -- 283
+* -- 1452
+:= -- 2736
+add.period$ -- 45
+call.type$ -- 45
+change.case$ -- 265
+chr.to.int$ -- 0
+cite$ -- 49
+duplicate$ -- 1014
+empty$ -- 1693
+format.name$ -- 283
+if$ -- 4329
+int.to.chr$ -- 0
+int.to.str$ -- 45
+missing$ -- 47
+newline$ -- 138
+num.names$ -- 96
+pop$ -- 429
+preamble$ -- 1
+purify$ -- 222
+quote$ -- 0
+skip$ -- 750
+stack$ -- 0
+substring$ -- 1394
+swap$ -- 388
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 176
+warning$ -- 4
+while$ -- 195
+width$ -- 47
+write$ -- 410
+(There were 4 warnings)

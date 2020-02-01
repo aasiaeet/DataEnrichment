@@ -1,0 +1,25 @@
+ What is the contribution of this paper to the Signal Processing Community (a couple of sentences)?
+ 
+ We introduced an estimator for recovering signals from a system of coupled superposition models known as the linear “Data Sharing” model. Our results establish the sufficient geometric condition for the recovery of signals, and we provide the first complete sample complexity, estimation error bound, and computational complexity analysis for such an estimator.
+ 
+ 
+ Why is the contribution significant (What impact will it have)?
+ 
+ Recovering structured low dimensional signal from pooled data coming from heterogeneous sources is of interest in many fields such as image processing, machine learning, and statistics.
+
+We present a general estimation framework for the recovery of such signals based on the data-sharing model with a high dimensional regime in mind.
+
+We present an efficient optimization algorithm, to solve the presented data sharing’s estimator objective which
+converges geometrically.  
+
+What are the three papers in the published literature most closely related to this paper?
+
+1.	Gross SM, Tibshirani R. Data Shared Lasso: A Novel Tool to Discover Uplift. Comput Stat Data Anal. 2016;101: 226–235.
+2.	McCoy, M. B., & Tropp, J. A. (2014). Sharp recovery bounds for convex demixing, with applications. Foundations of Computational Mathematics, 14(3), 503-567.
+3.	Chen A, Owen AB, Shi M. Data enriched linear regression. Electron J Stat. 2015;9: 1078–1112.
+
+What is distinctive/new about the current paper relative to these previously published works?
+
+From the signal processing point of view, data sharing is a generalization of the demixing problem. The goal of demixing is to identify two structured signals, given only the sum of the two signals and prior information about their structures. Data sharing expands this framework by considering a coupled system of mixed signals with the premise of leveraging all of the samples to recover the shared signal more efficiently.
+
+In the high dimensional linear regression setting, the Data Shared LASSO (DSL) has been suggested by Gross and Tibshirani recently and has found many applications while lacking proper theoretical analysis. DSL idea is to have a shared regression parameter across different tasks which gets supplemented by individual (sparse) parameters per task. Our estimator generalizes DSL by letting the parameters to have any structure promoted by arbitrary convex function. 

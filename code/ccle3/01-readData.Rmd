@@ -1,0 +1,254 @@
+---
+title: 'AML Drug Screening: Reading in and Packaging Data - Third Experiment'
+author: "Amir Asiaee and Kevin R. Coombes"
+date: "22 January 2019"
+output:
+  html_document:
+    toc: true
+    theme: yeti
+    highlight: kate
+    number_sections: true
+---
+  
+```{r setup, include=FALSE, results="hide"}
+knitr::opts_chunk$set(echo = TRUE)
+options(width=96)
+```
+```{r mycss, results="asis", echo=FALSE}
+cat('
+<style type="text/css">
+b, strong {color: red; }
+i, em {color: blue; }
+.defn {color: purple; }
+.para {color: purple;
+      font-weight: bold;
+}
+.figure { text-align: center; }
+.caption { font-weight: bold; }
+</style>
+')
+```
+
+# Executive Summary
+## Background
+
+## Methods
+### Input Data
+
+### Procedure 
+
+### Output Data 
+
+### Statistics
+
+## Results
+
+## Conclusion
+
+# Basics
+First we prepare the paths for the clean data. 
+```{r pats}
+rm(list=ls())
+source("00-paths.R")
+```
+
+# Drugs
+The most restrictive part of the data is the set of tested drugs. So we first read that and use the treated samples to filter out samples in other types of data. 
+
+```{r readDrugs}
+drugs <- read.csv(file.path(paths$raw, "CCLE_NP24.2009_Drug_data_2015.02.24.csv"), header = T)
+dim(drugs)
+head(drugs)
+sampleNames <- unique(sort(as.character(drugs$CCLE.Cell.Line.Name)))
+length(sampleNames)
+```
+
+# Mutations
+```{r readMutation}
+muts <- read.table(file.path(paths$raw, "CCLE_DepMap_18q3_maf_20180718.txt"), header = TRUE, sep = "\t")
+head(muts)
+dim(muts)
+```
+
+## Understanding the Mutation File
+	
+-	Hugo_Symbol: HUman Genome Organization standard symbols for human genes. 
+-	Entrez_Id: Entrez Gene records are assigned unique, stable and tracked integers as identifiers. This is kept with NCBI: National Center for Biotechnology Information. 
+-	Variant_Classification: Three types of point mutations:
+		1. Substitution
+			i. Silent (synonymous)
+			ii. Missense
+			iii. Nonesense: amino acid sequence stops.
+		2. Insertion: If it is one base it is called frameshift
+		3. Deletion: If it is one base it is called frameshift
+-	Strand: The DNA strands are directional. It is always synthesized/built from 5' end to 3' end. 5' and 3' are happening in a same molecule which forms the DNA backbone. A phosphate group is attached to the 5' carbon.
+-	I think mutations can happen on each strand. But which one is + or -? I don't know. 
+-	Genome_Change: This seems to contain the same information: g.chr1:1277461C>T On chromosome 1 positoin x we have a point mutations where C is changed to T. 
+	Annotation_Transcript: I think this is the transcript that was used to read it. 
+-	cDNA_Change: Change in the complementary DAN c.438G>A
+-	Codon_Change: Place of the codon and the change c.(436-438)gaG>gaA
+-	isDeleterious: A mutation is deleterious if it is nonsense, frameshift, or occurred in splice site. 
+
+The main question is: 	What type of mutation I should keep? Only deleterious? Everything except silent? I think deleterious is very restrictive because it is not including missense. I prefer to keep everything except silence. 
+
+```{r mutationPlayGround}
+print(paste("Number of silent mutations", sum(muts$Variant_Classification == 'Silent')))
+print(paste("Number of non-silent mutations", sum(muts$Variant_Classification != 'Silent')))
+mutsShrinked <- muts[muts$isDeleterious, ]
+print(paste("Number of genes that are deleteriously mutated at least once", length(unique(mutsShrinked$Hugo_Symbol))))
+mutsShrinked <- muts[muts$Variant_Classification != 'Silent', ]
+print(paste("Number of genes that are non-silently mutated at least once", length(as.character(mutsShrinked$Hugo_Symbol))))
+mutsShrinked <- mutsShrinked[as.character(mutsShrinked$Tumor_Sample_Barcode) %in% sampleNames, ]
+dim(muts)
+dim(mutsShrinked)
+```
+I didn't expect so many mutations being silent! But still I'm going to discard them. Also, since almost all genes are present as deleterious, I'm not going to focus on them.
+
+## Making Mutation File
+
+```{r mutDataMatrix}
+myFile <- file.path(paths$clean, "mut.Rda")
+if(!file.exists(myFile)){
+  allGenes <- sort(unique(mutsShrinked$Hugo_Symbol))
+  Xmut <- matrix(0, length(sampleNames), length(allGenes))
+  dimnames(Xmut) <- list(sampleNames, allGenes)
+  Xmut[cbind(as.character(mutsShrinked$Tumor_Sample_Barcode), as.character(mutsShrinked$Hugo_Symbol))] <- 1
+  colnames(Xmut) <- paste(colnames(Xmut), "_mut", sep = "")
+  dim(Xmut)
+  
+  Xmut[1:5, 1:5]
+  save(Xmut, file = myFile)
+  rm(allGenes, Xmut)
+  gc()
+}
+rm(muts, mutsShrinked)
+```
+
+# Copy Number
+The new data is the output of ABSOLUTE and it shows which segments are gained/lossed. I don't know how to convert it to gene level information. I fall back to the previous copynumber_byGene data from 2013.
+First we read the data file, remove the unrequired first columns, and pick the samples that we are interested in:
+```{r readCpN}
+myFile <- file.path(paths$clean, "cp.Rda")
+if(!file.exists(myFile)){
+  cps <- read.table(file = file.path(paths$raw, "CCLE_copynumber_byGene_2013-12-03.txt"), header = T)
+  rownames(cps) <- cps$SYMBOL 
+  cps <- cps[,6:dim(cps)[2]]
+  head(cps)
+  print(paste("Samples before sample selection:", dim(cps)[2]))
+  cps <- t(as.matrix(cps[,colnames(cps) %in% sampleNames]))
+  print(paste("Samples after sample selection:", dim(cps)[2]))
+  colnames(cps) <- paste(colnames(cps), "_cp", sep = "")
+  cps[1:10, 1:10]
+  
+  # length(rownames(cps))
+  # length(rownames(X))
+  # sum(colnames(cps) %in% rownames(X))P
+  
+  Xcp <- matrix(0, length(sampleNames), length(colnames(cps)))
+  dimnames(Xcp) <- list(sampleNames, colnames(cps))
+  Xcp[rownames(cps), ] <- cps
+  
+  Xcp[1:5, 1:5]
+  save(Xcp, file = myFile)
+  rm(cps, Xcp)
+  gc()
+}
+```
+
+# mRNA Expression
+Now we want to load the expression data. What we get is the RNA-Seq data in RPKM format. 
+
+## Understanding RNA-Seq Data
+There are many different versions of this: RPKM, RSEM-gene, RSEM-transcript, read counts, exon inclusion rations, exon inclusion ration denominator. I was confused about what to use I tred to understand this:
+		- Read counts are raw data
+		- RPKM: Reads Per Kilobase of transcript per Million: column normalized (by total number of reads per sample) then row normalize (by length of the gene) 
+		- TPM: Transcripts Per Million: change the order. Which makes the read relative to the read frequency per sample. 
+		- DESeq2 and edgeR: They try to consider the target difference, e.g., we are supposed to see biological difference + technological ones when comparing reads of liver and brain. 
+
+It turned out the in the CCLE recent paper they get log_2(RPKM) as the mRNA expression and use it in regression. 
+
+## Loading RPKM Data
+We need to take log2 of this file to compute the expression as a feature similar to what is done in the original paper. Note that the RNA-Seq results have ~56000 genes! I don't know what are the extra reads but I'm going to include them. Also, Description is not a unique id, so I use ENSG:
+
+```{r loadExp}
+myFile <- file.path(paths$clean, "exp.Rda")
+if(!file.exists(myFile)){
+  rpkm <- read.table(file = file.path(paths$raw, "CCLE_RNAseq_genes_rpkm_20180929.gct"), header = T, skip = 2)
+  dim(rpkm)
+  length(unique(rpkm$Description))
+  rownames(rpkm) <- rpkm$Name
+  mapName2Des <- cbind(rpkm$Name, rpkm$Description)
+  rpkm <- t(rpkm[,3:dim(rpkm)[2]])
+  rpkm <- rpkm[rownames(rpkm) %in% sampleNames,]
+  dim(rpkm)
+  
+  Xexp <- matrix(0, length(sampleNames), length(colnames(rpkm)))
+  dimnames(Xexp) <- list(sampleNames, colnames(rpkm))
+  # Finding the offset using 1.95 < (2 X + offset)/(X + offset) < 2 
+  med <- median(rpkm)
+  print(med)
+  rpkm <- rpkm + med/19.0
+  
+  Xexp[rownames(rpkm), ] <- log2(rpkm)
+  
+  
+  Xexp[1:5, 1:5]
+  save(Xexp, file = myFile)
+  rm(rpkm, Xexp)
+  gc()
+}
+```
+
+# RPPA Data 
+
+```{r rppaRead}
+myFile <- file.path(paths$clean, "rppa.Rda")
+if(!file.exists(myFile)){
+  rppa <- read.csv(file = file.path(paths$raw, "CCLE_RPPA_20181003.csv"), header = T)
+  rownames(rppa) <- rppa$X
+  rppa <- rppa[,2:dim(rppa)[2]]
+  rppa <- rppa[rownames(rppa) %in% sampleNames, ]
+  dim(rppa)
+  
+  
+  Xrppa <- matrix(0, length(sampleNames), length(colnames(rppa)))
+  dimnames(Xrppa) <- list(sampleNames, colnames(rppa))
+  Xrppa[rownames(rppa), ] <- as.matrix(rppa)
+  
+  Xrppa[1:5, 1:5]
+  save(Xrppa, file = myFile)
+  rm(rppa, Xrppa)
+  gc()
+}
+```
+
+# Gluing Things Together
+```{r glue}
+load(file.path(paths$clean, "mut.Rda"))
+dim(Xmut)
+sum(apply(Xmut, 1, sum) == 0)
+load(file.path(paths$clean, "cp.Rda"))
+dim(Xcp)
+sum(apply(Xcp, 1, sum) == 0)
+load(file.path(paths$clean, "exp.Rda"))
+dim(Xexp)
+sum(apply(Xexp, 1, sum) == 0)
+load(file.path(paths$clean, "rppa.Rda"))
+dim(Xrppa)
+sum(apply(Xrppa, 1, sum) == 0)
+
+X <- cbind(Xmut, Xcp, Xexp, Xrppa)
+dim(X)
+X[100:105, c(1:5, 20000:20010, 50000:50010, 98600:98610)]
+# Remove all samples for which no expression or no rppa is measured
+X <- X[apply(Xexp, 1, sum) != 0 & apply(Xrppa, 1, sum) != 0, ]
+dim(X)
+save(X, file = file.path(paths$clean, "X.Rda"))
+
+```
+
+
+# Appendix: Session Info
+This anlysis was performed in this environment:
+```{r si}
+sessionInfo()

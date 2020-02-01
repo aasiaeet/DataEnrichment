@@ -1,0 +1,140 @@
+\section{General Error Bound}
+\label{sec:error}
+In this section, we present our main statistical result which is a non-asymptotic high probability upper bound for the estimation error of the common and individual parameters.
+\begin{theorem}
+	\label{theo:calcub}
+	For $\x_{gi}$ and $w_{gi}$ described in Definition \ref{def:obs} when we have enough number of samples $\forall g \in [G_+]: n_g > m_g$ which lead to $\kappa > 0$, the following general error bound holds for estimator \eqref{eq:compact} with probability at least $1 - \sigma \exp\left(-\min\left[\nu  \min_{g \in [G]} n_g - \log (G+1), \tau^2\right]\right) $: 
+%	\be
+%		\label{eq:general}
+%		\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}
+%		\leq C {\gamma} \frac{k\zeta \max_{g \in [G]}  \omega(\cA_g) + \epsilon \sqrt{\log (G+1)}+ \tau }{\kappa_{\min}^2 \sqrt{n}}
+%	\ee	
+	{\small\be
+	\label{eq:general}
+	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}
+	\leq C {\gamma} \frac{\max_{g \in [G_+]}  \omega(\cA_g) + \sqrt{\log (G+1)}+ \tau }{\kappa_{\min}^2 \sqrt{n}}
+	\ee}where $\gamma = \max_{g \in [G]} n/n_g$, $\tau > 0$, and $\sigma, \nu,$ and $C$ are constants. 
+\end{theorem}
+
+\begin{corollary}
+	\label{corr:single}
+	From \eqref{eq:general} one can immediately entail the error bound for estimation of all parameters as follows:
+	{\small\be
+	\nr
+	%\forall g \in [G]:
+	%	\forall g \in [G]: \quad \norm{\ddelta_g}{2} \leq \sqrt{\gamma} \sqrt{\frac{n}{n_g}} O\left(\frac{\max_{g \in [G]}  \omega(\cA_g) + \sqrt{\log (G+1)} }{\sqrt{n_g}}\right)
+	\forall g \in [G_+]: \quad \norm{\ddelta_g}{2} =  O\left(\gamma \frac{\max_{g \in [G_+]}  \omega(\cA_g) + \sqrt{\log (G+1)} }{\sqrt{n_g}}\right)
+	\ee}
+\end{corollary}
+
+\begin{example}
+	For the balanced sample condition number $\gamma = \Theta(G)$ discussed in Remark \ref{rem1} we have the following error bound for all parameters:
+	{\small\be 
+		\forall g \in [G_+]: \norm{\ddelta_g}{2} =  O\left(G^{3/2} \frac{\max_{g \in [G_+]}  \omega(\cA_g) + \sqrt{\log (G+1)} }{\sqrt{n}}\right)
+	\ee} 
+	where the upper bound of error scales as $\frac{1}{\sqrt{n}}$ for all parameters. %\hfill {\color{header1} \qedsymbol}
+\end{example}
+
+
+\begin{example}
+	{\bf ($l_1$-norm)} For the sparse DS estimator of Example \ref{exm:sde}, results of Theorems \ref{theo:re} and \ref{theo:calcub} translates to the following. For enough samples as $\forall g \in [G_+]: n_g \geq m_g = O(s_g \log p)$, the upper bound of error simplifies to:
+	\be
+	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}	= O \left(\gamma \sqrt{\frac{(\max_{g \in [G_+]}  s_g)\log p}{n}}\right) ,
+	\ee 
+	Therefore, individual errors are bounded as $\norm{\ddelta_g}{2}	= O (\gamma \sqrt{(\max_{g \in [G]}  s_g)\log p/n_g})$
+	which is slightly worse than $O(\sqrt{s_g\log p/n_g})$, the well-known error bound for recovering an $s_g$-sparse vector from $n_g$ observations using LASSO or similar estimators \cite{banerjee14, bickel2009simultaneous, candes2007dantzig, venkat12, chatterjee2014generalized}. %\hfill {\color{header1} \qedsymbol}
+\end{example}
+
+\subsection{Proof of Theorem \ref{theo:calcub}}
+To avoid cluttering the notation, we rename the vector of all noises as $\w_0 \triangleq \w$.
+First, we massage the deterministic upper bound of Theorem \ref{theo:deter} as follows:
+\begin{align}
+	\nr
+	&\w ^T \X\ddelta \hspace*{0.5cm}= \sum_{g=0}^{G} \langle \X_g^T \w_g,  \ddelta_g \rangle
+	\\ \nr 
+	&\hspace*{1.5cm}= \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}} \rangle \sqrt{\frac{n}{n_g}} \norm{\w_g}{2} %\\ \nr
+\end{align}
+
+Assume $q_g = \langle \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}}  \rangle \sqrt{\frac{n}{n_g}} \norm{\w_g}{2}$ and $p_g = \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}$.
+Then the above term is the inner product of two vectors $\p = (p_0, \dots, p_G)$ and $\q = (q_0, \dots, q_G)$ for which we have:
+%\be
+%\nr
+$\sup_{\p \in \bcH} \p^T \q
+=\sup_{\norm{\p}{1} = 1} \p^T \q
+\leq \norm{\q}{\infty}
+= \max_{g \in [G_+]} q_g,
+$%\ee
+where the inequality holds because of the definition of the dual norm.
+%Now we can go back to 
+Going back to the original form:
+\bea 
+\label{eq:maxex}
+\sup_{\ddelta \in \cH}\w^T \X\ddelta
+\leq& \max_{g \in [G]} \langle \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}}  \rangle \sqrt{\frac{n}{n_g}} \norm{\w_g}{2} \\ 
+\nr 
+\leq& \max_{g \in [G]} \sqrt{\frac{n}{n_g}} \norm{\w_g}{2} \sup_{\u_g \in \cC_g \cap \sphere} \langle \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \u_g \rangle 
+\eea
+
+To avoid cluttering we define a random quantity $h_g(\w_g, \X_g)$ and a corresponding constant $e_g(\tau)$ as: 
+{\small\begin{itemize}
+	\item $h_g(\w_g, \X_g) \triangleq   \norm{\w_g}{2}  \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \u_g \rangle $
+	\item $e_g(\tau) \triangleq  c_g\sqrt{(2k_w^2 + 1)k_x^2n_g} \left(\omega(\cA_g) + \sqrt{\log (G+1)} + \tau \right)$
+\end{itemize}}
+Then from \eqref{eq:maxex}, we have:
+\begin{align}
+\nr  
+&\pr \left(\sup_{\ddelta \in \cH} \w^T \X\ddelta >  \max_{g \in [G]} \sqrt{\frac{n}{n_g}} e_g(\tau) \right) 
+\\ \nr 
+&\hspace*{1.5cm}\leq \pr \left(\max_{g \in [G]} \sqrt{\frac{n}{n_g}} h_g(\w_g, \X_g) > \max_{g \in [G]} \sqrt{\frac{n}{n_g}} e_g(\tau) \right) 
+\\  \nr 
+&\hspace*{1.5cm}\leq \sum_{g=0}^{G} \pr \left(\sqrt{\frac{n}{n_g}} h_g(\w_g, \X_g) >  \max_{g \in [G]}  \sqrt{\frac{n}{n_g}} e_g(\tau) \right)  
+\\ \nr 
+&\hspace*{1.5cm}\leq \sum_{g=0}^{G} \pr \left( h_g(\w_g, \X_g) >  e_g(\tau) \right)  
+\\ \nr 	
+&\hspace*{1.5cm}\leq (G+1) \max_{g \in [G_+]} \pr \left(h_g(\w_g, \X_g) > e_g(\tau) \right) 
+\\ \nr 
+&\hspace*{1.5cm}\leq \sigma \exp\left(-\min\left[\nu  \min_{g \in [G]} n_g - \log (G+1), \tau^2\right]\right), 
+\end{align} 
+where the first inequality follows from the Union Bound and the last one is the result of the following lemma:
+\begin{lemma}
+	\label{lemm:mainlem}
+	For $\x_{gi}$ and $\omega_{gi}$ defined in Definition \ref{def:obs} and $\tau > 0$, with probability at least $1 - \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu  n_g - \log (G+1), \tau^2\right]\right) $ we have:
+	\begin{align}	
+	&\norm{\w_g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \u_g \rangle 
+	\\ \nr 
+	&\hspace*{1cm}\leq 	c_g \sqrt{(2k_w^2 + 1)k_x^2n_g}  \left(\omega(\cA_g)+\sqrt{\log (G+1)} + \tau \right), \nr
+	\end{align}
+	where $\sigma_g, \nu$ and $c_g$ are constants.
+\end{lemma}	
+The proof completes by replacing $\max_{g \in [G]} \sqrt{\frac{n}{n_g}} e_g(\tau)$ as the upper bound of $\sup_{\ddelta \in \cH} \w^T \X\ddelta$ and $\kappa^2_{\min}/4$ as the lower bound of $\kappa$ (from Theorem \ref{theo:re}) both into the bound of Theorem \ref{theo:deter} . \hfill {\qedsymbol}
+
+
+
+%	{\color{red} Do we need these remarks anymore? We have the extra factor
+%		
+%	Comparing the result of Corollary \ref{corr:single} with the case of regression with the single structured parameter $\bbeta_g^*$ is instructive.
+%	Following are some remarks comparing our results with the state-of-the-art.
+%\begin{remark}
+%	Corollary \ref{corr:single} states $\forall \in [G]_\setminus: \norm{\ddelta_g}{2} \leq O((\max_{g \in [G]} \omega(\cA_g) + \sqrt{\log (G+1)})/\sqrt{n_g})$ while sharp error bound for the single regression with $\bbeta_g^*$ is $\norm{\ddelta_g}{2} \leq O(\omega(\cA_g)/\sqrt{n_g})$.
+%	So by solving a more complicated data sharing model we only pay a price of $\big(\max_{g \in [G]} \omega(\cA_g) - \omega(\cA_g) + \sqrt{\log (G+1)}\big)/ \sqrt{n_g}$ in estimation error while the order of the sample complexity $m_g$ stays the same.
+%\end{remark}
+%
+%\begin{remark}
+%	On the other hand, without any direct observation regarding the parameter $\bbeta _0^*$ we exploit all of the groups data and get the decay rate of $1/\sqrt{n}$ for $\norm{\ddelta_0}{2}$ by only paying a price of $\big(\max_{g \in [G]} \omega(\cA_g) - \omega(\cA_0)+ \sqrt{\log (G+1)}\big)/ \sqrt{n}$ in estimation error.
+%\end{remark}
+%%}
+%\begin{remark}
+%	\label{rem:sperror}
+%	For sparse parameters, assume that each $\bbeta _g^*$ is $s_g$-sparse and $s = \max_{g \in [G]} s_g$, i.e., the densest parameter is $s$-sparse.
+%	Then we have the following error bounds with high probability when number of per group samples $n_g = O(s_g \log p)$ and total number of samples $n = O(s_0 \log p)$ :
+%	\be
+%	\nr
+%%	\forall g \in [G]: \norm{\ddelta_g}{2} \leq c \sqrt{\gamma} \sqrt{\frac{n}{n_g}} \frac{\sqrt{s  \log p} + \sqrt{\log (G+1)}}{\sqrt{n_g}}
+%	\forall g \in [G]: \norm{\ddelta_g}{2} \leq c {\gamma} \frac{\sqrt{s  \log p} + \sqrt{\log (G+1)}}{\sqrt{n_g}}
+%	\ee
+%%	Note that here the recovery of the common parameter is at most $c\sqrt{\frac{\sqrt{\log G}}{n}}$ worse than the case of single regression with $\bbeta _0$ as the parameter.
+%%	Also for the individual parameters, the bound is only $c \frac{(\sqrt{s_0} - \sqrt{s_g}) \sqrt{\log p} + \sqrt{\sqrt{\log G}}}{\sqrt{n_g}}$ weaker than the case of single regression.
+%\end{remark}
+
+
+

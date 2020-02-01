@@ -1,0 +1,1317 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.29)  13 JUN 2019 09:47
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**datasenrichment.tex
+(./datasenrichment.tex
+LaTeX2e <2018-12-01>
+(c:/texlive/2018/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
+(c:/texlive/2018/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(c:/texlive/2018/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2018/01/14 v2.7a Micro-typographical refinements (RS)
+
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+\MT@toks=\toks15
+\MT@count=\count88
+LaTeX Info: Redefining \textls on input line 793.
+\MT@outer@kern=\dimen103
+LaTeX Info: Redefining \textmicrotypecontext on input line 1339.
+\MT@listname@count=\count89
+
+(c:/texlive/2018/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2018/01/14 v2.7a Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 913.
+LaTeX Info: Redefining \lslig on input line 913.
+\MT@outer@space=\skip43
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(c:/texlive/2018/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2018/01/14 v2.7a microtype main configuration file (RS)
+))
+(c:/texlive/2018/texmf-dist/tex/latex/sttools/stfloats.sty
+Package: stfloats 2017/03/27 v3.3 Improve float mechanism and baselineskip sett
+ings
+\@dblbotnum=\count90
+\c@dblbotnumber=\count91
+)
+(c:/texlive/2018/texmf-dist/tex/latex/moresize/moresize.sty
+Package: moresize 1999/07/26 v1.9 (more font sizes)
+)
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(c:/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(c:/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+(c:/texlive/2018/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2016/04/27 v1.618033 publication quality tables
+\heavyrulewidth=\dimen106
+\lightrulewidth=\dimen107
+\cmidrulewidth=\dimen108
+\belowrulesep=\dimen109
+\belowbottomsep=\dimen110
+\aboverulesep=\dimen111
+\abovetopsep=\dimen112
+\cmidrulesep=\dimen113
+\cmidrulekern=\dimen114
+\defaultaddspace=\dimen115
+\@cmidla=\count92
+\@cmidlb=\count93
+\@aboverulesep=\dimen116
+\@belowrulesep=\dimen117
+\@thisruleclass=\count94
+\@lastruleclass=\count95
+\@thisrulewidth=\dimen118
+)
+(c:/texlive/2018/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2017/10/31 v2.20.4
+\thm@style=\toks16
+\thm@bodyfont=\toks17
+\thm@headfont=\toks18
+\thm@notefont=\toks19
+\thm@headpunct=\toks20
+\thm@preskip=\skip44
+\thm@postskip=\skip45
+\thm@headsep=\skip46
+\dth@everypar=\toks21
+)
+(c:/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks22
+\inpenc@posthook=\toks23
+)
+(c:/texlive/2018/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
+
+(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(c:/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(c:/texlive/2018/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+(c:/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen119
+\Hy@linkcounter=\count96
+\Hy@pagecounter=\count97
+
+(c:/texlive/2018/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count98
+
+(c:/texlive/2018/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4519.
+Package hyperref Info: Link nesting OFF on input line 4524.
+Package hyperref Info: Hyper index ON on input line 4527.
+Package hyperref Info: Plain pages OFF on input line 4534.
+Package hyperref Info: Backreferencing OFF on input line 4539.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4772.
+\c@Hy@tempcnt=\count99
+
+(c:/texlive/2018/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5125.
+\XeTeXLinkMargin=\dimen120
+\Fld@menulength=\count100
+\Field@Width=\dimen121
+\Fld@charsize=\dimen122
+Package hyperref Info: Hyper figures OFF on input line 6380.
+Package hyperref Info: Link nesting OFF on input line 6385.
+Package hyperref Info: Hyper index ON on input line 6388.
+Package hyperref Info: backreferencing OFF on input line 6395.
+Package hyperref Info: Link coloring OFF on input line 6400.
+Package hyperref Info: Link coloring with OCG OFF on input line 6405.
+Package hyperref Info: PDF/A mode OFF on input line 6410.
+LaTeX Info: Redefining \ref on input line 6450.
+LaTeX Info: Redefining \pageref on input line 6454.
+\Hy@abspage=\count101
+\c@Item=\count102
+\c@Hfootnote=\count103
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(c:/texlive/2018/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
+\Fld@listcount=\count104
+\c@bookmark@seq@number=\count105
+
+(c:/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip47
+)
+(c:/texlive/2018/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+
+(c:/texlive/2018/texmf-dist/tex/latex/tools/array.sty
+Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
+\col@sep=\dimen123
+\ar@mcellbox=\box27
+\extrarowheight=\dimen124
+\NC@list=\toks24
+\extratabsurround=\skip48
+\backup@length=\skip49
+\ar@cellbox=\box28
+)
+\rotheadsize=\dimen125
+\c@nlinenum=\count106
+\TeXr@lab=\toks25
+)
+(c:/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
+
+(c:/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen126
+\captionmargin@=\dimen127
+\captionwidth=\dimen128
+\caption@tempdima=\dimen129
+\caption@indent=\dimen130
+\caption@parindent=\dimen131
+\caption@hangindent=\dimen132
+)
+\c@caption@flags=\count107
+\c@ContinuedFloat=\count108
+Package caption Info: hyperref package is loaded.
+)
+(c:/texlive/2018/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2018/05/01 v1.1-162 Sub-captions (AR)
+\c@subfigure=\count109
+\c@subtable=\count110
+)
+(c:/texlive/2018/texmf-dist/tex/latex/floatflt/floatflt.sty
+Package: floatflt 1997/07/16 v. 1.31
+\c@OptionTest=\count111
+\figbox=\box29
+\tabbox=\box30
+\pagebox=\box31
+\ffigcount=\count112
+\ftabcount=\count113
+\fftest=\count114
+\hangcount=\count115
+\nosuccesstryfig=\count116
+\nosuccesstrytab=\count117
+\figgutter=\dimen133
+\tabgutter=\dimen134
+\htdone=\dimen135
+\pageht=\dimen136
+\startpageht=\dimen137
+\tabbredd=\dimen138
+\floatfltwidth=\dimen139
+\fltitemwidth=\dimen140
+\outputpretest=\toks26
+)
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
+\epsfxsize=\dimen141
+\epsfysize=\dimen142
+)
+(c:/texlive/2018/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+(c:/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+)
+(c:/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2018/12/01 v2.17b AMS math features
+\@mathmargin=\skip50
+
+For additional information on amsmath, use the `?' option.
+(c:/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(c:/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks27
+\ex@=\dimen143
+))
+(c:/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen144
+)
+(c:/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count118
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count119
+\leftroot@=\count120
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count121
+\DOTSCASE@=\count122
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box32
+\strutbox@=\box33
+\big@size=\dimen145
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+\macc@depth=\count123
+\c@MaxMatrixCols=\count124
+\dotsspace@=\muskip11
+\c@parentequation=\count125
+\dspbrk@lvl=\count126
+\tag@help=\toks28
+\row@=\count127
+\column@=\count128
+\maxfields@=\count129
+\andhelp@=\toks29
+\eqnshift@=\dimen146
+\alignsep@=\dimen147
+\tagshift@=\dimen148
+\tagwidth@=\dimen149
+\totwidth@=\dimen150
+\lineht@=\dimen151
+\@envbody=\toks30
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks31
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
+)
+(c:/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(c:/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(c:/texlive/2018/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(c:/texlive/2018/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count130
+\float@exts=\toks32
+\float@box=\box34
+\@float@everytoks=\toks33
+\@floatcapt=\box35
+)
+(c:/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks34
+\c@algorithm=\count131
+)
+(c:/texlive/2018/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count132
+\c@ALC@line=\count133
+\c@ALC@rem=\count134
+\c@ALC@depth=\count135
+\ALC@tlm=\skip53
+\algorithmicindent=\skip54
+)
+(c:/texlive/2018/texmf-dist/tex/latex/bbm-macros/bbm.sty
+Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
+LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
+(Font)                  U/bbm/m/n --> U/bbm/bx/n on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
+(Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
+)
+(c:/texlive/2018/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
+LaTeX Info: Redefining \bm on input line 207.
+)
+(c:/texlive/2018/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks35
+)
+(c:/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
+\multirow@colwidth=\skip55
+\multirow@cntb=\count136
+\multirow@dima=\skip56
+\bigstrutjot=\dimen152
+)
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/rotating.sty
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+\c@r@tfl@t=\count137
+\rotFPtop=\skip57
+\rotFPbot=\skip58
+\rot@float@box=\box36
+\rot@mess@toks=\toks36
+)
+(c:/texlive/2018/texmf-dist/tex/latex/tools/hhline.sty
+Package: hhline 2014/10/28 v2.03 Table rule package (DPC)
+)
+(c:/texlive/2018/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(c:/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
+
+(c:/texlive/2018/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
+(c:/texlive/2018/texmf-dist/tex/latex/units/nicefrac.sty
+Package: nicefrac 1998/08/04 v0.9b Nice fractions
+\L@UnitsRaiseDisplaystyle=\skip59
+\L@UnitsRaiseTextstyle=\skip60
+\L@UnitsRaiseScriptstyle=\skip61
+)
+(c:/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/02/04 v3.8 Customized lists
+\labelindent=\skip62
+\enit@outerparindent=\dimen153
+\enit@toks=\toks37
+\enit@inbox=\box37
+\enit@count@id=\count138
+\enitdp@description=\count139
+)
+(c:/texlive/2018/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count140
+\calc@Bcount=\count141
+\calc@Adimen=\dimen154
+\calc@Bdimen=\dimen155
+\calc@Askip=\skip63
+\calc@Bskip=\skip64
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count142
+\calc@Cskip=\skip65
+) (./icml2019.sty
+Package: icml2019 2019/01/07 v2.0 ICML Conference Style File
+
+(./fancyhdr.sty
+\fancy@headwidth=\skip66
+\f@ncyO@elh=\skip67
+\f@ncyO@erh=\skip68
+\f@ncyO@olh=\skip69
+\f@ncyO@orh=\skip70
+\f@ncyO@elf=\skip71
+\f@ncyO@erf=\skip72
+\f@ncyO@olf=\skip73
+\f@ncyO@orf=\skip74
+) (c:/texlive/2018/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip75
+\bibsep=\skip76
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count143
+)
+(c:/texlive/2018/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2018/04/12 v2.0h eso-pic (RN)
+)
+(c:/texlive/2018/texmf-dist/tex/latex/forloop/forloop.sty
+Package: forloop 2006/09/18 v3.0 For Loops for LaTeX
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 108.
+\titrun=\box38
+\c@@affiliationcounter=\count144
+\c@@affilnum=\count145
+\newcaptionbox=\box39
+\newcaptionboxwid=\dimen156
+\icmlrulerbox=\box40
+\icmlrulercount=\count146
+\icmlruleroffset=\dimen157
+\cv@lineheight=\dimen158
+\cv@boxheight=\dimen159
+\cv@tmpbox=\box41
+\cv@refno=\count147
+\cv@tot=\count148
+\cv@tmpc@=\count149
+\cv@tmpc=\count150
+) (./sec/notation.tex
+\c@theorem=\count151
+\c@definition=\count152
+\c@lemma=\count153
+\c@prop=\count154
+\c@corollary=\count155
+\c@example=\count156
+\c@remark=\count157
+) (./datasenrichment.aux)
+\openout1 = `datasenrichment.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 78.
+ (c:/texlive/2018/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+LaTeX Info: Redefining \microtypecontext on input line 78.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `basictext'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+ (c:/texlive/2018/texmf-dist/tex/latex/microtype/mt-ptm.cfg
+File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
+)
+(c:/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count158
+\scratchdimen=\dimen160
+\scratchbox=\box42
+\nofMPsegments=\count159
+\nofMParguments=\count160
+\everyMPshowfont=\toks38
+\MPscratchCnt=\count161
+\MPscratchDim=\dimen161
+\MPnumerator=\count162
+\makeMPintoPDFobject=\count163
+\everyMPtoPDFconversion=\toks39
+) (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(c:/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(c:/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box43
+Package hyperref Info: Link coloring ON on input line 78.
+
+(c:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count164
+)
+LaTeX Info: Redefining \ref on input line 78.
+LaTeX Info: Redefining \pageref on input line 78.
+LaTeX Info: Redefining \nameref on input line 78.
+
+(./datasenrichment.out) (./datasenrichment.out)
+\@outlinefile=\write3
+\openout3 = `datasenrichment.out'.
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: floatflt package is loaded.
+Package caption Info: rotating package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\\' on input line 121.
+
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 121.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 121.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 121.
+\c@@affilaoo=\count165
+(c:/texlive/2018/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 121.
+
+(c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(c:/texlive/2018/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 121.
+
+(c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(c:/texlive/2018/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+\c@@affilboo=\count166
+\c@@affilcoo=\count167
+\c@@affildoo=\count168
+
+
+Package hyperref Warning: Ignoring empty anchor on input line 131.
+
+
+Underfull \hbox (badness 1028) in paragraph at lines 131--131
+[][][]|  $[]$\T1/ptm/m/n/9 (+20) Mathematical Bio-sciences In-sti-tute, Ohio St
+ate Uni-ver-
+ []
+
+(./sec/abstract.tex
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
+) (./sec/intro.tex [1{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.
+map}
+
+
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--79
+[]\T1/ptm/m/n/10 (+20) Given $\OML/cmm/m/it/10 G$ \T1/ptm/m/n/10 (+20) groups a
+nd $\OML/cmm/m/it/10 n[]$ \T1/ptm/m/n/10 (+20) sam-ples in each as
+ []
+
+
+Underfull \hbox (badness 2027) in paragraph at lines 76--79
+\OMS/cmsy/m/n/10 ff\OT1/cmr/bx/n/10 x[]\OML/cmm/m/it/10 ; y[]\OMS/cmsy/m/n/10 g
+[]g[]$\T1/ptm/m/n/10 (+20) , we can form the per group de-
+ []
+
+
+Overfull \hbox (14.48163pt too wide) in alignment at lines 105--110
+ [][][] []
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 115.
+
+(c:/texlive/2018/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 115.
+
+Overfull \hbox (7.11194pt too wide) in alignment at lines 117--121
+ [][][] []
+ []
+
+[2]
+
+pdfTeX warning: pdflatex.exe (file ./img/sc.pdf): PDF inclusion: found PDF vers
+ion <1.6>, but at most version <1.5> allowed
+<./img/sc.pdf, id=145, 273.45363pt x 277.34215pt>
+File: ./img/sc.pdf Graphic file (type pdf)
+<use ./img/sc.pdf>
+Package pdftex.def Info: ./img/sc.pdf  used on input line 149.
+(pdftex.def)             Requested size: 87.80447pt x 89.05176pt.
+
+
+pdfTeX warning: pdflatex.exe (file ./img/deric.pdf): PDF inclusion: found PDF v
+ersion <1.6>, but at most version <1.5> allowed
+<./img/deric.pdf, id=146, 282.52551pt x 277.34114pt>
+File: ./img/deric.pdf Graphic file (type pdf)
+<use ./img/deric.pdf>
+Package pdftex.def Info: ./img/deric.pdf  used on input line 154.
+(pdftex.def)             Requested size: 91.31606pt x 89.63966pt.
+
+Overfull \hbox (3.51158pt too wide) in paragraph at lines 154--155
+[][] 
+ []
+
+
+Underfull \hbox (badness 4582) in paragraph at lines 155--155
+[]\T1/ptm/m/n/9 (+20) (b) |Data En-Rich-ment
+ []
+
+
+Underfull \hbox (badness 2538) in paragraph at lines 155--155
+\T1/ptm/m/n/9 (+20) In-co-her-ence Con-di-tion
+ []
+
+
+Underfull \hbox (badness 1533) in paragraph at lines 159--159
+[][]\T1/ptm/m/n/9 (+20) a) State of the art con-di-tion for re-cov-er-ing com-
+ []
+
+
+Underfull \hbox (badness 5802) in paragraph at lines 159--159
+\T1/ptm/m/n/9 (+20) mon and in-di-vid-ual pa-ram-e-ters in su-per-po-si-tion mo
+d-els
+ []
+
+
+Underfull \hbox (badness 5475) in paragraph at lines 159--159
+\T1/ptm/m/n/9 (+20) where $\OMS/cmsy/m/n/9 C[] \OT1/cmr/m/n/9 = [](\OMS/cmsy/m/
+n/9 E[]\OT1/cmr/m/n/9 )$ \T1/ptm/m/n/9 (+20) are er-ror cones and $\OMS/cmsy/m/
+n/9 E[] \OT1/cmr/m/n/9 =
+ []
+
+) (./sec/rel.tex) (./sec/prob.tex
+Overfull \hbox (16.29202pt too wide) in alignment at lines 18--21
+ [][][] []
+ []
+
+
+Overfull \hbox (10.61212pt too wide) in alignment at lines 40--43
+ [][][] []
+ []
+
+) (./sec/re.tex [3 <./img/sc.pdf, page is rotated 90 degrees> <./img/deric.pdf,
+ page is rotated 90 degrees>]) (./sec/bound.tex
+Overfull \hbox (39.2849pt too wide) in alignment at lines 43--47
+ [][][] []
+ []
+
+
+Overfull \hbox (24.24765pt too wide) in alignment at lines 57--61
+ [][][] []
+ []
+
+) (./sec/opt.tex
+Overfull \hbox (26.56401pt too wide) in alignment at lines 45--49
+ [][][] []
+ []
+
+) (./datasenrichment.bbl [4pdfTeX warning (ext4): destination with the same ide
+ntifier (name{equation.4.11}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \begin{thebibliography}{32}
+                               pdfTeX warning (ext4): destination with the same
+ identifier (name{equation.5.13}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \begin{thebibliography}{32}
+                               ] [5]) (./sec/proofs.tex [6
+
+]
+LaTeX Font Info:    Try loading font information for U+bbm on input line 134.
+
+(c:/texlive/2018/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
+) [7
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8pdfTeX warning (ext4): destination with the same identifier (name{equation.A
+.16}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.257 \ee
+         pdfTeX warning (ext4): destination with the same identifier (name{equa
+tion.A.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.257 \ee
+         ]pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.267 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.267 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.267 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.267 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.346 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.346 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.346 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.346 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.369 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.369 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.369 	\be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.369 	\be
+           [9pdfTeX warning (ext4): destination with the same identifier (name{
+equation.A.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.378 	\ee
+          ]
+Underfull \hbox (badness 10000) in paragraph at lines 495--497
+[]\T1/ptm/m/n/10 (+20) To avoid clut-ter-ing we name $\OML/cmm/m/it/10 h[]\OT1/
+cmr/m/n/10 (\OML/cmm/b/it/10 ![]\OML/cmm/m/it/10 ; \OT1/cmr/bx/n/10 X[]\OT1/cmr
+/m/n/10 ) = \OMS/cmsy/m/n/10 k\OML/cmm/b/it/10 ![]\OMS/cmsy/m/n/10 k[] [][]h\OT
+1/cmr/bx/n/10 X[][]\OML/cmm/m/it/10 ; \OT1/cmr/bx/n/10 u[]\OMS/cmsy/m/n/10 i$ \
+T1/ptm/m/n/10 (+20) and $\OML/cmm/m/it/10 e[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 
+^^\\OT1/cmr/m/n/10 ) =
+ []
+
+
+Underfull \hbox (badness 5847) in paragraph at lines 518--519
+[][]\T1/ptm/b/n/10 Lemma 3. []\T1/ptm/m/it/10 (+20) For $\OT1/cmr/bx/n/10 x[]$ 
+\T1/ptm/m/it/10 (+20) and $\OML/cmm/m/it/10 ![]$ \T1/ptm/m/it/10 (+20) de-fined
+ in Def-i-ni-tion [][]1[][] and $\OML/cmm/m/it/10 ^^\ > \OT1/cmr/m/n/10 0$\T1/p
+tm/m/it/10 (+20) , with prob-a-bil-ity at least $\OT1/cmr/m/n/10 1 \OMS/cmsy/m/
+n/10 ^^@
+ []
+
+[10pdfTeX warning (ext4): destination with the same identifier (name{equation.A
+.20}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.523 		\ee
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.A.20}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.523 		\ee
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.A.21}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.523 		\ee
+           ]pdfTeX warning (ext4): destination with the same identifier (name{e
+quation.A.21}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.556 		\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.A.21}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.556 		\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.A.21}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.556 		\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.A.21}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.556 		\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.A.21}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.570 		{\be
+            pdfTeX warning (ext4): destination with the same identifier (name{e
+quation.A.21}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.570 		{\be
+            pdfTeX warning (ext4): destination with the same identifier (name{e
+quation.A.21}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.570 		{\be
+            pdfTeX warning (ext4): destination with the same identifier (name{e
+quation.A.21}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.570 		{\be
+             [11pdfTeX warning (ext4): destination with the same identifier (na
+me{equation.A.21}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.605 		\ee
+           ]
+Underfull \hbox (badness 10000) in paragraph at lines 856--858
+[]\T1/ptm/m/n/10 (+20) Note that Lemma [][]3[][] read-ily pro-vides a high prob
+-a-bil-ity up-per bound for $\OML/cmm/m/it/10 ^^Q[]\OT1/cmr/m/n/10 (1\OML/cmm/m
+/it/10 =\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 a[]n[]\OT1/cmr/m/n/10 ))$ \T1/ptm/m/n
+/10 (+20) as
+ []
+
+[12pdfTeX warning (ext4): destination with the same identifier (name{equation.A
+.22}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.864 	\ee
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.23}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.864 	\ee
+          ]
+Underfull \hbox (badness 1314) in paragraph at lines 887--889
+\T1/ptm/m/n/10 (+20) Remember that $\OML/cmm/m/it/10 a[] \OMS/cmsy/m/n/10 ^^U \
+OT1/cmr/m/n/10 1$ \T1/ptm/m/n/10 (+20) was ar-bi-trary. So we pick it as $\OML/
+cmm/m/it/10 a[] \OT1/cmr/m/n/10 = 2[] [] \OML/cmm/m/it/10 =b[]$ \T1/ptm/m/n/10 
+(+20) where $\OML/cmm/m/it/10 b[] \OMS/cmsy/m/n/10 ^^T
+ []
+
+[13pdfTeX warning (ext4): destination with the same identifier (name{equation.A
+.27}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.956 	\ee
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.27}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.956 	\ee
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.27}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.956 	\ee
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.A.28}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.956 	\ee
+          ] [14]
+Overfull \hbox (10.24338pt too wide) in alignment at lines 1043--1060
+ [][][] []
+ []
+
+[15]
+Overfull \hbox (3.4044pt too wide) in alignment at lines 1101--1106
+ [][][] []
+ []
+
+[16pdfTeX warning (ext4): destination with the same identifier (name{equation.A
+.40}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1156 	\ee
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.A.40}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1156 	\ee
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.40}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1156 	\ee
+           ]
+Underfull \vbox (badness 2409) has occurred while \output is active []
+
+ [17pdfTeX warning (ext4): destination with the same identifier (name{equation.
+B.42}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1213 	\ee
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.42}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1213 	\ee
+           ] [18pdfTeX warning (ext4): destination with the same identifier (na
+me{equation.B.42}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1274 	\ee
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.43}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1274 	\ee
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.43}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1274 	\ee
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.43}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1274 	\ee
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.43}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1274 	\ee
+           ]pdfTeX warning (ext4): destination with the same identifier (name{e
+quation.B.43}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1281 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.43}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1281 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.43}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1281 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.43}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1281 	\be
+           
+Overfull \hbox (33.37971pt too wide) in alignment at lines 1281--1295
+ [][][] []
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{equation.B.43
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1303 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.43}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1303 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.43}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1303 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.43}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1303 	\be
+           
+Underfull \hbox (badness 1077) in paragraph at lines 1306--1314
+\T1/ptm/m/n/10 (+20) Now we up-per bound the er-ror of com-mon pa-ram-e-ter. Re
+-mem-ber com-mon pa-ram-e-ter's up-date: $\OML/cmm/b/it/10 ^^L[] \OT1/cmr/m/n/1
+0 =
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19pdfTeX warning (ext4): destination with the same identifier (name{equation.
+B.43}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1333 	\ee
+           ] [20]pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1360 \be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1360 \be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1360 \be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1360 \be
+          pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1372 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1372 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1372 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1372 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1378 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1378 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1378 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1378 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1393 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1393 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1393 	\be
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.45}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1393 	\be
+            [21pdfTeX warning (ext4): destination with the same identifier (nam
+e{equation.B.45}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1467 	\ee
+           ] [22pdfTeX warning (ext4): destination with the same identifier (na
+me{equation.B.46}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1532 	\ee
+           pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.B.50}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1532 	\ee
+           ])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 168.
+ [23pdfTeX warning (ext4): destination with the same identifier (name{equation.
+B.51}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.168 \end{document}
+                    pdfTeX warning (ext4): destination with the same identifier
+ (name{equation.B.51}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.168 \end{document}
+                    ]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 168.
+ (./datasenrichment.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 168.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 168.
+Package rerunfilecheck Info: File `datasenrichment.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 168.
+ ) 
+Here is how much of TeX's memory you used:
+ 11990 strings out of 492616
+ 175937 string characters out of 6132783
+ 326965 words of memory out of 5000000
+ 15189 multiletter control sequences out of 15000+600000
+ 72120 words of font info for 270 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 36i,14n,45p,1722b,756s stack positions out of 5000i,500n,10000p,200000b,80000s
+ <c:/Users/amira/.texlive2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600p
+k>{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2018/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmbx6.pfb><c:/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mex10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7
+.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb>
+<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texli
+ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2018/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2018/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2018/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmib10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/c
+mextra/cmmib6.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmext
+ra/cmmib7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/c
+mmib9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2018/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2018/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy5.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+6.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb><c:/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2018/texmf-dist/
+fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2018/texmf-dist/font
+s/type1/public/amsfonts/symbols/msbm7.pfb><c:/texlive/2018/texmf-dist/fonts/typ
+e1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8
+a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/
+2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on datasenrichment.pdf (23 pages, 716169 bytes).
+PDF statistics:
+ 776 PDF objects out of 1000 (max. 8388607)
+ 627 compressed objects within 7 object streams
+ 169 named destinations out of 1000 (max. 500000)
+ 38411 words of extra memory for PDF output out of 42996 (max. 10000000)
+

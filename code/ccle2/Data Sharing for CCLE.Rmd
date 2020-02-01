@@ -1,0 +1,226 @@
+---
+title: "Data Sharing for CCLE"
+author: "Amir Asiaee T."
+date: "May 10, 2018"
+output: html_document
+---
+
+```{r mycss, results="asis", echo=FALSE}
+cat('
+<style type="text/css">
+b, strong {color: red; }
+i, em {color: blue; }
+.defn {color: purple; }
+.para {color: purple;
+      font-weight: bold;
+}
+.figure { text-align: center; }
+.caption { font-weight: bold; }
+</style>
+')
+```
+
+# Introduction 
+In this project, want to apply use the Data Sharing estimator to predict response of the celllines in Cancer Cell Line Encyclopedia to 24 anticancer drugs. 
+
+# Raw Data 
+We have downloaded the raw data of predictors from the following URL: [CLLE Data](https://portals.broadinstitute.org/ccle/data). We have used the original data which has been published in 2012. So, at the bottom of the page under *Legacy Data* you can download the followings:
+
+* *Oncomap Mutation:* CCLE_Oncomap3_2012-04-09.maf
+* *Hybrid capture sequencing:* CCLE_hybrid_capture1650_hg19_NoCommonSNPs_NoNeutralVariants_CDS_2012.05.07.maf
+* *mRNA expression:* CCLE_Expression_Entrez_2012-09-29.gct
+* *DNA Copy Number:* CCLE_copynumber_byGene_2013-12-03.txt
+
+The response data is accessible from [Nature](https://www.nature.com/articles/nature11003) website in the *Supplementary information* section under *Supplementary Tables* as nature11003-s3.xls file. Table S11 of this file contains different dose-response value. We us `ActArea` column as our response. 
+
+We open all of the above files in Excel and save them as CSV files in the correct `raw` folder, explained below. 
+
+# Path Prepration
+We arrange things so that individuals can store their data and scratch space wherever they want. (On their local hard drive, a network drive, somehwere in the cloud; dropbox, etc.) But, we want the code to run without editing on everybnody's individual machine. So, we adopt the following convention. 
+
+Each user must create a file called $HOME/Paths/dataenrichment.json Here, as usual, $HOME refers to the user's home directory on the local machine. (For example in Windos it is the `Document` folder.) The subfolder Paths is hard-coded and cannot be changes. The file name datasharing.json is specific to this project; other projects will use different JSON files stored inthe same directory.
+
+Following is a sample datasharing.json file for Windows OS which lets the program know the place of raw (storing raw data), clean (storing cleaned data), and scratch (storing intermediate results).
+```
+{
+  "paths" : {
+    "raw"     : "G:/database/dataenrichment/raw/",
+	  "clean"     : "G:/database/dataenrichment/clean/",
+	  "scratch"     : "G:/database/dataenrichment/scratch/"
+  }
+}
+```
+With the following command, you can load the above addresses into `path`:
+```{r}
+source("00-paths.R")
+paths
+```
+Now let's check the name of files in the `raw`:
+```{r}
+list.files(path = paths$raw)
+```
+
+# Data Clean-up
+First we need to perform pre-processing which opens the CSV files and extracts the required columns and discard the others. It also transposes the expressions and copy number inputs to make them sample-by-gene and generate the z-socre of the data and save the final RData files in `clean`:
+```{r}
+source("01-preprocess.R")
+```
+In the next step we run the main data cleanup routine where it goes over all drugs and for each of them forms the input matrix X and output vector y for all cancers. 
+```{r}
+source("02-dataCleanUp.R")
+```
+Note that you need to run the preprocessing and data clean up once and the result will be saved in the `clean` folder and future you can just load the saved `RData` files. 
+
+# Prediction
+Let's check how many cell lines for each cancer type have been tested with Erlotinib:
+```{r}
+load(file.path(paths$clean,"xy", paste("XyActArea_Erlotinib.RData")))
+counts <- tapply(XyActArea$cancerType, XyActArea$cancerType, FUN = function(x) length(x))
+counts <- sort(counts, decreasing = T)
+counts[counts > 20]
+barplot(counts, las=2, main="Number of Cell Lines per Cancer Type Treated by Erlotinib")
+```
+Checking another drug:
+```{r}
+load(file.path(paths$clean,"xy", paste("XyActArea_Sorafenib.RData")))
+counts <- tapply(XyActArea$cancerType, XyActArea$cancerType, FUN = function(x) length(x))
+counts <- sort(counts, decreasing = T)
+counts[counts > 20]
+barplot(counts, las=2, main="Number of Cell Lines per Cancer Type Treated by Sorafenib")
+
+```
+First we only focus on the two most frequent cancers, blood and lung and then we will include the third one, skin. 
+
+The baseline for comparison is elastic net which has been implemented in `glmnet` library. The following code performs cross-validation, prediction and save the results in your `scratch` folder. Note that for efficiency, in each training phase of cross-validation we remove features whose correlation with the output is smaller than $0.1$:
+```{r, warning=FALSE}
+focusedCancerTypes <- c("HAEMATOPOIETIC_AND_LYMPHOID_TISSUE", "LUNG")
+corrThresh <- .2
+#source("03-glmnetPrediction.R")
+source("04-sharedDEPrediction.R")
+source("05-fullDEPrediction.R")
+focusedCancerTypes <- c("BREAST", "OVARY", "SKIN")
+corrThresh <- .2
+#source("03-glmnetPrediction.R")
+source("04-sharedDEPrediction.R")
+source("05-fullDEPrediction.R")
+```
+
+
+Now drawing the results:
+```{r}
+shorterNames <- c("17-AAG","AEW541","AZD0530","AZD6244","Erlotinib","Irinotecan","L-685458","Lapatinib","LBW242","Nilotinib","Nutlin-3","Paclitaxel","Panobino","PD-032","PD-033","PF234","PHA-66","PLX4720","RAF265","Sorafenib","TAE684","TKI258","Topotecan","ZD-6474")
+
+focusedCancerTypes <- c("BREAST", "OVARY", "SKIN")
+# focusedCancerTypes <- c("HAEMATOPOIETIC_AND_LYMPHOID_TISSUE", "LUNG")
+load(file.path(paths$scratch, paste("new_cvMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+load(file=file.path(paths$scratch, paste("newer_cvDeMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+cvDeMeansNewer <- cvDeMeans
+load(file=file.path(paths$scratch, paste("newester_cvDeMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+cvDeMeansNewest <- cvDeMeans
+
+load(file.path(paths$scratch, paste("new_cvSds_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+load(file=file.path(paths$scratch, paste("newer_cvDeSds_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+cvDeSdsNewer <- cvDeSds
+load(file=file.path(paths$scratch, paste("newester_cvDeSds_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+cvDeSdsNewest <- cvDeSds
+
+
+minIndex <- apply(cvMeans, 1, which.min)
+minDeNrIndex <- apply(cvDeMeansNewer, 1, which.min)
+minDeNsIndex <- apply(cvDeMeansNewest, 1, which.min)
+
+minMean <- sapply(1:24, function(i) cvMeans[i, minIndex[i]])
+minDeNrMean <- sapply(1:24, function(i) cvDeMeansNewer[i, minDeNrIndex[i]])
+minDeNsMean <- sapply(1:24, function(i) cvDeMeansNewest[i, minDeNsIndex[i]])
+
+
+minSds <- sapply(1:24, function(i) cvSds[i, minIndex[i]])
+minSdsDeNr <- sapply(1:24, function(i) cvDeSdsNewer[i, minDeNrIndex[i]])
+minSdsDeNs <- sapply(1:24, function(i) cvDeSdsNewest[i, minDeNsIndex[i]])
+
+
+allMeans <- rbind(minMean, minDeNsMean, minDeNrMean)
+allSds <- rbind(minSds, minSdsDeNs, minSdsDeNr)
+barCenters <- barplot(allMeans, las=2, beside = TRUE, ylim = c(0,1.5), ylab = "Mean Square Error", legend = c("LASSO", "DE:t_g=0", "DE"), col=c("red", "green", "blue"), args.legend = list(x = "topright", bty = "n", inset=c(0.10, 0)), names.arg = shorterNames)
+
+
+# barCenters <- barplot(rbind(apply(cvDeMeans, 1, min), apply(cvMeans, 1, min)), las=2, beside = TRUE, ylim = c(0,1), ylab = "Mean Square Error", legend = c("DE", "LASSO"), col=c("red", "blue"), args.legend = list(x = "topright", bty = "n", inset=c(0.15, 0)), names.arg = shorterNames)
+segments(barCenters, allMeans - allSds , barCenters,
+         allMeans + allSds  , lwd = 1)
+
+arrows(barCenters, allMeans - allSds, barCenters,
+       allMeans + allSds  , lwd = 1, angle = 90,
+       code = 3, length = 0.02)
+```
+```{r}
+focusedCancerTypes <- c("BREAST", "OVARY", "SKIN")
+load(file.path(paths$scratch, paste("cvMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+load(file=file.path(paths$scratch, paste("cvDeMeans_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+load(file.path(paths$scratch, paste("cvSds_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+load(file=file.path(paths$scratch, paste("cvDeSds_", paste(focusedCancerTypes, collapse = "_") ,".RData")))
+
+minIndex <- apply(cvMeans, 1, which.min)
+minDeIndex <- apply(cvDeMeans, 1, which.min)
+minMean <- sapply(1:24, function(i) cvMeans[i, minIndex[i]])
+minDeMean <- sapply(1:24, function(i) cvDeMeans[i, minDeIndex[i]]) 
+minSds <- sapply(1:24, function(i) cvSds[i, minIndex[i]])
+minSdsDe <- sapply(1:24, function(i) cvDeSds[i, minDeIndex[i]])
+allMeans <- rbind(minMean, minDeMean)
+allSds <- rbind(minSds, minSdsDe)
+barCenters <- barplot(allMeans, las=2, beside = TRUE, ylim = c(0,1.3), ylab = "Mean Square Error", legend = c("LASSO", "DE"), col=c("red", "green"), args.legend = list(x = "topright", bty = "n", inset=c(0.15, 0)), names.arg = shorterNames)
+
+
+# barCenters <- barplot(rbind(apply(cvDeMeans, 1, min), apply(cvMeans, 1, min)), las=2, beside = TRUE, ylim = c(0,1), ylab = "Mean Square Error", legend = c("DE", "LASSO"), col=c("red", "blue"), args.legend = list(x = "topright", bty = "n", inset=c(0.15, 0)), names.arg = shorterNames)
+segments(barCenters, allMeans - allSds, barCenters,
+         allMeans + allSds, lwd = 1)
+
+arrows(barCenters, allMeans - allSds, barCenters,
+       allMeans + allSds, lwd = 1, angle = 90,
+       code = 3, length = 0.02)
+
+```
+Note that we can not directly use `cv.glmnet` because we want to remove less correlated features in each round of cross-validation. The core of our algorithm has been implemented in `dataSharing.R`. The code that apply data sharing on the CLLE data should be called as follows:
+
+
+```{r}
+load(file.path(paths$scratch, "perDrugBestPerformance-Mean-ElasticNet.RData"))
+load(file.path(paths$scratch, "perDrugBestPerformance-DS-Sparse.RData"))
+library(MASS)
+tibMeans <- perDrugBestPerformanceMean
+tibMeans <- tibMeans[-25] 
+tibSds <- perDrugBestPerformanceSds
+ourMeans <- perDrugBestPerformanceDSSparse
+
+toPlot <- as.data.frame(matrix(NA,24,2))
+toPlot$dsMeans <- ourMeans
+toPlot$enMeans <- tibMeans
+
+ggplot(toPlot, aes(x=dsMeans, y=enMeans)) +
+  theme_bw() +
+  geom_point(size = 2) +
+  theme(axis.text.x = element_text(size=15), axis.text.y = element_text(size=15), text = element_text(size=20))+
+  xlab("MSE Data Sharing") +
+  ylab("MSE Elastic Net") +
+  geom_abline(slope=1, intercept=0)+
+  coord_cartesian(xlim = c(.5, 1.75), ylim = c(0.5, 1.75), expand = TRUE)
+```
+
+# Interpretation
+Now we want to interpret the selected features (genes) by the data sharing. For that we focus on drugs that we know work for lung or blood or both of them. We have this knowledge from looking at the drugs' profiles and also the histogram of the active area for different drugs drawn and saved as the part of data cleanup in the `scratch` folder. 
+
+The three drugs that we picked are **Erlotinib** which we know it works on EGFR mutated lung cancer, 
+
+First we load the the list of results for all drugs which was saved during the cross-validation in the prediction phase. 
+```{r}
+load(file.path(paths$scratch, "listOfRefinedCV-DS-Sparse.RData"))
+```
+
+```{r}
+source("bootstrap.R")
+source("bootstrap-2.R")
+```
+
+
+
+
+

@@ -1,0 +1,107 @@
+\section{The Data Shared Estimator}
+\label{sec:esti}
+A compact form of our proposed DS estimator \eqref{eq:super} is:% optimization problem as: %:
+{\small \beq
+\label{eq:compact}
+\hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \text{s.t. } \forall g \in [G_+]:f_g(\bbeta_g ) \leq f_g(\bbeta^*_g),
+\eeq }
+where $\y  = (\y^T_1, \dots \y^T_G)^T \in \reals^n$,  $\bbeta  = ({\bbeta _0}^T, \dots, {\bbeta _G}^T)^T \in \reals^{(G+1)p}$ and
+\beq
+\label{eq:x}
+\X =
+\begin{pmatrix}
+	\X_1     & \X_1      & 0      	   & \cdots & 0 \\
+	\X_2     & 0       	 & \X_2        & \cdots & 0 \\
+	\vdots 	 & \vdots  	 & \ddots 	   & \cdots & \vdots  \\
+	\X_G     & 0       	 & \cdots 	   & \cdots & \X_G
+\end{pmatrix}
+\in \reals^{n \times (G+1)p}~.
+\eeq
+%\ab{Give at least 2 specific examples, e.g., a sparse+sparse for vector estimation, and a low-rank + sparse for matrix estimation. And we want to carry these examples through
+%the technical results, e.g., see the Chen-Banerjee NIPS 2015 paper.}
+
+\begin{example} \label{exm:sde}
+{\bf ($l_1$-norm)} When all parameters $\bbeta_g$s are $s_g$-sparse, i.e.,$|\text{supp}(\bbeta_{g}^*)| = s_g$ by using $l_1$-norm as the sparsity inducing function, our DS estimator of \eqref{eq:compact} becomes:
+\be 
+\hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \text{s.t. }  \forall g \in [G_+]: \norm{\bbeta_g}{1} \leq \norm{\bbeta^*_g}{1}.
+\ee 
+We call \eqref{exm:sde} \emph{sparse DS} estimator and use it as the running example throughout the paper to illustrate outcomes of our analysis.% \hfill {\color{header1} \qedsymbol}
+\end{example}
+Consider the group-wise estimation error $\ddelta_g = \hbbe_g - \bbeta^*_g$.
+Since $\hbbe_g = \bbeta ^*_g + \ddelta_g$ is a feasible point of \eqref{eq:compact}, the error vector $\ddelta_g$ will belong to the following restricted error set:% which is the set of all descent directions at $\bbeta _g^*$ on $f_g(\cdot)$ :
+\be
+%\nr
+\cE_g = \left\{\ddelta_g | f_g(\bbeta _g^* + \ddelta_g) \leq f_g(\bbeta _g^*)\right\}, \quad g \in [G_+].
+\ee
+We denote the cone of the error set as $\cC_g \triangleq \text{Cone}(\cE_g)$ and the spherical cap corresponding to it as $\cA_g \triangleq \cC_g \cap \sphere$.
+Consider the set $\cC = \{ \ddelta = (\ddelta_0^T, \dots, \ddelta_G^T)^T \Big| \ddelta_g \in \cC_g \}$, following two subsets of $\cC$ play key roles in our analysis:
+%\be
+%%\nr
+%\cH  &\triangleq&  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}~, %\label{setH}
+%\\ %\nr
+%\bcH &\triangleq&  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}~. %\label{setH}
+%\ee
+\begin{align}
+\label{setH}
+\cH  &\triangleq  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}, 
+\\ \nr 
+\bcH &\triangleq  \Big\{ \ddelta \in \cC \big| \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} = 1 \Big\}~. %\label{setH}
+\end{align}
+	
+Starting from the optimality of $\hbbe = \bbeta ^* + \ddelta$ as $\frac{1}{n}\norm{\y - \X \hbbe}{2}^2 \leq \frac{1}{n} \norm{\y - \X \bbeta ^*}{2}^2$, we have: $\frac{1}{n}\norm{\X \ddelta}{2}^2 \leq \frac{1}{n}2\w^T \X\ddelta$ where $\w = [\w_1^T, \dots, \w_G^T]^T \in \reals^n$ is the vector of all noises.
+Using this basic inequality, we can establish the following deterministic error bound.
+\begin{theorem}
+	\label{theo:deter}
+	For the DS estimator \eqref{eq:compact}, assume there exist $0 < \kappa \leq \inf_{\u \in \cH} \frac{1}{n} \norm{\X \u}{2}^2$. Then, for the sample condition number $\gamma = \max_{g \in [G]} \frac{n}{n_g}$, the following deterministic upper bounds holds:
+	\be
+	\nr
+	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \leq \frac{2{\gamma}\sup_{\u \in \bcH}\w^T \X \u}{n\kappa}~. %\nr	
+	\ee
+\end{theorem}
+\begin{IEEEproof}
+	We lower bound the LHS and upper bound the RHS of the optimality inequality $\frac{1}{n}\norm{\X \ddelta}{2}^2 \leq \frac{1}{n}2\w^T \X\ddelta$ using the definition of the sets $\cH$ and $\bcH$ respectively. 
+	Starting with the lower bound using the definition of set $\cH$ \eqref{setH} we have:
+%	\be 
+%	\label{eq:tre} 
+%	\frac{1}{n}\norm{\X \ddelta}{2}^2 &\geq& \frac{1}{n} \inf_{\u \in \cH} \norm{\X \u}{2}^2  \left(\sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} \right)^2 \\ \nr
+%	&\geq& \kappa  \left(\sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} \right)^2  \nr
+%	\\ \nr 
+%	&\geq& \kappa  \left(\min_{g \in [G] } \frac{n_g}{n}\right) \left(\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \right)^2  
+%	\ee 	
+	{\small
+	\begin{align}
+		\nr 
+		\frac{1}{n}\norm{\X \ddelta}{2}^2 &\geq \frac{1}{n} \inf_{\u \in \cH} \norm{\X \u}{2}^2  \left(\sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} \right)^2 
+		\geq \kappa  \left(\sum_{g=0}^{G} {\frac{n_g}{n}} \norm{\ddelta_g}{2} \right)^2  
+		\\  \label{eq:tre}  
+		&\geq \kappa  \left(\min_{g \in [G] } \sqrt{\frac{n_g}{n}}\right)^2 \left(\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \right)^2 
+		\\ \nr 
+		&= \kappa  \left(\min_{g \in [G] } \frac{n_g}{n}\right) \left(\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \right)^2  		 		
+	\end{align}
+	}
+
+%	\eeq 
+	where $0 < \kappa \leq \frac{1}{n}  \inf_{\u \in \cH} \norm{\X \u}{2}^2 $ is known as Restricted Eigenvalue (RE) condition. 
+	The upper bound factorizes as:
+	\beq 
+	\label{eq:tub}
+	\frac{2}{n}\w^T \X\ddelta \leq \frac{2}{n} \sup_{\u \in \bcH} \w^T \X \u \left(\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \right) , \u \in \cH \\ 
+	\eeq
+	Putting together inequalities \eqref{eq:tre} and \eqref{eq:tub} completes the proof. 
+\end{IEEEproof}
+
+\begin{remark}
+	\label{rem1}
+Consider the setting where $n_g = \Theta(\frac{n}{G})$ so that each group has approximately $\frac{1}{G}$ fraction of the samples. Then, $\gamma = \Theta(G)$ and hence
+\beq
+\nr 
+\frac{1}{G} \sum_{g=0}^G \| \delta_g \|_2 \leq O( G^{1/2} ) \frac{\sup_{\u \in \bcH}\oomega^T \X \u}{n}~.
+\eeq
+\end{remark}
+
+%We define $\gamma_g = \norm{\ddelta_g}{2}$ and for $\ddelta \in \cH$ we have $\sum_{g = 0}^{G} \gamma_g = 1$.
+%We are interested in the following RE condition:
+%\begin{remark}
+%	As we show in the following, the lower bound $\kappa  < \inf_{\u \in \cC} \norm{\X \u}{2}^2 $, holds even for the larger set $\cC \supset \cA$, which is an interesting result.	On the other hand, if we work with the set $\cC$ in the upper bound, the bound becomes loose.
+%	Therefor, we focus on the set $\cA$ to get the tighter upper bound.
+%\end{remark}

@@ -1,0 +1,230 @@
+\begin{thebibliography}{10}
+
+\bibitem{asiaee2018high}
+{\sc A.~Asiaee, S.~Oymak, K.~R. Coombes, and A.~Banerjee}, {\em High
+  dimensional data enrichment: Interpretable, fast, and data-efficient}, arXiv
+  preprint arXiv:1806.04047,  (2018).
+
+\bibitem{asiaeedata}
+{\sc A.~Asiaee, S.~Oymak, K.~R. Coombes, and A.~Banerjee}, {\em Data
+  enrichment: Multi-task learning in high dimension with theoretical
+  guarantees}, in Adaptive and Multitask Learning Workshop at ICML, 2019.
+
+\bibitem{bach2012optimization}
+{\sc F.~Bach, R.~Jenatton, J.~Mairal, G.~Obozinski, et~al.}, {\em Optimization
+  with sparsity-inducing penalties}, Foundations and Trends{\textregistered} in
+  Machine Learning, 4 (2012), pp.~1--106.
+
+\bibitem{banerjee14}
+{\sc A.~Banerjee, S.~Chen, F.~Fazayeli, and V.~Sivakumar}, {\em Estimation with
+  {Norm} {Regularization}}, in Advances in {Neural} {Information} {Processing}
+  {Systems}, 2014, pp.~1556--1564.
+
+\bibitem{barretina2012cancer}
+{\sc J.~Barretina, G.~Caponigro, N.~Stransky, K.~Venkatesan, A.~A. Margolin,
+  S.~Kim, C.~J. Wilson, J.~Leh{\'a}r, G.~V. Kryukov, D.~Sonkin, et~al.}, {\em
+  The cancer cell line encyclopedia enables predictive modelling of anticancer
+  drug sensitivity}, Nature, 483 (2012), p.~603.
+
+\bibitem{bickel2009simultaneous}
+{\sc P.~J. Bickel, Y.~Ritov, A.~B. Tsybakov, et~al.}, {\em Simultaneous
+  analysis of lasso and dantzig selector}, The Annals of Statistics, 37 (2009),
+  pp.~1705--1732.
+
+\bibitem{blumensath2009iterative}
+{\sc T.~Blumensath and M.~E. Davies}, {\em Iterative hard thresholding for
+  compressed sensing}, Applied and computational harmonic analysis, 27 (2009),
+  pp.~265--274.
+
+\bibitem{boucheron13}
+{\sc S.~Boucheron, G.~Lugosi, and P.~Massart}, {\em Concentration
+  {Inequalities}: {A} {Nonasymptotic} {Theory} of {Independence}}, Oxford
+  University Press, 2013.
+
+\bibitem{boufounos20081}
+{\sc P.~T. Boufounos and R.~G. Baraniuk}, {\em 1-bit compressive sensing}, in
+  Information Sciences and Systems, 2008. CISS 2008. 42nd Annual Conference on,
+  IEEE, 2008, pp.~16--21.
+
+\bibitem{candes2007dantzig}
+{\sc E.~Candes, T.~Tao, et~al.}, {\em The dantzig selector: Statistical
+  estimation when p is much larger than n}, The Annals of Statistics, 35
+  (2007), pp.~2313--2351.
+
+\bibitem{candes2009exact}
+{\sc E.~J. Cand{\`e}s and B.~Recht}, {\em Exact matrix completion via convex
+  optimization}, Foundations of Computational mathematics, 9 (2009), p.~717.
+
+\bibitem{candes2006robust}
+{\sc E.~J. Cand{\`e}s, J.~Romberg, and T.~Tao}, {\em Robust uncertainty
+  principles: Exact signal reconstruction from highly incomplete frequency
+  information}, IEEE Transactions on information theory, 52 (2006),
+  pp.~489--509.
+
+\bibitem{candes2010power}
+{\sc E.~J. Cand{\`e}s and T.~Tao}, {\em The power of convex relaxation:
+  Near-optimal matrix completion}, IEEE Transactions on Information Theory, 56
+  (2010), pp.~2053--2080.
+
+\bibitem{venkat12}
+{\sc V.~Chandrasekaran, B.~Recht, P.~A. Parrilo, and A.~S. Willsky}, {\em The
+  convex geometry of linear inverse problems}, Foundations of Computational
+  Mathematics, 12 (2012), pp.~805--849.
+
+\bibitem{chatterjee2014generalized}
+{\sc S.~Chatterjee, S.~Chen, and A.~Banerjee}, {\em Generalized dantzig
+  selector: Application to the k-support norm}, in Advances in Neural
+  Information Processing Systems, 2014, pp.~1934--1942.
+
+\bibitem{Chen2015-fj}
+{\sc A.~Chen, A.~B. Owen, and M.~Shi}, {\em Data enriched linear regression},
+  Electronic journal of statistics, 9 (2015), pp.~1078--1112.
+
+\bibitem{Chen2012-fb}
+{\sc J.~Chen, J.~Liu, and J.~Ye}, {\em Learning incoherent sparse and
+  {Low-Rank} patterns from multiple tasks}, ACM transactions on knowledge
+  discovery from data, 5 (2012), p.~22.
+
+\bibitem{domu16}
+{\sc F.~Dondelinger, S.~Mukherjee, and {Alzheimer's Disease Neuroimaging
+  Initiative}}, {\em The joint lasso: high-dimensional regression for group
+  structured data}, Biostatistics,  (2018).
+
+\bibitem{donoho2006compressed}
+{\sc D.~L. Donoho}, {\em Compressed sensing}, IEEE Transactions on information
+  theory, 52 (2006), pp.~1289--1306.
+
+\bibitem{friedman2008sparse}
+{\sc J.~Friedman, T.~Hastie, and R.~Tibshirani}, {\em Sparse inverse covariance
+  estimation with the graphical lasso}, Biostatistics, 9 (2008), pp.~432--441.
+
+\bibitem{grti16}
+{\sc S.~M. Gross and R.~Tibshirani}, {\em Data shared lasso: A novel tool to
+  discover uplift}, Computational Statistics \& Data Analysis, 101 (2016),
+  pp.~226--235.
+
+\bibitem{guba16}
+{\sc Q.~Gu and A.~Banerjee}, {\em High dimensional structured superposition
+  models}, in Advances In Neural Information Processing Systems, 2016,
+  pp.~3684--3692.
+
+\bibitem{iorio2016landscape1}
+{\sc F.~Iorio, T.~A. Knijnenburg, D.~J. Vis, G.~R. Bignell, M.~P. Menden,
+  M.~Schubert, N.~Aben, E.~Goncalves, S.~Barthorpe, H.~Lightfoot, et~al.}, {\em
+  A landscape of pharmacogenomic interactions in cancer}, Cell, 166 (2016),
+  pp.~740--754.
+
+\bibitem{jain2013low}
+{\sc P.~Jain, P.~Netrapalli, and S.~Sanghavi}, {\em Low-rank matrix completion
+  using alternating minimization}, in Proceedings of the forty-fifth annual ACM
+  symposium on Theory of computing, ACM, 2013, pp.~665--674.
+
+\bibitem{jrsr10}
+{\sc A.~Jalali, P.~Ravikumar, S.~Sanghavi, and C.~Ruan}, {\em {A Dirty Model
+  for Multi-task Learning}}, in Advances in Neural Information Processing
+  Systems, 2010, pp.~964--972.
+
+\bibitem{Kakade2010-st}
+{\sc S.~Kakade, O.~Shamir, K.~Sindharan, and A.~Tewari}, {\em Learning
+  exponential families in {High-Dimensions}: Strong convexity and sparsity}, in
+  Proceedings of the Thirteenth International Conference on Artificial
+  Intelligence and Statistics, Y.~W. Teh and M.~Titterington, eds., vol.~9 of
+  Proceedings of Machine Learning Research, Chia Laguna Resort, Sardinia,
+  Italy, 2010, PMLR, pp.~381--388.
+
+\bibitem{mctr13}
+{\sc M.~B. McCoy and J.~A. Tropp}, {\em The achievable performance of convex
+  demixing},  (2013), \url{https://arxiv.org/abs/1309.7478}.
+
+\bibitem{mend15}
+{\sc S.~Mendelson}, {\em Learning without concentration}, Journal of the ACM,
+  62 (2015), pp.~21:1--21:25.
+
+\bibitem{negahban2012restricted}
+{\sc S.~Negahban and M.~J. Wainwright}, {\em Restricted strong convexity and
+  weighted matrix completion: Optimal bounds with noise}, Journal of Machine
+  Learning Research, 13 (2012), pp.~1665--1697.
+
+\bibitem{negahban2009unified}
+{\sc S.~Negahban, B.~Yu, M.~J. Wainwright, and P.~K. Ravikumar}, {\em A unified
+  framework for high-dimensional analysis of $ m $-estimators with decomposable
+  regularizers}, in Advances in Neural Information Processing Systems, 2009,
+  pp.~1348--1356.
+
+\bibitem{nrwy12}
+{\sc S.~N. Negahban, P.~Ravikumar, M.~J. Wainwright, and B.~Yu}, {\em {A
+  Unified Framework for High-Dimensional Analysis of {\$}M{\$}-Estimators with
+  Decomposable Regularizers}}, Statistical Science, 27 (2012), pp.~538--557.
+
+\bibitem{olvi14}
+{\sc E.~Ollier and V.~Viallon}, {\em Joint estimation of {$K$} related
+  regression models with simple {$L_1$-norm} penalties},  (2014),
+  \url{https://arxiv.org/abs/1411.1594}.
+
+\bibitem{olvi15}
+{\sc E.~Ollier and V.~Viallon}, {\em Regression modeling on stratified data
+  with the lasso},  (2015), \url{https://arxiv.org/abs/1508.05476}.
+
+\bibitem{Plan2013-nx}
+{\sc Y.~Plan and R.~Vershynin}, {\em Robust 1-bit compressed sensing and sparse
+  logistic regression: A convex programming approach}, IEEE transactions on
+  information theory / Professional Technical Group on Information Theory, 59
+  (2013), pp.~482--494.
+
+\bibitem{Plan2016-de}
+{\sc Y.~Plan and R.~Vershynin}, {\em The generalized lasso with {Non-Linear}
+  observations}, IEEE transactions on information theory / Professional
+  Technical Group on Information Theory, 62 (2016), pp.~1528--1537.
+
+\bibitem{plan2017high}
+{\sc Y.~Plan, R.~Vershynin, and E.~Yudovina}, {\em High-dimensional estimation
+  with geometric constraints}, Information and Inference: A Journal of the IMA,
+  6 (2017), pp.~1--40.
+
+\bibitem{raskutti10}
+{\sc G.~Raskutti, M.~J. Wainwright, and B.~Yu}, {\em Restricted eigenvalue
+  properties for correlated gaussian designs}, Journal of Machine Learning
+  Research, 11 (2010), pp.~2241--2259.
+
+\bibitem{ruzh13}
+{\sc M.~Rudelson and S.~Zhou}, {\em {Reconstruction from anisotropic random
+  measurements}}, IEEE Transactions on Information Theory, 59 (2013),
+  pp.~3434--3447.
+
+\bibitem{tibshirani1996regression}
+{\sc R.~Tibshirani}, {\em Regression shrinkage and selection via the lasso},
+  Journal of the Royal Statistical Society. Series B (Methodological),  (1996),
+  pp.~267--288.
+
+\bibitem{trop15}
+{\sc J.~A. Tropp}, {\em Convex recovery of a structured signal from independent
+  random linear measurements}, in Sampling Theory, a Renaissance, Springer,
+  2015, pp.~67--101.
+
+\bibitem{vers12}
+{\sc R.~Vershynin}, {\em {Introduction to the non-asymptotic analysis of random
+  matrices}}, in Compressed Sensing, Cambridge University Press, Cambridge,
+  2012, pp.~210--268.
+
+\bibitem{vershynin2018high}
+{\sc R.~Vershynin}, {\em High-dimensional probability: An introduction with
+  applications in data science}, vol.~47, Cambridge University Press, 2018.
+
+\bibitem{Yang2013-pf}
+{\sc E.~Yang and P.~K. Ravikumar}, {\em Dirty statistical models}, in Advances
+  in Neural Information Processing Systems 26, C.~J.~C. Burges, L.~Bottou,
+  M.~Welling, Z.~Ghahramani, and K.~Q. Weinberger, eds., Curran Associates,
+  Inc., 2013, pp.~611--619.
+
+\bibitem{Yang2016-zd}
+{\sc Z.~Yang, Z.~Wang, H.~Liu, Y.~Eldar, and T.~Zhang}, {\em Sparse nonlinear
+  regression: Parameter estimation under nonconvexity}, in Proceedings of The
+  33rd International Conference on Machine Learning, M.~F. Balcan and K.~Q.
+  Weinberger, eds., vol.~48 of Proceedings of Machine Learning Research, New
+  York, New York, USA, 2016, PMLR, pp.~2472--2481.
+
+\bibitem{Zhang2017-rm}
+{\sc Y.~Zhang and Q.~Yang}, {\em A survey on {Multi-Task} learning},  (2017),
+  \url{https://arxiv.org/abs/1707.08114}.
+
+\end{thebibliography}

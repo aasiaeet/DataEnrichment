@@ -1,0 +1,40 @@
+\begin{thebibliography}{1}
+
+\bibitem{banerjee14}
+{\sc A.~Banerjee, S.~Chen, F.~Fazayeli, and V.~Sivakumar}, {\em Estimation with
+  {Norm} {Regularization}}, in Advances in {Neural} {Information} {Processing}
+  {Systems}, 2014, pp.~1556--1564.
+
+\bibitem{boucheron13}
+{\sc S.~Boucheron, G.~Lugosi, and P.~Massart}, {\em Concentration
+  {Inequalities}: {A} {Nonasymptotic} {Theory} of {Independence}}, Oxford
+  University Press, 2013.
+
+\bibitem{guba16}
+{\sc Q.~Gu and A.~Banerjee}, {\em High dimensional structured superposition
+  models}, in Advances In Neural Information Processing Systems, 2016,
+  pp.~3684--3692.
+
+\bibitem{Ledoux1991-ix}
+{\sc M.~Ledoux and M.~Talagrand}, {\em Probability in Banach Spaces:
+  Isoperimetry and Processes}, Springer, Berlin, Heidelberg, 1991.
+
+\bibitem{oyrs15}
+{\sc S.~Oymak, B.~Recht, and M.~Soltanolkotabi}, {\em Sharp time--data
+  tradeoffs for linear inverse problems}, IEEE Transactions on Information
+  Theory, 64 (2017), pp.~4129--4158.
+
+\bibitem{trop15}
+{\sc J.~A. Tropp}, {\em Convex recovery of a structured signal from independent
+  random linear measurements}, in Sampling Theory, a Renaissance, Springer,
+  2015, pp.~67--101.
+
+\bibitem{Vaart1996-zl}
+{\sc A.~W. v.~d. Vaart and J.~A. Wellner}, {\em Weak Convergence and Empirical
+  Processes: With Applications to Statistics}, Springer, New York, NY, 1996.
+
+\bibitem{vershynin2018high}
+{\sc R.~Vershynin}, {\em High-dimensional probability: An introduction with
+  applications in data science}, vol.~47, Cambridge University Press, 2018.
+
+\end{thebibliography}
