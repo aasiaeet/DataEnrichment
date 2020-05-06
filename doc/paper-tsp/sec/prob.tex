@@ -22,7 +22,7 @@ where $\y  = (\y^T_1, \dots \y^T_G)^T \in \reals^n$,  $\bbeta  = ({\bbeta _0}^T,
 
 \begin{example} \label{exm:sde}
 {\bf ($l_1$-norm)} When all parameters $\bbeta_g$s are $s_g$-sparse, i.e.,$|\text{supp}(\bbeta_{g}^*)| = s_g$ by using $l_1$-norm as the sparsity inducing function, our DS estimator of \eqref{eq:compact} becomes:
-\be 
+\be \nr 
 \hbbe \in \argmin_{\bbeta } \frac{1}{n} \norm{\y - \X \bbeta }{2}^2, \text{s.t. }  \forall g \in [G_+]: \norm{\bbeta_g}{1} \leq \norm{\bbeta^*_g}{1}.
 \ee 
 We call \eqref{exm:sde} \emph{sparse DS} estimator and use it as the running example throughout the paper to illustrate outcomes of our analysis.% \hfill {\color{header1} \qedsymbol}
@@ -30,7 +30,7 @@ We call \eqref{exm:sde} \emph{sparse DS} estimator and use it as the running exa
 Consider the group-wise estimation error $\ddelta_g = \hbbe_g - \bbeta^*_g$.
 Since $\hbbe_g = \bbeta ^*_g + \ddelta_g$ is a feasible point of \eqref{eq:compact}, the error vector $\ddelta_g$ will belong to the following restricted error set:% which is the set of all descent directions at $\bbeta _g^*$ on $f_g(\cdot)$ :
 \be
-%\nr
+\nr
 \cE_g = \left\{\ddelta_g | f_g(\bbeta _g^* + \ddelta_g) \leq f_g(\bbeta _g^*)\right\}, \quad g \in [G_+].
 \ee
 We denote the cone of the error set as $\cC_g \triangleq \text{Cone}(\cE_g)$ and the spherical cap corresponding to it as $\cA_g \triangleq \cC_g \cap \sphere$.
@@ -95,7 +95,7 @@ Using this basic inequality, we can establish the following deterministic error 
 Consider the setting where $n_g = \Theta(\frac{n}{G})$ so that each group has approximately $\frac{1}{G}$ fraction of the samples. Then, $\gamma = \Theta(G)$ and hence
 \beq
 \nr 
-\frac{1}{G} \sum_{g=0}^G \| \delta_g \|_2 \leq O( G^{1/2} ) \frac{\sup_{\u \in \bcH}\oomega^T \X \u}{n}~.
+\frac{1}{G} \sum_{g=0}^G \| \delta_g \|_2 \leq O( G^{1/2} ) \frac{\sup_{\u \in \bcH}\w^T \X \u}{n}~.
 \eeq
 \end{remark}
 

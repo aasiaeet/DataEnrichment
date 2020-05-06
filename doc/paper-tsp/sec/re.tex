@@ -13,8 +13,8 @@ For the analysis, similar to existing work \cite{guba16, mend15, trop15}, we ass
 \begin{definition}
 	\label{def:obs}
 	We assume $\x_{gi}$ are i.i.d. random vectors from a non-degenerate zero-mean, isotropic sub-Gaussian distribution. In other words, $\ex [\x] = 0$, $\ex [\x^T \x] = \I_{p \times p}$, and $\normth{\x}{\psi_2} \leq k_x$.	
-As a consequence, $\exists \alpha > 0$ such that $\forall \u \in \sphere$ we have $ \ex|\langle \x, \u \rangle| \geq \alpha$. Further, we assume noise $\w_{gi} $ are i.i.d.
-zero-mean, unit-variance sub-Gaussian with $\normth{\w_{gi}}{\psi_2} \leq k_w$.
+As a consequence, $\exists \alpha > 0$ such that $\forall \u \in \sphere$ we have $ \ex|\langle \x, \u \rangle| \geq \alpha$. Further, we assume noise $w_{gi} $ are i.i.d.
+zero-mean, unit-variance sub-Gaussian with $\normth{w_{gi}}{\psi_2} \leq k_w$.
 \end{definition}
 
 \subsection{Geometric Condition for Recovery}
@@ -131,18 +131,57 @@ Now we add and subtract the corresponding per-group marginal tail function, $Q_{
 For the ease of exposition we consider the LHS of \eqref{eq:long}  as the difference of two terms, i.e., $t_1(\X) - t_2(\X)$ and in the followings we lower bound $t_1$ and upper bound $t_2$. 
 
 \subsubsection{Lower Bounding the First Term $t_1(\X)$}
-Our main result is the following lemma which uses the \ds\ condition of \ref{incodef} and provides a lower bound for the first term $t_1(\X)$:
-\begin{lemma}
-	\label{lemm:shareInc} 
-	Suppose \ds\ holds. Let $\rinc=\frac{\lamin\ratio}{3}$. For any $\ddelta \in \cH$, we have: 
-	\beq 
-	\label{eq:rhs}
-	\sum_{g=1}^G\frac{n_g}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g}) \geq \rinc\xi \frac{(\alpha - 2\xi)^2}{4ck_x^2}\sum_{g=0}^n \frac{n_g}{n}\norm{\ddelta_g}{2},
-	\eeq 	
-\end{lemma}
-Lemma \ref{lemm:shareInc} implies that $t_1(\X)$
-%$t_1(\X)=\inf_{\ddelta\in \cH} \sum_{g=1}^G\frac{n_G}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g})$ 
-is lower bounded by the same RHS bound of \eqref{eq:rhs}.
+First, note that $t_1(\X)$ is the weighted summation of $\xi_g Q_{2\xi_g}(\ddelta_{0g}) = \norm{\ddelta_{0g}}{2}\xi \pr(|\langle \x, , \ddelta_{0g}/\norm{\ddelta_{0g}}{2} \rangle| > 2\xi) = \norm{\ddelta_{0g}}{2}\xi Q_{2\xi}(\u)$ where $\xi > 0$ and $\u = \ddelta_{0g}/\norm{\ddelta_{0g}}{2}$ is a unit length vector. Using the Paley--Zygmund inequality for the sub-Gaussian random vector $\x$ \cite{trop15}, we have $Q_{2\xi}(\u)  \geq q \triangleq \frac{(\alpha - 2\xi)^2}{4ck_x^2}$, where $q$ is a constant. Therefore, $t_1(\X) \geq \xi q \sum_{g=1}^G\frac{n_g}{n}\norm{\ddelta_{0} +  \ddelta_{g}}{2}$.Below lemma provides a lower bound for the remaining summation.
+\begin{lemma} \label{incolem main} Suppose that the \ds\ condition of Definition \ref{incodef} holds. Then, for error vectors $g \in [G_+]: \ddelta_g \in \cC_g$, we have: 
+	\be \nr 
+	\sum_{g=1}^G \frac{n_g}{n} \norm{\ddelta_0+\ddelta_g}{2}\geq\frac{\ratio\lamin}{3} \left( G\norm{\ddelta_0}{2} + \sum_{g=1}^G \frac{n_g}{n} \norm{\ddelta_g}{2} \right).
+	\ee 
+\end{lemma}	
+\begin{IEEEproof}
+	We split $[G]-\cI$ into two groups $\cJ,\cK$. $\cJ$ consists of $\ddelta_g$'s with $\norm{\ddelta_g}{2}\geq 2\norm{\ddelta_0}{2}$ and $\cK=[G]-\cI-\cJ$. We use the bounds
+	\[
+	\norm{\ddelta_0+\ddelta_g}{2}\geq 
+	\begin{cases}
+	\lamin(\norm{\ddelta_g}{2}+\norm{\ddelta_0}{2}) &\text{if}~g\in \cI
+	\\ 
+	\norm{\ddelta_g}{2}/2 &\text{if}~g\in \cJ
+	\\
+	0 &\text{if}~g\in \cK			
+	\end{cases}
+	\] 
+	This implies
+	\[
+	\sum_{g=1}^G n_g\norm{\ddelta_0+\ddelta_g}{2}\geq \sum_{g\in \cJ}\frac{n_g}{2}\norm{\ddelta_g}{2}+\lamin\sum_{g\in \cI} n_g (\norm{\ddelta_g}{2}+\norm{\ddelta_0}{2}).
+	\]
+	Let $S_\cS=\sum_{g\in \cS}n_g\norm{\ddelta_g}{2}$ for $\cS=\cI,\cJ,\cK$.
+	We know that over $\cK$, $\norm{\ddelta_g}{2}\leq 2\norm{\ddelta_0}{2}$ which implies $S_\cK = \sum_{g\in \cK}n_g\norm{\ddelta_g}{2}\leq 2\sum_{g\in \cK}n_g\norm{\ddelta_0}{2}\leq 2n\norm{\ddelta_0}{2}$. Set $\rinc=\min\{1/2,\lamin\ratio/3\}$. %=\lamin\ratio/3$.  
+	Using $1/2\geq \rinc$, we write:
+	\begin{align}
+	\nr 
+	&\sum_{g=1}^G n_g\norm{\ddelta_0+\ddelta_g}{2}
+	\geq \rinc S_\cJ +\lamin\sum_{g\in \cI}n_g (\norm{\ddelta_g}{2}+\norm{\ddelta_0}{2})
+	\\ \nr 
+	&\geq \rinc S_\cJ +\rinc S_\cK - 2\rinc n\norm{\ddelta_0}{2}+(\sum_{g\in \cI} n_g)\lamin \norm{\ddelta_0}{2}+\lamin S_{\Ic}
+	\\ \nr 
+	&\geq \rinc (S_\cI + S_\cJ + S_\cK)+ ((\sum_{g\in \cI} n_g)\lamin-2\rinc n)\norm{\ddelta_0}{2}.
+	\end{align} 
+	The first assumption of Definition \eqref{incodef}, $\sum_{g\in \cI} n_g \geq \ratio n$ implies:
+	\be 
+	\nr 
+	(\sum_{g\in \cI} n_g)\lamin-2\rinc n\geq (\ratio\lamin -2\rinc)n\geq \rinc n.
+	\ee 
+	Combining all, we obtain:
+	\begin{align}
+	\nr 
+	\sum_{g=1}^Gn_g \norm{\ddelta_0+\ddelta_g}{2} &\geq \rinc (S_\cI + S_\cJ + S_\cK + \norm{\ddelta_0}{2}) 
+	\\ \nr 
+	&= \rinc(n\norm{\ddelta_0}{2} +\sum_{g=1}^G n_g\norm{\ddelta_g}{2}).
+	\end{align}
+\end{IEEEproof}
+	
+%Lemma \ref{lemm:shareInc} implies that $t_1(\X)$
+%%$t_1(\X)=\inf_{\ddelta\in \cH} \sum_{g=1}^G\frac{n_G}{n}\xi_g Q_{2\xi_g}(\ddelta_{0g})$ 
+%is lower bounded by the same RHS bound of \eqref{eq:rhs}.
 
 \subsubsection{Upper Bounding the Second Term $t_2(\X)$}
 First we show $t_2(\X)$ satisfies the bounded difference property defined in Section 3.2. of \cite{boucheron13}, i.e., by changing each of $\x_{gi}$ the value of $t_2(\X)$ at most change by one. 
@@ -173,16 +212,30 @@ Having this concentration bound, it is enough to bound the expectation of $t_2(\
 \begin{lemma}
 	\label{lemm:secTerm}
 	For the random vector $\x$ of Definition \ref{def:obs}, we have the following bound:
-	\begin{align}	
+	{\small\begin{align}	
 	\nr 
-	&\frac{2}{n} \ex \sup_{\ddelta \in \cH} \sum_{g=1}^{G} \xi_g \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right]
+	\ex t_2(\X) &= \frac{2}{n} \ex \sup_{\ddelta \in \cH} \sum_{g=1}^{G} \xi_g \sum_{i=1}^{n_g} \left[Q_{2 \xi_g}(\ddelta_{0g})  - \indic (|\langle \x_{gi}, \ddelta_{0g} \rangle| \geq \xi_g )  \right]
 	\\ \nr 
-	&\hspace*{4cm}\leq \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} c_g k \omega(\cA_g) \norm{\ddelta_{g}}{2}.
-	\end{align} 
+	&\leq \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} c_g k \omega(\cA_g) \norm{\ddelta_{g}}{2}.
+	\end{align}}
 \end{lemma}
+\begin{IEEEproof}
+	Following the similar steps of proof of Proposition 5.1 of \cite{trop15}, $\ex t_2(\X)$ can be bounded by $\frac{2}{n} \ex \sup_{\ddelta \in \cH} \sum_{g=1}^{G} \sum_{i=1}^{n_g} \epsilon_{gi} \langle \x_{gi}, \ddelta_{0g} \rangle$ where $\epsilon_{gi}$ are iid copies of Rademacher random variable which are independent of every other random variables and themselves. Now, we expand $\ddelta_{0g} = \ddelta_{0} + \ddelta_{g}$ and define $\h_{g} \triangleq \frac{1}{\sqrt{n_g}} \sum_{i=1}^{n_g} \epsilon_{gi} \x_{gi}$ to simplify the notation. Also, we substitute $\ddelta \in \cH$ constraint with $\ddelta \in \cC$ because $\cH \subseteq \cC$. We have:
+	\begin{align} \nr 
+		\ex t_2(\X) &\leq \frac{2}{\sqrt{n}} \ex \sup_{\forall g \in [G_+]: \ddelta_g \in \cC_g} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}}  \langle \h_{g}, \ddelta_{g} \rangle
+		\\ \nr 
+		&\leq \frac{2}{\sqrt{n}} \ex \sup_{\forall g \in [G_+]: \u_g \in \cA_{g}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \langle \h_{g}, \u_{g} \rangle \norm{\ddelta_{g}}{2}
+		\\ \nr 
+		&\leq \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} \ex_{\h_{g}} \sup_{\u_g \in \cA_g}  \langle \h_{g}, \u_{g} \rangle \norm{\ddelta_{g}}{2}
+		\\ \nr 
+		&\leq \frac{2}{\sqrt{n}} \sum_{g=0}^{G}  \sqrt{\frac{n_g}{n}} c_g k_x \omega(\cA_g) \norm{\ddelta_{g}}{2}.
+	\end{align}
+	Note that the $\h_{gi}$ is a sub-Gaussian random vector which let us bound the $\ex \sup$ using the Gaussian width \cite{trop15} in the last step. 
+\end{IEEEproof}
 
 \subsubsection{Continuing the Proof of Theorem \ref{theo:re}}
-Define $q \triangleq \frac{(\alpha - 2\xi)^2}{4ck^2}$. Putting back bounds of $t_1(\X)$ and $t_2(\X)$ together from Lemmas \ref{lemm:shareInc} and \ref{lemm:secTerm}, with probability at least $1 - e^{-\frac{\tau^2}{2}}$ we have:
+%Define $q \triangleq \frac{(\alpha - 2\xi)^2}{4ck^2}$. 
+Putting back bounds of $t_1(\X)$ and $t_2(\X)$ together from Lemmas \ref{incolem main} and \ref{lemm:secTerm}, with probability at least $1 - e^{-\frac{\tau^2}{2}}$ we have:
 {\small
 \begin{align}
 \nr 
@@ -195,9 +248,9 @@ Define $q \triangleq \frac{(\alpha - 2\xi)^2}{4ck^2}$. Putting back bounds of $t
 \\ \nr
 &=n^{-1}\sum_{g=0}^{G} n_g \norm{\ddelta_{g}}{2} ( \rinc \xi  q-2 c_g k_x \frac{\omega(\cA_g)}{\sqrt{n_g}})-\frac{\tau}{\sqrt{n}}
 \\ \nr
-(i) &= \sum_{g=0}^{G} \frac{n_g}{n} \norm{\ddelta_g}{2} \kappa_g  - \frac{\tau}{\sqrt{n}}
+(\text{i}) &= \sum_{g=0}^{G} \frac{n_g}{n} \norm{\ddelta_g}{2} \kappa_g  - \frac{\tau}{\sqrt{n}}
 \\ \nr
-(ii) &\geq \kappa_{\min}\sum_{g=0}^{G} \frac{n_g}{n} \norm{\ddelta_g}{2}  - \frac{\tau}{\sqrt{n}}
+(\text{ii}) &\geq \kappa_{\min}\sum_{g=0}^{G} \frac{n_g}{n} \norm{\ddelta_g}{2}  - \frac{\tau}{\sqrt{n}}
 %\\ \nr
 %(n_g \geq 1) &\geq& \kappa_{\min} \sqrt{\frac{1}{n}} \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} - \frac{\tau}{\sqrt{n}}
 %\\ \nr

@@ -15,13 +15,13 @@ Following the successful application of such a modeling scheme in recent years \
 y_{gi} = \phi(\x_{gi}, (\bbeta_0^* + \bbeta^*_g)) + w_{gi}, \quad g \in \{1, \dots, G\}~,
 \eeq
 where $g$ and $i$ index the group and samples respectively. 
-\begin{figure}[!b]
-	\centering
-	\includegraphics[scale=.3]{./img/concept.pdf}
-	\caption{\small A conceptual illustration of data sharing model for learning representation of  cat species. The common parameter $\bbeta_0$ captures a \emph{generic cat} which consists of shared features among all cats.}
-	\label{fig:cat}		
-\end{figure}
-The DS model \eqref{eq:dsl} assumes that there is a \emph{common} parameter $\bbeta^*_0$ shared between all groups which models similarities between all samples. And there are \emph{individual} per-group parameters $\bbeta_g^*$s each characterize the deviation of group $g$, Fig. \ref{fig:cat}.% and capture unique aspects of each group.
+%\begin{figure}[!b]
+%	\centering
+%	\includegraphics[scale=.3]{./img/concept.pdf}
+%	\caption{\small A conceptual illustration of data sharing model for learning representation of  cat species. The common parameter $\bbeta_0$ captures a \emph{generic cat} which consists of shared features among all cats.}
+%	\label{fig:cat}		
+%\end{figure}
+The DS model \eqref{eq:dsl} assumes that there is a \emph{common} parameter $\bbeta^*_0$ shared between all groups which models similarities between all samples. And there are \emph{individual} per-group parameters $\bbeta_g^*$s each characterize the deviation of group $g$.%, Fig. \ref{fig:cat}.% and capture unique aspects of each group.
 
 %\paragraph{The setting} 
 Our goal is to design an estimation procedure which consistently recovers all parameters of DS \eqref{eq:dsl} fast and with small number of samples.

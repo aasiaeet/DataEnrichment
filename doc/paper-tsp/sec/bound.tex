@@ -38,7 +38,7 @@ In this section, we present our main statistical result which is a non-asymptoti
 
 \begin{example}
 	{\bf ($l_1$-norm)} For the sparse DS estimator of Example \ref{exm:sde}, results of Theorems \ref{theo:re} and \ref{theo:calcub} translates to the following. For enough samples as $\forall g \in [G_+]: n_g \geq m_g = O(s_g \log p)$, the upper bound of error simplifies to:
-	\be
+	\be \nr 
 	\sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}	= O \left(\gamma \sqrt{\frac{(\max_{g \in [G_+]}  s_g)\log p}{n}}\right) ,
 	\ee 
 	Therefore, individual errors are bounded as $\norm{\ddelta_g}{2}	= O (\gamma \sqrt{(\max_{g \in [G]}  s_g)\log p/n_g})$
@@ -50,9 +50,9 @@ To avoid cluttering the notation, we rename the vector of all noises as $\w_0 \t
 First, we massage the deterministic upper bound of Theorem \ref{theo:deter} as follows:
 \begin{align}
 	\nr
-	&\w ^T \X\ddelta \hspace*{0.5cm}= \sum_{g=0}^{G} \langle \X_g^T \w_g,  \ddelta_g \rangle
+	\w ^T \X\ddelta &= \sum_{g=0}^{G} \langle \X_g^T \w_g,  \ddelta_g \rangle
 	\\ \nr 
-	&\hspace*{1.5cm}= \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}} \rangle \sqrt{\frac{n}{n_g}} \norm{\w_g}{2} %\\ \nr
+	&= \sum_{g=0}^{G} \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2} \langle \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}} \rangle \sqrt{\frac{n}{n_g}} \norm{\w_g}{2} %\\ \nr
 \end{align}
 
 Assume $q_g = \langle \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \frac{\ddelta_g}{\norm{\ddelta_g}{2}}  \rangle \sqrt{\frac{n}{n_g}} \norm{\w_g}{2}$ and $p_g = \sqrt{\frac{n_g}{n}} \norm{\ddelta_g}{2}$.
@@ -96,17 +96,17 @@ Then from \eqref{eq:maxex}, we have:
 &\hspace*{1.5cm}\leq \sigma \exp\left(-\min\left[\nu  \min_{g \in [G]} n_g - \log (G+1), \tau^2\right]\right), 
 \end{align} 
 where the first inequality follows from the Union Bound and the last one is the result of the following lemma:
-\begin{lemma}
+\begin{lemma}[Theorem 4 of \cite{banerjee14}]
 	\label{lemm:mainlem}
-	For $\x_{gi}$ and $\omega_{gi}$ defined in Definition \ref{def:obs} and $\tau > 0$, with probability at least $1 - \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu  n_g - \log (G+1), \tau^2\right]\right) $ we have:
-	\begin{align}	
+	For $\x_{gi}$ and $w_{gi}$ defined in Definition \ref{def:obs} and $\tau > 0$, with probability at least $1 - \frac{\sigma_g}{(G+1)} \exp\left(-\min\left[\nu  n_g - \log (G+1), \tau^2\right]\right) $ we have:
+	\begin{align}	\nr 
 	&\norm{\w_g}{2} \sup_{\u_g \in \cA_g} \langle \X_g^T \frac{\w_g}{\norm{\w_g}{2}}, \u_g \rangle 
 	\\ \nr 
 	&\hspace*{1cm}\leq 	c_g \sqrt{(2k_w^2 + 1)k_x^2n_g}  \left(\omega(\cA_g)+\sqrt{\log (G+1)} + \tau \right), \nr
 	\end{align}
 	where $\sigma_g, \nu$ and $c_g$ are constants.
 \end{lemma}	
-The proof completes by replacing $\max_{g \in [G]} \sqrt{\frac{n}{n_g}} e_g(\tau)$ as the upper bound of $\sup_{\ddelta \in \cH} \w^T \X\ddelta$ and $\kappa^2_{\min}/4$ as the lower bound of $\kappa$ (from Theorem \ref{theo:re}) both into the bound of Theorem \ref{theo:deter} . \hfill {\qedsymbol}
+The proof of Theorem \ref{theo:calcub} completes by replacing $\max_{g \in [G]} \sqrt{\frac{n}{n_g}} e_g(\tau)$ as the upper bound of $\sup_{\ddelta \in \cH} \w^T \X\ddelta$ and $\kappa^2_{\min}/4$ as the lower bound of $\kappa$ (from Theorem \ref{theo:re}) both into the bound of Theorem \ref{theo:deter} . \hfill {\qedsymbol}
 
 
 
